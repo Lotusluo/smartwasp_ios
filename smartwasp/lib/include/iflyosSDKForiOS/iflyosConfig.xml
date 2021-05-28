@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <iOSConfig>
+        <!-- 服务器地址 -->
+        <serverAddress>https://home.iflyos.cn</serverAddress>
+        <!-- Web版本服务器地址 -->
+        <webServerAddress>https://homev2.iflyos.cn</webServerAddress>
+        <!-- 授权地址 -->
+        <authAddress>https://auth.iflyos.cn/oauth</authAddress>
+        <!-- SDK 地址 -->
+        <sdkServerAddress>https://home.iflyos.cn/sdk/v1</sdkServerAddress>
+        <!-- 网络请求超时时间 -->
+        <requestTimeout>30</requestTimeout>
+        <!-- SDK 地址 -->
+        <sdkVersion>2.5.6738</sdkVersion>
+        <!-- 主题色 -->
+        <themeColor>#5280FF</themeColor>
+    </iOSConfig>
+</config>

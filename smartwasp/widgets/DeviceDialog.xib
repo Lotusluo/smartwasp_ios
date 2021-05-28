@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DeviceDialog">
+            <rect key="frame" x="0.0" y="0.0" width="562" height="452"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GPu-uM-Dmc" userLabel="设备选择列表">
+                    <rect key="frame" x="0.0" y="0.0" width="562" height="200"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="r1k-iC-3Tq"/>
+                    </constraints>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWc-po-3q8" userLabel="间隙">
+                    <rect key="frame" x="0.0" y="200" width="562" height="10"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="D5E-aw-DGI"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Exk-jg-Oou">
+                    <rect key="frame" x="0.0" y="210" width="562" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Ljn-4P-Jpb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" systemColor="labelColor"/>
+                    </state>
+                    <connections>
+                        <action selector="dismiss:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bt9-nU-1ad"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u08-iu-Hb9" userLabel="safe">
+                    <rect key="frame" x="0.0" y="270" width="562" height="33"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="9Fg-nQ-50z"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Exk-jg-Oou" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Ww-aW-E6e"/>
+                <constraint firstAttribute="trailing" secondItem="u08-iu-Hb9" secondAttribute="trailing" id="LJd-ug-CBC"/>
+                <constraint firstAttribute="trailing" secondItem="GPu-uM-Dmc" secondAttribute="trailing" id="Oql-mp-PGk"/>
+                <constraint firstItem="GPu-uM-Dmc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SQD-ar-jiq"/>
+                <constraint firstItem="GPu-uM-Dmc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Thh-Ry-yUu"/>
+                <constraint firstItem="u08-iu-Hb9" firstAttribute="top" secondItem="Exk-jg-Oou" secondAttribute="bottom" constant="10" id="cJ6-mI-Pti"/>
+                <constraint firstItem="KWc-po-3q8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cWG-nR-eDG"/>
+                <constraint firstItem="KWc-po-3q8" firstAttribute="top" secondItem="GPu-uM-Dmc" secondAttribute="bottom" id="eDo-Zv-e0f"/>
+                <constraint firstAttribute="trailing" secondItem="Exk-jg-Oou" secondAttribute="trailing" id="eXP-c3-Qkl"/>
+                <constraint firstItem="u08-iu-Hb9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h6b-ss-UMl"/>
+                <constraint firstItem="Exk-jg-Oou" firstAttribute="top" secondItem="KWc-po-3q8" secondAttribute="bottom" id="kqP-Jk-Dy2"/>
+                <constraint firstAttribute="trailing" secondItem="KWc-po-3q8" secondAttribute="trailing" id="mfe-8v-3ne"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="devList" destination="GPu-uM-Dmc" id="gsx-CE-deu"/>
+                <outlet property="devListHeight" destination="r1k-iC-3Tq" id="aG6-PR-g99"/>
+                <outlet property="safeBottom" destination="9Fg-nQ-50z" id="vFv-3f-or6"/>
+            </connections>
+            <point key="canvasLocation" x="-401.44927536231887" y="-131.25"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

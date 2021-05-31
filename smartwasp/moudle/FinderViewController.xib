@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,14 +17,21 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfc-48-ZdZ" userLabel="FindScrollView">
+                    <rect key="frame" x="0.0" y="93" width="414" height="769"/>
+                    <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </scrollView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cfc-48-ZdZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Hg1-xs-vtd"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="cfc-48-ZdZ" secondAttribute="bottom" id="VgR-Fp-do0"/>
+                <constraint firstItem="cfc-48-ZdZ" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="49" id="dyd-uL-zXT"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cfc-48-ZdZ" secondAttribute="trailing" id="jit-E8-K3e"/>
+            </constraints>
             <point key="canvasLocation" x="45" y="89"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

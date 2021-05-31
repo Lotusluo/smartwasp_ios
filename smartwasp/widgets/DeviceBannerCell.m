@@ -29,7 +29,7 @@
         //画外边框
         self.borderColor =  [UIColor lightGrayColor];
         self.cornerRadius = 15;
-        self.borderWidth = 1;
+        self.borderWidth = 0.8;
     }
     return self;
 }

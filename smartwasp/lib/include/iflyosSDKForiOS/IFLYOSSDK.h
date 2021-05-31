@@ -832,7 +832,7 @@ typedef NS_ENUM (NSUInteger,LOGIN_TYPE){
  */
 -(void) deleteRecords:(NSString *) device_id
                tag_id:(NSInteger) tag_id
-                  ids:(NSArray *) ids
+                  ids:(NSArray *_Nullable) ids
             statusCode:(void (^)(NSInteger)) statusCode
        requestSuccess:(void (^)(id _Nonnull)) successData
           requestFail:(void (^)(id _Nonnull)) failData;

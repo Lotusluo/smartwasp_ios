@@ -12,6 +12,9 @@
 		040ED78C26561699001A2755 /* PageLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED78B26561699001A2755 /* PageLineLayout.m */; };
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
+		0415EAD72664850200A73CE7 /* icon_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAD62664850200A73CE7 /* icon_arrow.png */; };
+		0415EAE52664D88200A73CE7 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE42664D88200A73CE7 /* Banner.m */; };
+		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
 		0425CD57262ED2B4004D4D23 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD56262ED2B4004D4D23 /* Device.m */; };
 		0425CD60262ED4AE004D4D23 /* Music.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD5F262ED4AD004D4D23 /* Music.m */; };
@@ -91,6 +94,12 @@
 		0415EAA62660E43400A73CE7 /* NormalNaviCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalNaviCell.h; sourceTree = "<group>"; };
 		0415EAA72660E43400A73CE7 /* NormalNaviCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalNaviCell.m; sourceTree = "<group>"; };
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
+		0415EAD62664850200A73CE7 /* icon_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow.png; sourceTree = "<group>"; };
+		0415EADB26649A6D00A73CE7 /* ISWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISWDelegate.h; sourceTree = "<group>"; };
+		0415EAE42664D88200A73CE7 /* Banner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
+		0415EAE72664D89000A73CE7 /* Banner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		0415EAE92664D9E500A73CE7 /* FindBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
+		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
 		0425CD51262ECE17004D4D23 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0425CD52262ECE17004D4D23 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		0425CD55262ED2B4004D4D23 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
@@ -269,6 +278,7 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				0415EAD62664850200A73CE7 /* icon_arrow.png */,
 				047AC2E42660DEC500E559C7 /* icon_about_1.png */,
 				047AC2E32660DEC400E559C7 /* icon_account_1.png */,
 				047AC2E22660DEC300E559C7 /* icon_clock_1.png */,
@@ -359,6 +369,10 @@
 				0425CD56262ED2B4004D4D23 /* Device.m */,
 				04063FEA264BB1AE003AD68D /* BaseBean.h */,
 				04063FEB264BB1AE003AD68D /* BaseBean.m */,
+				0415EAE72664D89000A73CE7 /* Banner.h */,
+				0415EAE42664D88200A73CE7 /* Banner.m */,
+				0415EAEC2664DA0400A73CE7 /* FindBean.h */,
+				0415EAE92664D9E500A73CE7 /* FindBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -457,6 +471,7 @@
 				04E7DF1B2621ABDA007C3790 /* Loading.m */,
 				046EEFAA26298475001213DB /* CodingUtil.h */,
 				046EEFAB26298475001213DB /* CodingUtil.m */,
+				0415EADB26649A6D00A73CE7 /* ISWDelegate.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -548,6 +563,7 @@
 				04261A3E261F1D36000D95D6 /* icon_tab_mine_selected@2x.png in Resources */,
 				04261A41261F1D36000D95D6 /* icon_tab_smart_selected@2x.png in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
+				0415EAD72664850200A73CE7 /* icon_arrow.png in Resources */,
 				04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */,
 				0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */,
 				047AC2E52660DEC500E559C7 /* icon_routines_1.png in Resources */,
@@ -640,6 +656,7 @@
 				0425CD64262EE154004D4D23 /* BaseTabViewController.m in Sources */,
 				045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */,
 				0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */,
+				0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */,
 				0425CD60262ED4AE004D4D23 /* Music.m in Sources */,
 				0425CD57262ED2B4004D4D23 /* Device.m in Sources */,
 				045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */,
@@ -649,6 +666,7 @@
 				043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */,
 				044D723726396C8E0075994F /* NewPageViewController.m in Sources */,
 				04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */,
+				0415EAE52664D88200A73CE7 /* Banner.m in Sources */,
 				040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */,
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
 				047FF9F6261FF92A005E87A7 /* User.m in Sources */,

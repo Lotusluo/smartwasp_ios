@@ -11,6 +11,7 @@
 #import "DeviceBannerCell.h"
 #import "PageLineLayout.h"
 #import "PageControl2.h"
+#import "NormalNaviCell.h"
 #import <Masonry.h>
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -19,31 +20,32 @@
 #define APAGE_SIZE (CGSizeMake(SCREEN_WIDTH - 30,SCREEN_WIDTH * 0.27))
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
-@interface UserViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface UserViewController ()<
+UICollectionViewDelegate,
+UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout,
+ISWClickDelegate>
 
 
-//自定义toolbar
+/**###############ToolBar###############*/
 @property (weak, nonatomic) IBOutlet UIView *toolbar;
-//左侧按钮
 @property (weak, nonatomic) IBOutlet UIImageView *leftItem;
-//设备选择banner
+
+/**###############DeviceBanner###############*/
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-//collectionView布局
 @property (weak, nonatomic) IBOutlet PageLineLayout *lineLayout;
-//指示器
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerHeight;
+
+/**###############Indicator###############*/
 @property (weak, nonatomic) IBOutlet PageControl2 *pageControl;
-//用户操作navi按钮
-@property (weak, nonatomic) IBOutlet UIScrollView *menuList;
+
+/**###############按钮视图###############*/
+@property (weak, nonatomic) IBOutlet UIStackView *naviContent;
 
 @end
 
 @implementation UserViewController
-
-@synthesize toolbar;
-@synthesize collectionView;
-@synthesize pageControl;
-@synthesize lineLayout;
-@synthesize menuList;
 
 static NSString *const ID = @"CellIdentifier";
 
@@ -57,41 +59,50 @@ static NSString *const ID = @"CellIdentifier";
 
 //初始化设备选择栏
 -(void) initGallery{
-    lineLayout.itemSize = APAGE_SIZE;
-    collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-    collectionView.backgroundColor = [UIColor clearColor];
-    [collectionView registerNib:[UINib nibWithNibName:@"DeviceBannerCell" bundle:nil] forCellWithReuseIdentifier:ID];
-    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.width.mas_equalTo(APAGE_SIZE.width);
-           make.height.mas_equalTo(APAGE_SIZE.height);
-           make.top.equalTo(toolbar.mas_bottom);
-       }];
+    self.lineLayout.itemSize = APAGE_SIZE;
+    self.bannerWidth.constant = APAGE_SIZE.width;
+    self.bannerHeight.constant = APAGE_SIZE.height;
+    self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DeviceBannerCell" bundle:nil] forCellWithReuseIdentifier:ID];
 }
 
 //初始化page ctl
 -(void)initpageCtr{
-    pageControl.pageIndicatorTintColor =  [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#f6921e"];
-    pageControl.enabled = false;
+    self.pageControl.pageIndicatorTintColor =  [UIColor lightGrayColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#f6921e"];
+    self.pageControl.enabled = false;
 }
 
 //初始化menulist
 -(void)initMenuList{
     //设置内容区域
-    menuList.contentSize = CGSizeMake(SCREEN_WIDTH, 1000);
-    
+     NSEnumerator *arrayEnumerator = [_naviContent.subviews objectEnumerator];
+     UIView *obj;
+     while ((obj = [arrayEnumerator nextObject]) != nil) {
+         if([obj isKindOfClass:NormalNaviCell.class]){
+             NormalNaviCell *nnView = (NormalNaviCell*)obj;
+             nnView.delegate = self;
+         }
+    }
 }
 
+//菜单点击事件
+-(void) onClick:(NSInteger)tag{
+    NSLog(@"onClick:%ld",tag);
+}
+
+//重加载数据
 -(void)reloadData{
-    pageControl.numberOfPages = APPDELEGATE.devices ? APPDELEGATE.devices.count + 1 : 1;
-    pageControl.tag = 0;
-    [collectionView reloadData];
+    self.pageControl.numberOfPages = APPDELEGATE.devices ? APPDELEGATE.devices.count + 1 : 1;
+    self.pageControl.tag = 0;
+    [self.collectionView reloadData];
     [self setCurrentPage:0];
 }
 
 #pragma mark --UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return pageControl.numberOfPages;
+    return self.pageControl.numberOfPages;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -122,7 +133,7 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 -(void)setCurrentPage:(NSInteger) page{
-    [pageControl setCurrentPage:page];
+    [self.pageControl setCurrentPage:page];
 }
 
 

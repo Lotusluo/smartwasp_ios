@@ -11,9 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserViewController">
             <connections>
+                <outlet property="bannerHeight" destination="vgw-VM-Mqk" id="TNp-lA-WJA"/>
+                <outlet property="bannerWidth" destination="00q-Ix-032" id="R6Q-3X-9uJ"/>
                 <outlet property="collectionView" destination="cXn-7F-feu" id="a1A-1P-KRt"/>
                 <outlet property="lineLayout" destination="7aU-As-cGv" id="Vst-rk-ev7"/>
-                <outlet property="menuList" destination="lo4-1H-lsJ" id="fe7-BZ-gIQ"/>
+                <outlet property="naviContent" destination="etN-Fb-Q7F" id="UJA-S9-2vQ"/>
                 <outlet property="pageControl" destination="W8r-cG-hyo" id="uBe-Mx-eQJ"/>
                 <outlet property="toolbar" destination="QtB-dZ-qJG" id="xMU-Yf-UcE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-dZ-qJG" userLabel="toolbar">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-dZ-qJG" userLabel="ToolBar">
                     <rect key="frame" x="0.0" y="44" width="414" height="49"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gre-4t-yih">
@@ -43,7 +45,7 @@
                             <state key="normal" image="icon_loginout"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="gre-4t-yih" firstAttribute="centerX" secondItem="QtB-dZ-qJG" secondAttribute="centerX" id="5Cr-rh-YVa"/>
                         <constraint firstItem="2wb-FE-7WL" firstAttribute="centerY" secondItem="QtB-dZ-qJG" secondAttribute="centerY" id="Xod-h7-EqI"/>
@@ -52,8 +54,12 @@
                         <constraint firstItem="2wb-FE-7WL" firstAttribute="leading" secondItem="QtB-dZ-qJG" secondAttribute="leading" constant="18" id="mNw-CG-m4g"/>
                     </constraints>
                 </view>
-                <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cXn-7F-feu" userLabel="banner">
+                <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cXn-7F-feu" userLabel="DeviceBanner">
                     <rect key="frame" x="87" y="93" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="00q-Ix-032"/>
+                        <constraint firstAttribute="height" constant="128" id="vgw-VM-Mqk"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7aU-As-cGv" customClass="PageLineLayout">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,66 +71,116 @@
                         <outlet property="delegate" destination="-1" id="eQg-LK-dIo"/>
                     </connections>
                 </collectionView>
-                <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="W8r-cG-hyo" userLabel="indicator" customClass="PageControl2">
-                    <rect key="frame" x="10" y="245" width="394" height="28"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="3nR-Bk-Hxa"/>
-                    </constraints>
-                </pageControl>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lo4-1H-lsJ" userLabel="menu">
-                    <rect key="frame" x="0.0" y="245" width="414" height="617"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-g7-xDM" userLabel="NaviContainer">
+                    <rect key="frame" x="0.0" y="281" width="414" height="581"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cfm-Xf-cpb" userLabel="content">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="etN-Fb-Q7F" userLabel="Content">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p33-aS-s0U" customClass="NormalNaviCell">
+                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="574-LP-pVj" userLabel="Navi1" customClass="NormalNaviCell">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="T91-Fa-P7J"/>
+                                        <constraint firstAttribute="height" constant="50" id="o42-wH-DlU"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_routines_1.png"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="快捷指令"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow.png"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasBottomLine" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTR-hS-Z12" userLabel="Navi2" customClass="NormalNaviCell">
+                                    <rect key="frame" x="0.0" y="50" width="414" height="50"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="loL-vN-KfU"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_clock_1.png"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="我的闹钟"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasBottomLine" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHV-3K-cDD" userLabel="Navi3" customClass="NormalNaviCell">
+                                    <rect key="frame" x="0.0" y="100" width="414" height="50"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Ge7-KD-N1N"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_account_1.png"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="内容账号"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfr-Nt-fET" userLabel="Gap">
+                                    <rect key="frame" x="0.0" y="150" width="414" height="20"/>
+                                    <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="1or-4u-037"/>
+                                    </constraints>
+                                </view>
+                                <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xID-bB-3lk" userLabel="Navi4" customClass="NormalNaviCell">
+                                    <rect key="frame" x="0.0" y="170" width="414" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="8ab-ut-J93"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_about_1.png"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="关于我们"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="p33-aS-s0U" secondAttribute="trailing" id="9rM-Wj-lxm"/>
-                                <constraint firstItem="p33-aS-s0U" firstAttribute="leading" secondItem="cfm-Xf-cpb" secondAttribute="leading" id="P5c-sC-WuV"/>
-                                <constraint firstItem="p33-aS-s0U" firstAttribute="top" secondItem="cfm-Xf-cpb" secondAttribute="top" id="Xgj-ao-PFK"/>
+                                <constraint firstAttribute="height" priority="750" constant="1000" id="l4l-1w-35y"/>
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="cfm-Xf-cpb" secondAttribute="bottom" id="7w2-w8-rIA"/>
-                        <constraint firstItem="cfm-Xf-cpb" firstAttribute="top" secondItem="lo4-1H-lsJ" secondAttribute="top" id="bY0-om-g2J"/>
-                        <constraint firstItem="cfm-Xf-cpb" firstAttribute="leading" secondItem="lo4-1H-lsJ" secondAttribute="leading" id="eyO-Vl-olF"/>
-                        <constraint firstAttribute="trailing" secondItem="cfm-Xf-cpb" secondAttribute="trailing" id="neg-hR-2x5"/>
-                        <constraint firstItem="cfm-Xf-cpb" firstAttribute="width" secondItem="lo4-1H-lsJ" secondAttribute="width" id="qia-ei-TOR"/>
+                        <constraint firstItem="etN-Fb-Q7F" firstAttribute="width" secondItem="pgl-g7-xDM" secondAttribute="width" id="43n-OI-n80"/>
+                        <constraint firstAttribute="trailing" secondItem="etN-Fb-Q7F" secondAttribute="trailing" id="D08-jO-6hW"/>
+                        <constraint firstAttribute="bottom" secondItem="etN-Fb-Q7F" secondAttribute="bottom" id="Ety-eJ-36R"/>
+                        <constraint firstItem="etN-Fb-Q7F" firstAttribute="top" secondItem="pgl-g7-xDM" secondAttribute="top" id="kUA-ov-GRP"/>
+                        <constraint firstItem="etN-Fb-Q7F" firstAttribute="leading" secondItem="pgl-g7-xDM" secondAttribute="leading" id="qf2-kB-i5K"/>
+                        <constraint firstItem="etN-Fb-Q7F" firstAttribute="centerX" secondItem="pgl-g7-xDM" secondAttribute="centerX" id="vLe-i6-e68"/>
                     </constraints>
                 </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="W8r-cG-hyo" userLabel="Indicator" customClass="PageControl2">
+                    <rect key="frame" x="10" y="221" width="394" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3nR-Bk-Hxa"/>
+                    </constraints>
+                </pageControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="lo4-1H-lsJ" secondAttribute="bottom" id="3ap-kK-vS1"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="pgl-g7-xDM" secondAttribute="bottom" id="34T-rF-5K7"/>
                 <constraint firstItem="W8r-cG-hyo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="EO0-43-FRc"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="lo4-1H-lsJ" secondAttribute="trailing" id="I0P-8o-IJz"/>
+                <constraint firstItem="pgl-g7-xDM" firstAttribute="top" secondItem="W8r-cG-hyo" secondAttribute="bottom" constant="10" id="OSD-dN-BD8"/>
                 <constraint firstItem="cXn-7F-feu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" priority="750" id="bC9-Ji-O3h"/>
-                <constraint firstItem="lo4-1H-lsJ" firstAttribute="top" secondItem="W8r-cG-hyo" secondAttribute="bottom" constant="10" id="i3h-ji-c2l"/>
+                <constraint firstItem="pgl-g7-xDM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="dXi-2w-PPw"/>
                 <constraint firstItem="QtB-dZ-qJG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="mro-Q3-lc5"/>
                 <constraint firstItem="W8r-cG-hyo" firstAttribute="top" secondItem="cXn-7F-feu" secondAttribute="bottom" id="oDs-qc-FAg"/>
                 <constraint firstAttribute="trailing" secondItem="W8r-cG-hyo" secondAttribute="trailing" constant="10" id="pwT-vV-tD7"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="QtB-dZ-qJG" secondAttribute="trailing" id="qUT-cz-LYe"/>
                 <constraint firstItem="cXn-7F-feu" firstAttribute="top" secondItem="QtB-dZ-qJG" secondAttribute="bottom" priority="750" id="vkf-Sq-Gix"/>
-                <constraint firstItem="lo4-1H-lsJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="xsZ-TK-Gh4"/>
                 <constraint firstItem="QtB-dZ-qJG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="yLm-Tl-2cg"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="pgl-g7-xDM" secondAttribute="trailing" id="zjW-lg-hmh"/>
             </constraints>
             <point key="canvasLocation" x="82.608695652173921" y="70.3125"/>
         </view>
     </objects>
     <resources>
+        <image name="icon_about_1.png" width="64" height="64"/>
+        <image name="icon_account_1.png" width="64" height="64"/>
+        <image name="icon_arrow" width="24" height="24"/>
+        <image name="icon_arrow.png" width="48" height="48"/>
+        <image name="icon_clock_1.png" width="64" height="64"/>
         <image name="icon_loginout" width="24" height="24"/>
         <image name="icon_routines_1.png" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">

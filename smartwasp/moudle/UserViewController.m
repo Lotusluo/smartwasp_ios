@@ -113,7 +113,7 @@ static NSString *const ID = @"CellIdentifier";
         header.alias = @"header";
         [cell render:header];
     }else{
-        [cell render:[APPDELEGATE.devices objectAtIndex:index]];
+        [cell render:APPDELEGATE.devices[index]];
     }
     return cell;
 }

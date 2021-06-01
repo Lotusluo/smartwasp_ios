@@ -22,8 +22,15 @@
 }
 //
 //return [NSString stringWithFormat:@"%@", num >= 10000 ? [NSString stringWithFormat:@"%0.1f万", (num / 10000.0)] : [NSString stringWithFormat:@"%zd",num]];
-
-
+-(void)setValue:(id)value forKey:(NSString *)key{
+    if([key isEqualToString:@"music"]){
+        Music *temp = [Music new];
+        [temp setValuesForKeysWithDictionary:value];
+        self.music = temp;
+        return;
+    }
+    [super setValue:value forKey:key];
+}
 
 //比较两个设备是否相等
 - (BOOL)isEqual:(id)other {

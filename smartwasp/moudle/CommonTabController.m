@@ -16,6 +16,7 @@
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 @interface CommonTabController ()
 //工具栏
@@ -74,11 +75,10 @@
 #pragma mark - 处理通知
 -(void)devSetObserver:(NSNotification*)notification {
     NSLog(@"收到设备选择的消息通知");
-    AppDelegate* app  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    if(app.curDevice){
-        [self.toolbar setDevName:app.curDevice.alias];
-        [self.toolbar setDevStatus:app.curDevice.isOnLine];
-        NSInteger code = [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:app.curDevice.device_id];
+    if(APPDELEGATE.curDevice){
+        [self.toolbar setDevName:APPDELEGATE.curDevice.alias];
+        [self.toolbar setDevStatus:APPDELEGATE.curDevice.isOnLine];
+        NSInteger code = [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:APPDELEGATE.curDevice.device_id];
         if (code == -3) {
             NSLog(@"未登录，请先登录");
         }

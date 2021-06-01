@@ -11,8 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Music : NSObject
 
+//Name       Typedef       Header        True Value    False Value
+//BOOL       signedchar    objc.h        YES           NO
+//bool       _Bool         stdbool.h     true          false
+//Boolean    unsignedchar  MacTypes.h    TRUE          FALSE
+
 //是否有音乐畅听
-@property(nonatomic) Boolean enable;
+@property(nonatomic) bool enable;
 
 //redirect_url
 @property(nonatomic,strong) NSString *redirect_url;

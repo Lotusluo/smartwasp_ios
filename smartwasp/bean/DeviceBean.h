@@ -6,11 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Music.h"
+#import "MusicBean.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Device : NSObject
+@interface DeviceBean : NSObject
 
 //设备别名
 @property(nonatomic,strong) NSString *alias;
@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 //设备空间
 @property(nonatomic,strong) NSString *zone;
 //music
-@property(nonatomic,strong) Music *music;
+@property(nonatomic,strong) MusicBean *music;
 //@property(nonatomic,strong) id brand;
 
 //设备是否在线

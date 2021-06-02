@@ -43,7 +43,7 @@
 */
 
 //渲染设备信息控件
--(void) render:(Device*) device{
+-(void) render:(DeviceBean*) device{
     _device = device;
     _headerUI.hidden = YES;
     _deviceUI.hidden = YES;

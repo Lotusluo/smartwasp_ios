@@ -59,11 +59,8 @@
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
 		0415EAD72664850200A73CE7 /* icon_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAD62664850200A73CE7 /* icon_arrow.png */; };
-		0415EAE52664D88200A73CE7 /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE42664D88200A73CE7 /* Banner.m */; };
 		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
-		0425CD57262ED2B4004D4D23 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD56262ED2B4004D4D23 /* Device.m */; };
-		0425CD60262ED4AE004D4D23 /* Music.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD5F262ED4AD004D4D23 /* Music.m */; };
 		0425CD64262EE154004D4D23 /* BaseTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* BaseTabViewController.m */; };
 		0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0425CD68262EE437004D4D23 /* CommonTabController.xib */; };
 		04261965261EFE1A000D95D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04261964261EFE1A000D95D6 /* AppDelegate.m */; };
@@ -84,6 +81,13 @@
 		04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A35261F1D36000D95D6 /* icon_tab_find@2x.png */; };
 		04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A3D261F1D36000D95D6 /* icon_tab_skill_selected@2x.png */; };
 		04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */; };
+		042B4E9026672127009BE328 /* MusicBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E8F26672127009BE328 /* MusicBean.m */; };
+		042B4E94266721C0009BE328 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E93266721C0009BE328 /* UserBean.m */; };
+		042B4E9826672371009BE328 /* DeviceBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E9726672371009BE328 /* DeviceBean.m */; };
+		042B4E9C26672420009BE328 /* BannerBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E9B26672420009BE328 /* BannerBean.m */; };
+		042B4EA0266724C0009BE328 /* GroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E9F266724C0009BE328 /* GroupView.m */; };
+		042B4EA3266724D0009BE328 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B4EA2266724D0009BE328 /* GroupView.xib */; };
+		042B4EA826672D9E009BE328 /* GroupItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B4EA726672D9E009BE328 /* GroupItemCell.xib */; };
 		043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DC2A62630426400A7F680 /* AppDelegate+Global.m */; };
 		043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */; };
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
@@ -109,7 +113,6 @@
 		047AC2E62660DEC500E559C7 /* icon_clock_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E22660DEC300E559C7 /* icon_clock_1.png */; };
 		047AC2E72660DEC500E559C7 /* icon_account_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E32660DEC400E559C7 /* icon_account_1.png */; };
 		047AC2E82660DEC500E559C7 /* icon_about_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E42660DEC500E559C7 /* icon_about_1.png */; };
-		047FF9F6261FF92A005E87A7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 047FF9F5261FF92A005E87A7 /* User.m */; };
 		0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */; };
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
@@ -241,16 +244,10 @@
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
 		0415EAD62664850200A73CE7 /* icon_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow.png; sourceTree = "<group>"; };
 		0415EADB26649A6D00A73CE7 /* ISWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISWDelegate.h; sourceTree = "<group>"; };
-		0415EAE42664D88200A73CE7 /* Banner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
-		0415EAE72664D89000A73CE7 /* Banner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
 		0415EAE92664D9E500A73CE7 /* FindBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
 		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
 		0425CD51262ECE17004D4D23 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0425CD52262ECE17004D4D23 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		0425CD55262ED2B4004D4D23 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		0425CD56262ED2B4004D4D23 /* Device.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		0425CD5E262ED4AD004D4D23 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Music.h; sourceTree = "<group>"; };
-		0425CD5F262ED4AD004D4D23 /* Music.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Music.m; sourceTree = "<group>"; };
 		0425CD62262EE154004D4D23 /* BaseTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTabViewController.h; sourceTree = "<group>"; };
 		0425CD63262EE154004D4D23 /* BaseTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTabViewController.m; sourceTree = "<group>"; };
 		0425CD68262EE437004D4D23 /* CommonTabController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTabController.xib; sourceTree = "<group>"; };
@@ -280,6 +277,18 @@
 		04261A35261F1D36000D95D6 /* icon_tab_find@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_find@2x.png"; sourceTree = "<group>"; };
 		04261A3D261F1D36000D95D6 /* icon_tab_skill_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_skill_selected@2x.png"; sourceTree = "<group>"; };
 		04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_smart@2x.png"; sourceTree = "<group>"; };
+		042B4E8E26672127009BE328 /* MusicBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicBean.h; sourceTree = "<group>"; };
+		042B4E8F26672127009BE328 /* MusicBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicBean.m; sourceTree = "<group>"; };
+		042B4E92266721C0009BE328 /* UserBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBean.h; sourceTree = "<group>"; };
+		042B4E93266721C0009BE328 /* UserBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBean.m; sourceTree = "<group>"; };
+		042B4E9626672371009BE328 /* DeviceBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceBean.h; sourceTree = "<group>"; };
+		042B4E9726672371009BE328 /* DeviceBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceBean.m; sourceTree = "<group>"; };
+		042B4E9A26672420009BE328 /* BannerBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerBean.h; sourceTree = "<group>"; };
+		042B4E9B26672420009BE328 /* BannerBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerBean.m; sourceTree = "<group>"; };
+		042B4E9E266724C0009BE328 /* GroupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupView.h; sourceTree = "<group>"; };
+		042B4E9F266724C0009BE328 /* GroupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupView.m; sourceTree = "<group>"; };
+		042B4EA2266724D0009BE328 /* GroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
+		042B4EA726672D9E009BE328 /* GroupItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupItemCell.xib; sourceTree = "<group>"; };
 		043DC2A52630423900A7F680 /* AppDelegate+Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Global.h"; sourceTree = "<group>"; };
 		043DC2A62630426400A7F680 /* AppDelegate+Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Global.m"; sourceTree = "<group>"; };
 		043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_agreement.html; sourceTree = "<group>"; };
@@ -317,8 +326,6 @@
 		047AC2E22660DEC300E559C7 /* icon_clock_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_clock_1.png; sourceTree = "<group>"; };
 		047AC2E32660DEC400E559C7 /* icon_account_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_account_1.png; sourceTree = "<group>"; };
 		047AC2E42660DEC500E559C7 /* icon_about_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_about_1.png; sourceTree = "<group>"; };
-		047FF9F4261FF92A005E87A7 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		047FF9F5261FF92A005E87A7 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_choose@2x.png"; sourceTree = "<group>"; };
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
@@ -705,16 +712,16 @@
 		047FF9EE261FF85F005E87A7 /* bean */ = {
 			isa = PBXGroup;
 			children = (
-				0425CD5E262ED4AD004D4D23 /* Music.h */,
-				0425CD5F262ED4AD004D4D23 /* Music.m */,
-				047FF9F4261FF92A005E87A7 /* User.h */,
-				047FF9F5261FF92A005E87A7 /* User.m */,
-				0425CD55262ED2B4004D4D23 /* Device.h */,
-				0425CD56262ED2B4004D4D23 /* Device.m */,
+				042B4E9A26672420009BE328 /* BannerBean.h */,
+				042B4E9B26672420009BE328 /* BannerBean.m */,
+				042B4E9626672371009BE328 /* DeviceBean.h */,
+				042B4E9726672371009BE328 /* DeviceBean.m */,
+				042B4E92266721C0009BE328 /* UserBean.h */,
+				042B4E93266721C0009BE328 /* UserBean.m */,
+				042B4E8E26672127009BE328 /* MusicBean.h */,
+				042B4E8F26672127009BE328 /* MusicBean.m */,
 				04063FEA264BB1AE003AD68D /* BaseBean.h */,
 				04063FEB264BB1AE003AD68D /* BaseBean.m */,
-				0415EAE72664D89000A73CE7 /* Banner.h */,
-				0415EAE42664D88200A73CE7 /* Banner.m */,
 				0415EAEC2664DA0400A73CE7 /* FindBean.h */,
 				0415EAE92664D9E500A73CE7 /* FindBean.m */,
 				040B949026661FA900B306D2 /* ItemBean.h */,
@@ -749,6 +756,10 @@
 				0415EAA72660E43400A73CE7 /* NormalNaviCell.m */,
 				0454C71D2665DD3200CD6553 /* MusicPayView.xib */,
 				0454C7262665E7D000CD6553 /* FindBannerCell.xib */,
+				042B4E9E266724C0009BE328 /* GroupView.h */,
+				042B4E9F266724C0009BE328 /* GroupView.m */,
+				042B4EA2266724D0009BE328 /* GroupView.xib */,
+				042B4EA726672D9E009BE328 /* GroupItemCell.xib */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -911,6 +922,7 @@
 				04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */,
 				04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */,
 				04261A3E261F1D36000D95D6 /* icon_tab_mine_selected@2x.png in Resources */,
+				042B4EA3266724D0009BE328 /* GroupView.xib in Resources */,
 				04261A41261F1D36000D95D6 /* icon_tab_smart_selected@2x.png in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
 				0415EAD72664850200A73CE7 /* icon_arrow.png in Resources */,
@@ -941,6 +953,7 @@
 				04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */,
 				042619D3261F04D3000D95D6 /* LaunchScreen.storyboard in Resources */,
 				047AC2E82660DEC500E559C7 /* icon_about_1.png in Resources */,
+				042B4EA826672D9E009BE328 /* GroupItemCell.xib in Resources */,
 				04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */,
 				04D738D726202A8400E4F00C /* UserViewController.xib in Resources */,
 				04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */,
@@ -1002,6 +1015,7 @@
 				040B95182666464800B306D2 /* JXCategoryIndicatorCell.m in Sources */,
 				040B951F2666464800B306D2 /* JXCategoryTitleImageCellModel.m in Sources */,
 				04CCC4EC264B7CEB00A1F09F /* NetDAO.m in Sources */,
+				042B4E9826672371009BE328 /* DeviceBean.m in Sources */,
 				040B952D2666464800B306D2 /* JXCategoryViewAnimator.m in Sources */,
 				045E5D9026590BF600672251 /* PageControl2.m in Sources */,
 				0476D4842660877300F8DE42 /* DeviceChooseCell.m in Sources */,
@@ -1029,14 +1043,13 @@
 				040B951A2666464800B306D2 /* JXCategoryDotCell.m in Sources */,
 				0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */,
 				0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */,
-				0425CD60262ED4AE004D4D23 /* Music.m in Sources */,
 				040B950F2666464800B306D2 /* JXCategoryIndicatorLineView.m in Sources */,
 				040B950E2666464800B306D2 /* RTLManager.m in Sources */,
 				040B95412666464C00B306D2 /* HWHeadRefresh.m in Sources */,
-				0425CD57262ED2B4004D4D23 /* Device.m in Sources */,
 				040B952B2666464800B306D2 /* JXCategoryCollectionView.m in Sources */,
 				040B952A2666464800B306D2 /* JXCategoryFactory.m in Sources */,
 				045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */,
+				042B4E9026672127009BE328 /* MusicBean.m in Sources */,
 				04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */,
 				04783315262D1F3600684E9C /* iToast.m in Sources */,
 				04D738CA2620288A00E4F00C /* CommonTabController.m in Sources */,
@@ -1048,17 +1061,18 @@
 				044D723726396C8E0075994F /* NewPageViewController.m in Sources */,
 				04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */,
 				040B95172666464800B306D2 /* JXCategoryIndicatorCellModel.m in Sources */,
-				0415EAE52664D88200A73CE7 /* Banner.m in Sources */,
 				040B95202666464800B306D2 /* JXCategoryTitleCellModel.m in Sources */,
 				040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */,
+				042B4E9C26672420009BE328 /* BannerBean.m in Sources */,
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
+				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,
-				047FF9F6261FF92A005E87A7 /* User.m in Sources */,
 				040B95102666464800B306D2 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				040B953F2666464C00B306D2 /* HWRefreshKeyValue.m in Sources */,
 				040B95282666464800B306D2 /* JXCategoryNumberCellModel.m in Sources */,
 				04D738D626202A8400E4F00C /* UserViewController.m in Sources */,
 				040B952E2666464800B306D2 /* UIColor+JXAdd.m in Sources */,
+				042B4E94266721C0009BE328 /* UserBean.m in Sources */,
 				040B948E26661F7100B306D2 /* ItemBean.m in Sources */,
 				040B95132666464800B306D2 /* JXCategoryIndicatorBallView.m in Sources */,
 				04261965261EFE1A000D95D6 /* AppDelegate.m in Sources */,

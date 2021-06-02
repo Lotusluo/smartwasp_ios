@@ -140,9 +140,7 @@
         NSValue *offsetValue =  [change objectForKey:NSKeyValueChangeNewKey];
         CGPoint movePoint = [offsetValue CGPointValue];
         CGFloat moveH = movePoint.y +  CGRectGetHeight(self.scrollView.frame);
-        CGFloat contentH = self.scrollView.contentSize.height;
-        NSLog(@"moveH:%f,contentH:%f,boundsH:%f",moveH,contentH,CGRectGetHeight(self.scrollView.bounds));
-    
+        CGFloat contentH = self.scrollView.contentSize.height;    
         if (moveH >= (contentH + HWRefreshViewH) && contentH > CGRectGetHeight(self.scrollView.bounds)){
             [self _toRefreshState];
         }else{

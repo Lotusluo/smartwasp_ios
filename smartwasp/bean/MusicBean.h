@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Music : NSObject
+@interface MusicBean : NSObject
 
 //Name       Typedef       Header        True Value    False Value
 //BOOL       signedchar    objc.h        YES           NO

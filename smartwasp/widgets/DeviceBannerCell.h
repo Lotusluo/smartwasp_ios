@@ -6,17 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Device.h"
+#import "DeviceBean.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DeviceBannerCell : UICollectionViewCell
 
 //设备信息
-@property(nonatomic,strong) Device* device;
+@property(nonatomic,strong) DeviceBean* device;
 
 //渲染控件
--(void) render:(Device*) device;
+-(void) render:(DeviceBean*) device;
 
 @end
 

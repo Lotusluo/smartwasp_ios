@@ -5,9 +5,9 @@
 //  Created by luotao on 2021/5/31.
 //
 
-#import "Banner.h"
+#import "BannerBean.h"
 
-@implementation Banner
+@implementation BannerBean
 
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{

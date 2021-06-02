@@ -5,10 +5,10 @@
 //  Created by luotao on 2021/4/9.
 //
 
-#import "User.h"
+#import "UserBean.h"
 
 
-@implementation User
+@implementation UserBean
 
 //采用传统方式序列化
 - (void)encodeWithCoder:(NSCoder *)aCoder{

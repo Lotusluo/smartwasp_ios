@@ -5,8 +5,8 @@
 //  Created by luotao on 2021/4/20.
 //
 
-#import "Music.h"
+#import "MusicBean.h"
 
-@implementation Music
+@implementation MusicBean
 
 @end

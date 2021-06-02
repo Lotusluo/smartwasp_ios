@@ -25,9 +25,9 @@
                     <rect key="frame" x="0.0" y="93" width="414" height="769"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhE-GI-mS1" userLabel="Content">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="2500"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="600" id="lgg-fk-HvD"/>
+                                <constraint firstAttribute="height" constant="2500" id="lgg-fk-HvD"/>
                             </constraints>
                         </view>
                     </subviews>

@@ -17,6 +17,7 @@
 #import "JXCategoryView.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "HWHeadRefresh.h"
+#import "GroupView.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -26,7 +27,7 @@
 #define OFFSET_HEIGHT 40
 #define FLOAT (OFFSET_HEIGHT + APAGE_SIZE.height)
 
-@interface FinderViewController ()<UIScrollViewDelegate,UICollectionViewDataSource>
+@interface FinderViewController ()<UIScrollViewDelegate,UICollectionViewDataSource,JXCategoryViewDelegate>
 //工具栏
 @property(nonatomic) Toolbar *toolbar;
 //滚动控件
@@ -42,6 +43,10 @@
 @property (strong,nonatomic) JXCategoryTitleView *categoryView;
 //发现页数据
 @property (nonatomic,strong)FindBean *findBean;
+//刷新控件
+@property (nonatomic,strong) HWHeadRefresh *headerView;
+//组布局垂直控件
+@property (nonatomic,strong) UIStackView *verticalLayout;
 
 @end
 
@@ -51,8 +56,12 @@ static NSString *const ID = @"CellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initToolbar];
-    [self initScrollview];
+    //添加toolbar
+    _toolbar = [Toolbar newView];
+    [self.view addSubview:_toolbar];
+    //添加刷新控件
+    [self.scrollView addSubview:self.headerView];
+    self.scrollView.delegate = self;
     //对选择的设备进行监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(devSetObserver:)
@@ -62,26 +71,12 @@ static NSString *const ID = @"CellIdentifier";
     // Do any additional setup after loading the view from its nib.
 }
 
-//初始化自定义导航条
--(void) initToolbar{
-    _toolbar = [Toolbar newView];
-    [self.view addSubview:_toolbar];
-}
-
--(void) initScrollview{
-    HWHeadRefresh *headrefresh = HWHeadRefresh.new;
-    _scrollView.delegate = self;
-    [_scrollView addSubview:headrefresh];
-    [headrefresh hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
-        
-    }];
-}
-
 //即将被布局
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     //布局前重置一下toolbar的frame
     _toolbar.frame = CGRectMake(0, STATUS_HEIGHT, SCREEN_WIDTH, 49);
+
 }
 
 #pragma mark - 处理通知
@@ -126,10 +121,6 @@ static NSString *const ID = @"CellIdentifier";
     [self.container.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.findBean = bean;
     
-    //test
-    APPDELEGATE.curDevice.music.enable = FALSE;
-    APPDELEGATE.curDevice.music.text = @"请开通音乐权限!";
-
     //刷新Banner数据
     [self.collectionView reloadData];
     [self.container addSubview:self.collectionView];
@@ -141,22 +132,58 @@ static NSString *const ID = @"CellIdentifier";
     }];
     
     //是否显示购买音乐控件
+    CGFloat offsetY = 10;
     if(!APPDELEGATE.curDevice.music.enable){
         //是否添加音乐支付入口
         [self addPayHeader: APPDELEGATE.curDevice.music];
+        offsetY += OFFSET_HEIGHT;
         //对collectionView进行重约束
         [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_offset(OFFSET_HEIGHT);
         }];
     }
     //添加指示器
-    NSArray *abbrs = [bean.groups valueForKey:@"abbr"];
-    abbrs = [abbrs valueForKeyPath:@"@distinctUnionOfObjects.self"];
-    [self addIndicator:abbrs];
+    NSArray *temp = [bean.groups valueForKey:@"abbr"];
+    NSMutableArray *array = NSMutableArray.new;
+    for(NSString *abbr in temp){
+        if(![array containsObject:abbr]){
+            [array addObject:abbr];
+        }
+    }
+//    abbrs = [abbrs valueForKeyPath:@"@distinctUnionOfObjects.self"];
+    [self addIndicator: array];
+    
+    //添加动态音乐集
+    self.verticalLayout = UIStackView.new;
+    self.verticalLayout.axis = UILayoutConstraintAxisVertical;
+    [self.container addSubview:self.verticalLayout];
+    
+    //设置group视图约束
+    CGFloat height = 0;
+    for(GroupBean* gourpBean in _findBean.groups){
+        GroupView *groupView = [GroupView newView];
+        groupView.groupBean = gourpBean;
+        [self.verticalLayout addArrangedSubview:groupView];
+        height += groupView.uiHeight;
+        [groupView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(SCREEN_WIDTH);
+            make.height.mas_equalTo(groupView.uiHeight);
+        }];
+    }
+    
+    //设置垂直布局约束
+    [self.verticalLayout mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.collectionView.mas_bottom).offset(40 + 10);
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(height);
+    }];
+    
+    //设置scrollview的滚动区域
+    _containerHeight.constant = offsetY + OFFSET_HEIGHT + APAGE_SIZE.height +height ;
 }
 
 //添加开通音乐点击控件
--(void) addPayHeader:(Music*) music{
+-(void) addPayHeader:(MusicBean*) music{
     UIView *musicPayView = [[[NSBundle mainBundle] loadNibNamed:@"MusicPayView" owner:nil options:nil] lastObject];
     [_container addSubview:musicPayView];
     [musicPayView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -174,9 +201,9 @@ static NSString *const ID = @"CellIdentifier";
     self.categoryView.titles = abbr;
     [self.view addSubview:self.categoryView];
     [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.collectionView.mas_bottom).offset(10);
+        make.top.equalTo(self.collectionView.mas_bottom);
         make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(40);
         make.centerX.equalTo(self.container);
     }];
 }
@@ -189,9 +216,24 @@ static NSString *const ID = @"CellIdentifier";
 #pragma mark --UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self.categoryView mas_updateConstraints:^(MASConstraintMaker *make) {
-        float offsetY  = scrollView.contentOffset.y < FLOAT ?  0 : scrollView.contentOffset.y - FLOAT;
-        make.top.equalTo(self.collectionView.mas_bottom).offset(offsetY + 10);
+        CGFloat referY = APPDELEGATE.curDevice.music.enable ? APAGE_SIZE.height : FLOAT;
+        CGFloat offsetY  = scrollView.contentOffset.y < referY ?  0 : scrollView.contentOffset.y - referY;
+        make.top.equalTo(self.collectionView.mas_bottom).offset(offsetY);
     }];
+    if(self.scrollView.contentOffset.y >= self.scrollView.contentSize.height - self.scrollView.frame.size.height){
+        [self.categoryView selectItemAtIndex:self.categoryView.titles.count - 1];
+    }else{
+        CGFloat offsetY = self.scrollView.contentOffset.y - APAGE_SIZE.height + (APPDELEGATE.curDevice.music.enable ? 0 : FLOAT);
+        NSInteger index = 0;
+        for(GroupView *gView in self.verticalLayout.subviews){
+            if(gView.frame.origin.y >  offsetY)
+                break;
+            index  = [self.categoryView.titles indexOfObject:gView.groupBean.abbr];
+        }
+        if(self.categoryView.selectedIndex != index){
+            [self.categoryView selectItemAtIndex:index];
+        }
+    }
 }
 
 #pragma mark --UICollectionViewDataSource
@@ -212,6 +254,11 @@ static NSString *const ID = @"CellIdentifier";
     return APAGE_SIZE;
 }
 
+
+#pragma mark --JXCategoryViewDelegate
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index{
+    
+}
 /*
 #pragma mark - Navigation
 
@@ -222,7 +269,7 @@ static NSString *const ID = @"CellIdentifier";
 }
 */
 
-#pragma mark -collectionView懒加载
+#pragma mark --collectionView懒加载
 -(UICollectionView*) collectionView{
     if(!_collectionView){
         self.lineLayout = [PageLineLayout new];
@@ -231,25 +278,42 @@ static NSString *const ID = @"CellIdentifier";
         _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
+        _collectionView.showsHorizontalScrollIndicator = false;
         [_collectionView registerNib:[UINib nibWithNibName:@"FindBannerCell" bundle:nil] forCellWithReuseIdentifier:ID];
     }
     return _collectionView;
 }
 
-#pragma mark -categoryView懒加载
+#pragma mark --categoryView懒加载
 -(JXCategoryTitleView*) categoryView{
     if(!_categoryView){
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectZero];
         _categoryView.titleColor = [UIColor lightGrayColor];
         _categoryView.titleSelectedColor = [UIColor blackColor];
+        _categoryView.delegate = self;
+        _categoryView.backgroundColor = _toolbar.backgroundColor;
         self.categoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-        lineView.indicatorHeight = 1;
+        lineView.indicatorHeight = 3;
         lineView.indicatorColor = [UIColor colorWithHexString:@"#f6921e"];
         lineView.indicatorWidth = 20;
         self.categoryView.indicators = @[lineView];
     }
     return _categoryView;
+}
+
+#pragma mark --HWHeadRefresh懒加载
+-(HWHeadRefresh*) headerView{
+    if(!_headerView){
+        _headerView = HWHeadRefresh.new;
+        [_headerView hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
+            dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 3* NSEC_PER_SEC);
+            dispatch_after(time_t, dispatch_get_main_queue(), ^{
+                [self->_headerView hw_endRefreshState];
+            });
+        }];
+    }
+    return _headerView;
 }
 
 @end

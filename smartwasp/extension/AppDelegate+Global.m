@@ -24,7 +24,7 @@
             NSMutableArray *devs = [[NSMutableArray alloc] initWithCapacity:temp.count];
             NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev"];
             for(NSDictionary *dict in temp){
-                Device *dev = [[Device alloc]init];
+                DeviceBean *dev = [[DeviceBean alloc]init];
                 [dev setValuesForKeysWithDictionary:dict];
                 [devs addObject:dev];
                 if(self.curDevice && [self.curDevice isEqual:dev]){

@@ -10,7 +10,7 @@
 #import <WebKit/WebKit.h>
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "Loading.h"
-#import "User.h"
+#import "UserBean.h"
 #import <iflyosSDKForiOS/IFLYOSUIColor+IFLYOSColorUtil.h>
 #import "CodingUtil.h"
 #import "ConfigDAO.h"
@@ -87,7 +87,7 @@
             [[iToast makeText:@"请重试!"] show];
         }
     } requestSuccess:^(id _Nonnull success) {
-        User *user = [User yy_modelWithJSON:success];
+        UserBean *user = [UserBean yy_modelWithJSON:success];
         if(user){
             //将用户数据进行保存
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
@@ -109,7 +109,7 @@
 }
 
 //向服务器提交用户信息
--(void)registerUuid:(User*) user{
+-(void)registerUuid:(UserBean*) user{
     [[NetDAO sharedInstance] post:@{@"uid":user.user_id} path:@"api/register"  callBack:^(BaseBean * _Nonnull cData) {
         AppDelegate* delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
         delegate.user = user;

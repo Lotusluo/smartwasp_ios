@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Banner : NSObject
+@interface BannerBean : NSObject
 
 //id
 @property(nonatomic) int _id;

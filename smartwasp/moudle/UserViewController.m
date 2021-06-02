@@ -109,7 +109,7 @@ static NSString *const ID = @"CellIdentifier";
     DeviceBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     NSInteger index = indexPath.row - 1;
     if(index == -1){
-        Device *header = [[Device alloc] init];
+        DeviceBean *header = [[DeviceBean alloc] init];
         header.alias = @"header";
         [cell render:header];
     }else{

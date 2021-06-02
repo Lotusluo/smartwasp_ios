@@ -7,7 +7,7 @@
 
 #import "DeviceDialog.h"
 #import "DeviceChooseCell.h"
-#import "Device.h"
+#import "DeviceBean.h"
 #import <Masonry.h>
 #import "AppDelegate.h"
 
@@ -75,7 +75,7 @@
     DeviceChooseCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    Device *optionItem = [APPDELEGATE.devices objectAtIndex:indexPath.row];
+    DeviceBean *optionItem = [APPDELEGATE.devices objectAtIndex:indexPath.row];
     [cell setDevName:optionItem.alias];
     [cell setDevStatus:optionItem.isOnLine];
     return cell;
@@ -106,7 +106,7 @@
 
 //cell被点击
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    Device *optionItem = [APPDELEGATE.devices objectAtIndex:indexPath.row];
+    DeviceBean *optionItem = [APPDELEGATE.devices objectAtIndex:indexPath.row];
     AppDelegate* app  = (AppDelegate*)[UIApplication sharedApplication].delegate;
     app.curDevice = optionItem;
     [self dismiss:nil];

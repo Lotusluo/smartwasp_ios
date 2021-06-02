@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GroupView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="491"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌单推荐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRQ-0m-zlA" userLabel="Abbr">
+                    <rect key="frame" x="20" y="0.0" width="73.5" height="21.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1m-wv-9DC" userLabel="More">
+                    <rect key="frame" x="365" y="2.5" width="29" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" systemColor="systemOrangeColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VOq-hv-5go">
+                    <rect key="frame" x="20" y="31.5" width="374" height="439.5"/>
+                    <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vNT-Cz-tq8">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="xjg-3e-K59"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="2Mu-ne-v2Y"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="VOq-hv-5go" firstAttribute="top" secondItem="XRQ-0m-zlA" secondAttribute="bottom" constant="10" id="21j-66-Ka8"/>
+                <constraint firstItem="U1m-wv-9DC" firstAttribute="centerY" secondItem="XRQ-0m-zlA" secondAttribute="centerY" id="CVJ-gb-9At"/>
+                <constraint firstItem="VOq-hv-5go" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="LWI-sG-hEu"/>
+                <constraint firstAttribute="trailing" secondItem="VOq-hv-5go" secondAttribute="trailing" constant="20" id="N9k-TU-qoJ"/>
+                <constraint firstItem="XRQ-0m-zlA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="WDP-77-S3a"/>
+                <constraint firstAttribute="trailing" secondItem="U1m-wv-9DC" secondAttribute="trailing" constant="20" id="blo-f6-qHh"/>
+                <constraint firstAttribute="bottom" secondItem="VOq-hv-5go" secondAttribute="bottom" constant="20" id="vM8-mH-PVR"/>
+                <constraint firstItem="XRQ-0m-zlA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wZd-VD-amn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="abbrLabel" destination="XRQ-0m-zlA" id="Pps-f9-2tl"/>
+                <outlet property="groupView" destination="VOq-hv-5go" id="dON-Gy-sTa"/>
+                <outlet property="groupViewLayout" destination="vNT-Cz-tq8" id="6bi-Cu-pFv"/>
+                <outlet property="moreLabel" destination="U1m-wv-9DC" id="Ljz-eM-Da6"/>
+            </connections>
+            <point key="canvasLocation" x="-170" y="-73"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

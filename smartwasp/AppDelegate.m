@@ -12,7 +12,7 @@
 #import "ConfigDAO.h"
 #import "LoginViewController.h"
 #import "MainViewController.h"
-#import "Device.h"
+#import "DeviceBean.h"
 
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
@@ -46,7 +46,7 @@
 }
 
 //复写当前设备选择方法
-- (void) setCurDevice:(Device *)curDevice{
+- (void) setCurDevice:(DeviceBean *)curDevice{
     _curDevice = curDevice;
     //通知刷新当前选择的设备
     NSLog(@"当前选择的设备:%@",curDevice.alias);

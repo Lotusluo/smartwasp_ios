@@ -5,9 +5,9 @@
 //  Created by luotao on 2021/4/20.
 //
 
-#import "Device.h"
+#import "DeviceBean.h"
 
-@implementation Device
+@implementation DeviceBean
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key{
   
@@ -24,7 +24,7 @@
 //return [NSString stringWithFormat:@"%@", num >= 10000 ? [NSString stringWithFormat:@"%0.1f万", (num / 10000.0)] : [NSString stringWithFormat:@"%zd",num]];
 -(void)setValue:(id)value forKey:(NSString *)key{
     if([key isEqualToString:@"music"]){
-        Music *temp = [Music new];
+        MusicBean *temp = [MusicBean new];
         [temp setValuesForKeysWithDictionary:value];
         self.music = temp;
         return;
@@ -38,7 +38,7 @@
         return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
-    Device *otherDev = (Device*) other;
+    DeviceBean *otherDev = (DeviceBean*) other;
     return [self.device_id isEqualToString:otherDev.device_id];
 }
 

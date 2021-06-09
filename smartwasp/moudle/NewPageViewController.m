@@ -35,8 +35,11 @@
     [self.view addSubview:self.webView];
     if (self.contextTag) {
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
+    }else if(self.openUrl){
+        NSURL *url = [NSURL URLWithString:self.openUrl];
+        NSURLRequest *req = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:req];
     }
-    
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
     [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
     if(_isInterupt){
@@ -74,6 +77,12 @@
 +(NewPageViewController *) createNewPage:(NSString *) tag{
     NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
     vc.contextTag = tag;
+    return vc;
+}
+
++(NewPageViewController *) createNewPage1:(NSString *) url{
+    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
+    vc.openUrl = url;
     return vc;
 }
 

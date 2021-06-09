@@ -10,6 +10,8 @@
 
 @interface NewPageViewController : UIViewController
 @property (copy,nonatomic) NSString *contextTag;
+@property (copy,nonatomic) NSString *openUrl;
 @property (nonatomic) Boolean isInterupt;
 +(NewPageViewController *) createNewPage:(NSString *) tag;
++(NewPageViewController *) createNewPage1:(NSString *) url;
 @end

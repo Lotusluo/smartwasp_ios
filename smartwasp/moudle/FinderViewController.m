@@ -18,16 +18,23 @@
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "HWHeadRefresh.h"
 #import "GroupView.h"
+#import "NewPageViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
-#define APAGE_SIZE (CGSizeMake(SCREEN_WIDTH - 30,SCREEN_WIDTH * 0.27))
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
-#define OFFSET_HEIGHT 40
-#define FLOAT (OFFSET_HEIGHT + APAGE_SIZE.height)
 
-@interface FinderViewController ()<UIScrollViewDelegate,UICollectionViewDataSource,JXCategoryViewDelegate>
+#define APAGE_SIZE (CGSizeMake(SCREEN_WIDTH - 30,SCREEN_WIDTH * 0.27))
+#define VIEW_GAP 10
+#define PAYVIEW_HEIGHT 30
+#define CATEGORYVIEW_HEIGHT 40
+
+@interface FinderViewController ()<
+UIScrollViewDelegate,
+UICollectionViewDelegate,
+UICollectionViewDataSource,
+JXCategoryViewDelegate>
 //工具栏
 @property(nonatomic) Toolbar *toolbar;
 //滚动控件
@@ -132,14 +139,14 @@ static NSString *const ID = @"CellIdentifier";
     }];
     
     //是否显示购买音乐控件
-    CGFloat offsetY = 10;
+    CGFloat offsetY = 0;
     if(!APPDELEGATE.curDevice.music.enable){
         //是否添加音乐支付入口
         [self addPayHeader: APPDELEGATE.curDevice.music];
-        offsetY += OFFSET_HEIGHT;
+        offsetY += (PAYVIEW_HEIGHT + VIEW_GAP);
         //对collectionView进行重约束
         [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_offset(OFFSET_HEIGHT);
+            make.top.mas_offset(offsetY);
         }];
     }
     //添加指示器
@@ -179,7 +186,7 @@ static NSString *const ID = @"CellIdentifier";
     }];
     
     //设置scrollview的滚动区域
-    _containerHeight.constant = offsetY + OFFSET_HEIGHT + APAGE_SIZE.height +height ;
+    _containerHeight.constant = offsetY  + APAGE_SIZE.height + CATEGORYVIEW_HEIGHT +height ;
 }
 
 //添加开通音乐点击控件
@@ -187,8 +194,8 @@ static NSString *const ID = @"CellIdentifier";
     UIView *musicPayView = [[[NSBundle mainBundle] loadNibNamed:@"MusicPayView" owner:nil options:nil] lastObject];
     [_container addSubview:musicPayView];
     [musicPayView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(200);
-        make.height.mas_equalTo(30);
+        make.width.mas_equalTo(self.view.mas_width).multipliedBy(0.7);
+        make.height.mas_equalTo(PAYVIEW_HEIGHT);
         make.centerX.equalTo(self.container);
     }];
     UILabel *label = [musicPayView.subviews objectAtIndex:1];
@@ -203,7 +210,7 @@ static NSString *const ID = @"CellIdentifier";
     [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.collectionView.mas_bottom);
         make.width.mas_equalTo(SCREEN_WIDTH);
-        make.height.mas_equalTo(40);
+        make.height.mas_equalTo(CATEGORYVIEW_HEIGHT);
         make.centerX.equalTo(self.container);
     }];
 }
@@ -215,15 +222,20 @@ static NSString *const ID = @"CellIdentifier";
 
 #pragma mark --UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if([scrollView isKindOfClass:UICollectionView.class])
+        return;
+    CGFloat topY = (APPDELEGATE.curDevice.music.enable ? 0 : PAYVIEW_HEIGHT + VIEW_GAP);
     [self.categoryView mas_updateConstraints:^(MASConstraintMaker *make) {
-        CGFloat referY = APPDELEGATE.curDevice.music.enable ? APAGE_SIZE.height : FLOAT;
+        CGFloat referY = APAGE_SIZE.height  + topY;
         CGFloat offsetY  = scrollView.contentOffset.y < referY ?  0 : scrollView.contentOffset.y - referY;
         make.top.equalTo(self.collectionView.mas_bottom).offset(offsetY);
     }];
     if(self.scrollView.contentOffset.y >= self.scrollView.contentSize.height - self.scrollView.frame.size.height){
-        [self.categoryView selectItemAtIndex:self.categoryView.titles.count - 1];
+        if(self.categoryView.selectedIndex != self.categoryView.titles.count - 1){
+            [self.categoryView selectItemAtIndex:self.categoryView.titles.count - 1];
+        }
     }else{
-        CGFloat offsetY = self.scrollView.contentOffset.y - APAGE_SIZE.height + (APPDELEGATE.curDevice.music.enable ? 0 : FLOAT);
+        CGFloat offsetY = self.scrollView.contentOffset.y - APAGE_SIZE.height + topY;
         NSInteger index = 0;
         for(GroupView *gView in self.verticalLayout.subviews){
             if(gView.frame.origin.y >  offsetY)
@@ -234,6 +246,16 @@ static NSString *const ID = @"CellIdentifier";
             [self.categoryView selectItemAtIndex:index];
         }
     }
+}
+
+
+#pragma mark --UICollectionViewDelegate
+-( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
+    BannerBean *bannerBean = _findBean.banners[indexPath.row];
+    NewPageViewController *newPage = [NewPageViewController createNewPage1:bannerBean.url];
+    newPage.isInterupt = true;
+    [self.navigationController pushViewController:newPage animated:YES];
+    NSLog(@"%@",bannerBean.url);
 }
 
 #pragma mark --UICollectionViewDataSource
@@ -254,10 +276,18 @@ static NSString *const ID = @"CellIdentifier";
     return APAGE_SIZE;
 }
 
-
 #pragma mark --JXCategoryViewDelegate
-- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index{
-    
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index{
+    NSString *title = self.categoryView.titles[index];
+    for(GroupView *gView in self.verticalLayout.subviews){
+        if([gView.groupBean.abbr isEqualToString:title]){
+            CGFloat topY = (APPDELEGATE.curDevice.music.enable ? 0 : PAYVIEW_HEIGHT + VIEW_GAP);
+            CGFloat referY = gView.frame.origin.y + APAGE_SIZE.height  + topY;
+            referY = MIN(referY, self.scrollView.contentSize.height - self.scrollView.frame.size.height);
+            [self.scrollView setContentOffset:CGPointMake(0,referY) animated:YES];
+            break;
+        }
+    }
 }
 /*
 #pragma mark - Navigation
@@ -278,6 +308,7 @@ static NSString *const ID = @"CellIdentifier";
         _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
+        _collectionView.delegate = self;
         _collectionView.showsHorizontalScrollIndicator = false;
         [_collectionView registerNib:[UINib nibWithNibName:@"FindBannerCell" bundle:nil] forCellWithReuseIdentifier:ID];
     }

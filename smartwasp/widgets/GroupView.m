@@ -56,6 +56,7 @@ static NSString *const ID = @"CellIdentifier";
     _groupBean = groupBean;
     [_groupView reloadData];
     _abbrLabel.text = groupBean.abbr;
+    _moreLabel.hidden = !groupBean.has_more;
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -33,15 +33,14 @@
     self.webView.configuration.userContentController = userContentController;
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:configuration];
     [self.view addSubview:self.webView];
-    if (self.contextTag) {
-        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
-    }else if(self.openUrl){
+    [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
+    [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
+    [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
+    if(self.openUrl){
         NSURL *url = [NSURL URLWithString:self.openUrl];
         NSURLRequest *req = [NSURLRequest requestWithURL:url];
         [self.webView loadRequest:req];
     }
-    [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
-    [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
     if(_isInterupt){
         self.webView.navigationDelegate = self;
     }
@@ -72,18 +71,6 @@
     NSLog(@"从【%@】打开新页面:",tag,noBack);
     NewPageViewController *newPage = [NewPageViewController createNewPage:tag];
     [self.navigationController pushViewController:newPage animated:YES];
-}
-
-+(NewPageViewController *) createNewPage:(NSString *) tag{
-    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
-    vc.contextTag = tag;
-    return vc;
-}
-
-+(NewPageViewController *) createNewPage1:(NSString *) url{
-    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
-    vc.openUrl = url;
-    return vc;
 }
 
 -(void) openNewBrower:(NSString *) url{
@@ -138,7 +125,9 @@
     if(!_isInterupt)
         return;
     NSString *urlStr = navigationAction.request.URL.absoluteString;
-    if([urlStr containsString:@"iflyhome_app_agreement.html"] || [urlStr containsString:@"iflyhome_app_privacypolicy.html"]){
+    if(
+       [urlStr containsString:@"iflyhome_app_agreement.html"] ||
+       [urlStr containsString:@"iflyhome_app_privacypolicy.html"]){
         //替换用户协议与隐私政策
         NSString *endStr =  urlStr.pathComponents.lastObject;
 //        NSRange range = [endStr rangeOfString:@"iflyhome"];
@@ -151,6 +140,28 @@
     }
 
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+    
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self.webView evaluateJavaScript:@"document.title" completionHandler:^(id object, NSError * error) {
+        NSString *tittle = [NSString stringWithFormat:@"%@",object];
+        if(![tittle isEqualToString:@""]){
+            [self updateTitle:tittle];
+        }
+    }];
+}
+
++(NewPageViewController *) createNewPage:(NSString *) tag{
+    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
+    vc.contextTag = tag;
+    return vc;
+}
+
++(NewPageViewController *) createNewPage1:(NSString *) url{
+    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
+    vc.openUrl = url;
+    return vc;
 }
 
 @end

@@ -19,6 +19,7 @@
 #import "HWHeadRefresh.h"
 #import "GroupView.h"
 #import "NewPageViewController.h"
+#import "ItemViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -34,7 +35,8 @@
 UIScrollViewDelegate,
 UICollectionViewDelegate,
 UICollectionViewDataSource,
-JXCategoryViewDelegate>
+JXCategoryViewDelegate,
+ISelectedDelegate>
 //工具栏
 @property(nonatomic) Toolbar *toolbar;
 //滚动控件
@@ -169,19 +171,15 @@ static NSString *const ID = @"CellIdentifier";
     CGFloat height = 0;
     for(GroupBean* gourpBean in _findBean.groups){
         GroupView *groupView = [GroupView newView];
+        groupView.delegate = self;
         groupView.groupBean = gourpBean;
         [self.verticalLayout addArrangedSubview:groupView];
         height += groupView.uiHeight;
-        [groupView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(SCREEN_WIDTH);
-            make.height.mas_equalTo(groupView.uiHeight);
-        }];
     }
     
     //设置垂直布局约束
     [self.verticalLayout mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.collectionView.mas_bottom).offset(40 + 10);
-        make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo(height);
     }];
     
@@ -289,6 +287,13 @@ static NSString *const ID = @"CellIdentifier";
         }
     }
 }
+
+#pragma mark --ISelectedDelegate
+- (void)groupView:(GroupView *)groupView canClickItemAtIndex:(ItemBean *)bean{
+    ItemViewController *ivc =  [ItemViewController createNewPage:bean];
+    [self.navigationController pushViewController:ivc animated:YES];
+}
+
 /*
 #pragma mark - Navigation
 

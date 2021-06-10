@@ -10,7 +10,6 @@
 		04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04063FEB264BB1AE003AD68D /* BaseBean.m */; };
 		040B948E26661F7100B306D2 /* ItemBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B948D26661F7100B306D2 /* ItemBean.m */; };
 		040B94932666228F00B306D2 /* GroupBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94922666228F00B306D2 /* GroupBean.m */; };
-		040B94A82666413100B306D2 /* UIView+RITLBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94A72666413100B306D2 /* UIView+RITLBorder.m */; };
 		040B950B2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94B12666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m */; };
 		040B950C2666464800B306D2 /* JXCategoryTitleVerticalZoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94B22666464800B306D2 /* JXCategoryTitleVerticalZoomCell.m */; };
 		040B950D2666464800B306D2 /* JXCategoryTitleVerticalZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94B32666464800B306D2 /* JXCategoryTitleVerticalZoomView.m */; };
@@ -93,6 +92,10 @@
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
 		044D723726396C8E0075994F /* NewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D723526396C8E0075994F /* NewPageViewController.m */; };
 		044D723826396C8E0075994F /* NewPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D723626396C8E0075994F /* NewPageViewController.xib */; };
+		045276432671DBE5000ECA78 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045276412671DBE5000ECA78 /* ItemViewController.m */; };
+		045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045276422671DBE5000ECA78 /* ItemViewController.xib */; };
+		045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045276462671DD6D000ECA78 /* NormalToolbar.xib */; };
+		0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452764B2671E282000ECA78 /* NormalToolbar.m */; };
 		0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C71D2665DD3200CD6553 /* MusicPayView.xib */; };
 		0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C7262665E7D000CD6553 /* FindBannerCell.xib */; };
 		045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D792658D51700672251 /* UILabel+Extension.m */; };
@@ -142,8 +145,6 @@
 		040B949026661FA900B306D2 /* ItemBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemBean.h; sourceTree = "<group>"; };
 		040B94922666228F00B306D2 /* GroupBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupBean.m; sourceTree = "<group>"; };
 		040B9495266622BE00B306D2 /* GroupBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupBean.h; sourceTree = "<group>"; };
-		040B94A62666413100B306D2 /* UIView+RITLBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RITLBorder.h"; sourceTree = "<group>"; };
-		040B94A72666413100B306D2 /* UIView+RITLBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RITLBorder.m"; sourceTree = "<group>"; };
 		040B94AE2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomCellModel.h; sourceTree = "<group>"; };
 		040B94AF2666464800B306D2 /* JXCategoryTitleVerticalZoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomCell.h; sourceTree = "<group>"; };
 		040B94B02666464800B306D2 /* JXCategoryTitleVerticalZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomView.h; sourceTree = "<group>"; };
@@ -296,6 +297,12 @@
 		044D723426396C8E0075994F /* NewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPageViewController.h; sourceTree = "<group>"; };
 		044D723526396C8E0075994F /* NewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPageViewController.m; sourceTree = "<group>"; };
 		044D723626396C8E0075994F /* NewPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPageViewController.xib; sourceTree = "<group>"; };
+		045276402671DBE5000ECA78 /* ItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		045276412671DBE5000ECA78 /* ItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		045276422671DBE5000ECA78 /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
+		045276462671DD6D000ECA78 /* NormalToolbar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalToolbar.xib; sourceTree = "<group>"; };
+		0452764A2671E282000ECA78 /* NormalToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalToolbar.h; sourceTree = "<group>"; };
+		0452764B2671E282000ECA78 /* NormalToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalToolbar.m; sourceTree = "<group>"; };
 		0454C71D2665DD3200CD6553 /* MusicPayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPayView.xib; sourceTree = "<group>"; };
 		0454C7262665E7D000CD6553 /* FindBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindBannerCell.xib; sourceTree = "<group>"; };
 		045E5D782658D4E100672251 /* UILabel+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
@@ -669,8 +676,6 @@
 		0476D48B2660940000F8DE42 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				040B94A62666413100B306D2 /* UIView+RITLBorder.h */,
-				040B94A72666413100B306D2 /* UIView+RITLBorder.m */,
 				045E5D862658E1F200672251 /* UIImage+Extension.h */,
 				045E5D852658E1F200672251 /* UIImage+Extension.m */,
 				040ED77D26550B12001A2755 /* UIView+Extension.h */,
@@ -705,6 +710,9 @@
 				0425CD52262ECE17004D4D23 /* MainViewController.m */,
 				0425CD62262EE154004D4D23 /* BaseTabViewController.h */,
 				0425CD63262EE154004D4D23 /* BaseTabViewController.m */,
+				045276402671DBE5000ECA78 /* ItemViewController.h */,
+				045276412671DBE5000ECA78 /* ItemViewController.m */,
+				045276422671DBE5000ECA78 /* ItemViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -740,6 +748,9 @@
 				04725166265E30F8003C4625 /* Toolbar.h */,
 				04725164265E30F7003C4625 /* Toolbar.m */,
 				04725165265E30F7003C4625 /* Toolbar.xib */,
+				0452764A2671E282000ECA78 /* NormalToolbar.h */,
+				0452764B2671E282000ECA78 /* NormalToolbar.m */,
+				045276462671DD6D000ECA78 /* NormalToolbar.xib */,
 				045E5D8E26590BF400672251 /* PageControl2.h */,
 				045E5D8F26590BF600672251 /* PageControl2.m */,
 				04725176265E32C4003C4625 /* DeviceDialog.h */,
@@ -946,9 +957,11 @@
 				04261A1B261F167C000D95D6 /* icon_tab_dialog@2x.png in Resources */,
 				04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */,
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
+				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
 				04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */,
 				042619E6261F06ED000D95D6 /* Localizable.strings in Resources */,
+				045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */,
 				042619F1261F0828000D95D6 /* InfoPlist.strings in Resources */,
 				04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */,
 				042619D3261F04D3000D95D6 /* LaunchScreen.storyboard in Resources */,
@@ -1049,6 +1062,7 @@
 				040B952B2666464800B306D2 /* JXCategoryCollectionView.m in Sources */,
 				040B952A2666464800B306D2 /* JXCategoryFactory.m in Sources */,
 				045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */,
+				0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */,
 				042B4E9026672127009BE328 /* MusicBean.m in Sources */,
 				04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */,
 				04783315262D1F3600684E9C /* iToast.m in Sources */,
@@ -1067,6 +1081,7 @@
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
 				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,
+				045276432671DBE5000ECA78 /* ItemViewController.m in Sources */,
 				040B95102666464800B306D2 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				040B953F2666464C00B306D2 /* HWRefreshKeyValue.m in Sources */,
 				040B95282666464800B306D2 /* JXCategoryNumberCellModel.m in Sources */,
@@ -1087,7 +1102,6 @@
 				04261976261EFE1C000D95D6 /* main.m in Sources */,
 				040B95232666464800B306D2 /* JXCategoryImageView.m in Sources */,
 				04725167265E30F8003C4625 /* Toolbar.m in Sources */,
-				040B94A82666413100B306D2 /* UIView+RITLBorder.m in Sources */,
 				040B952F2666464800B306D2 /* JXCategoryListContainerRTLCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIImage *)renderImageWithColor:(UIColor *)color;
 
+- (UIImage*)drn_boxblurImageWithBlur:(CGFloat)blur withTintColor:(UIColor *)tintColor;
+
++(UIImage*)imageBlurImage:(UIImage *)image WithBlurNumber:(CGFloat)blur;
+
 @end
 
 NS_ASSUME_NONNULL_END

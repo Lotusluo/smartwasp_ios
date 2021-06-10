@@ -12,7 +12,10 @@
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define GROUP_COL 3
 
-@interface GroupView()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface GroupView()<
+UICollectionViewDataSource,
+UICollectionViewDelegate
+>
 //标题名称
 @property (weak, nonatomic) IBOutlet UILabel *abbrLabel;
 //更多
@@ -41,7 +44,6 @@ static NSString *const ID = @"CellIdentifier";
     _groupViewLayout.sectionInset = UIEdgeInsetsMake(0, 0, 20, 0);
     _groupViewLayout.minimumInteritemSpacing = 10;
     [_groupView registerNib:[UINib nibWithNibName:@"GroupItemCell" bundle:nil] forCellWithReuseIdentifier:ID];
-
 }
 
 //获取控件高度
@@ -57,6 +59,10 @@ static NSString *const ID = @"CellIdentifier";
     [_groupView reloadData];
     _abbrLabel.text = groupBean.abbr;
     _moreLabel.hidden = !groupBean.has_more;
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo([self uiHeight]);
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -70,15 +76,11 @@ static NSString *const ID = @"CellIdentifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self. groupView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    
     NSInteger idx = indexPath.section * GROUP_COL + indexPath.row;
-    
     if (self.groupBean.items.count <= idx) {
         return cell;
     }
-    
     ItemBean *bean = self.groupBean.items[idx];
-    
     UIImageView *imageView = cell.subviews[0];
     CGFloat itemWidth = (SCREEN_WIDTH - (4 * 20)) / GROUP_COL;
     [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -93,6 +95,22 @@ static NSString *const ID = @"CellIdentifier";
 //    cell.backgroundColor =[UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1];
     
     return cell;
+}
+
+#pragma mark --UICollectionViewDelegate
+-( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
+    NSInteger idx = indexPath.section * GROUP_COL + indexPath.row;
+    if (self.groupBean.items.count <= idx)
+        return ;
+    ItemBean *bean = self.groupBean.items[idx];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(groupView:canClickItemAtIndex:)]){
+        [self.delegate groupView:self canClickItemAtIndex:bean];
+    }
+}
+
+
+-(void)setDelegate:(id<ISelectedDelegate>)delegate{
+    _delegate = delegate;
 }
 
 /*

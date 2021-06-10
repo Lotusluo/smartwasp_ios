@@ -39,10 +39,11 @@
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, STATUS_HEIGHT ,SCREEN_WIDTH, SCREEN_HEIGHT) configuration:configuration];
     [self.view addSubview:self.webView];
 
-    if(@available(iOS 11.0, *)) {
-        self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    if (@available(iOS 11.0, *)) {
+        if ([self.webView.scrollView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+            self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
-
     // Do any additional setup after loading the view, typically from a nib.
 }
 

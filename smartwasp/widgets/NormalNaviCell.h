@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//IB_DESIGNABLE
+IB_DESIGNABLE
 @interface NormalNaviCell : UIView
 
 //左侧图标

@@ -98,6 +98,8 @@
 		0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452764B2671E282000ECA78 /* NormalToolbar.m */; };
 		0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C71D2665DD3200CD6553 /* MusicPayView.xib */; };
 		0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C7262665E7D000CD6553 /* FindBannerCell.xib */; };
+		045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A3F9726730E9D00A3DA62 /* SongsBean.m */; };
+		045A3F9C26730ED600A3DA62 /* SongBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A3F9B26730ED600A3DA62 /* SongBean.m */; };
 		045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D792658D51700672251 /* UILabel+Extension.m */; };
 		045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D852658E1F200672251 /* UIImage+Extension.m */; };
 		045E5D9026590BF600672251 /* PageControl2.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D8F26590BF600672251 /* PageControl2.m */; };
@@ -305,6 +307,10 @@
 		0452764B2671E282000ECA78 /* NormalToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalToolbar.m; sourceTree = "<group>"; };
 		0454C71D2665DD3200CD6553 /* MusicPayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPayView.xib; sourceTree = "<group>"; };
 		0454C7262665E7D000CD6553 /* FindBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindBannerCell.xib; sourceTree = "<group>"; };
+		045A3F9626730E9D00A3DA62 /* SongsBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongsBean.h; sourceTree = "<group>"; };
+		045A3F9726730E9D00A3DA62 /* SongsBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongsBean.m; sourceTree = "<group>"; };
+		045A3F9A26730ED600A3DA62 /* SongBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongBean.h; sourceTree = "<group>"; };
+		045A3F9B26730ED600A3DA62 /* SongBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongBean.m; sourceTree = "<group>"; };
 		045E5D782658D4E100672251 /* UILabel+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
 		045E5D792658D51700672251 /* UILabel+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extension.m"; sourceTree = "<group>"; };
 		045E5D852658E1F200672251 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
@@ -736,6 +742,10 @@
 				040B948D26661F7100B306D2 /* ItemBean.m */,
 				040B94922666228F00B306D2 /* GroupBean.m */,
 				040B9495266622BE00B306D2 /* GroupBean.h */,
+				045A3F9626730E9D00A3DA62 /* SongsBean.h */,
+				045A3F9726730E9D00A3DA62 /* SongsBean.m */,
+				045A3F9A26730ED600A3DA62 /* SongBean.h */,
+				045A3F9B26730ED600A3DA62 /* SongBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -1063,6 +1073,7 @@
 				040B952A2666464800B306D2 /* JXCategoryFactory.m in Sources */,
 				045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */,
 				0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */,
+				045A3F9C26730ED600A3DA62 /* SongBean.m in Sources */,
 				042B4E9026672127009BE328 /* MusicBean.m in Sources */,
 				04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */,
 				04783315262D1F3600684E9C /* iToast.m in Sources */,
@@ -1078,6 +1089,7 @@
 				040B95202666464800B306D2 /* JXCategoryTitleCellModel.m in Sources */,
 				040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */,
 				042B4E9C26672420009BE328 /* BannerBean.m in Sources */,
+				045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */,
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
 				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,

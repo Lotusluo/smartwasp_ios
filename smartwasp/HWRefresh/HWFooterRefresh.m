@@ -50,7 +50,6 @@
     if (_loadView == nil) {
         self.loadView = [[UIView alloc]init];
         [self.scrollView addSubview:_loadView];
-        _loadView.backgroundColor = [UIColor grayColor];
     }
     return _loadView;
 }

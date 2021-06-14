@@ -39,6 +39,8 @@ UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 //临界值
 @property (nonatomic) CGFloat zeroValue;
+//刷新控件
+@property (nonatomic,strong) HWFooterRefresh *footerView;
 
 @end
 
@@ -76,6 +78,7 @@ static NSString *const ID = @"CellIdentifier";
     }];
     self.iconView.contentMode = UIViewContentModeScaleAspectFill;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:self.bean.image]];
+    [self.tableView addSubview:self.footerView];
 }
 
 -(void) viewWillLayoutSubviews{
@@ -83,7 +86,7 @@ static NSString *const ID = @"CellIdentifier";
     self.iconTop.constant = sgm_safeAreaInset(self.view).top + 49;
     self.headerHeight.constant = self.iconTop.constant + self.iconView.frame.size.height + 20;
     self.zeroValue = self.headerHeight.constant - self.iconTop.constant;
-    self.listHeight.constant = self.scrollView.frame.size.height - 36 - (self.headerHeight.constant - self.zeroValue);
+    self.listHeight.constant = self.scrollView.frame.size.height - (self.headerHeight.constant - self.zeroValue);
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -152,12 +155,21 @@ static NSString *const ID = @"CellIdentifier";
         if (_tableView.contentOffset.y > 0) {
             // header已经消失，开始滚动下面的_table，并让_scroll不动
             _scrollView.contentOffset = CGPointMake(0, _zeroValue);
-            NSLog(@"1");
         }
         if (_scrollView.contentOffset.y < _zeroValue) {
             // header已经显示出来，重置_table.contentOffset为0
             _tableView.contentOffset = CGPointZero;
-            NSLog(@"2");
+            CGFloat _alpha = 1 - fabs(_scrollView.contentOffset.y)/ _zeroValue;
+            if(_scrollView.contentOffset.y < 0){
+                _alpha = 1;
+            }
+            _iconView.alpha = _alpha;
+            _fromView.alpha = _iconView.alpha;
+            _nameView.alpha = _iconView.alpha;
+        }else{
+            _iconView.alpha = 0;
+            _fromView.alpha = _iconView.alpha;
+            _nameView.alpha = _iconView.alpha;
         }
     }
     else if (scrollView == _tableView) {
@@ -165,16 +177,27 @@ static NSString *const ID = @"CellIdentifier";
             // header还没有消失，那么_table.contentOffset一直为0
             _tableView.contentOffset = CGPointZero;
             _tableView.showsVerticalScrollIndicator = NO;
-            NSLog(@"3");
         }
         else {
             // header已经消失
             _scrollView.contentOffset = CGPointMake(0, _zeroValue);
             _tableView.showsVerticalScrollIndicator = YES;
-            NSLog(@"4");
         }
     }
 }
+
+
+#pragma mark --HWFooterRefresh懒加载
+-(HWFooterRefresh*) footerView{
+    if(!_footerView){
+        _footerView = HWFooterRefresh.new;
+        [_footerView hw_addFooterRefreshWithView:self.tableView hw_footerRefreshBlock:^{
+            
+        }];
+    }
+    return _footerView;
+}
+
 
 @end
 

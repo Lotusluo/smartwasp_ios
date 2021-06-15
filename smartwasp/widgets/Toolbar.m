@@ -9,7 +9,9 @@
 #import "DeviceDialog.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "AppDelegate.h"
+#import "UIView+Extension.h"
 #import <Masonry.h>
+#import <objc/runtime.h>
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -29,6 +31,13 @@
 
 @implementation Toolbar
 
+- (instancetype)initWithCoder:(NSCoder *)coder{
+    self = [super initWithCoder:coder];
+//    [self ritl_addBorderWithColor:[UIColor systemOrangeColor] BodrerWidth:0.2f direction:RITLBorderDirectionBottom];
+    return self;
+}
+
+
 //从故事面板加载
 -(void) awakeFromNib{
     [super awakeFromNib];
@@ -40,9 +49,7 @@
 
 //设备选择点击
 - (IBAction)onClick:(id)sender {
-    __weak typeof(self) __SELF = self;
     [DeviceDialog create];
-    
 }
 
 
@@ -52,7 +59,7 @@
     _combo.hidden = false;
     _devStatusIcon.tintColor = [UIColor colorWithHexString:isOnline  ?  @"#03F484":@"#B8B8B8"];
     [_devNameTxt mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(_devStatusIcon.mas_trailing).offset(15);
+        make.leading.mas_equalTo(_devStatusIcon.mas_trailing).offset(5);
     }];
 }
 

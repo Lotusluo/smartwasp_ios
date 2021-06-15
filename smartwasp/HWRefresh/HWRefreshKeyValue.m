@@ -20,6 +20,8 @@ NSString *  const HWHeadRefreshViewRefreshingText = @"正在刷新";
 
 NSString *  const HWFooterRefreshViewNoneText = @"上拉加载";
 
+NSString *  const HWFooterRefreshViewNoneText1 = @"已经到底了";
+
 NSString *  const HWFooterRefreshViewWillRefreshText = @"松开加载";
 
 NSString *  const HWFooterRefreshViewRefreshingText = @"正在加载";

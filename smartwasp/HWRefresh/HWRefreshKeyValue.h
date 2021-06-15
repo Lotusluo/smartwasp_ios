@@ -22,6 +22,8 @@ extern NSString *  const HWHeadRefreshViewRefreshingText;
 
 extern NSString *  const HWFooterRefreshViewNoneText;
 
+extern NSString *  const HWFooterRefreshViewNoneText1;
+
 extern NSString *  const HWFooterRefreshViewWillRefreshText;
 
 extern NSString *  const HWFooterRefreshViewRefreshingText;

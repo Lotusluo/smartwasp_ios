@@ -57,7 +57,6 @@
 		040ED78C26561699001A2755 /* PageLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED78B26561699001A2755 /* PageLineLayout.m */; };
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
-		0415EAD72664850200A73CE7 /* icon_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAD62664850200A73CE7 /* icon_arrow.png */; };
 		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
 		0425CD64262EE154004D4D23 /* BaseTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* BaseTabViewController.m */; };
@@ -92,6 +91,16 @@
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
 		044D723726396C8E0075994F /* NewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D723526396C8E0075994F /* NewPageViewController.m */; };
 		044D723826396C8E0075994F /* NewPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D723626396C8E0075994F /* NewPageViewController.xib */; };
+		044EAE74267886F800CC122A /* MusicItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE73267886F800CC122A /* MusicItemCell.xib */; };
+		044EAE7C2678916C00CC122A /* icon_clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE772678916B00CC122A /* icon_clock@2x.png */; };
+		044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE782678916B00CC122A /* icon_arrow@2x.png */; };
+		044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE792678916B00CC122A /* icon_routines@2x.png */; };
+		044EAE7F2678916C00CC122A /* icon_account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE7A2678916B00CC122A /* icon_account@2x.png */; };
+		044EAE802678916C00CC122A /* icon_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE7B2678916B00CC122A /* icon_about@2x.png */; };
+		044EAE83267891C200CC122A /* ic_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE82267891C200CC122A /* ic_more@2x.png */; };
+		044EAE8726789FA800CC122A /* MusicItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 044EAE8626789FA800CC122A /* MusicItemCell.m */; };
+		044EAE8C2678A90A00CC122A /* AppDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 044EAE8B2678A90A00CC122A /* AppDialog.m */; };
+		044EAE8F2678A98D00CC122A /* SongsPlayDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE8E2678A98D00CC122A /* SongsPlayDialog.xib */; };
 		045276432671DBE5000ECA78 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045276412671DBE5000ECA78 /* ItemViewController.m */; };
 		045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045276422671DBE5000ECA78 /* ItemViewController.xib */; };
 		045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045276462671DD6D000ECA78 /* NormalToolbar.xib */; };
@@ -114,10 +123,6 @@
 		0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D4832660877300F8DE42 /* DeviceChooseCell.xib */; };
 		0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D487266087CE00F8DE42 /* DeviceAddCell.xib */; };
 		04783315262D1F3600684E9C /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04783313262D1F3500684E9C /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		047AC2E52660DEC500E559C7 /* icon_routines_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E12660DEC200E559C7 /* icon_routines_1.png */; };
-		047AC2E62660DEC500E559C7 /* icon_clock_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E22660DEC300E559C7 /* icon_clock_1.png */; };
-		047AC2E72660DEC500E559C7 /* icon_account_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E32660DEC400E559C7 /* icon_account_1.png */; };
-		047AC2E82660DEC500E559C7 /* icon_about_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AC2E42660DEC500E559C7 /* icon_about_1.png */; };
 		0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */; };
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
@@ -245,7 +250,6 @@
 		0415EAA62660E43400A73CE7 /* NormalNaviCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalNaviCell.h; sourceTree = "<group>"; };
 		0415EAA72660E43400A73CE7 /* NormalNaviCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalNaviCell.m; sourceTree = "<group>"; };
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
-		0415EAD62664850200A73CE7 /* icon_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow.png; sourceTree = "<group>"; };
 		0415EADB26649A6D00A73CE7 /* ISWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISWDelegate.h; sourceTree = "<group>"; };
 		0415EAE92664D9E500A73CE7 /* FindBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
 		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
@@ -299,6 +303,18 @@
 		044D723426396C8E0075994F /* NewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPageViewController.h; sourceTree = "<group>"; };
 		044D723526396C8E0075994F /* NewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPageViewController.m; sourceTree = "<group>"; };
 		044D723626396C8E0075994F /* NewPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPageViewController.xib; sourceTree = "<group>"; };
+		044EAE73267886F800CC122A /* MusicItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicItemCell.xib; sourceTree = "<group>"; };
+		044EAE772678916B00CC122A /* icon_clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_clock@2x.png"; sourceTree = "<group>"; };
+		044EAE782678916B00CC122A /* icon_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@2x.png"; sourceTree = "<group>"; };
+		044EAE792678916B00CC122A /* icon_routines@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_routines@2x.png"; sourceTree = "<group>"; };
+		044EAE7A2678916B00CC122A /* icon_account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_account@2x.png"; sourceTree = "<group>"; };
+		044EAE7B2678916B00CC122A /* icon_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_about@2x.png"; sourceTree = "<group>"; };
+		044EAE82267891C200CC122A /* ic_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_more@2x.png"; sourceTree = "<group>"; };
+		044EAE8526789FA800CC122A /* MusicItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicItemCell.h; sourceTree = "<group>"; };
+		044EAE8626789FA800CC122A /* MusicItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicItemCell.m; sourceTree = "<group>"; };
+		044EAE8A2678A90A00CC122A /* AppDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDialog.h; sourceTree = "<group>"; };
+		044EAE8B2678A90A00CC122A /* AppDialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDialog.m; sourceTree = "<group>"; };
+		044EAE8E2678A98D00CC122A /* SongsPlayDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongsPlayDialog.xib; sourceTree = "<group>"; };
 		045276402671DBE5000ECA78 /* ItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		045276412671DBE5000ECA78 /* ItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 		045276422671DBE5000ECA78 /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
@@ -335,10 +351,6 @@
 		0476D487266087CE00F8DE42 /* DeviceAddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceAddCell.xib; sourceTree = "<group>"; };
 		04783313262D1F3500684E9C /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		04783314262D1F3600684E9C /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
-		047AC2E12660DEC200E559C7 /* icon_routines_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_routines_1.png; sourceTree = "<group>"; };
-		047AC2E22660DEC300E559C7 /* icon_clock_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_clock_1.png; sourceTree = "<group>"; };
-		047AC2E32660DEC400E559C7 /* icon_account_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_account_1.png; sourceTree = "<group>"; };
-		047AC2E42660DEC500E559C7 /* icon_about_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_about_1.png; sourceTree = "<group>"; };
 		0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_choose@2x.png"; sourceTree = "<group>"; };
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
@@ -640,11 +652,12 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				0415EAD62664850200A73CE7 /* icon_arrow.png */,
-				047AC2E42660DEC500E559C7 /* icon_about_1.png */,
-				047AC2E32660DEC400E559C7 /* icon_account_1.png */,
-				047AC2E22660DEC300E559C7 /* icon_clock_1.png */,
-				047AC2E12660DEC200E559C7 /* icon_routines_1.png */,
+				044EAE82267891C200CC122A /* ic_more@2x.png */,
+				044EAE7B2678916B00CC122A /* icon_about@2x.png */,
+				044EAE7A2678916B00CC122A /* icon_account@2x.png */,
+				044EAE782678916B00CC122A /* icon_arrow@2x.png */,
+				044EAE772678916B00CC122A /* icon_clock@2x.png */,
+				044EAE792678916B00CC122A /* icon_routines@2x.png */,
 				04CED27326526B33007EFA25 /* ic_login_out@2x.png */,
 				043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */,
 				043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */,
@@ -781,6 +794,12 @@
 				042B4E9F266724C0009BE328 /* GroupView.m */,
 				042B4EA2266724D0009BE328 /* GroupView.xib */,
 				042B4EA726672D9E009BE328 /* GroupItemCell.xib */,
+				044EAE8526789FA800CC122A /* MusicItemCell.h */,
+				044EAE8626789FA800CC122A /* MusicItemCell.m */,
+				044EAE73267886F800CC122A /* MusicItemCell.xib */,
+				044EAE8A2678A90A00CC122A /* AppDialog.h */,
+				044EAE8B2678A90A00CC122A /* AppDialog.m */,
+				044EAE8E2678A98D00CC122A /* SongsPlayDialog.xib */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -938,29 +957,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				04725179265E32C4003C4625 /* DeviceDialog.xib in Resources */,
+				044EAE802678916C00CC122A /* icon_about@2x.png in Resources */,
 				0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */,
 				043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */,
 				04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */,
+				044EAE7F2678916C00CC122A /* icon_account@2x.png in Resources */,
 				04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */,
 				04261A3E261F1D36000D95D6 /* icon_tab_mine_selected@2x.png in Resources */,
 				042B4EA3266724D0009BE328 /* GroupView.xib in Resources */,
 				04261A41261F1D36000D95D6 /* icon_tab_smart_selected@2x.png in Resources */,
+				044EAE74267886F800CC122A /* MusicItemCell.xib in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
-				0415EAD72664850200A73CE7 /* icon_arrow.png in Resources */,
 				04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */,
 				0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */,
-				047AC2E52660DEC500E559C7 /* icon_routines_1.png in Resources */,
-				047AC2E62660DEC500E559C7 /* icon_clock_1.png in Resources */,
 				0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */,
 				0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */,
+				044EAE7C2678916C00CC122A /* icon_clock@2x.png in Resources */,
 				04D738D126202A7700E4F00C /* FinderViewController.xib in Resources */,
 				0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */,
 				04725168265E30F8003C4625 /* Toolbar.xib in Resources */,
-				047AC2E72660DEC500E559C7 /* icon_account_1.png in Resources */,
+				044EAE8F2678A98D00CC122A /* SongsPlayDialog.xib in Resources */,
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
 				0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */,
 				04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */,
 				043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */,
+				044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */,
 				0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */,
 				04261A4C261F1D36000D95D6 /* icon_tab_mine@2x.png in Resources */,
 				04261A1D261F167C000D95D6 /* icon_tab_dialog_selected@2x.png in Resources */,
@@ -970,12 +991,13 @@
 				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
 				04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */,
+				044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */,
 				042619E6261F06ED000D95D6 /* Localizable.strings in Resources */,
 				045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */,
 				042619F1261F0828000D95D6 /* InfoPlist.strings in Resources */,
 				04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */,
 				042619D3261F04D3000D95D6 /* LaunchScreen.storyboard in Resources */,
-				047AC2E82660DEC500E559C7 /* icon_about_1.png in Resources */,
+				044EAE83267891C200CC122A /* ic_more@2x.png in Resources */,
 				042B4EA826672D9E009BE328 /* GroupItemCell.xib in Resources */,
 				04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */,
 				04D738D726202A8400E4F00C /* UserViewController.xib in Resources */,
@@ -1076,6 +1098,7 @@
 				045A3F9C26730ED600A3DA62 /* SongBean.m in Sources */,
 				042B4E9026672127009BE328 /* MusicBean.m in Sources */,
 				04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */,
+				044EAE8726789FA800CC122A /* MusicItemCell.m in Sources */,
 				04783315262D1F3600684E9C /* iToast.m in Sources */,
 				04D738CA2620288A00E4F00C /* CommonTabController.m in Sources */,
 				040B95292666464800B306D2 /* JXCategoryListContainerView.m in Sources */,
@@ -1099,6 +1122,7 @@
 				040B95282666464800B306D2 /* JXCategoryNumberCellModel.m in Sources */,
 				04D738D626202A8400E4F00C /* UserViewController.m in Sources */,
 				040B952E2666464800B306D2 /* UIColor+JXAdd.m in Sources */,
+				044EAE8C2678A90A00CC122A /* AppDialog.m in Sources */,
 				042B4E94266721C0009BE328 /* UserBean.m in Sources */,
 				040B948E26661F7100B306D2 /* ItemBean.m in Sources */,
 				040B95132666464800B306D2 /* JXCategoryIndicatorBallView.m in Sources */,

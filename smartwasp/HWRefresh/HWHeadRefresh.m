@@ -37,7 +37,6 @@
 
 - (void)hw_addFooterRefreshWithView:(__kindof UIScrollView * _Nonnull)scrollView hw_footerRefreshBlock:(HWRefreshBlock _Nonnull)block{
     if (![scrollView isKindOfClass:[UIScrollView class]]){
-        NSLog(@"请检查添加了刷新控件的视图是否是一个滑动视图 View :%@",scrollView);
         self.isCanRefresh = NO;
         return;
     }
@@ -172,9 +171,8 @@
  *  没有刷新状态
  */
 - (void)_toNoneState{
-    if (self.isRefreshing){
+    if (self.isRefreshing)
         return;
-    }
     [self _viewRefreshNone];
 }
 
@@ -185,9 +183,10 @@
     if (!self.isCanRefresh) return;
     self.isRefreshing = NO;
     [self _viewRefreshNone];
+    __weak typeof(self) _self = self;
     [UIView animateWithDuration:0.3f animations:^{
-        self.scrollView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
-        self.scrollView.contentOffset = CGPointMake(0.0f, 0.0f);
+        _self.scrollView.contentInset = UIEdgeInsetsZero;
+        _self.scrollView.contentOffset = CGPointZero;
     }];
     
 }
@@ -197,14 +196,16 @@
  */
 - (void)hw_toRfreshState{
     if (!self.isCanRefresh) return;
-    [UIView animateWithDuration:0.3f animations:^{
-    self.scrollView.contentOffset = CGPointMake(0.0f, -HWRefreshViewH);
-    }];
     [self _viewRefreshing];
-    if (self.hwHeadRefreshBlock){
-        self.hwHeadRefreshBlock();
-    }
     self.isRefreshing = YES;
+    __weak typeof(self) _self = self;
+    [UIView animateWithDuration:0.3 animations:^{
+        _self.scrollView.contentOffset = CGPointMake(0.0f, -HWRefreshViewH);
+    } completion:^(BOOL finished) {
+        if (_self.hwHeadRefreshBlock){
+            _self.hwHeadRefreshBlock();
+        }
+    }];
 }
 
 

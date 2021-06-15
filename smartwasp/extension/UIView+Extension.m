@@ -139,16 +139,17 @@
         Method originMethod = class_getInstanceMethod(self, @selector(layoutSubviews));
         Method swizzledMethod = class_getInstanceMethod(self, @selector(ritl_borderlayoutsubViews));
         
-        BOOL didAddMethod = class_addMethod(self, @selector(layoutSubviews), method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+        BOOL didAddMethod = class_addMethod(self,
+                                            @selector(layoutSubviews),
+                                            method_getImplementation(swizzledMethod),
+                                            method_getTypeEncoding(swizzledMethod));
         
-        if (didAddMethod) {//追加成功，进行替换
-            
+        if (didAddMethod) {
             class_replaceMethod(self,
                                 @selector(layoutSubviews),
                                 method_getImplementation(swizzledMethod),
                                 method_getTypeEncoding(swizzledMethod));
         }else {
-            
             method_exchangeImplementations(originMethod, swizzledMethod);
         }
     });
@@ -156,10 +157,7 @@
 
 
 
-- (void)ritl_borderlayoutsubViews
-{
-    [self ritl_borderlayoutsubViews];
-
+- (void)ritl_borderlayoutsubViews{
     CGRect generalBound = self.leftLayer.bounds;
     CGPoint generalPoint = CGPointZero;
     UIEdgeInsets generalInset = self.leftLayer.ritl_borderInset;

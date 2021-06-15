@@ -84,7 +84,7 @@
                                         <constraint firstAttribute="height" constant="50" id="o42-wH-DlU"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_routines_1.png"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_routines.png"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="快捷指令"/>
                                         <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow.png"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="hasBottomLine" value="YES"/>
@@ -97,7 +97,7 @@
                                         <constraint firstAttribute="height" constant="50" id="loL-vN-KfU"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_clock_1.png"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_clock.png"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="我的闹钟"/>
                                         <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="hasBottomLine" value="YES"/>
@@ -110,7 +110,7 @@
                                         <constraint firstAttribute="height" constant="50" id="Ge7-KD-N1N"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_account_1.png"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_account.png"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="内容账号"/>
                                         <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
                                     </userDefinedRuntimeAttributes>
@@ -129,7 +129,7 @@
                                         <constraint firstAttribute="height" constant="50" id="8ab-ut-J93"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_about_1.png"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_about.png"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="关于我们"/>
                                         <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
                                     </userDefinedRuntimeAttributes>
@@ -176,13 +176,13 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_about_1.png" width="64" height="64"/>
-        <image name="icon_account_1.png" width="64" height="64"/>
+        <image name="icon_about.png" width="32" height="32"/>
+        <image name="icon_account.png" width="32" height="32"/>
         <image name="icon_arrow" width="24" height="24"/>
-        <image name="icon_arrow.png" width="48" height="48"/>
-        <image name="icon_clock_1.png" width="64" height="64"/>
+        <image name="icon_arrow.png" width="24" height="24"/>
+        <image name="icon_clock.png" width="32" height="32"/>
         <image name="icon_loginout" width="24" height="24"/>
-        <image name="icon_routines_1.png" width="64" height="64"/>
+        <image name="icon_routines.png" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

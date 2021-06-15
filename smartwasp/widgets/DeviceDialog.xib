@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DeviceDialog">
-            <rect key="frame" x="0.0" y="0.0" width="562" height="452"/>
+            <rect key="frame" x="0.0" y="0.0" width="562" height="430"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GPu-uM-Dmc" userLabel="设备选择列表">
@@ -71,7 +71,7 @@
                 <outlet property="devListHeight" destination="r1k-iC-3Tq" id="aG6-PR-g99"/>
                 <outlet property="safeBottom" destination="9Fg-nQ-50z" id="vFv-3f-or6"/>
             </connections>
-            <point key="canvasLocation" x="-401.44927536231887" y="-131.25"/>
+            <point key="canvasLocation" x="-401.44927536231887" y="-138.61607142857142"/>
         </view>
     </objects>
     <resources>

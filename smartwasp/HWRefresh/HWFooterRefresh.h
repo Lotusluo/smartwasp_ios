@@ -17,4 +17,6 @@
 
 - (void)hw_toRfreshState;
 
+- (void)hw_toNoMoreState:(BOOL) flag;
+
 @end

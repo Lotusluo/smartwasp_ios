@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Loading : UIView
 
 //生成一个加载控件
-+(void) show:(OnDismiss)onDismiss;
++(void) show:(OnDismiss _Nullable)onDismiss;
 
 //取消弹出框
 +(void) dismiss;

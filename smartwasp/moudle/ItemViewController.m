@@ -15,6 +15,10 @@
 #import "SongsBean.h"
 #import "HWFooterRefresh.h"
 #import <Masonry.h>
+#import "MusicItemCell.h"
+#import "Loading.h"
+
+#define ONE_PAGE 10
 
 @interface ItemViewController ()<
 UITableViewDataSource,
@@ -39,6 +43,8 @@ UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 //临界值
 @property (nonatomic) CGFloat zeroValue;
+//数据是否在请求中
+@property (nonatomic) BOOL isRequest;
 //刷新控件
 @property (nonatomic,strong) HWFooterRefresh *footerView;
 
@@ -46,7 +52,7 @@ UITableViewDelegate>
 
 @implementation ItemViewController
 
-static NSString *const ID = @"CellIdentifier";
+static NSString *const ID = @"MusicItemCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,6 +85,7 @@ static NSString *const ID = @"CellIdentifier";
     self.iconView.contentMode = UIViewContentModeScaleAspectFill;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:self.bean.image]];
     [self.tableView addSubview:self.footerView];
+    [self.tableView registerNib:[UINib nibWithNibName:ID bundle:nil] forCellReuseIdentifier:ID];
 }
 
 -(void) viewWillLayoutSubviews{
@@ -100,24 +107,50 @@ static NSString *const ID = @"CellIdentifier";
     return vc;
 }
 
-//播放全部
-- (IBAction)onPlayClick:(id)sender {
-    
-}
-
 //刷新数据
 -(void)refresh{
+    [Loading show:nil];
+    [self.songsData removeAllObjects];
+    [self request:1 limit:2 * ONE_PAGE];
+}
+
+#pragma mark --HWFooterRefresh懒加载
+-(HWFooterRefresh*) footerView{
+    if(!_footerView){
+        _footerView = HWFooterRefresh.new;
+        __weak typeof(self) _self = self;
+        [_footerView hw_addFooterRefreshWithView:self.tableView hw_footerRefreshBlock:^{
+            NSInteger count = _self.songsData.count;
+            if((count % ONE_PAGE) > 0){
+                [_self.footerView hw_toNoMoreState:YES];
+                return;
+            }
+            NSInteger requestPage = count / ONE_PAGE + 1;
+            [_self request:requestPage limit:ONE_PAGE];
+        }];
+    }
+    return _footerView;
+}
+
+//分页请求
+-(void)request:(NSInteger)page limit:(NSInteger)limit{
+    if(self.isRequest)
+        return;
     __weak typeof(self) _self = self;
-    [[IFLYOSSDK shareInstance] getMusicGroupsList:1 limit:20 groupId:self.bean._id statusCode:^(NSInteger statusCode) {
+    self.isRequest = YES;
+    [[IFLYOSSDK shareInstance] getMusicGroupsList:page limit:limit groupId:self.bean._id statusCode:^(NSInteger statusCode) {
+        self.isRequest = NO;
+        [Loading dismiss];
         if(statusCode != 200){
-            NSLog(@"刷新失败!");
+            NSLog(@"请求失败");
         }
     } requestSuccess:^(id _Nonnull data) {
         SongsBean *songsBean = [SongsBean yy_modelWithJSON:data];
-        [_self.songsData removeAllObjects];
         [_self.songsData addObjectsFromArray:songsBean.items];
         [_self.tableView reloadData];
+        [_self.footerView hw_toNoMoreState:songsBean.items.count  < limit];
     } requestFail:^(id _Nonnull data) {
+        NSLog(@"请求失败");
     }];
 }
 
@@ -141,12 +174,25 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
-    if(cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    MusicItemCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
     SongBean *song=[self.songsData objectAtIndex:indexPath.row];
-    cell.textLabel.text = song.name;
-    cell.detailTextLabel.text = song.artist;
+    cell.title = song.name;
+    cell.subtitle = song.artist;
+    cell.serial = indexPath.row + 1;
     return cell;
+}
+
+#pragma mark -UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.001;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
 }
 
 #pragma mark --UIScrollViewDelegate
@@ -184,18 +230,6 @@ static NSString *const ID = @"CellIdentifier";
             _tableView.showsVerticalScrollIndicator = YES;
         }
     }
-}
-
-
-#pragma mark --HWFooterRefresh懒加载
--(HWFooterRefresh*) footerView{
-    if(!_footerView){
-        _footerView = HWFooterRefresh.new;
-        [_footerView hw_addFooterRefreshWithView:self.tableView hw_footerRefreshBlock:^{
-            
-        }];
-    }
-    return _footerView;
 }
 
 

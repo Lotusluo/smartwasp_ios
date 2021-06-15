@@ -50,7 +50,7 @@ static Loading *loadingView = nil;
 }
 
 //生成一个加载控件
-+(void)show:(OnDismiss)onDismiss{
++(void)show:(OnDismiss _Nullable)onDismiss{
     [self dismiss];
     loadingView = [[Loading alloc] initInstance:onDismiss];
     [window addSubview:loadingView];

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,15 +19,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdW-ph-CA6" userLabel="Back">
-                    <rect key="frame" x="0.0" y="11" width="50" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="72"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" button="YES" image="YES"/>
                     </accessibility>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="6i9-FO-yuF"/>
-                        <constraint firstAttribute="height" constant="50" id="D4Z-xx-I68"/>
+                        <constraint firstAttribute="width" constant="60" id="DnO-Ho-Idw"/>
                     </constraints>
-                    <color key="tintColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" systemColor="linkColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
                     <state key="normal" image="icon_arrow">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                     </state>
@@ -47,8 +48,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="agg-pd-b1Y"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -56,10 +57,12 @@
                 <constraint firstItem="Ua4-op-a4P" firstAttribute="leading" secondItem="5jQ-OG-gIP" secondAttribute="trailing" constant="20" id="4oP-wo-YJn"/>
                 <constraint firstItem="ZdW-ph-CA6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Psx-jk-zXO"/>
                 <constraint firstAttribute="trailing" secondItem="Ua4-op-a4P" secondAttribute="trailing" constant="20" id="VqI-rS-OAo"/>
-                <constraint firstItem="5jQ-OG-gIP" firstAttribute="leading" secondItem="ZdW-ph-CA6" secondAttribute="trailing" constant="20" id="dng-oJ-GGw"/>
+                <constraint firstItem="5jQ-OG-gIP" firstAttribute="leading" secondItem="ZdW-ph-CA6" secondAttribute="trailing" constant="10" id="dng-oJ-GGw"/>
+                <constraint firstItem="ZdW-ph-CA6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gYj-Xt-2MI"/>
                 <constraint firstItem="Ua4-op-a4P" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="j8Y-7S-ouw"/>
+                <constraint firstAttribute="bottom" secondItem="ZdW-ph-CA6" secondAttribute="bottom" id="pHI-xo-PtR"/>
                 <constraint firstItem="5jQ-OG-gIP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qP3-80-iIr"/>
-                <constraint firstItem="ZdW-ph-CA6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vTc-7e-kf7"/>
+                <constraint firstItem="ZdW-ph-CA6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wNN-iY-XiS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-368.84057971014494" y="352.90178571428572"/>
@@ -67,5 +70,8 @@
     </objects>
     <resources>
         <image name="icon_arrow" width="24" height="24"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -43,13 +43,22 @@ static NetDAO *sharedSingleton = nil;
 }
 
 //post请求
--(void)post:(NSDictionary*) params path:(NSString*) path callBack:(void(^)(BaseBean* cData)) complete{
+-(void)post:(NSDictionary*) params path:(NSString*) path callBack:(void(^)(BaseBean<id>* cData)) complete{
     NSString* api = [BASE_URL stringByAppendingString:path];
     [_afManager POST:api parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        BaseBean *okBean = [BaseBean yy_modelWithJSON:responseObject];
-        complete(okBean);
+        if(responseObject){
+            BaseBean<id> *bean = [BaseBean yy_modelWithJSON:responseObject];
+            complete(bean);
+        }else{
+            BaseBean *emptyBean = BaseBean.new;
+            emptyBean.errCode = -1;
+            complete(emptyBean);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        BaseBean *errorBean = BaseBean.new;
+        errorBean.errCode = -2;
+        complete(errorBean);
     }];
 }
 

@@ -17,6 +17,9 @@
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
 
+//是否需要刷新绑定的设备的详细信息
+BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
+
 @interface AppDelegate ()
 
 @end
@@ -27,7 +30,7 @@
     // Override point for customization after application launch.
     [[IFLYOSSDK shareInstance] initAppId:APPID schema:@"smartwasp" loginType:DEFAULT];
     [[IFLYOSSDK shareInstance] setDebugModel:NO];
-//    NSLog(@"屏幕大小:%@",NSStringFromCGRect([UIScreen mainScreen].bounds));
+    NSLog(@"屏幕大小:%@",NSStringFromCGRect([UIScreen mainScreen].bounds));
     //恢复用户数据
     NSString *usrValue = [[ConfigDAO sharedInstance] findByKey:@"usr"];
     if(usrValue){

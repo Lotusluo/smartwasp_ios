@@ -19,7 +19,7 @@ typedef NS_ENUM (NSUInteger,DrawableType){
 @interface UILabel (Extension)
 
 //设置文本icon
--(void) setDrawable: (UIImage*) image;
+-(void)setLeftSquareDrawable:(UIImage*)image;
 
 @end
 

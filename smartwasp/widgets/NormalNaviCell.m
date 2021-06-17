@@ -17,8 +17,6 @@
 //右侧图标
 @property(nonatomic,strong) UIImageView *rightImage;
 
-
-
 @end
 
 @implementation NormalNaviCell
@@ -92,12 +90,21 @@
 - (void)doCallMethod:(UILongPressGestureRecognizer*)sender {
     if(sender.state == UIGestureRecognizerStateBegan){
         self.backgroundColor = [UIColor lightTextColor];
+    }else if (sender.state == UIGestureRecognizerStateChanged){
+        sender.enabled = NO;
+    }else if (sender.state == UIGestureRecognizerStateCancelled){
+        self.backgroundColor = [UIColor whiteColor];
+        sender.enabled = YES;
     }else if (sender.state == UIGestureRecognizerStateEnded){
         self.backgroundColor = [UIColor whiteColor];
         if(self.delegate && [self.delegate respondsToSelector:@selector(onClick:)]){
             [self.delegate onClick: self.tag];
         }
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -112,6 +119,7 @@
         CGContextStrokePath(context);
     }
 }
+
 
 
 @end

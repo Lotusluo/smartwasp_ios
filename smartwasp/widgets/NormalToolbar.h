@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 //标题
 @property(nonatomic,strong) NSString *title;
 
+//返回按钮颜色
+@property(nonatomic,strong) UIColor *titleColor;
+
+//标题控件
+@property (strong, nonatomic) IBOutlet UILabel *txtView;
+
 @end
 
 NS_ASSUME_NONNULL_END

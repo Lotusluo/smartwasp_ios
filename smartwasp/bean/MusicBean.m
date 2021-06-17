@@ -9,4 +9,10 @@
 
 @implementation MusicBean
 
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    if([key isEqualToString:@"music_enable"]){
+        self.enable = value;
+    }
+}
+
 @end

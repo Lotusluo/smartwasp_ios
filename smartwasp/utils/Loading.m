@@ -32,12 +32,14 @@ static Loading *loadingView = nil;
         [indicatorView startAnimating];
         [self addSubview:indicatorView];
         
-        //设置取消手势
-        UITapGestureRecognizer *tapRecognizer =[[UITapGestureRecognizer alloc]
-                                                initWithTarget:self
-                                                action:@selector(foundTap:)];
-        [self addGestureRecognizer:tapRecognizer];
-        self.userInteractionEnabled = true;
+        if(onDismiss){
+            //设置取消手势
+            UITapGestureRecognizer *tapRecognizer =[[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(foundTap:)];
+            [self addGestureRecognizer:tapRecognizer];
+            self.userInteractionEnabled = true;
+        }
     }
     
     return self;

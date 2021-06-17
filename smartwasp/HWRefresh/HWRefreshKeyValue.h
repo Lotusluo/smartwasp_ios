@@ -12,8 +12,6 @@ extern float  const HWHeadRefreshViewHeight;
 
 extern float  const HWFooterRefreshViewHeight;
 
-
-
 extern NSString *  const HWHeadRefreshViewNoneText;
 
 extern NSString *  const HWHeadRefreshViewWillRefreshText;

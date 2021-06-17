@@ -10,11 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NetDAO : NSObject
+@interface NetDAO<T> : NSObject
 
 + (NetDAO*)sharedInstance;
 
--(void)post:(NSDictionary*) params path:(NSString*) path callBack:(void(^)(BaseBean* cData)) complete;
+-(void)post:(NSDictionary*) params path:(NSString*) path callBack:(void(^)(BaseBean<T>* _cData)) complete;
 
 @end
 

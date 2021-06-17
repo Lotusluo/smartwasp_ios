@@ -78,8 +78,8 @@
             filePath = "smartwasp/moudle/FinderViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "smartwasp/moudle/FinderViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-loadDataSucess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "smartwasp/moudle/FinderViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-loadDataSucess:"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,9 +126,137 @@
             filePath = "smartwasp/moudle/FinderViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-reloadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0D76604-6BC3-4F58-8648-74AE4F029D9D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smartwasp/moudle/DeviceSetViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-attachUI"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F17DEBC5-96E9-4EC4-8B6F-472B1A2C897F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smartwasp/moudle/DeviceSetViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-refresh"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F17DEBC5-96E9-4EC4-8B6F-472B1A2C897F - 1f6d99288f44be34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[DeviceSetViewController refresh]_block_invoke_2"
+                  moduleName = "smartwasp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/smartwasp_ios1/smartwasp/moudle/DeviceSetViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "177">
+               </Location>
+               <Location
+                  uuid = "F17DEBC5-96E9-4EC4-8B6F-472B1A2C897F - 1f6d99288f24be4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[DeviceSetViewController refresh]_block_invoke_3"
+                  moduleName = "smartwasp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Desktop/smartwasp_ios1/smartwasp/moudle/DeviceSetViewController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12B2153F-AE8C-474B-A143-B91C50A3E589"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smartwasp/moudle/DeviceSetViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-refresh"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE0BAA8F-6441-486B-9051-D238B7AFCD02"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smartwasp/moudle/DeviceSetViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-refresh"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40D43D00-7464-43D6-AB34-C8A410B4422D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smartwasp/moudle/DeviceSetViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-innerRefresh:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76DEDB18-2F1D-4675-A7FD-72A087347174"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "smartwasp/dao/NetDAO.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-post:path:callBack:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

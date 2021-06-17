@@ -124,7 +124,7 @@
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     //添加mask
     UIView *mask = [[UIView alloc] initWithFrame:keyWindow.screen.bounds];
-    mask.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2 ];
+    mask.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
     [keyWindow addSubview:mask];
     //添加底视图
     DeviceDialog* dialog = [[[NSBundle mainBundle] loadNibNamed:@"DeviceDialog" owner:nil options:nil] lastObject];
@@ -144,7 +144,9 @@
 -(void) doFadeIn:(Boolean) flag{
     [self.layer removeAllAnimations];
     CABasicAnimation *transAnimation  = [CABasicAnimation animationWithKeyPath:@"position"];
-    transAnimation.delegate = self;
+    if(!flag){
+        transAnimation.delegate = self;
+    }
     CGPoint fromValue = self.layer.position;
     CGPoint toValue = self.layer.position;
     if(flag){
@@ -163,16 +165,15 @@
     opacityAnimation.fromValue = [NSNumber numberWithFloat:flag ? 0 : 1];
     opacityAnimation.toValue = [NSNumber numberWithFloat:flag ? 1 : 0];
     opacityAnimation.duration = 0.2;
+    opacityAnimation.removedOnCompletion = NO;
     [self.mask.layer addAnimation:opacityAnimation forKey:@"opacity"];
 }
 
 #pragma mark --CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if([self.layer animationForKey:[NSString stringWithFormat:@"position:%d",false]] ==  anim && flag){
-        [self removeFromSuperview];
-        if(self.mask){
-            [self.mask removeFromSuperview];
-        }
+    [self removeFromSuperview];
+    if(self.mask){
+        [self.mask removeFromSuperview];
     }
 }
 

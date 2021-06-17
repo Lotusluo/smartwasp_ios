@@ -12,6 +12,7 @@
 #import "PageLineLayout.h"
 #import "PageControl2.h"
 #import "NormalNaviCell.h"
+#import "DeviceSetViewController.h"
 #import <Masonry.h>
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -100,10 +101,23 @@ static NSString *const ID = @"CellIdentifier";
     [self setCurrentPage:0];
 }
 
+#pragma mark --UICollectionViewDelegate
+-( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
+    if(indexPath.row){
+        //点击进入设备详情界面
+        DeviceBean *selctedBean = APPDELEGATE.devices[indexPath.row - 1];
+        DeviceSetViewController *dvc = [DeviceSetViewController createNewPage:selctedBean];
+        [self.navigationController pushViewController:dvc animated:YES];
+        return;
+    }
+    //进入添加设备界面
+}
+
 #pragma mark --UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.pageControl.numberOfPages;
 }
+
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DeviceBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
@@ -135,6 +149,8 @@ static NSString *const ID = @"CellIdentifier";
 -(void)setCurrentPage:(NSInteger) page{
     [self.pageControl setCurrentPage:page];
 }
+
+
 
 
 /*

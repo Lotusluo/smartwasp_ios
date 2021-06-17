@@ -20,6 +20,7 @@
 #import "GroupView.h"
 #import "NewPageViewController.h"
 #import "ItemViewController.h"
+#import "MusicPlayViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -291,6 +292,8 @@ static NSString *const ID = @"CellIdentifier";
 #pragma mark --ISelectedDelegate
 - (void)groupView:(GroupView *)groupView canClickItemAtIndex:(ItemBean *)bean{
     ItemViewController *ivc =  [ItemViewController createNewPage:bean];
+    //test
+//    MusicPlayViewController *mvc = [[MusicPlayViewController alloc] initWithNibName:@"MusicPlayViewController" bundle:nil];
     [self.navigationController pushViewController:ivc animated:YES];
 }
 

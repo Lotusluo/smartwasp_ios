@@ -57,8 +57,9 @@ static NSString *const ID = @"MusicItemCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.toolBar.title = @"歌单";
+    self.toolBar.titleColor = [UIColor whiteColor];
     self.songsData = NSMutableArray.new;
-    [self attchUI];
+    [self attachUI];
     if (@available(iOS 11.0, *)) {
         if ([self.scrollView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
             self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -67,7 +68,7 @@ static NSString *const ID = @"MusicItemCell";
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) attchUI{
+-(void) attachUI{
     self.nameView.text = self.bean.name;
     self.fromView.text =  self.bean.from;
     self.blurImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -93,7 +94,7 @@ static NSString *const ID = @"MusicItemCell";
     self.iconTop.constant = sgm_safeAreaInset(self.view).top + 49;
     self.headerHeight.constant = self.iconTop.constant + self.iconView.frame.size.height + 20;
     self.zeroValue = self.headerHeight.constant - self.iconTop.constant;
-    self.listHeight.constant = self.scrollView.frame.size.height - (self.headerHeight.constant - self.zeroValue);
+    self.listHeight.constant = self.scrollView.frame.size.height - (self.headerHeight.constant - self.zeroValue + 26);
 }
 
 -(void)viewDidAppear:(BOOL)animated{

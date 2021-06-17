@@ -71,7 +71,7 @@
                         <outlet property="delegate" destination="-1" id="eQg-LK-dIo"/>
                     </connections>
                 </collectionView>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-g7-xDM" userLabel="NaviContainer">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-g7-xDM" userLabel="NaviContainer">
                     <rect key="frame" x="0.0" y="281" width="414" height="581"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="etN-Fb-Q7F" userLabel="Content">

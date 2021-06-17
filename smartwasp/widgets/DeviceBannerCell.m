@@ -94,7 +94,7 @@
     UIImage *image =[UIImage imageNamed:@"icon_status"];
     UIColor *color = [UIColor colorWithHexString:_device.isOnLine ?  @"#03F484":@"#B8B8B8"];
     onlineTxt.text  = _device.isOnLine ? @"在线" : @"离线";
-    [onlineTxt setDrawable:[image renderImageWithColor:color]];
+    [onlineTxt setLeftSquareDrawable:[image renderImageWithColor:color]];
 }
 
 @end

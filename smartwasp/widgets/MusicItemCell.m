@@ -6,6 +6,7 @@
 //
 
 #import "MusicItemCell.h"
+#import "AppDialog.h"
 
 @interface MusicItemCell()
 
@@ -25,7 +26,9 @@
 }
 
 - (IBAction)onSheetTap:(id)sender {
-    NSLog(@"onTap");
+    [[AppDialog createDialog:@"SongsPlayDialog" heightParams:^CGFloat{
+        return 150;
+    }] show];
 }
 
 -(void)setSerial:(NSInteger)serial{

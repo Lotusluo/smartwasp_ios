@@ -55,6 +55,8 @@
 		040B95412666464C00B306D2 /* HWHeadRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B953D2666464C00B306D2 /* HWHeadRefresh.m */; };
 		040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED77E26550B13001A2755 /* UIView+Extension.m */; };
 		040ED78C26561699001A2755 /* PageLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED78B26561699001A2755 /* PageLineLayout.m */; };
+		0410BE21267B410900CE993E /* SkillBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0410BE20267B410900CE993E /* SkillBean.m */; };
+		0410BE24267B54D900CE993E /* SkillView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0410BE23267B54D900CE993E /* SkillView.xib */; };
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
 		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
@@ -79,6 +81,8 @@
 		04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A35261F1D36000D95D6 /* icon_tab_find@2x.png */; };
 		04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A3D261F1D36000D95D6 /* icon_tab_skill_selected@2x.png */; };
 		04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */; };
+		04283ACB267AF4A000FFBF84 /* DeviceSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */; };
+		04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */; };
 		042B4E9026672127009BE328 /* MusicBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E8F26672127009BE328 /* MusicBean.m */; };
 		042B4E94266721C0009BE328 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E93266721C0009BE328 /* UserBean.m */; };
 		042B4E9826672371009BE328 /* DeviceBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E9726672371009BE328 /* DeviceBean.m */; };
@@ -141,6 +145,8 @@
 		04E00B2526214AD100080581 /* quiet-profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E00B2426214AD100080581 /* quiet-profiles.json */; };
 		04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 04E00B3326214AEF00080581 /* iflyosConfig.xml */; };
 		04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E7DF1B2621ABDA007C3790 /* Loading.m */; };
+		04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */; };
+		04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */; };
 		04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F840DB26316DA10068EFAF /* LoginViewController.xib */; };
 		90B35C25DB0C4AC24B8E3DD8 /* Pods_smartwasp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */; };
 /* End PBXBuildFile section */
@@ -247,6 +253,9 @@
 		040ED77E26550B13001A2755 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		040ED78A26561699001A2755 /* PageLineLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageLineLayout.h; sourceTree = "<group>"; };
 		040ED78B26561699001A2755 /* PageLineLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageLineLayout.m; sourceTree = "<group>"; };
+		0410BE1F267B410900CE993E /* SkillBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillBean.h; sourceTree = "<group>"; };
+		0410BE20267B410900CE993E /* SkillBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillBean.m; sourceTree = "<group>"; };
+		0410BE23267B54D900CE993E /* SkillView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillView.xib; sourceTree = "<group>"; };
 		0415EAA62660E43400A73CE7 /* NormalNaviCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalNaviCell.h; sourceTree = "<group>"; };
 		0415EAA72660E43400A73CE7 /* NormalNaviCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalNaviCell.m; sourceTree = "<group>"; };
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
@@ -284,6 +293,9 @@
 		04261A35261F1D36000D95D6 /* icon_tab_find@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_find@2x.png"; sourceTree = "<group>"; };
 		04261A3D261F1D36000D95D6 /* icon_tab_skill_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_skill_selected@2x.png"; sourceTree = "<group>"; };
 		04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_smart@2x.png"; sourceTree = "<group>"; };
+		04283AC8267AF4A000FFBF84 /* DeviceSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSetViewController.h; sourceTree = "<group>"; };
+		04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSetViewController.m; sourceTree = "<group>"; };
+		04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceSetViewController.xib; sourceTree = "<group>"; };
 		042B4E8E26672127009BE328 /* MusicBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicBean.h; sourceTree = "<group>"; };
 		042B4E8F26672127009BE328 /* MusicBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicBean.m; sourceTree = "<group>"; };
 		042B4E92266721C0009BE328 /* UserBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBean.h; sourceTree = "<group>"; };
@@ -390,6 +402,9 @@
 		04E00B3426214AEF00080581 /* iflyosSDKForiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iflyosSDKForiOS.h; sourceTree = "<group>"; };
 		04E7DF1A2621ABDA007C3790 /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		04E7DF1B2621ABDA007C3790 /* Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loading.m; sourceTree = "<group>"; };
+		04E88CD92679CF3400FEA24C /* MusicPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicPlayViewController.h; sourceTree = "<group>"; };
+		04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
+		04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
 		04F840DB26316DA10068EFAF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		3502DA920BECD51243A97A8E /* Pods-smartwasp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.debug.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.debug.xcconfig"; sourceTree = "<group>"; };
 		C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smartwasp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -732,6 +747,12 @@
 				045276402671DBE5000ECA78 /* ItemViewController.h */,
 				045276412671DBE5000ECA78 /* ItemViewController.m */,
 				045276422671DBE5000ECA78 /* ItemViewController.xib */,
+				04E88CD92679CF3400FEA24C /* MusicPlayViewController.h */,
+				04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */,
+				04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */,
+				04283AC8267AF4A000FFBF84 /* DeviceSetViewController.h */,
+				04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */,
+				04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -759,6 +780,8 @@
 				045A3F9726730E9D00A3DA62 /* SongsBean.m */,
 				045A3F9A26730ED600A3DA62 /* SongBean.h */,
 				045A3F9B26730ED600A3DA62 /* SongBean.m */,
+				0410BE1F267B410900CE993E /* SkillBean.h */,
+				0410BE20267B410900CE993E /* SkillBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -800,6 +823,7 @@
 				044EAE8A2678A90A00CC122A /* AppDialog.h */,
 				044EAE8B2678A90A00CC122A /* AppDialog.m */,
 				044EAE8E2678A98D00CC122A /* SongsPlayDialog.xib */,
+				0410BE23267B54D900CE993E /* SkillView.xib */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -979,6 +1003,7 @@
 				044EAE8F2678A98D00CC122A /* SongsPlayDialog.xib in Resources */,
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
 				0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */,
+				04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */,
 				04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */,
 				043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */,
 				044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */,
@@ -990,6 +1015,7 @@
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
 				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
+				04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */,
 				04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */,
 				044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */,
 				042619E6261F06ED000D95D6 /* Localizable.strings in Resources */,
@@ -1002,6 +1028,7 @@
 				04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */,
 				04D738D726202A8400E4F00C /* UserViewController.xib in Resources */,
 				04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */,
+				0410BE24267B54D900CE993E /* SkillView.xib in Resources */,
 				044D723826396C8E0075994F /* NewPageViewController.xib in Resources */,
 				042619F7261F09A6000D95D6 /* Main.storyboard in Resources */,
 			);
@@ -1074,6 +1101,7 @@
 				04D738D026202A7700E4F00C /* FinderViewController.m in Sources */,
 				040B95162666464800B306D2 /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				040ED78C26561699001A2755 /* PageLineLayout.m in Sources */,
+				04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */,
 				040B951B2666464800B306D2 /* JXCategoryDotView.m in Sources */,
 				040B950B2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */,
 				040B952C2666464800B306D2 /* JXCategoryIndicatorParamsModel.m in Sources */,
@@ -1086,10 +1114,12 @@
 				040B951C2666464800B306D2 /* JXCategoryDotCellModel.m in Sources */,
 				040B95112666464800B306D2 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
 				040B951A2666464800B306D2 /* JXCategoryDotCell.m in Sources */,
+				0410BE21267B410900CE993E /* SkillBean.m in Sources */,
 				0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */,
 				0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */,
 				040B950F2666464800B306D2 /* JXCategoryIndicatorLineView.m in Sources */,
 				040B950E2666464800B306D2 /* RTLManager.m in Sources */,
+				04283ACB267AF4A000FFBF84 /* DeviceSetViewController.m in Sources */,
 				040B95412666464C00B306D2 /* HWHeadRefresh.m in Sources */,
 				040B952B2666464800B306D2 /* JXCategoryCollectionView.m in Sources */,
 				040B952A2666464800B306D2 /* JXCategoryFactory.m in Sources */,

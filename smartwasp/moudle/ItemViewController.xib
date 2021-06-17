@@ -30,7 +30,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roy-8b-jh3" userLabel="Scroll" customClass="EGOScrollView">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roy-8b-jh3" userLabel="Scroll" customClass="EGOScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cht-AN-5oW" userLabel="Header">
@@ -105,12 +105,9 @@
                                     <real key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="onPlayClick:" destination="-1" eventType="touchUpInside" id="bYa-11-wc7"/>
-                            </connections>
                         </button>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxq-hb-yL0" userLabel="Scroll1">
-                            <rect key="frame" x="0.0" y="300" width="375" height="600"/>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxq-hb-yL0" userLabel="Scroll1">
+                            <rect key="frame" x="0.0" y="331" width="375" height="600"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YHA-kc-Vr2" userLabel="List">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
@@ -140,7 +137,7 @@
                         <constraint firstItem="cht-AN-5oW" firstAttribute="leading" secondItem="Roy-8b-jh3" secondAttribute="leading" id="EdE-2B-g6e"/>
                         <constraint firstItem="tVf-6E-BNA" firstAttribute="top" secondItem="cht-AN-5oW" secondAttribute="bottom" constant="5" id="GKW-Xi-Mij"/>
                         <constraint firstItem="tVf-6E-BNA" firstAttribute="leading" secondItem="Roy-8b-jh3" secondAttribute="leading" constant="10" id="Gbw-6F-egq"/>
-                        <constraint firstItem="Kxq-hb-yL0" firstAttribute="top" secondItem="cht-AN-5oW" secondAttribute="bottom" id="Yes-Yb-bN6"/>
+                        <constraint firstItem="Kxq-hb-yL0" firstAttribute="top" secondItem="tVf-6E-BNA" secondAttribute="bottom" id="Yes-Yb-bN6"/>
                         <constraint firstItem="cht-AN-5oW" firstAttribute="top" secondItem="Roy-8b-jh3" secondAttribute="top" id="kxs-ug-L6Q"/>
                         <constraint firstAttribute="bottom" secondItem="Kxq-hb-yL0" secondAttribute="bottom" id="ynw-bC-yVP"/>
                     </constraints>

@@ -23,7 +23,7 @@
 //
 //return [NSString stringWithFormat:@"%@", num >= 10000 ? [NSString stringWithFormat:@"%0.1f万", (num / 10000.0)] : [NSString stringWithFormat:@"%zd",num]];
 -(void)setValue:(id)value forKey:(NSString *)key{
-    if([key isEqualToString:@"music"]){
+    if([key isEqualToString:@"music"] || [key isEqualToString:@"music_access"]){
         MusicBean *temp = [MusicBean new];
         [temp setValuesForKeysWithDictionary:value];
         self.music = temp;

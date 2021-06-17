@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 //text
 @property(nonatomic,strong) NSString *text;
 
+//value
+@property(nonatomic,strong) NSString *value;
+
 @end
 
 NS_ASSUME_NONNULL_END

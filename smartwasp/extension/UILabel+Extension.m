@@ -10,16 +10,19 @@
 @implementation UILabel (Extension)
 
 //设置文本icon
--(void) setDrawable: (UIImage*) icon{
+-(void)setLeftSquareDrawable:(UIImage*)icon{
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc]init];
-    float lineHeight = [self intrinsicContentSize].height;
-    NSTextAttachment *attach = [[NSTextAttachment alloc]init];
-    attach.image = icon;
-    attach.bounds = CGRectMake(0, (10 - lineHeight) / 2, 10, 10);
-    NSAttributedString *picStr = [NSAttributedString attributedStringWithAttachment:attach];
-    [str appendAttributedString:picStr];
-    NSAttributedString *childStr2 = [[NSAttributedString alloc]initWithString:self.text];
-    [str appendAttributedString:childStr2];
+    CGFloat lineHeight = [self intrinsicContentSize].height;
+    CGFloat imageFixed = lineHeight * 2 / 3;
+ 
+    NSTextAttachment *image = [[NSTextAttachment alloc]init];
+    image.image = icon;
+    image.bounds = CGRectMake(0, -1, imageFixed, imageFixed);
+    NSAttributedString *imageWrapper = [NSAttributedString attributedStringWithAttachment:image];
+    [str appendAttributedString:imageWrapper];
+    
+    NSAttributedString *text = [[NSAttributedString alloc]initWithString:self.text];
+    [str appendAttributedString:text];
     self.attributedText = str;
 }
 

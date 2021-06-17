@@ -10,13 +10,11 @@
 
 @interface NormalToolbar()
 
-@property (strong, nonatomic) IBOutlet UILabel *txtView;
-
 @end
 
 @implementation NormalToolbar
 
--(void) awakeFromNib{
+-(void)awakeFromNib{
     [super awakeFromNib];
     UIView *baseView = [[[NSBundle mainBundle] loadNibNamed:@"NormalToolbar" owner:self options:nil] lastObject];
     baseView.frame = self.bounds;
@@ -40,8 +38,12 @@
     }
 }
 
--(void) setTitle:(NSString *)title{
+-(void)setTitle:(NSString *)title{
     self.txtView.text = title;
+}
+
+-(void)setTitleColor:(UIColor *)titleColor{
+    self.txtView.textColor = titleColor;
 }
 
 @end

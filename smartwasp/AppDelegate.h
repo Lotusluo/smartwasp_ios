@@ -9,6 +9,8 @@
 #import "UserBean.h"
 #import "DeviceBean.h"
 
+extern BOOL NEED_REFRESH_DEVICES_DETAIL;
+
 static inline UIEdgeInsets sgm_safeAreaInset(UIView *view) {
     if (@available(iOS 11.0, *)) {
         return view.safeAreaInsets;
@@ -28,6 +30,7 @@ static inline UIEdgeInsets sgm_safeAreaInset(UIView *view) {
 
 //当前选择的设备
 @property (nonatomic,strong) DeviceBean *curDevice;
+
 
 //进入主界面
 - (void) toMain;

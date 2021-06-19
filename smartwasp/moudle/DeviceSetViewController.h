@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 //静态生成
 +(DeviceSetViewController *) createNewPage:(DeviceBean *) deviceBean;
 
+//技能数组
+@property(nonatomic,strong)NSArray *skillArray;
+
 @end
 
 

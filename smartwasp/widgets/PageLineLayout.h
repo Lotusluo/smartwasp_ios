@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PageControl2.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PageLineLayout : UICollectionViewFlowLayout
+
+@property(nonatomic,weak)PageControl2 *pageControl;
 
 @end
 

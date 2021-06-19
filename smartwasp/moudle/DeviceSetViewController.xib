@@ -12,12 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceSetViewController">
             <connections>
                 <outlet property="keepView" destination="nOP-4W-Zyn" id="ytE-QV-aLu"/>
-                <outlet property="positionView" destination="CjI-ZH-LQ9" id="v9P-1l-wov"/>
                 <outlet property="scrollView" destination="lyx-Oi-DI1" id="8hq-ed-Ynn"/>
                 <outlet property="skillContainer" destination="dYe-F2-Ahi" id="02g-rR-9aS"/>
                 <outlet property="skillContainerHeight" destination="uYp-Df-m21" id="HJV-hw-9Gg"/>
                 <outlet property="switchBtn" destination="C8j-07-CNV" id="HHX-Yh-2w9"/>
                 <outlet property="textField" destination="Wef-5r-Ops" id="odp-YR-cvz"/>
+                <outlet property="textField1" destination="Gk6-4t-hzw" id="GW5-eL-JZn"/>
                 <outlet property="timeView" destination="ONU-oB-mtk" id="eme-Qm-o9S"/>
                 <outlet property="toolBar" destination="PZ1-2p-orf" id="WH4-oT-eSo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -53,13 +53,13 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入音箱名称" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-5r-Ops" userLabel="设备名称">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入音箱名称" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-5r-Ops" userLabel="设备名称">
                                     <rect key="frame" x="238.5" y="16" width="165.5" height="18.5"/>
                                     <color key="textColor" red="0.69474148749999998" green="0.68475753070000001" blue="0.61793631319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <connections>
-                                        <outlet property="delegate" destination="-1" id="QbO-RR-2qV"/>
+                                        <outlet property="delegate" destination="-1" id="CCK-xE-fLD"/>
                                     </connections>
                                 </textField>
                             </subviews>
@@ -76,46 +76,30 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMb-8c-8N2" userLabel="设备位置" customClass="BottomLineView">
                             <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-3m-lYt">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-3m-lYt" userLabel="前缀">
                                     <rect key="frame" x="10" y="16.5" width="58" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gsl-GM-9Vf" userLabel="arrow">
-                                    <rect key="frame" x="389" y="19.5" width="15" height="11.5"/>
-                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="15" id="bW5-FV-OrM"/>
-                                        <constraint firstAttribute="height" constant="15" id="sKl-kY-ebw"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客厅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjI-ZH-LQ9">
-                                    <rect key="frame" x="350" y="16.5" width="29" height="17"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入音箱位置" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gk6-4t-hzw" userLabel="设备位置">
+                                    <rect key="frame" x="238.5" y="16" width="165.5" height="18.5"/>
+                                    <color key="textColor" red="0.69474148749999998" green="0.68475753070000001" blue="0.61793631319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axG-42-jsg" userLabel="热区">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <connections>
-                                        <action selector="onPositionClick:" destination="-1" eventType="touchUpInside" id="CfX-cb-cvX"/>
+                                        <outlet property="delegate" destination="-1" id="Qzv-it-3R4"/>
                                     </connections>
-                                </button>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="axG-42-jsg" firstAttribute="leading" secondItem="CMb-8c-8N2" secondAttribute="leading" id="AVj-QY-bBH"/>
-                                <constraint firstItem="Gsl-GM-9Vf" firstAttribute="leading" secondItem="CjI-ZH-LQ9" secondAttribute="trailing" constant="10" id="BgH-Wh-ffA"/>
+                                <constraint firstAttribute="trailing" secondItem="Gk6-4t-hzw" secondAttribute="trailing" constant="10" id="32r-jr-vJW"/>
+                                <constraint firstItem="Gk6-4t-hzw" firstAttribute="centerY" secondItem="CMb-8c-8N2" secondAttribute="centerY" id="3bM-He-wT2"/>
                                 <constraint firstItem="s3v-3m-lYt" firstAttribute="centerY" secondItem="CMb-8c-8N2" secondAttribute="centerY" id="D2K-rr-vMv"/>
+                                <constraint firstItem="Gk6-4t-hzw" firstAttribute="width" secondItem="CMb-8c-8N2" secondAttribute="width" multiplier="0.4" id="EVP-S4-9WA"/>
                                 <constraint firstAttribute="height" constant="50" id="KoN-v4-UrQ"/>
-                                <constraint firstAttribute="trailing" secondItem="Gsl-GM-9Vf" secondAttribute="trailing" constant="10" id="OHA-eM-CfV"/>
-                                <constraint firstItem="CjI-ZH-LQ9" firstAttribute="centerY" secondItem="CMb-8c-8N2" secondAttribute="centerY" id="SaY-TC-qEu"/>
-                                <constraint firstAttribute="bottom" secondItem="axG-42-jsg" secondAttribute="bottom" id="Zld-uy-h8m"/>
                                 <constraint firstItem="s3v-3m-lYt" firstAttribute="leading" secondItem="CMb-8c-8N2" secondAttribute="leading" constant="10" id="cY2-Vm-tIg"/>
-                                <constraint firstItem="axG-42-jsg" firstAttribute="top" secondItem="CMb-8c-8N2" secondAttribute="top" id="iPQ-O3-Rwk"/>
-                                <constraint firstAttribute="trailing" secondItem="axG-42-jsg" secondAttribute="trailing" id="u9o-ZY-8RY"/>
-                                <constraint firstItem="Gsl-GM-9Vf" firstAttribute="centerY" secondItem="CMb-8c-8N2" secondAttribute="centerY" id="y53-F6-uKj"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dYe-F2-Ahi" userLabel="私有技能">
@@ -255,7 +239,6 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

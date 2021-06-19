@@ -73,6 +73,7 @@ static NSString *const ID = @"CellIdentifier";
     self.pageControl.pageIndicatorTintColor =  [UIColor lightGrayColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#f6921e"];
     self.pageControl.enabled = false;
+    self.lineLayout.pageControl = self.pageControl;
 }
 
 //初始化menulist

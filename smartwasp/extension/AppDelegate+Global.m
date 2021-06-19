@@ -8,6 +8,7 @@
 #import "AppDelegate+Global.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "ConfigDAO.h"
+#import "NSObject+YYModel.h"
 
 @implementation AppDelegate (Global)
 
@@ -20,13 +21,10 @@
             }
         } requestSuccess:^(id _Nonnull success)  {
             //刷新绑定的设备列表
-            NSArray *temp = success[@"user_devices"];
-            NSMutableArray *devs = [[NSMutableArray alloc] initWithCapacity:temp.count];
+            NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];
             NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev"];
-            for(NSDictionary *dict in temp){
-                DeviceBean *dev = [[DeviceBean alloc]init];
-                [dev setValuesForKeysWithDictionary:dict];
-                [devs addObject:dev];
+            for(DeviceBean *dev in devices){
+                NSLog(@"%@",dev.device_id);
                 if(self.curDevice && [self.curDevice isEqual:dev]){
                     //刷新可能存在的设备信息更改
                     self.curDevice = dev;
@@ -35,7 +33,7 @@
                     self.curDevice = dev;
                 }
             }
-            self.devices = [devs copy];
+            self.devices = [devices copy];
             if(!self.curDevice && self.devices.count > 0){
                 //默认选择第一个
                 self.curDevice = self.devices[0];

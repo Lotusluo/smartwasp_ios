@@ -24,19 +24,21 @@
 }
 
 
-- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
+-(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
     CGFloat pageWidth = self.itemSize.width + self.minimumLineSpacing;
     CGFloat rawPageValue = self.collectionView.contentOffset.x / pageWidth;
     CGFloat currentPage = (velocity.x > 0.0) ? floor(rawPageValue) : ceil(rawPageValue);
     CGFloat nextPage = (velocity.x > 0.0) ? ceil(rawPageValue) : floor(rawPageValue);
     BOOL pannedLessThanAPage = fabs(1 + currentPage - rawPageValue) > 0.5;
     BOOL flicked = fabs(velocity.x) > 0.01;
-   if (pannedLessThanAPage && flicked) {
+    if(pannedLessThanAPage && flicked) {
        proposedContentOffset.x = nextPage * pageWidth;
-   } else {
+    }else {
        proposedContentOffset.x = round(rawPageValue) * pageWidth;
-   }
-   return proposedContentOffset;
+    }
+    int page = floor(proposedContentOffset.x / pageWidth);
+    self.pageControl.currentPage = page;
+    return proposedContentOffset;
 }
 
 @end

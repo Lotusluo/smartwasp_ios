@@ -16,8 +16,14 @@
 #import "BaseBean.h"
 #import "SkillBean.h"
 #import <Masonry.h>
+#import "UIViewHelper.h"
+#import "UIView+Extension.h"
+#import "SkillDetailViewController.h"
+#import "GSMonitorKeyboard.h"
+#import "ZASTextFieldFormat.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+#define kMaxLength 15
 
 @interface DeviceSetViewController ()<UITextFieldDelegate>
 
@@ -28,7 +34,7 @@
 //音箱名称
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 //音箱场景
-@property (weak, nonatomic) IBOutlet UILabel *positionView;
+@property (weak, nonatomic) IBOutlet UITextField *textField1;
 //到期时间
 @property (weak, nonatomic) IBOutlet UILabel *timeView;
 //私有技能控件容器高度
@@ -49,6 +55,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touchesBegan");
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self refresh];
@@ -64,7 +74,7 @@
 -(void)attachUI{
     if(self.deviceBean){
         self.textField.text = self.deviceBean.name;
-        self.positionView.text = self.deviceBean.zone;
+        self.textField1.text = self.deviceBean.zone;
         self.timeView.text = self.deviceBean.music.value;
     }
 }
@@ -82,8 +92,7 @@
             }
         } requestSuccess:^(id _Nonnull data) {
             [Loading dismiss];
-            DeviceBean *device = [[DeviceBean alloc]init];
-            [device setValuesForKeysWithDictionary:data];
+            DeviceBean *device = [DeviceBean yy_modelWithDictionary:data];
             device.client_id = self.deviceBean.client_id;
             device.device_id = self.deviceBean.device_id;
             self.deviceBean = device;
@@ -115,16 +124,16 @@
         if(cData.errCode == 0){
             [Loading dismiss];
             [self.skillContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-            NSArray *skills = cData.data;
-            self.skillContainerHeight.constant = 50 * skills.count;
-            for(NSDictionary* dict in skills){
-                SkillBean *skill = [SkillBean yy_modelWithDictionary:dict];
-                UIView *skillView = [[[NSBundle mainBundle] loadNibNamed:@"SkillView" owner:nil options:nil] lastObject];
-                ((UILabel*)skillView.subviews[0]).text = skill.shopName;
+            self.skillArray = [NSArray yy_modelArrayWithClass:SkillBean.class json:cData.data];
+            self.skillContainerHeight.constant = 50 * self.skillArray.count;
+            NSInteger index = 0;
+            for(SkillBean* skill in self.skillArray){
+                UIView *skillView = [UIViewHelper loadNibByName:@"SkillView"];
+                skillView.tag = index++;
+                [UIViewHelper attachText:skill.shopName widget:skillView.subviews[0]];
+                [UIViewHelper attachClick:skillView target:self action:@selector(doTapMethod:)];
+                skillView.height = 50;
                 [self.skillContainer addArrangedSubview:skillView];
-                [skillView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.height.mas_equalTo(@50);
-                }];
             }
         }else if(cData.errCode == 408){
             //重新绑定再获取技能
@@ -135,24 +144,45 @@
     }];
 }
 
+-(void)doTapMethod:(UITapGestureRecognizer*)sender{
+    if(![self canClick])
+        return;
+    NSInteger index = sender.view.tag;
+    if(self.skillArray){
+        SkillBean *skillBean = self.skillArray[index];
+        SkillDetailViewController *svc = [SkillDetailViewController createNewPage:skillBean];
+        [self.navigationController pushViewController:svc animated:YES];
+    }
+}
+
 //持续交互状态改变
 - (IBAction)onPrimaryAction:(id)sender {
+    if(![self canClick])
+        return;
     NSLog(@"onPrimaryAction");
 }
 
 //解除绑定点击
 - (IBAction)onUnbindClick:(id)sender {
+    if(![self canClick])
+        return;
     NSLog(@"onUnbindClick");
-}
-
-//设备位置选择
-- (IBAction)onPositionClick:(id)sender {
-    NSLog(@"onPositionClick");
 }
 
 //音乐畅听点击
 - (IBAction)onMusicClick:(id)sender {
+    if(![self canClick])
+        return;
     NSLog(@"onMusicClick");
+}
+
+-(BOOL)canClick{
+    GSMonitorKeyboard *monitor = [GSMonitorKeyboard sharedMonitorMethod];
+    if (monitor.showKeyboard) {
+        [self.view endEditing:YES];
+        return NO;
+    }
+    return YES;
 }
 
 /*
@@ -164,13 +194,18 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-#pragma mark - 实现UITextFieldDelegate委托协议方法
+#pragma mark --UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    if(textField == self.textField){
+        //音箱名称修改
+        NSLog(@"name modify");
+    }else if(textField == self.textField1){
+        //音箱位置修改
+        NSLog(@"position modify");
+    }
     return YES;
 }
-
 
 //静态方式生成ViewController
 +(DeviceSetViewController *) createNewPage:(DeviceBean *) deviceBean{
@@ -180,8 +215,6 @@
 }
 
 @end
-
-
 
 
 @implementation BottomLineView

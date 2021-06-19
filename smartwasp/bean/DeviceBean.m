@@ -20,17 +20,23 @@
     }
     return false;
 }
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{
+        @"music" : @[@"music",@"music_access"]};
+}
+
 //
 //return [NSString stringWithFormat:@"%@", num >= 10000 ? [NSString stringWithFormat:@"%0.1f万", (num / 10000.0)] : [NSString stringWithFormat:@"%zd",num]];
--(void)setValue:(id)value forKey:(NSString *)key{
-    if([key isEqualToString:@"music"] || [key isEqualToString:@"music_access"]){
-        MusicBean *temp = [MusicBean new];
-        [temp setValuesForKeysWithDictionary:value];
-        self.music = temp;
-        return;
-    }
-    [super setValue:value forKey:key];
-}
+//-(void)setValue:(id)value forKey:(NSString *)key{
+//    if([key isEqualToString:@"music"] || [key isEqualToString:@"music_access"]){
+//        MusicBean *temp = [MusicBean new];
+//        [temp setValuesForKeysWithDictionary:value];
+//        self.music = temp;
+//        return;
+//    }
+//    [super setValue:value forKey:key];
+//}
 
 //比较两个设备是否相等
 - (BOOL)isEqual:(id)other {

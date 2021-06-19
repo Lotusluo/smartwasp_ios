@@ -131,7 +131,11 @@
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
 		04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B9383D2636B4680071EFBB /* ic_add_white@2x.png */; };
+		04B93A09267C325F0036C0B6 /* UIViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B93A08267C325F0036C0B6 /* UIViewHelper.m */; };
+		04B93A0E267C49080036C0B6 /* SkillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B93A0C267C49080036C0B6 /* SkillDetailViewController.m */; };
+		04B93A0F267C49080036C0B6 /* SkillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */; };
 		04CCC4EC264B7CEB00A1F09F /* NetDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CCC4EB264B7CEB00A1F09F /* NetDAO.m */; };
+		04CE3403267DD155001C4216 /* GSMonitorKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE3402267DD155001C4216 /* GSMonitorKeyboard.m */; };
 		04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CED27326526B33007EFA25 /* ic_login_out@2x.png */; };
 		04D738CA2620288A00E4F00C /* CommonTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738C82620288A00E4F00C /* CommonTabController.m */; };
 		04D738D026202A7700E4F00C /* FinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738CE26202A7700E4F00C /* FinderViewController.m */; };
@@ -147,6 +151,7 @@
 		04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E7DF1B2621ABDA007C3790 /* Loading.m */; };
 		04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */; };
 		04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */; };
+		04EBA377267CAB15001D4FDF /* InsetsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBA375267CAB15001D4FDF /* InsetsLabel.m */; };
 		04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F840DB26316DA10068EFAF /* LoginViewController.xib */; };
 		90B35C25DB0C4AC24B8E3DD8 /* Pods_smartwasp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */; };
 /* End PBXBuildFile section */
@@ -367,8 +372,15 @@
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
 		04B9383D2636B4680071EFBB /* ic_add_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_add_white@2x.png"; sourceTree = "<group>"; };
+		04B93A07267C325F0036C0B6 /* UIViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewHelper.h; sourceTree = "<group>"; };
+		04B93A08267C325F0036C0B6 /* UIViewHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewHelper.m; sourceTree = "<group>"; };
+		04B93A0B267C49080036C0B6 /* SkillDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillDetailViewController.h; sourceTree = "<group>"; };
+		04B93A0C267C49080036C0B6 /* SkillDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillDetailViewController.m; sourceTree = "<group>"; };
+		04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillDetailViewController.xib; sourceTree = "<group>"; };
 		04CCC4EA264B7CEB00A1F09F /* NetDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetDAO.h; sourceTree = "<group>"; };
 		04CCC4EB264B7CEB00A1F09F /* NetDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetDAO.m; sourceTree = "<group>"; };
+		04CE3401267DD155001C4216 /* GSMonitorKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSMonitorKeyboard.h; sourceTree = "<group>"; };
+		04CE3402267DD155001C4216 /* GSMonitorKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSMonitorKeyboard.m; sourceTree = "<group>"; };
 		04CED27326526B33007EFA25 /* ic_login_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_login_out@2x.png"; sourceTree = "<group>"; };
 		04D738C72620288A00E4F00C /* CommonTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTabController.h; sourceTree = "<group>"; };
 		04D738C82620288A00E4F00C /* CommonTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonTabController.m; sourceTree = "<group>"; };
@@ -405,6 +417,8 @@
 		04E88CD92679CF3400FEA24C /* MusicPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicPlayViewController.h; sourceTree = "<group>"; };
 		04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
 		04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
+		04EBA375267CAB15001D4FDF /* InsetsLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsetsLabel.m; sourceTree = "<group>"; };
+		04EBA376267CAB15001D4FDF /* InsetsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsetsLabel.h; sourceTree = "<group>"; };
 		04F840DB26316DA10068EFAF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		3502DA920BECD51243A97A8E /* Pods-smartwasp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.debug.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.debug.xcconfig"; sourceTree = "<group>"; };
 		C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smartwasp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -753,6 +767,9 @@
 				04283AC8267AF4A000FFBF84 /* DeviceSetViewController.h */,
 				04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */,
 				04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */,
+				04B93A0B267C49080036C0B6 /* SkillDetailViewController.h */,
+				04B93A0C267C49080036C0B6 /* SkillDetailViewController.m */,
+				04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -789,6 +806,8 @@
 		04B261ED262D7BB000A92083 /* widgets */ = {
 			isa = PBXGroup;
 			children = (
+				04EBA376267CAB15001D4FDF /* InsetsLabel.h */,
+				04EBA375267CAB15001D4FDF /* InsetsLabel.m */,
 				040ED78A26561699001A2755 /* PageLineLayout.h */,
 				040ED78B26561699001A2755 /* PageLineLayout.m */,
 				04725166265E30F8003C4625 /* Toolbar.h */,
@@ -897,6 +916,10 @@
 				046EEFAA26298475001213DB /* CodingUtil.h */,
 				046EEFAB26298475001213DB /* CodingUtil.m */,
 				0415EADB26649A6D00A73CE7 /* ISWDelegate.h */,
+				04B93A07267C325F0036C0B6 /* UIViewHelper.h */,
+				04B93A08267C325F0036C0B6 /* UIViewHelper.m */,
+				04CE3401267DD155001C4216 /* GSMonitorKeyboard.h */,
+				04CE3402267DD155001C4216 /* GSMonitorKeyboard.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -991,6 +1014,7 @@
 				042B4EA3266724D0009BE328 /* GroupView.xib in Resources */,
 				04261A41261F1D36000D95D6 /* icon_tab_smart_selected@2x.png in Resources */,
 				044EAE74267886F800CC122A /* MusicItemCell.xib in Resources */,
+				04B93A0F267C49080036C0B6 /* SkillDetailViewController.xib in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
 				04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */,
 				0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */,
@@ -1083,6 +1107,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B93A09267C325F0036C0B6 /* UIViewHelper.m in Sources */,
 				040B95142666464800B306D2 /* JXCategoryIndicatorComponentView.m in Sources */,
 				040B95182666464800B306D2 /* JXCategoryIndicatorCell.m in Sources */,
 				040B951F2666464800B306D2 /* JXCategoryTitleImageCellModel.m in Sources */,
@@ -1104,6 +1129,7 @@
 				04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */,
 				040B951B2666464800B306D2 /* JXCategoryDotView.m in Sources */,
 				040B950B2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */,
+				04CE3403267DD155001C4216 /* GSMonitorKeyboard.m in Sources */,
 				040B952C2666464800B306D2 /* JXCategoryIndicatorParamsModel.m in Sources */,
 				040B95262666464800B306D2 /* JXCategoryNumberView.m in Sources */,
 				040B95302666464800B306D2 /* JXCategoryBaseView.m in Sources */,
@@ -1137,6 +1163,7 @@
 				043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */,
 				040B95402666464C00B306D2 /* HWFooterRefresh.m in Sources */,
 				044D723726396C8E0075994F /* NewPageViewController.m in Sources */,
+				04B93A0E267C49080036C0B6 /* SkillDetailViewController.m in Sources */,
 				04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */,
 				040B95172666464800B306D2 /* JXCategoryIndicatorCellModel.m in Sources */,
 				040B95202666464800B306D2 /* JXCategoryTitleCellModel.m in Sources */,
@@ -1147,6 +1174,7 @@
 				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,
 				045276432671DBE5000ECA78 /* ItemViewController.m in Sources */,
+				04EBA377267CAB15001D4FDF /* InsetsLabel.m in Sources */,
 				040B95102666464800B306D2 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				040B953F2666464C00B306D2 /* HWRefreshKeyValue.m in Sources */,
 				040B95282666464800B306D2 /* JXCategoryNumberCellModel.m in Sources */,

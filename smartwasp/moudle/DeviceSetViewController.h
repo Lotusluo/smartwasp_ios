@@ -28,4 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface NSScrollView : UIScrollView
+
+@end
+
 NS_ASSUME_NONNULL_END

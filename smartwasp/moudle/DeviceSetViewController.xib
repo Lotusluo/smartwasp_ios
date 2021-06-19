@@ -11,13 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceSetViewController">
             <connections>
+                <outlet property="deviceName" destination="Wef-5r-Ops" id="Reg-aV-e5u"/>
+                <outlet property="deviceZone" destination="Gk6-4t-hzw" id="1Ze-gN-WYf"/>
                 <outlet property="keepView" destination="nOP-4W-Zyn" id="ytE-QV-aLu"/>
                 <outlet property="scrollView" destination="lyx-Oi-DI1" id="8hq-ed-Ynn"/>
                 <outlet property="skillContainer" destination="dYe-F2-Ahi" id="02g-rR-9aS"/>
                 <outlet property="skillContainerHeight" destination="uYp-Df-m21" id="HJV-hw-9Gg"/>
                 <outlet property="switchBtn" destination="C8j-07-CNV" id="HHX-Yh-2w9"/>
-                <outlet property="textField" destination="Wef-5r-Ops" id="odp-YR-cvz"/>
-                <outlet property="textField1" destination="Gk6-4t-hzw" id="GW5-eL-JZn"/>
                 <outlet property="timeView" destination="ONU-oB-mtk" id="eme-Qm-o9S"/>
                 <outlet property="toolBar" destination="PZ1-2p-orf" id="WH4-oT-eSo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -41,7 +41,7 @@
                     <color key="textColor" red="0.69474148749999998" green="0.68475753070000001" blue="0.61793631319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lyx-Oi-DI1">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lyx-Oi-DI1" customClass="NSScrollView">
                     <rect key="frame" x="0.0" y="128" width="414" height="734"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tc7-hW-OAS" userLabel="设备信息" customClass="BottomLineView">
@@ -172,6 +172,9 @@
                                 </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                            </accessibility>
                             <constraints>
                                 <constraint firstItem="C8j-07-CNV" firstAttribute="centerY" secondItem="79t-Aj-Dfo" secondAttribute="centerY" id="1EV-FY-HiM"/>
                                 <constraint firstAttribute="trailing" secondItem="0p7-e0-T9W" secondAttribute="trailing" constant="10" id="2fm-8F-ADM"/>

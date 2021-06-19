@@ -20,7 +20,6 @@
 #import "UIView+Extension.h"
 #import "SkillDetailViewController.h"
 #import "GSMonitorKeyboard.h"
-#import "ZASTextFieldFormat.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define kMaxLength 15
@@ -32,9 +31,9 @@
 @property (weak, nonatomic) IBOutlet UIView *keepView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 //音箱名称
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UITextField *deviceName;
 //音箱场景
-@property (weak, nonatomic) IBOutlet UITextField *textField1;
+@property (weak, nonatomic) IBOutlet UITextField *deviceZone;
 //到期时间
 @property (weak, nonatomic) IBOutlet UILabel *timeView;
 //私有技能控件容器高度
@@ -56,7 +55,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"touchesBegan");
+    [self canClick];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -73,8 +72,8 @@
 //界面根据数据改变
 -(void)attachUI{
     if(self.deviceBean){
-        self.textField.text = self.deviceBean.name;
-        self.textField1.text = self.deviceBean.zone;
+        self.deviceName.text = self.deviceBean.name;
+        self.deviceZone.text = self.deviceBean.zone;
         self.timeView.text = self.deviceBean.music.value;
     }
 }
@@ -197,10 +196,10 @@
 #pragma mark --UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    if(textField == self.textField){
+    if(textField == self.deviceName){
         //音箱名称修改
         NSLog(@"name modify");
-    }else if(textField == self.textField1){
+    }else if(textField == self.deviceZone){
         //音箱位置修改
         NSLog(@"position modify");
     }
@@ -225,6 +224,15 @@
     CGContextMoveToPoint(context, 20, self.bounds.size.height);
     CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height);
     CGContextStrokePath(context);
+}
+
+@end
+
+
+@implementation NSScrollView
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [[self nextResponder] touchesBegan:touches withEvent:event];
 }
 
 @end

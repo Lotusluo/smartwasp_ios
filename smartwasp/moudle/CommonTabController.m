@@ -89,7 +89,7 @@
 
 //打开一个新页面
 -(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
-    NewPageViewController *newPage = [NewPageViewController createNewPage:tag];
+    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
     [self.navigationController pushViewController:newPage animated:YES];
 }
 

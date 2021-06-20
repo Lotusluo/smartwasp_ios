@@ -158,21 +158,22 @@
     transAnimation.toValue = [NSValue valueWithCGPoint:toValue];
     transAnimation.duration = 0.2;
     transAnimation.removedOnCompletion = NO;
-    [self.layer addAnimation:transAnimation forKey:[NSString stringWithFormat:@"position:%d",flag]];
+    transAnimation.fillMode = kCAFillModeForwards;
+    [self.layer addAnimation:transAnimation forKey:@"position"];
     
     //透明度变化
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.fromValue = [NSNumber numberWithFloat:flag ? 0 : 1];
     opacityAnimation.toValue = [NSNumber numberWithFloat:flag ? 1 : 0];
-    opacityAnimation.duration = 0.2;
-    opacityAnimation.removedOnCompletion = NO;
+    opacityAnimation.duration = 0.22;
+    transAnimation.removedOnCompletion = YES;
     [self.mask.layer addAnimation:opacityAnimation forKey:@"opacity"];
 }
 
 #pragma mark --CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    [self removeFromSuperview];
     if(self.mask){
+        [self.mask.layer removeAllAnimations];
         [self.mask removeFromSuperview];
     }
 }

@@ -13,7 +13,10 @@
 #import "PageControl2.h"
 #import "NormalNaviCell.h"
 #import "DeviceSetViewController.h"
+#import "NewPageViewController.h"
 #import <Masonry.h>
+#import "IFLYOSSDK.h"
+#import "UsrCenterViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -91,7 +94,19 @@ static NSString *const ID = @"CellIdentifier";
 
 //菜单点击事件
 -(void) onClick:(NSInteger)tag{
-    NSLog(@"onClick:%ld",tag);
+    if(tag == 4){
+        return;
+    }
+    URL_PATH_ENUM path;
+    if(tag == 1){
+        path = IFTTT;
+    }else if(tag == 2){
+        path = CLOCKS;
+    }else {
+        path = ACCOUNTS;
+    }
+    NewPageViewController *nvc = [NewPageViewController createNewPageWithpath:path];
+    [self.navigationController pushViewController:nvc animated:YES];
 }
 
 //重加载数据
@@ -152,6 +167,11 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 
+- (IBAction)onUsrCenterClick:(id)sender {
+    UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+    UsrCenterViewController *ucvc = [board instantiateViewControllerWithIdentifier: @"UsrCenterViewController"];
+    [self.navigationController pushViewController:ucvc animated:YES];
+}
 
 
 /*

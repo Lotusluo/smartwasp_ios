@@ -154,6 +154,8 @@
 		04EBA377267CAB15001D4FDF /* InsetsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBA375267CAB15001D4FDF /* InsetsLabel.m */; };
 		04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F840DB26316DA10068EFAF /* LoginViewController.xib */; };
 		90B35C25DB0C4AC24B8E3DD8 /* Pods_smartwasp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */; };
+		F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F306DD25267F7CA800BBD170 /* JCGCDTimer.m */; };
+		F39EEE9D267EC9E600F89B2D /* UsrCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -423,6 +425,10 @@
 		3502DA920BECD51243A97A8E /* Pods-smartwasp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.debug.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.debug.xcconfig"; sourceTree = "<group>"; };
 		C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smartwasp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C880A1668B648AA14A5AA2E6 /* Pods-smartwasp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.release.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.release.xcconfig"; sourceTree = "<group>"; };
+		F306DD24267F7CA800BBD170 /* JCGCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCGCDTimer.h; sourceTree = "<group>"; };
+		F306DD25267F7CA800BBD170 /* JCGCDTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCGCDTimer.m; sourceTree = "<group>"; };
+		F39EEE9A267EC9E600F89B2D /* UsrCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsrCenterViewController.h; sourceTree = "<group>"; };
+		F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsrCenterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,6 +776,8 @@
 				04B93A0B267C49080036C0B6 /* SkillDetailViewController.h */,
 				04B93A0C267C49080036C0B6 /* SkillDetailViewController.m */,
 				04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */,
+				F39EEE9A267EC9E600F89B2D /* UsrCenterViewController.h */,
+				F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -920,6 +928,8 @@
 				04B93A08267C325F0036C0B6 /* UIViewHelper.m */,
 				04CE3401267DD155001C4216 /* GSMonitorKeyboard.h */,
 				04CE3402267DD155001C4216 /* GSMonitorKeyboard.m */,
+				F306DD24267F7CA800BBD170 /* JCGCDTimer.h */,
+				F306DD25267F7CA800BBD170 /* JCGCDTimer.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1134,6 +1144,7 @@
 				040B95262666464800B306D2 /* JXCategoryNumberView.m in Sources */,
 				040B95302666464800B306D2 /* JXCategoryBaseView.m in Sources */,
 				0425CD64262EE154004D4D23 /* BaseTabViewController.m in Sources */,
+				F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */,
 				040B95122666464800B306D2 /* JXCategoryIndicatorImageView.m in Sources */,
 				045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */,
 				040B95152666464800B306D2 /* JXCategoryIndicatorDotLineView.m in Sources */,
@@ -1188,6 +1199,7 @@
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
 				040B95312666464800B306D2 /* JXCategoryBaseCell.m in Sources */,
+				F39EEE9D267EC9E600F89B2D /* UsrCenterViewController.m in Sources */,
 				040B95212666464800B306D2 /* JXCategoryTitleCell.m in Sources */,
 				0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */,
 				046EEFB726298954001213DB /* ConfigDAO.m in Sources */,
@@ -1351,6 +1363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FUXPJ5TUQX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1403,6 +1416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FUXPJ5TUQX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

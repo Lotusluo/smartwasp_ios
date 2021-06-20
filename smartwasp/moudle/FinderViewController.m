@@ -251,7 +251,7 @@ static NSString *const ID = @"CellIdentifier";
 #pragma mark --UICollectionViewDelegate
 -( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
     BannerBean *bannerBean = _findBean.banners[indexPath.row];
-    NewPageViewController *newPage = [NewPageViewController createNewPage1:bannerBean.url];
+    NewPageViewController *newPage = [NewPageViewController createNewPageWithUrl:bannerBean.url];
     newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
     NSLog(@"%@",bannerBean.url);

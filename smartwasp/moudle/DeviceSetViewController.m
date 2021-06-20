@@ -20,6 +20,7 @@
 #import "UIView+Extension.h"
 #import "SkillDetailViewController.h"
 #import "GSMonitorKeyboard.h"
+#import "NewPageViewController.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define kMaxLength 15
@@ -172,7 +173,8 @@
 - (IBAction)onMusicClick:(id)sender {
     if(![self canClick])
         return;
-    NSLog(@"onMusicClick");
+    NewPageViewController *nvc = [NewPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
+    [self.navigationController pushViewController:nvc animated:YES];
 }
 
 -(BOOL)canClick{

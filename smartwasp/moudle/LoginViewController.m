@@ -72,7 +72,7 @@
  */
 -(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
     NSLog(@"打开新网页：%@ noBack:%@",tag,noBack);
-    NewPageViewController *newPage = [NewPageViewController createNewPage:tag];
+    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
     newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
 }

@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IFLYOSSDK.h"
 
 @interface NewPageViewController : UIViewController
-@property (copy,nonatomic) NSString *contextTag;
-@property (copy,nonatomic) NSString *openUrl;
+
 @property (nonatomic) Boolean isInterupt;
-+(NewPageViewController *) createNewPage:(NSString *) tag;
-+(NewPageViewController *) createNewPage1:(NSString *) url;
+
+@property (nonatomic) BOOL disappearHideBar;
+
+@property (copy,nonatomic) NSString *contextTag;
++(NewPageViewController *) createNewPageWithTag:(NSString *) tag;
+
+@property (copy,nonatomic) NSString *openUrl;
++(NewPageViewController *) createNewPageWithUrl:(NSString *) url;
+
+@property(nonatomic) URL_PATH_ENUM  path;
++(NewPageViewController *) createNewPageWithpath:(URL_PATH_ENUM) path;
 @end

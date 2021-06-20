@@ -8,9 +8,12 @@
 
 #import "NewPageViewController.h"
 #import <WebKit/WebKit.h>
+#import "AppDelegate.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+
 @interface NewPageViewController ()<WKNavigationDelegate>
 @property(strong,nonatomic) WKWebView *webView;
 @property(copy,nonatomic) NSString *Tag;
@@ -32,16 +35,30 @@
     configuration.userContentController = userContentController;
     self.webView.configuration.userContentController = userContentController;
     self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:configuration];
-    [self.view addSubview:self.webView];
-    [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
-    [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
+    [self.view addSubview:self.webView];
+ 
+    
+    
+    if (self.contextTag) {
+        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
+        [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
+    }
+    
+    
     if(self.openUrl){
         NSURL *url = [NSURL URLWithString:self.openUrl];
         NSURLRequest *req = [NSURLRequest requestWithURL:url];
         [self.webView loadRequest:req];
     }
-    if(_isInterupt){
+
+
+    if(self.path){
+        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
+        [[IFLYOSSDK shareInstance] openWebPage:self.Tag pageIndex:self.path deviceId:APPDELEGATE.curDevice.device_id];
+    }
+ 
+    if(self.isInterupt){
         self.webView.navigationDelegate = self;
     }
     // Do any additional setup after loading the view from its nib.
@@ -58,7 +75,7 @@
     [super viewWillDisappear:animated];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     [[IFLYOSSDK shareInstance] webViewDisappear:self.Tag];
-    if(!self.navigationController.isNavigationBarHidden && self.navigationController.viewControllers.count <= 1){
+    if(!self.navigationController.isNavigationBarHidden && self.disappearHideBar){
         [self.navigationController setNavigationBarHidden:YES];
     }
 }
@@ -68,28 +85,10 @@
 }
 
 -(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
-    NSLog(@"从【%@】打开新页面:",tag,noBack);
-    NewPageViewController *newPage = [NewPageViewController createNewPage:tag];
+    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
     [self.navigationController pushViewController:newPage animated:YES];
 }
 
--(void) openNewBrower:(NSString *) url{
-    NSURL *tmpURL = [NSURL URLWithString:url];
-    NSString *tmpStr = tmpURL.absoluteString;
-    NSArray * array1 = [tmpStr componentsSeparatedByString:@"kugouurl://userId="];
-    if (array1.count > 0 && [url rangeOfString:@"kugouurl://userId="].location !=NSNotFound) {
-        NSString *userId = array1[1];
-        if (userId) {
-            [[IFLYOSSDK shareInstance] jumpKugouVIPPage:userId];
-        }
-    }else{
-        if ([[UIApplication sharedApplication] canOpenURL:tmpURL]){
-            [[UIApplication sharedApplication] openURL:tmpURL options:nil completionHandler:^(BOOL success) {
-                
-            }];
-        }
-    }
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -122,8 +121,7 @@
 
 #pragma mark - WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if(!_isInterupt)
-        return;
+    if(!self.isInterupt) return;
     NSString *urlStr = navigationAction.request.URL.absoluteString;
     if(
        [urlStr containsString:@"iflyhome_app_agreement.html"] ||
@@ -152,15 +150,26 @@
     }];
 }
 
-+(NewPageViewController *) createNewPage:(NSString *) tag{
+
+
++(NewPageViewController *) createNewPageWithTag:(NSString *) tag{
     NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
     vc.contextTag = tag;
+    vc.disappearHideBar = YES;
     return vc;
 }
 
-+(NewPageViewController *) createNewPage1:(NSString *) url{
++(NewPageViewController *) createNewPageWithUrl:(NSString *) url{
     NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
     vc.openUrl = url;
+    vc.disappearHideBar = YES;
+    return vc;
+}
+
++(NewPageViewController *) createNewPageWithpath:(URL_PATH_ENUM) path{
+    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
+    vc.path = path;
+    vc.disappearHideBar = YES;
     return vc;
 }
 

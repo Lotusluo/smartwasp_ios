@@ -297,6 +297,16 @@ static NSString *const ID = @"CellIdentifier";
     [self.navigationController pushViewController:ivc animated:YES];
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.toolbar startJump];
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.toolbar stopJump];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,6 +15,7 @@
                 <outlet property="bannerWidth" destination="00q-Ix-032" id="R6Q-3X-9uJ"/>
                 <outlet property="collectionView" destination="cXn-7F-feu" id="a1A-1P-KRt"/>
                 <outlet property="lineLayout" destination="7aU-As-cGv" id="Vst-rk-ev7"/>
+                <outlet property="musicView" destination="85K-rU-k55" id="HYf-Nw-07s"/>
                 <outlet property="naviContent" destination="etN-Fb-Q7F" id="UJA-S9-2vQ"/>
                 <outlet property="pageControl" destination="W8r-cG-hyo" id="uBe-Mx-eQJ"/>
                 <outlet property="toolbar" destination="QtB-dZ-qJG" id="xMU-Yf-UcE"/>
@@ -47,12 +48,22 @@
                                 <action selector="onUsrCenterClick:" destination="-1" eventType="touchUpInside" id="lcw-sV-hmg"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85K-rU-k55" customClass="LXSEQView">
+                            <rect key="frame" x="374" y="9.5" width="30" height="30"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="7tX-Vj-ARF"/>
+                                <constraint firstAttribute="width" constant="30" id="jON-nH-dNn"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="gre-4t-yih" firstAttribute="centerX" secondItem="QtB-dZ-qJG" secondAttribute="centerX" id="5Cr-rh-YVa"/>
                         <constraint firstItem="2wb-FE-7WL" firstAttribute="centerY" secondItem="QtB-dZ-qJG" secondAttribute="centerY" id="Xod-h7-EqI"/>
+                        <constraint firstAttribute="trailing" secondItem="85K-rU-k55" secondAttribute="trailing" constant="10" id="bEo-tu-naZ"/>
                         <constraint firstAttribute="height" constant="49" id="e2O-gj-0hR"/>
+                        <constraint firstItem="85K-rU-k55" firstAttribute="centerY" secondItem="QtB-dZ-qJG" secondAttribute="centerY" id="lJF-kR-r7j"/>
                         <constraint firstItem="gre-4t-yih" firstAttribute="centerY" secondItem="QtB-dZ-qJG" secondAttribute="centerY" id="lge-DN-FGe"/>
                         <constraint firstItem="2wb-FE-7WL" firstAttribute="leading" secondItem="QtB-dZ-qJG" secondAttribute="leading" constant="18" id="mNw-CG-m4g"/>
                     </constraints>

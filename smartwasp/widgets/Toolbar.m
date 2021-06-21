@@ -12,6 +12,7 @@
 #import "UIView+Extension.h"
 #import <Masonry.h>
 #import <objc/runtime.h>
+#import "LXSEQView.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -25,6 +26,8 @@
 @property (strong,nonatomic) UIImage *statusImage;
 
 @property (weak, nonatomic) IBOutlet UIImageView *combo;
+//音乐跳动动画
+@property (weak, nonatomic) IBOutlet LXSEQView *jump;
 
 
 @end
@@ -33,7 +36,6 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
-//    [self ritl_addBorderWithColor:[UIColor systemOrangeColor] BodrerWidth:0.2f direction:RITLBorderDirectionBottom];
     return self;
 }
 
@@ -76,6 +78,20 @@
     _devStatusIcon.hidden = true;
     _combo.hidden = true;
     _devNameTxt.text = @"请添加设备";
+}
+
+//音乐开始跳动
+- (void)startJump{
+    if(!self.jump)
+        return;
+    [self.jump startAnimation];
+}
+
+//音乐停止跳动
+- (void)stopJump{
+    if(!self.jump)
+        return;
+    [self.jump stopAnimation];
 }
 
 //静态生成

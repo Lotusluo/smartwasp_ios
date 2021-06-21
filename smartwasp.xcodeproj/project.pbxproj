@@ -112,7 +112,6 @@
 		0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C71D2665DD3200CD6553 /* MusicPayView.xib */; };
 		0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C7262665E7D000CD6553 /* FindBannerCell.xib */; };
 		045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A3F9726730E9D00A3DA62 /* SongsBean.m */; };
-		045A3F9C26730ED600A3DA62 /* SongBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A3F9B26730ED600A3DA62 /* SongBean.m */; };
 		045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D792658D51700672251 /* UILabel+Extension.m */; };
 		045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D852658E1F200672251 /* UIImage+Extension.m */; };
 		045E5D9026590BF600672251 /* PageControl2.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D8F26590BF600672251 /* PageControl2.m */; };
@@ -130,6 +129,12 @@
 		0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */; };
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
+		04B5D1BC2680615B00323E3C /* LXSEQView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1BA2680615B00323E3C /* LXSEQView.m */; };
+		04B5D1C62680938000323E3C /* MusicPlayerBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1C52680938000323E3C /* MusicPlayerBean.m */; };
+		04B5D1CF2680959700323E3C /* SongBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1CE2680959700323E3C /* SongBean.m */; };
+		04B5D1D32680964700323E3C /* SpeakerBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1D22680964700323E3C /* SpeakerBean.m */; };
+		04B5D1D72680969B00323E3C /* MusicStateBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1D62680969B00323E3C /* MusicStateBean.m */; };
+		04B5D1DB26809B9E00323E3C /* StatusBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B5D1DA26809B9E00323E3C /* StatusBean.m */; };
 		04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B9383D2636B4680071EFBB /* ic_add_white@2x.png */; };
 		04B93A09267C325F0036C0B6 /* UIViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B93A08267C325F0036C0B6 /* UIViewHelper.m */; };
 		04B93A0E267C49080036C0B6 /* SkillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B93A0C267C49080036C0B6 /* SkillDetailViewController.m */; };
@@ -344,8 +349,6 @@
 		0454C7262665E7D000CD6553 /* FindBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindBannerCell.xib; sourceTree = "<group>"; };
 		045A3F9626730E9D00A3DA62 /* SongsBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongsBean.h; sourceTree = "<group>"; };
 		045A3F9726730E9D00A3DA62 /* SongsBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongsBean.m; sourceTree = "<group>"; };
-		045A3F9A26730ED600A3DA62 /* SongBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongBean.h; sourceTree = "<group>"; };
-		045A3F9B26730ED600A3DA62 /* SongBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongBean.m; sourceTree = "<group>"; };
 		045E5D782658D4E100672251 /* UILabel+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
 		045E5D792658D51700672251 /* UILabel+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extension.m"; sourceTree = "<group>"; };
 		045E5D852658E1F200672251 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
@@ -373,6 +376,18 @@
 		0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_choose@2x.png"; sourceTree = "<group>"; };
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
+		04B5D1BA2680615B00323E3C /* LXSEQView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXSEQView.m; sourceTree = "<group>"; };
+		04B5D1BB2680615B00323E3C /* LXSEQView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXSEQView.h; sourceTree = "<group>"; };
+		04B5D1C42680938000323E3C /* MusicPlayerBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicPlayerBean.h; sourceTree = "<group>"; };
+		04B5D1C52680938000323E3C /* MusicPlayerBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicPlayerBean.m; sourceTree = "<group>"; };
+		04B5D1CD2680959700323E3C /* SongBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongBean.h; sourceTree = "<group>"; };
+		04B5D1CE2680959700323E3C /* SongBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongBean.m; sourceTree = "<group>"; };
+		04B5D1D12680964700323E3C /* SpeakerBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeakerBean.h; sourceTree = "<group>"; };
+		04B5D1D22680964700323E3C /* SpeakerBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeakerBean.m; sourceTree = "<group>"; };
+		04B5D1D52680969B00323E3C /* MusicStateBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicStateBean.h; sourceTree = "<group>"; };
+		04B5D1D62680969B00323E3C /* MusicStateBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicStateBean.m; sourceTree = "<group>"; };
+		04B5D1D926809B9E00323E3C /* StatusBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusBean.h; sourceTree = "<group>"; };
+		04B5D1DA26809B9E00323E3C /* StatusBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusBean.m; sourceTree = "<group>"; };
 		04B9383D2636B4680071EFBB /* ic_add_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_add_white@2x.png"; sourceTree = "<group>"; };
 		04B93A07267C325F0036C0B6 /* UIViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewHelper.h; sourceTree = "<group>"; };
 		04B93A08267C325F0036C0B6 /* UIViewHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewHelper.m; sourceTree = "<group>"; };
@@ -785,6 +800,8 @@
 		047FF9EE261FF85F005E87A7 /* bean */ = {
 			isa = PBXGroup;
 			children = (
+				04B5D1CD2680959700323E3C /* SongBean.h */,
+				04B5D1CE2680959700323E3C /* SongBean.m */,
 				042B4E9A26672420009BE328 /* BannerBean.h */,
 				042B4E9B26672420009BE328 /* BannerBean.m */,
 				042B4E9626672371009BE328 /* DeviceBean.h */,
@@ -803,10 +820,16 @@
 				040B9495266622BE00B306D2 /* GroupBean.h */,
 				045A3F9626730E9D00A3DA62 /* SongsBean.h */,
 				045A3F9726730E9D00A3DA62 /* SongsBean.m */,
-				045A3F9A26730ED600A3DA62 /* SongBean.h */,
-				045A3F9B26730ED600A3DA62 /* SongBean.m */,
 				0410BE1F267B410900CE993E /* SkillBean.h */,
 				0410BE20267B410900CE993E /* SkillBean.m */,
+				04B5D1C42680938000323E3C /* MusicPlayerBean.h */,
+				04B5D1C52680938000323E3C /* MusicPlayerBean.m */,
+				04B5D1D12680964700323E3C /* SpeakerBean.h */,
+				04B5D1D22680964700323E3C /* SpeakerBean.m */,
+				04B5D1D52680969B00323E3C /* MusicStateBean.h */,
+				04B5D1D62680969B00323E3C /* MusicStateBean.m */,
+				04B5D1D926809B9E00323E3C /* StatusBean.h */,
+				04B5D1DA26809B9E00323E3C /* StatusBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -814,6 +837,8 @@
 		04B261ED262D7BB000A92083 /* widgets */ = {
 			isa = PBXGroup;
 			children = (
+				04B5D1BB2680615B00323E3C /* LXSEQView.h */,
+				04B5D1BA2680615B00323E3C /* LXSEQView.m */,
 				04EBA376267CAB15001D4FDF /* InsetsLabel.h */,
 				04EBA375267CAB15001D4FDF /* InsetsLabel.m */,
 				040ED78A26561699001A2755 /* PageLineLayout.h */,
@@ -1151,6 +1176,7 @@
 				040B951C2666464800B306D2 /* JXCategoryDotCellModel.m in Sources */,
 				040B95112666464800B306D2 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
 				040B951A2666464800B306D2 /* JXCategoryDotCell.m in Sources */,
+				04B5D1BC2680615B00323E3C /* LXSEQView.m in Sources */,
 				0410BE21267B410900CE993E /* SkillBean.m in Sources */,
 				0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */,
 				0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */,
@@ -1162,13 +1188,13 @@
 				040B952A2666464800B306D2 /* JXCategoryFactory.m in Sources */,
 				045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */,
 				0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */,
-				045A3F9C26730ED600A3DA62 /* SongBean.m in Sources */,
 				042B4E9026672127009BE328 /* MusicBean.m in Sources */,
 				04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */,
 				044EAE8726789FA800CC122A /* MusicItemCell.m in Sources */,
 				04783315262D1F3600684E9C /* iToast.m in Sources */,
 				04D738CA2620288A00E4F00C /* CommonTabController.m in Sources */,
 				040B95292666464800B306D2 /* JXCategoryListContainerView.m in Sources */,
+				04B5D1CF2680959700323E3C /* SongBean.m in Sources */,
 				040B95192666464800B306D2 /* JXCategoryIndicatorView.m in Sources */,
 				040B95242666464800B306D2 /* JXCategoryImageCell.m in Sources */,
 				043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */,
@@ -1181,7 +1207,9 @@
 				040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */,
 				042B4E9C26672420009BE328 /* BannerBean.m in Sources */,
 				045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */,
+				04B5D1D32680964700323E3C /* SpeakerBean.m in Sources */,
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
+				04B5D1D72680969B00323E3C /* MusicStateBean.m in Sources */,
 				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,
 				045276432671DBE5000ECA78 /* ItemViewController.m in Sources */,
@@ -1196,6 +1224,7 @@
 				040B948E26661F7100B306D2 /* ItemBean.m in Sources */,
 				040B95132666464800B306D2 /* JXCategoryIndicatorBallView.m in Sources */,
 				04261965261EFE1A000D95D6 /* AppDelegate.m in Sources */,
+				04B5D1DB26809B9E00323E3C /* StatusBean.m in Sources */,
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
 				040B95312666464800B306D2 /* JXCategoryBaseCell.m in Sources */,
@@ -1204,6 +1233,7 @@
 				0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */,
 				046EEFB726298954001213DB /* ConfigDAO.m in Sources */,
 				04725178265E32C4003C4625 /* DeviceDialog.m in Sources */,
+				04B5D1C62680938000323E3C /* MusicPlayerBean.m in Sources */,
 				040B951E2666464800B306D2 /* JXCategoryTitleImageCell.m in Sources */,
 				04261976261EFE1C000D95D6 /* main.m in Sources */,
 				040B95232666464800B306D2 /* JXCategoryImageView.m in Sources */,

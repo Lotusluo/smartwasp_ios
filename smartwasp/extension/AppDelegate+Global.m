@@ -9,6 +9,8 @@
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "ConfigDAO.h"
 #import "NSObject+YYModel.h"
+#import "LoginViewController.h"
+#import "MainViewController.h"
 
 @implementation AppDelegate (Global)
 
@@ -18,13 +20,13 @@
         [[IFLYOSSDK shareInstance] getUserDevices:^(NSInteger code) {
             if(code != 200){
                 //加载错误
+                NSLog(@"获取设备列表失败");
             }
         } requestSuccess:^(id _Nonnull success)  {
             //刷新绑定的设备列表
             NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];
             NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev"];
             for(DeviceBean *dev in devices){
-                NSLog(@"%@",dev.device_id);
                 if(self.curDevice && [self.curDevice isEqual:dev]){
                     //刷新可能存在的设备信息更改
                     self.curDevice = dev;
@@ -45,6 +47,25 @@
             //加载错误
         }];
     }
+}
+
+//跳转登陆页面
+-(void)toLogin{
+    LoginViewController *loginVc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:loginVc];
+    [navVc setNavigationBarHidden:YES animated:YES];
+    navVc.navigationBar.topItem.title = @"";
+    self.window.rootViewController = navVc;
+}
+
+//设置主界面
+-(void)toMain{
+    MainViewController *tabVc =[[MainViewController alloc] init];
+    UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:tabVc];
+    //默认隐藏导航条
+    [navVc setNavigationBarHidden:YES animated:YES];
+    navVc.navigationBar.topItem.title = @"";
+    self.window.rootViewController = navVc;
 }
 
 @end

@@ -14,11 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(Toolbar*)newView;
 //设置设备是否在线
-- (void) setDevStatus:(Boolean) isOnline;
+- (void)setDevStatus:(Boolean) isOnline;
 //设置设备名称
-- (void) setDevName:(NSString*)devName;
+- (void)setDevName:(NSString*)devName;
 //暂无设备
-- (void) setEmpty;
+- (void)setEmpty;
+//音乐开始跳动
+- (void)startJump;
+//音乐停止跳动
+- (void)stopJump;
 
 @end
 

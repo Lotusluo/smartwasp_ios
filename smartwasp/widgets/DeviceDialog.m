@@ -95,7 +95,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
 //   iOS 11设置 header 高度必须同时实现  viewForHeaderInSection 和  heightForHeaderInSection ；
 //   iOS 11 之前版本只设置  heightForHeaderInSection 即可设置   header 高度，只是在  UITableViewStyleGrouped   时无法设置 header 高度为0，设置0时高度为系统默认高度
-    static NSString *footerSectionID = @"cityHeaderSectionID";
+    static NSString *footerSectionID = @"footerSectionID";
     UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerSectionID];
     if (footerView == nil){
         footerView =  [[[NSBundle mainBundle] loadNibNamed:@"DeviceAddCell" owner:nil options:nil] lastObject];
@@ -172,6 +172,7 @@
 
 #pragma mark --CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    [self removeFromSuperview];
     if(self.mask){
         [self.mask.layer removeAllAnimations];
         [self.mask removeFromSuperview];

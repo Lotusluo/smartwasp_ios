@@ -49,12 +49,7 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (self.contextTag) {
-        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:LOGIN_PAGE contextTag:self.contextTag];
-    }else{
-        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:LOGIN_PAGE];
-    }
-
+    [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:LOGIN_PAGE];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:LOGIN_PAGE];
     [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
 }

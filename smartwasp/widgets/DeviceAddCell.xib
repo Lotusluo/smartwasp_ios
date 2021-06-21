@@ -13,8 +13,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvY-wE-UyX">
-                    <rect key="frame" x="40" y="17" width="82" height="20"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvY-wE-UyX">
+                    <rect key="frame" x="10" y="17" width="82" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="添加设备" image="icon_add">
@@ -23,7 +23,7 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="JvY-wE-UyX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="4Ln-wr-8zJ"/>
+                <constraint firstItem="JvY-wE-UyX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="4Ln-wr-8zJ"/>
                 <constraint firstItem="JvY-wE-UyX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mM0-Sr-wq4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

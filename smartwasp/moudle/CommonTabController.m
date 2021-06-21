@@ -67,11 +67,6 @@
     }];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    NSLog(@"viewDidLayoutSubviews:%@",NSStringFromCGRect(_toolbar.frame));
-}
-
 #pragma mark - 处理通知
 -(void)devSetObserver:(NSNotification*)notification {
     NSLog(@"收到设备选择的消息通知");
@@ -93,24 +88,19 @@
     [self.navigationController pushViewController:newPage animated:YES];
 }
 
--(void) openNewBrower:(NSString *) url{
-    
-}
-
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear:%lu",(unsigned long)_vcType);
     [[IFLYOSSDK shareInstance] webViewAppear:_tag];
+    [self.toolbar startJump];
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    NSLog(@"viewWillDisappear:%lu",(unsigned long)_vcType);
     [[IFLYOSSDK shareInstance] webViewDisappear:_tag];
+    [self.toolbar stopJump];
 }
 
 -(void) dealloc{
-    NSLog(@"移除");
     [[IFLYOSSDK shareInstance] unregisterWebView:_tag];
 }
 

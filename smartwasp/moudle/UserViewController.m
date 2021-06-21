@@ -16,6 +16,7 @@
 #import "NewPageViewController.h"
 #import <Masonry.h>
 #import "IFLYOSSDK.h"
+#import "LXSEQView.h"
 #import "UsrCenterViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -33,6 +34,7 @@ ISWClickDelegate>
 
 /**###############ToolBar###############*/
 @property (weak, nonatomic) IBOutlet UIView *toolbar;
+@property (weak, nonatomic) IBOutlet LXSEQView *musicView;
 @property (weak, nonatomic) IBOutlet UIImageView *leftItem;
 
 /**###############DeviceBanner###############*/

@@ -10,8 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FinderViewController">
             <connections>
-                <outlet property="container" destination="RhE-GI-mS1" id="56Y-1h-JKn"/>
-                <outlet property="containerHeight" destination="lgg-fk-HvD" id="TUe-Pk-y4c"/>
                 <outlet property="scrollView" destination="cfc-48-ZdZ" id="t0d-hO-iVP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,24 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfc-48-ZdZ" userLabel="FindScrollView">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="cfc-48-ZdZ" userLabel="FindScrollView">
                     <rect key="frame" x="0.0" y="93" width="414" height="769"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhE-GI-mS1" userLabel="Content">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="2500"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="2500" id="lgg-fk-HvD"/>
-                            </constraints>
-                        </view>
-                    </subviews>
                     <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="RhE-GI-mS1" firstAttribute="top" secondItem="cfc-48-ZdZ" secondAttribute="top" id="7dS-Fb-UH4"/>
-                        <constraint firstItem="RhE-GI-mS1" firstAttribute="leading" secondItem="cfc-48-ZdZ" secondAttribute="leading" id="Ix7-V3-4vo"/>
-                        <constraint firstAttribute="bottom" secondItem="RhE-GI-mS1" secondAttribute="bottom" id="VkY-os-Zcg"/>
-                        <constraint firstAttribute="trailing" secondItem="RhE-GI-mS1" secondAttribute="trailing" id="ePm-TW-RRn"/>
-                        <constraint firstItem="RhE-GI-mS1" firstAttribute="width" secondItem="cfc-48-ZdZ" secondAttribute="width" id="uWh-CG-ONl"/>
-                    </constraints>
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

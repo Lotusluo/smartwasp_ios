@@ -12,6 +12,8 @@
 #import "DeviceBean.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "NormalToolbar.h"
+#import "UIImageView+WebCache.h"
+#import "IFLYOSSDK.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -20,7 +22,9 @@
 
 @property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property (weak, nonatomic) IBOutlet UISlider *sliderView;
+@property (weak, nonatomic) IBOutlet UILabel *titleView;
+@property (weak, nonatomic) IBOutlet UIButton *playView;
 
 @end
 
@@ -28,13 +32,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self attach];
+    [self updateToolbarUI:APPDELEGATE.curDevice];
+    [self mediaSetCallback:APPDELEGATE.mediaStatus.data];
+   
+    _imageView.layer.shadowOffset = CGSizeMake(-10, 10);
+    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.container.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.container.bounds cornerRadius:100.0].CGPath;
+
 }
 
--(void)attach{
-    DeviceBean *device = APPDELEGATE.curDevice;
-    [self updateToolbarUI:device];
-}
 
 //更新toobarUI
 -(void)updateToolbarUI:(DeviceBean*)device{
@@ -47,7 +53,58 @@
 
 
 - (IBAction)onPlayOrPause:(id)sender {
-    
+    if(self.playView.selected){
+        //暂停
+        [[IFLYOSSDK shareInstance] musicControlStop:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger code) {
+        } requestSuccess:^(id _Nonnull data) {
+        } requestFail:^(id _Nonnull data) {
+        }];
+    }else{
+        //恢复
+        [[IFLYOSSDK shareInstance] musicControlResume:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger code) {
+        } requestSuccess:^(id _Nonnull data) {
+        } requestFail:^(id _Nonnull data) {
+        }];
+    }
+}
+
+//上一首
+- (IBAction)onForward:(id)sender {
+    [[IFLYOSSDK shareInstance] musicControlPrevious:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger code) {
+    } requestSuccess:^(id _Nonnull data) {
+    } requestFail:^(id _Nonnull data) {
+    }];
+}
+
+//下一首
+- (IBAction)onBackward:(id)sender {
+    [[IFLYOSSDK shareInstance] musicControlNext:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger code) {
+    } requestSuccess:^(id _Nonnull data) {
+    } requestFail:^(id _Nonnull data) {
+    }];
+}
+
+//音量调节
+- (IBAction)voiceChangedClick:(id)sender {
+    [[IFLYOSSDK shareInstance] musicControlVolume:APPDELEGATE.curDevice.device_id volume:self.sliderView.value statusCode:^(NSInteger code) {
+    } requestSuccess:^(id _Nonnull data) {
+    } requestFail:^(id _Nonnull data) {
+    }];
+}
+
+//处理设备媒体状态通知
+-(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
+    if(musicStateBean){
+        self.sliderView.value = musicStateBean.speaker.volume;
+        self.playView.selected = musicStateBean.isPlaying;
+        self.titleView.text = musicStateBean.music.name;
+//        [self.imageView sd_setImageWithURL:[NSURL URLWithString:musicStateBean.music.image]];
+    }
+}
+
+//设备在线状态变更
+-(void)onLineChangedCallback{
+    [self updateToolbarUI:APPDELEGATE.curDevice];
 }
 
 /*

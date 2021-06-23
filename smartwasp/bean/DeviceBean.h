@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 //@property(nonatomic,strong) id brand;
 
 //设备是否在线
-- (Boolean) isOnLine;
+- (Boolean)isOnLine;
 
 @end
 

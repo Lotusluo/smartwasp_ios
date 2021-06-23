@@ -23,7 +23,9 @@
 
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{
-        @"music" : @[@"music",@"music_access"]};
+        @"music" : @[@"music",@"music_access"],
+        @"status" : @[@"status",@"state"]
+    };
 }
 
 //

@@ -7,6 +7,7 @@
 
 #import "NormalToolbar.h"
 #import "AppDelegate.h"
+#import "UIViewHelper.h"
 
 @interface NormalToolbar()
 
@@ -28,13 +29,9 @@
 }
 */
 - (IBAction)onPressback:(id)sender {
-    for (UIView* next = [self superview]; next; next = next.superview) {
-        UIResponder* nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            UIViewController *vc = (UIViewController *)nextResponder;
-            [vc.navigationController popViewControllerAnimated:YES];
-            return;
-        }
+    UIViewController *cvc = [UIViewHelper getAttachController:self];
+    if(cvc){
+        [cvc.navigationController popViewControllerAnimated:YES];
     }
 }
 

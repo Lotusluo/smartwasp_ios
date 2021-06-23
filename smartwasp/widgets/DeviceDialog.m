@@ -166,7 +166,7 @@
     opacityAnimation.fromValue = [NSNumber numberWithFloat:flag ? 0 : 1];
     opacityAnimation.toValue = [NSNumber numberWithFloat:flag ? 1 : 0];
     opacityAnimation.duration = 0.22;
-    transAnimation.removedOnCompletion = YES;
+    transAnimation.removedOnCompletion = NO;
     [self.mask.layer addAnimation:opacityAnimation forKey:@"opacity"];
 }
 

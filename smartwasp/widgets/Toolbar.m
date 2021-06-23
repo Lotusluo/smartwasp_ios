@@ -12,8 +12,12 @@
 #import "UIView+Extension.h"
 #import <Masonry.h>
 #import <objc/runtime.h>
+#import "MusicPlayViewController.h"
+#import "UIImageView+WebCache.h"
 #import "LXSEQView.h"
+#import "UIViewHelper.h"
 
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface Toolbar ()
@@ -29,55 +33,72 @@
 //音乐跳动动画
 @property (weak, nonatomic) IBOutlet LXSEQView *jump;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint;
 
 @end
 
 @implementation Toolbar
 
-- (instancetype)initWithCoder:(NSCoder *)coder{
+-(instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
     return self;
 }
 
-
 //从故事面板加载
--(void) awakeFromNib{
+-(void)awakeFromNib{
     [super awakeFromNib];
     _statusImage = [UIImage imageNamed:@"icon_status"];
     _devStatusIcon.image = _statusImage;
     _devNameTxt.numberOfLines = 0;
     _devNameTxt.preferredMaxLayoutWidth = SCREEN_WIDTH  / 2.5;
+    [UIViewHelper attachClick:self.jump target:self action:@selector(doTapMethod)];
 }
 
 //设备选择点击
-- (IBAction)onClick:(id)sender {
+-(IBAction)onClick:(id)sender {
     [DeviceDialog create];
 }
 
+//音乐控件点击
+-(void)doTapMethod{
+    UIViewController *cvc = [UIViewHelper getAttachController:self];
+    if(cvc){
+        MusicPlayViewController *mvc = MusicPlayViewController.new;
+        [cvc.navigationController pushViewController:mvc animated:YES];
+    }
+}
+
+//添加设备信息
+-(void)setDevice:(DeviceBean *)device{
+    _device = device;
+    [self update];
+}
+
+//更新设备信息
+-(void)update{
+    [self setDevStatus:_device.isOnLine];
+    [self setDevName:_device.alias];
+}
 
 //设置设备是否在线
-- (void) setDevStatus:(Boolean) isOnline{
+-(void)setDevStatus:(Boolean) isOnline{
     _devStatusIcon.hidden = false;
     _combo.hidden = false;
     _devStatusIcon.tintColor = [UIColor colorWithHexString:isOnline  ?  @"#03F484":@"#B8B8B8"];
-    [_devNameTxt mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(_devStatusIcon.mas_trailing).offset(5);
-    }];
+    self.constraint.priority = 999;
 }
 
 //设置设备名称
-- (void) setDevName:(NSString*)devName{
+-(void)setDevName:(NSString*)devName{
     _devNameTxt.text = devName;
 }
 
 //设置暂无设备
-- (void) setEmpty{
-    [_devNameTxt mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(15);
-    }];
+-(void)setEmpty{
     _devStatusIcon.hidden = true;
     _combo.hidden = true;
     _devNameTxt.text = @"请添加设备";
+    self.constraint.priority = 250;
 }
 
 //音乐开始跳动

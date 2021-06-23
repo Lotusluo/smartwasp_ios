@@ -7,16 +7,8 @@
 
 #import "AppDelegate.h"
 #import "AppDelegate+Global.h"
-#import <iflyosSDKForiOS/iflyosCommonSDK.h>
-#import <iflyosPushService/IFLYOSPushService.h>
-#import <iflyosPushService/IFLYOSPushServiceProtocol.h>
-#import "IFLYOSSDK.h"
 #import "CodingUtil.h"
-#import "ConfigDAO.h"
-#import "DeviceBean.h"
 #import "GSMonitorKeyboard.h"
-#import "MusicStateBean.h"
-#import "NSObject+YYModel.h"
 
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
@@ -24,11 +16,10 @@
 //是否需要刷新绑定的设备的详细信息
 BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
 
-@interface AppDelegate ()<IFLYOSPushServiceProtocol>
-
-//媒体状态订阅服务
-@property (nonatomic,strong) IFLYOSPushService *mediaStatePushService;
-
+@interface AppDelegate ()<IFLYOSPushServiceProtocol>{
+    NSInteger mediaErrTimez;
+    NSInteger deviceErrTimez;
+}
 
 @end
 
@@ -48,8 +39,8 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
     }
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if(self.user){
-        [self requestBindDevices];
         [self toMain];
+        [self requestBindDevices];
     }else{
         [self toLogin];
     }
@@ -57,44 +48,39 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
     return YES;
 }
 
-//复写当前设备选择方法
+//设置当前设备选择方法
 - (void)setCurDevice:(DeviceBean *)curDevice{
+    if(!curDevice)
+        return;
     if(_curDevice && [_curDevice isEqual:curDevice])
         return;
     _curDevice = curDevice;
     //通知刷新当前选择的设备
     NSLog(@"当前选择的设备:%@",curDevice.alias);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"devSetNotification" object:nil userInfo:nil];
-    //获取当前设备媒体状态并进行订阅
-    [[IFLYOSSDK shareInstance] getMusicControlState:curDevice.device_id statusCode:^(NSInteger code) {
-        if(code != 200){
-            NSLog(@"获取设备媒体状态失败");
-        }
-    } requestSuccess:^(id _Nonnull data) {
-        MusicStateBean *musicStateBean = [MusicStateBean yy_modelWithJSON:data];
-        StatusBean<MusicStateBean*> *statusBean = StatusBean.new;
-        statusBean.data = musicStateBean;
-        self.mediaStatus = statusBean;
-    } requestFail:^(id _Nonnull data) {
-        NSLog(@"获取设备媒体状态失败");
-    }];
-    if(self.mediaStatePushService){
-        [self.mediaStatePushService close];
-        self.mediaStatePushService = nil;
-    }
-    //开始订阅媒体状态
-    NSString *token = [IFLYOSSDK shareInstance].getToken;
-    if (token){
-        self.mediaStatePushService = [IFLYOSPushService createSocket:token command:@"connect" fromType:@"ALIAS" deviceId:curDevice.device_id];
-        self.mediaStatePushService.delegate = self;
-        [self.mediaStatePushService open];
-    }
+    //开始订阅此设备媒体状态
+    mediaErrTimez = 0;
+    [self subscribeMediaStatus];
+    self.mediaStatus = nil;
 }
 
-//复写当前设备媒体状态
+//设置当前设备媒体状态
 -(void)setMediaStatus:(StatusBean<MusicStateBean *> *)mediaStatus{
+    if(!mediaStatus)
+        return;
+    if(_mediaStatus && [_mediaStatus isNewerThan:mediaStatus])
+        return;
     _mediaStatus = mediaStatus;
+    NSLog(@"当前设备媒体状态:%d",mediaStatus.data.music_player.playing);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"mediaSetNotification" object:nil userInfo:nil];
+}
+
+//设置用户信息
+-(void)setUser:(UserBean *)user{
+    _user = user;
+    //订阅设备状态
+    deviceErrTimez = 0;
+    [self subscribeDeviceStatus];
 }
 
 #pragma mark --IFLYOSPushServiceProtocol
@@ -102,7 +88,11 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
  * socket连接成功
  */
 -(void) onSockectOpenSuccess:(IFLYOSPushService *) socket{
-    NSLog(@"媒体状态监听打开成功");
+    if(socket == mediaStatePushService){
+        NSLog(@"媒体状态监听打开成功");
+    }else if(socket == deviceStatePushService){
+        NSLog(@"设备状态监听打开成功");
+    }
 }
 
 /**
@@ -110,7 +100,21 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
  * error:失败原因
 */
 -(void) onSockect:(IFLYOSPushService *) socket error:(NSError *) error{
-    NSLog(@"媒体状态监听打开失败：%@",error);
+    if(socket == mediaStatePushService){
+        NSLog(@"媒体状态监听打开失败：%@",error);
+        mediaStatePushService = nil;
+        if(++mediaErrTimez > 1)
+            return;
+        //进行重试
+        [self subscribeMediaStatus];
+    }else if(socket == deviceStatePushService){
+        NSLog(@"设备状态监听打开失败：%@",error);
+        deviceStatePushService = nil;
+        if(++deviceErrTimez > 1)
+            return;
+        //进行重试
+        [self subscribeDeviceStatus];
+    }
 }
 /**
  * socket 主动关闭连接回调（关闭成功后，清理socket相关东西）
@@ -119,16 +123,34 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
  * wasClean:是否清除
 */
 -(void) onSockect:(IFLYOSPushService *) socket didCloseWithCode:(NSInteger) code reason:(NSString *) reason wasClean:(BOOL)wasClean{
-    NSLog(@"媒体状态监听已关闭：%@",reason);
-    
+    if(socket == mediaStatePushService){
+        NSLog(@"媒体状态监听已关闭：%@",reason);
+    }else if(socket == deviceStatePushService){
+        NSLog(@"设备状态监听已关闭：%@",reason);
+    }
 }
 
 /**
  * 收到的信息
  * receiveMessage : 回调信息
  */
--(void) onSockect:(IFLYOSPushService *) socket receiveMessage:(id) receiveMessage{
-    NSLog(@"onSockect:");
+-(void)onSockect:(IFLYOSPushService *) socket receiveMessage:(id) receiveMessage{
+    NSString *json = [NSString stringWithFormat:@"%@",receiveMessage];
+    if(socket == mediaStatePushService){
+        StatusBean<MusicStateBean*> *statusBeanMedia = [StatusBean yy_modelWithJSON:json];
+        self.mediaStatus = statusBeanMedia;
+    }else if(socket == deviceStatePushService){
+        StatusBean<DeviceBean*> *statusBeanDevice = [StatusBean yy_modelWithJSON:json];
+        //更新设备在线状态
+        DeviceBean *dev = statusBeanDevice.data;
+        for(DeviceBean *devBean in self.devices){
+            if([devBean isEqual:dev]){
+                devBean.status = dev.status;
+                NSLog(@"更新了在线状态：%@",devBean.status);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"onLineChangedNotification" object:nil userInfo:nil];
+            }
+        }
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

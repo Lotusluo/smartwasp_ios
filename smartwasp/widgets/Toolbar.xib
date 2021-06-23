@@ -14,13 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="357" height="73"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Un-t1-Abh">
-                    <rect key="frame" x="35" y="19.5" width="95.5" height="34"/>
-                    <connections>
-                        <action selector="onClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="lNX-e1-S7C"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abc_btn_radio_to_on.png" translatesAutoresizingMaskIntoConstraints="NO" id="0tO-WM-4LZ">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="abc_btn_radio_to_on.png" translatesAutoresizingMaskIntoConstraints="NO" id="0tO-WM-4LZ">
                     <rect key="frame" x="10" y="29" width="20" height="15"/>
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -28,7 +22,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请添加设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-Lk-qdd">
-                    <rect key="frame" x="35" y="27.5" width="71.5" height="18"/>
+                    <rect key="frame" x="32" y="27.5" width="71.5" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="fsr-C3-cDs"/>
                     </constraints>
@@ -37,39 +31,48 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_triangle_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="4TS-El-c5l">
-                    <rect key="frame" x="110.5" y="26.5" width="20" height="20"/>
+                    <rect key="frame" x="107.5" y="26.5" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="F98-VZ-GV7"/>
                         <constraint firstAttribute="width" constant="20" id="J3o-4G-gBp"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-pd-UQz" userLabel="Jump" customClass="LXSEQView">
-                    <rect key="frame" x="317" y="21.5" width="30" height="30"/>
+                <view tag="999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6C-pd-UQz" userLabel="Jump" customClass="LXSEQView">
+                    <rect key="frame" x="322" y="26.5" width="25" height="20"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="VFq-AT-WsU"/>
-                        <constraint firstAttribute="width" constant="30" id="zfl-lA-ux6"/>
+                        <constraint firstAttribute="height" constant="20" id="VFq-AT-WsU"/>
+                        <constraint firstAttribute="width" constant="25" id="zfl-lA-ux6"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfv-cg-yJB">
+                    <rect key="frame" x="0.0" y="0.0" width="107.5" height="73"/>
+                    <connections>
+                        <action selector="onClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="mV4-KQ-qOj"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="WFd-Lk-qdd" firstAttribute="leading" secondItem="0tO-WM-4LZ" secondAttribute="trailing" priority="250" constant="5" id="1Zg-uY-TyC"/>
+                <constraint firstItem="WFd-Lk-qdd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="750" constant="10" id="1IY-Wa-U1Z"/>
+                <constraint firstItem="WFd-Lk-qdd" firstAttribute="leading" secondItem="0tO-WM-4LZ" secondAttribute="trailing" priority="999" constant="2" id="1Zg-uY-TyC" userLabel="Constraint"/>
                 <constraint firstItem="0tO-WM-4LZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Dmf-iF-ZYt"/>
+                <constraint firstItem="xfv-cg-yJB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LKw-TG-P1j"/>
                 <constraint firstAttribute="trailing" secondItem="R6C-pd-UQz" secondAttribute="trailing" constant="10" id="S7L-r2-FJO"/>
-                <constraint firstItem="3Un-t1-Abh" firstAttribute="leading" secondItem="WFd-Lk-qdd" secondAttribute="leading" id="cYB-rQ-Z5S"/>
+                <constraint firstItem="4TS-El-c5l" firstAttribute="leading" secondItem="xfv-cg-yJB" secondAttribute="trailing" id="WV1-8w-nxV"/>
                 <constraint firstItem="4TS-El-c5l" firstAttribute="leading" secondItem="WFd-Lk-qdd" secondAttribute="trailing" constant="4" id="dOS-FA-LuZ"/>
                 <constraint firstItem="WFd-Lk-qdd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dSO-3u-IBV"/>
-                <constraint firstItem="3Un-t1-Abh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nFa-X1-Y1b"/>
+                <constraint firstItem="xfv-cg-yJB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="faF-C0-fu3"/>
+                <constraint firstAttribute="bottom" secondItem="xfv-cg-yJB" secondAttribute="bottom" id="gJ9-la-u7G"/>
                 <constraint firstItem="R6C-pd-UQz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qFJ-HU-CQ2"/>
                 <constraint firstItem="0tO-WM-4LZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rrP-OC-8Zb"/>
                 <constraint firstItem="4TS-El-c5l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="slW-YF-5hD"/>
-                <constraint firstItem="4TS-El-c5l" firstAttribute="trailing" secondItem="3Un-t1-Abh" secondAttribute="trailing" id="vaR-gu-n5K"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="combo" destination="4TS-El-c5l" id="twc-vv-qly"/>
+                <outlet property="constraint" destination="1Zg-uY-TyC" id="Js0-dg-C1R"/>
                 <outlet property="devNameTxt" destination="WFd-Lk-qdd" id="fb2-ZJ-Bie"/>
                 <outlet property="devStatusIcon" destination="0tO-WM-4LZ" id="YSd-YB-H2D"/>
                 <outlet property="jump" destination="R6C-pd-UQz" id="jLp-Xi-Lub"/>

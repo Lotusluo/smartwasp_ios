@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)NSString *device_id;
 @property(nonatomic,strong)SpeakerBean *speaker;
 
+//是否音乐播放中
+-(BOOL) isPlaying;
+
 @end
 
 NS_ASSUME_NONNULL_END

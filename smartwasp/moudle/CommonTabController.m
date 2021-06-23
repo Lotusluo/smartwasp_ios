@@ -8,7 +8,7 @@
 #import "CommonTabController.h"
 #import "Toolbar.h"
 #import <iflyosSDKForiOS/IFLYOSUIColor+IFLYOSColorUtil.h>
-#import "AppDelegate.h"
+
 #import <WebKit/WebKit.h>
 #import <Masonry.h>
 #import "NewPageViewController.h"
@@ -16,7 +16,6 @@
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
-#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 @interface CommonTabController ()
 //工具栏
@@ -31,12 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initToolbar];
-    //对选择的设备进行监听
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(devSetObserver:)
-                                                 name:@"devSetNotification"
-                                               object:nil];
-    
     WKUserContentController *userContentController = [[WKUserContentController alloc]init];
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc]init];
     configuration.userContentController = userContentController;
@@ -44,14 +37,14 @@
     [self.view addSubview:self.webView];
     [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:_tag];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:_tag];
-    // Do any additional setup after loading the view from its nib.
     [self devSetObserver:nil];
+    // Do any additional setup after loading the view from its nib.
 }
 
 //初始化自定义导航条
--(void) initToolbar{
-    _toolbar = [Toolbar newView];
-    [self.view addSubview:_toolbar];
+-(void)initToolbar{
+    self.toolbar = [Toolbar newView];
+    [self.view addSubview:self.toolbar];
 }
 
 -(void)viewWillLayoutSubviews{
@@ -67,13 +60,11 @@
     }];
 }
 
-#pragma mark - 处理通知
--(void)devSetObserver:(NSNotification*)notification {
-    NSLog(@"收到设备选择的消息通知");
-    if(APPDELEGATE.curDevice){
-        [self.toolbar setDevName:APPDELEGATE.curDevice.alias];
-        [self.toolbar setDevStatus:APPDELEGATE.curDevice.isOnLine];
-        NSInteger code = [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:APPDELEGATE.curDevice.device_id];
+//设备选择通知
+-(void)devSetCallback:(DeviceBean* __nullable) device{
+    if(device){
+        self.toolbar.device = device;
+        NSInteger code = [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:device.device_id];
         if (code == -3) {
             NSLog(@"未登录，请先登录");
         }
@@ -82,26 +73,40 @@
     }
 }
 
-//打开一个新页面
--(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
-    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
-    [self.navigationController pushViewController:newPage animated:YES];
-}
-
--(void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [[IFLYOSSDK shareInstance] webViewAppear:_tag];
-    [self.toolbar startJump];
-}
-
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [[IFLYOSSDK shareInstance] webViewDisappear:_tag];
+//处理设备媒体状态通知
+-(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
+    if (self.isViewLoaded && self.view.window){
+        if(musicStateBean && musicStateBean.isPlaying){
+            [self.toolbar startJump];
+            return;
+        }
+    }
     [self.toolbar stopJump];
 }
 
--(void) dealloc{
+//设备在线状态变更
+-(void)onLineChangedCallback{
+    [self.toolbar update];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[IFLYOSSDK shareInstance] webViewAppear:_tag];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[IFLYOSSDK shareInstance] webViewDisappear:_tag];
+}
+
+-(void)dealloc{
     [[IFLYOSSDK shareInstance] unregisterWebView:_tag];
+}
+
+//打开一个新页面
+-(void)openNewPage:(id) tag noBack:(NSNumber *)noBack{
+    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
+    [self.navigationController pushViewController:newPage animated:YES];
 }
 
 /*

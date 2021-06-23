@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 //订阅信息时间戳
 @property(nonatomic,strong) NSString* timestamp;
 
+-(BOOL) isNewerThan:(StatusBean *) other;
+
 @end
 
 NS_ASSUME_NONNULL_END

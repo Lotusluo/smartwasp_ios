@@ -10,6 +10,11 @@
 #import "DeviceBean.h"
 #import "StatusBean.h"
 #import "MusicStateBean.h"
+#import "ConfigDAO.h"
+#import "NSObject+YYModel.h"
+#import <iflyosPushService/IFLYOSPushService.h>
+#import <iflyosPushService/IFLYOSPushServiceProtocol.h>
+#import <iflyosSDKForiOS/iflyosCommonSDK.h>
 
 extern BOOL NEED_REFRESH_DEVICES_DETAIL;
 
@@ -20,7 +25,12 @@ static inline UIEdgeInsets sgm_safeAreaInset(UIView *view) {
     return UIEdgeInsetsZero;
 }
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    @private
+    IFLYOSPushService *mediaStatePushService;
+    @private
+    IFLYOSPushService *deviceStatePushService;
+}
 
 @property(strong, nonatomic)UIWindow *window;
 

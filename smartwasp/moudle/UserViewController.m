@@ -73,6 +73,22 @@ static NSString *const ID = @"CellIdentifier";
     [self.collectionView registerNib:[UINib nibWithNibName:@"DeviceBannerCell" bundle:nil] forCellWithReuseIdentifier:ID];
 }
 
+//处理设备媒体状态通知
+-(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
+    if (self.isViewLoaded && self.view.window){
+        if(musicStateBean && musicStateBean.isPlaying){
+            [self.musicView startAnimation];
+            return;
+        }
+    }
+    [self.musicView stopAnimation];
+}
+
+//设备在线状态变更
+-(void)onLineChangedCallback{
+    [self.collectionView reloadData];
+}
+
 //初始化page ctl
 -(void)initpageCtr{
     self.pageControl.pageIndicatorTintColor =  [UIColor lightGrayColor];
@@ -95,8 +111,9 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 //菜单点击事件
--(void) onClick:(NSInteger)tag{
+-(void)onClick:(NSInteger)tag{
     if(tag == 4){
+       
         return;
     }
     URL_PATH_ENUM path;

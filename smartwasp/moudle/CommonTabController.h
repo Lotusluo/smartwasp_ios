@@ -6,15 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseTabViewController.h"
+#import "NotifyViewController.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CommonTabController : BaseTabViewController
+@interface CommonTabController : NotifyViewController
 
 //通用VC的类别
 @property(nonatomic) URL_PATH_ENUM  vcType;
+
 @property(nonatomic,strong)NSString *tag;
 
 

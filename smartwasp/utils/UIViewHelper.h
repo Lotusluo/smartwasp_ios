@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(BOOL)attachText:(NSString*)text widget:(UIView*)widget;
 //添加点击事件
 +(void)attachClick:(UIView*)view target:(nullable id)target action:(nullable SEL)action;
+//获取当前附着的VC
++(UIViewController*)getAttachController:(UIView*)view;
 
 @end
 

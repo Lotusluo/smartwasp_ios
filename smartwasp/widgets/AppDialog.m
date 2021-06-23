@@ -86,6 +86,7 @@
     transAnimation.toValue = [NSValue valueWithCGPoint:toValue];
     transAnimation.duration = 0.2;
     transAnimation.removedOnCompletion = NO;
+    transAnimation.fillMode = kCAFillModeForwards;
     [self.layer addAnimation:transAnimation forKey:[NSString stringWithFormat:@"position:%d",flag]];
     
     //透明度变化
@@ -99,11 +100,10 @@
 
 #pragma mark --CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if(flag){
-        [self removeFromSuperview];
-        if(self.mask){
-            [self.mask removeFromSuperview];
-        }
+    [self removeFromSuperview];
+    if(self.mask){
+        [self.mask.layer removeAllAnimations];
+        [self.mask removeFromSuperview];
     }
 }
 

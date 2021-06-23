@@ -2,49 +2,6 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-#pragma mark - RITLBorderLayer
-@interface RITLBorderLayer: CALayer
-
-/// 默认为0.0
-@property (nonatomic, assign)CGFloat ritl_borderWidth;
-/// 默认为UIEdgeInsetsZero
-@property (nonatomic, assign)UIEdgeInsets ritl_borderInset;
-
-@end
-
-@implementation RITLBorderLayer
-
-- (instancetype)init
-{
-    if (self = [super init]) {
-        
-        self.anchorPoint = CGPointZero;
-        self.ritl_borderWidth = 0.0;
-        self.ritl_borderInset = UIEdgeInsetsZero;
-    }
-    
-    return self;
-}
-
-@end
-
-
-#pragma mark - <RITLViewBorderDirection>
-
-@protocol RITLViewBorderDirection <NSObject>
-
-@property (nonatomic, strong) RITLBorderLayer *leftLayer;
-@property (nonatomic, strong) RITLBorderLayer *topLayer;
-@property (nonatomic, strong) RITLBorderLayer *rightLayer;
-@property (nonatomic, strong) RITLBorderLayer *bottomLayer;
-
-@end
-
-#pragma mark - UIView<RITLViewBorderDirection>
-@interface UIView (RITLViewBorderDirection)<RITLViewBorderDirection>
-@end
-
-
 
 @implementation UIView (Extension)
 

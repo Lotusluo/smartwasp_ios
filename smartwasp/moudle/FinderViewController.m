@@ -6,7 +6,6 @@
 //
 
 #import "FinderViewController.h"
-#import "AppDelegate.h"
 #import "Toolbar.h"
 #import "IFLYOSSDK.h"
 #import "FindBean.h"
@@ -21,11 +20,13 @@
 #import "NewPageViewController.h"
 #import "ItemViewController.h"
 #import "MusicPlayViewController.h"
+#import "AppDelegate.h"
+
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
-#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 #define APAGE_SIZE (CGSizeMake(SCREEN_WIDTH - 30,SCREEN_WIDTH * 0.27))
 #define VIEW_GAP 10
@@ -42,10 +43,6 @@ ISelectedDelegate>
 @property(nonatomic) Toolbar *toolbar;
 //滚动控件
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-//控件容器
-@property (weak, nonatomic) IBOutlet UIView *container;
-//控制容器高度
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerHeight;
 //Banner图
 @property (strong, nonatomic)  UICollectionView *collectionView;
 @property (strong, nonatomic)  PageLineLayout *lineLayout;
@@ -71,12 +68,8 @@ static NSString *const ID = @"CellIdentifier";
     [self.view addSubview:_toolbar];
     //添加刷新控件
     [self.scrollView addSubview:self.headerView];
+    self.scrollView.showsVerticalScrollIndicator = YES;
     self.scrollView.delegate = self;
-    //对选择的设备进行监听
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(devSetObserver:)
-                                                 name:@"devSetNotification"
-                                               object:nil];
     [self devSetObserver:nil];
     // Do any additional setup after loading the view from its nib.
 }
@@ -86,61 +79,78 @@ static NSString *const ID = @"CellIdentifier";
     [super viewWillLayoutSubviews];
     //布局前重置一下toolbar的frame
     _toolbar.frame = CGRectMake(0, STATUS_HEIGHT, SCREEN_WIDTH, 49);
-
 }
 
 #pragma mark - 处理通知
--(void)devSetObserver:(NSNotification*)notification {
-    NSLog(@"收到设备选择的消息通知");
-    if(APPDELEGATE.curDevice){
-        [self.toolbar setDevName:APPDELEGATE.curDevice.alias];
-        [self.toolbar setDevStatus:APPDELEGATE.curDevice.isOnLine];
-        [self reloadData];
+-(void)devSetCallback:(DeviceBean* __nullable) device {
+    if(device){
+        self.toolbar.device = device;
+        [self reloadData:device];
     }else{
         [self.toolbar setEmpty];
     }
 }
 
-//重加载数据
--(void)reloadData{
-    //获取发现页面数据
-    if(APPDELEGATE.curDevice){
-        [[IFLYOSSDK shareInstance] getMusicGroups:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger statusCode) {
-            if(statusCode != 200){
-                [self loadDataEccur];
-            }
-            NSLog(@"状态码：%li",statusCode);
-        } requestSuccess:^(id _Nonnull data) {
-            FindBean *findBean = [FindBean yy_modelWithJSON:data];
-            if(findBean){
-                [self loadDataSucess:findBean];
-            }else{
-                [self loadDataEccur];
-            }
-        } requestFail:^(id _Nonnull data) {
-            [self loadDataEccur];
-        }];
-    }else{
-        //暂无设备
+//处理设备媒体状态通知
+-(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
+    if (self.isViewLoaded && self.view.window){
+        if(musicStateBean && musicStateBean.isPlaying){
+            NSLog(@"startJump");
+            [self.toolbar startJump];
+            return;
+        }
     }
+    [self.toolbar stopJump];
+}
+
+//设备在线状态变更
+-(void)onLineChangedCallback{
+    [self.toolbar update];
+}
+
+//重加载数据
+-(void)reloadData:(DeviceBean *) device{
+    //获取发现页面数据
+    [[IFLYOSSDK shareInstance] getMusicGroups:device.device_id statusCode:^(NSInteger statusCode) {
+        if(statusCode != 200){
+            [self loadDataEccur];
+        }
+    } requestSuccess:^(id _Nonnull data) {
+        FindBean *findBean = [FindBean yy_modelWithJSON:data];
+        if(findBean){
+            [self loadDataSucess:findBean];
+        }else{
+            [self loadDataEccur];
+        }
+    } requestFail:^(id _Nonnull data) {
+        [self loadDataEccur];
+    }];
+}
+
+//加载数据遇到错误
+-(void)loadDataEccur{
+    NSLog(@"loadDataEccur");
 }
 
 //加载数据成功
 -(void)loadDataSucess:(FindBean*)bean{
     //清空容器
-    [self.container.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     self.findBean = bean;
     
     //刷新Banner数据
     [self.collectionView reloadData];
-    [self.container addSubview:self.collectionView];
+    [self.scrollView addSubview:self.collectionView];
     //对collectionView进行约束
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(APAGE_SIZE.width);
         make.height.mas_equalTo(APAGE_SIZE.height);
-        make.centerX.mas_equalTo(self.container);
+        make.centerX.mas_equalTo(self.view);
+        //IOS 11.4不设置会出现布局紊乱
+        make.top.mas_equalTo(0);
     }];
-    
+
     //是否显示购买音乐控件
     CGFloat offsetY = 0;
     if(!APPDELEGATE.curDevice.music.enable){
@@ -160,13 +170,14 @@ static NSString *const ID = @"CellIdentifier";
             [array addObject:abbr];
         }
     }
-//    abbrs = [abbrs valueForKeyPath:@"@distinctUnionOfObjects.self"];
-    [self addIndicator: array];
-    
+
     //添加动态音乐集
     self.verticalLayout = UIStackView.new;
     self.verticalLayout.axis = UILayoutConstraintAxisVertical;
-    [self.container addSubview:self.verticalLayout];
+    [self.scrollView addSubview:self.verticalLayout];
+    
+//    abbrs = [abbrs valueForKeyPath:@"@distinctUnionOfObjects.self"];
+    [self addIndicator: array];
     
     //设置group视图约束
     CGFloat height = 0;
@@ -177,26 +188,24 @@ static NSString *const ID = @"CellIdentifier";
         [self.verticalLayout addArrangedSubview:groupView];
         height += groupView.uiHeight;
     }
-    
+
     //设置垂直布局约束
-    [self.verticalLayout mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.verticalLayout mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.collectionView.mas_bottom).offset(40 + 10);
         make.height.mas_equalTo(height);
     }];
-    
+
     //设置scrollview的滚动区域
-    _containerHeight.constant = offsetY  + APAGE_SIZE.height + CATEGORYVIEW_HEIGHT +height ;
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH,
+                                             offsetY  + APAGE_SIZE.height + CATEGORYVIEW_HEIGHT + height);
+    self.scrollView.contentOffset = CGPointZero;
 }
 
 //添加开通音乐点击控件
--(void) addPayHeader:(MusicBean*) music{
+-(void)addPayHeader:(MusicBean*) music{
     UIView *musicPayView = [[[NSBundle mainBundle] loadNibNamed:@"MusicPayView" owner:nil options:nil] lastObject];
-    [_container addSubview:musicPayView];
-    [musicPayView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(self.view.mas_width).multipliedBy(0.7);
-        make.height.mas_equalTo(PAYVIEW_HEIGHT);
-        make.centerX.equalTo(self.container);
-    }];
+    [self.scrollView addSubview:musicPayView];
+    musicPayView.frame = CGRectMake(SCREEN_WIDTH * 0.15, 0, SCREEN_WIDTH * 0.7, PAYVIEW_HEIGHT);
     UILabel *label = [musicPayView.subviews objectAtIndex:1];
     label.text = music.text;
     [musicPayView.subviews objectAtIndex:0].transform = CGAffineTransformMakeRotation(M_PI);
@@ -205,18 +214,13 @@ static NSString *const ID = @"CellIdentifier";
 //添加指示器
 -(void) addIndicator:(NSArray<NSString*>*) abbr{
     self.categoryView.titles = abbr;
-    [self.view addSubview:self.categoryView];
-    [self.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.scrollView addSubview:self.categoryView];
+    [self.categoryView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.collectionView.mas_bottom);
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo(CATEGORYVIEW_HEIGHT);
-        make.centerX.equalTo(self.container);
+        make.centerX.equalTo(self.view);
     }];
-}
-
-//加载数据遇到错误
--(void)loadDataEccur{
-    NSLog(@"loadDataEccur");
 }
 
 #pragma mark --UIScrollViewDelegate
@@ -295,16 +299,6 @@ static NSString *const ID = @"CellIdentifier";
     //test
 //    MusicPlayViewController *mvc = [[MusicPlayViewController alloc] initWithNibName:@"MusicPlayViewController" bundle:nil];
     [self.navigationController pushViewController:ivc animated:YES];
-}
-
--(void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.toolbar startJump];
-}
-
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self.toolbar stopJump];
 }
 
 /*

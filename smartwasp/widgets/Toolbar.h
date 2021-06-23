@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DeviceBean.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -13,10 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Toolbar : UIView
 
 +(Toolbar*)newView;
-//设置设备是否在线
-- (void)setDevStatus:(Boolean) isOnline;
-//设置设备名称
-- (void)setDevName:(NSString*)devName;
+//当前显示的设备信息
+@property(nonatomic,strong) DeviceBean *device;
+//更新信息
+-(void)update;
 //暂无设备
 - (void)setEmpty;
 //音乐开始跳动

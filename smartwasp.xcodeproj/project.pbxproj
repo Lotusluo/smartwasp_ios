@@ -57,11 +57,16 @@
 		040ED78C26561699001A2755 /* PageLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED78B26561699001A2755 /* PageLineLayout.m */; };
 		0410BE21267B410900CE993E /* SkillBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0410BE20267B410900CE993E /* SkillBean.m */; };
 		0410BE24267B54D900CE993E /* SkillView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0410BE23267B54D900CE993E /* SkillView.xib */; };
+		04115E512682D760003B192F /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04115E4A2682D760003B192F /* QRCodeViewController.xib */; };
+		04115E522682D760003B192F /* IFLYQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E4B2682D760003B192F /* IFLYQRCodeView.m */; };
+		04115E532682D760003B192F /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E4D2682D760003B192F /* QRCodeViewController.m */; };
+		04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E502682D760003B192F /* IFLYQRCodeUtils.m */; };
+		04115E592682D843003B192F /* UIView+UIView_alertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E582682D843003B192F /* UIView+UIView_alertView.m */; };
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
 		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
-		0425CD64262EE154004D4D23 /* BaseTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* BaseTabViewController.m */; };
+		0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* NotifyViewController.m */; };
 		0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0425CD68262EE437004D4D23 /* CommonTabController.xib */; };
 		04261965261EFE1A000D95D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04261964261EFE1A000D95D6 /* AppDelegate.m */; };
 		04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0426196F261EFE1C000D95D6 /* Assets.xcassets */; };
@@ -148,6 +153,8 @@
 		04D738D626202A8400E4F00C /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738D426202A8400E4F00C /* UserViewController.m */; };
 		04D738D726202A8400E4F00C /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D738D526202A8400E4F00C /* UserViewController.xib */; };
 		04D738E02620453200E4F00C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738DE2620453200E4F00C /* LoginViewController.m */; };
+		04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE8A352683184F002AAA7D /* AddDeviceViewController.m */; };
+		04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */; };
 		04E00B1C26214A6A00080581 /* libiflyosPushService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1926214A6A00080581 /* libiflyosPushService.a */; };
 		04E00B1D26214A6A00080581 /* libiflyosSDKForiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1A26214A6A00080581 /* libiflyosSDKForiOS.a */; };
 		04E00B1E26214A6A00080581 /* libiflyosQuietSDKForiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1B26214A6A00080581 /* libiflyosQuietSDKForiOS.a */; };
@@ -268,6 +275,15 @@
 		0410BE1F267B410900CE993E /* SkillBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillBean.h; sourceTree = "<group>"; };
 		0410BE20267B410900CE993E /* SkillBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillBean.m; sourceTree = "<group>"; };
 		0410BE23267B54D900CE993E /* SkillView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillView.xib; sourceTree = "<group>"; };
+		04115E4A2682D760003B192F /* QRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
+		04115E4B2682D760003B192F /* IFLYQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFLYQRCodeView.m; sourceTree = "<group>"; };
+		04115E4C2682D760003B192F /* IFLYQRCodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYQRCodeUtils.h; sourceTree = "<group>"; };
+		04115E4D2682D760003B192F /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		04115E4E2682D760003B192F /* IFLYQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYQRCodeView.h; sourceTree = "<group>"; };
+		04115E4F2682D760003B192F /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		04115E502682D760003B192F /* IFLYQRCodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFLYQRCodeUtils.m; sourceTree = "<group>"; };
+		04115E572682D843003B192F /* UIView+UIView_alertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_alertView.h"; sourceTree = "<group>"; };
+		04115E582682D843003B192F /* UIView+UIView_alertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_alertView.m"; sourceTree = "<group>"; };
 		0415EAA62660E43400A73CE7 /* NormalNaviCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalNaviCell.h; sourceTree = "<group>"; };
 		0415EAA72660E43400A73CE7 /* NormalNaviCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalNaviCell.m; sourceTree = "<group>"; };
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
@@ -276,8 +292,8 @@
 		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
 		0425CD51262ECE17004D4D23 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0425CD52262ECE17004D4D23 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		0425CD62262EE154004D4D23 /* BaseTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTabViewController.h; sourceTree = "<group>"; };
-		0425CD63262EE154004D4D23 /* BaseTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTabViewController.m; sourceTree = "<group>"; };
+		0425CD62262EE154004D4D23 /* NotifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyViewController.h; sourceTree = "<group>"; };
+		0425CD63262EE154004D4D23 /* NotifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotifyViewController.m; sourceTree = "<group>"; };
 		0425CD68262EE437004D4D23 /* CommonTabController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonTabController.xib; sourceTree = "<group>"; };
 		04261960261EFE1A000D95D6 /* smartwasp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartwasp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04261963261EFE1A000D95D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -409,6 +425,9 @@
 		04D738D526202A8400E4F00C /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		04D738DD2620453200E4F00C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		04D738DE2620453200E4F00C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		04DE8A342683184F002AAA7D /* AddDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
+		04DE8A352683184F002AAA7D /* AddDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
+		04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
 		04E00B1926214A6A00080581 /* libiflyosPushService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiflyosPushService.a; sourceTree = "<group>"; };
 		04E00B1A26214A6A00080581 /* libiflyosSDKForiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiflyosSDKForiOS.a; sourceTree = "<group>"; };
 		04E00B1B26214A6A00080581 /* libiflyosQuietSDKForiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiflyosQuietSDKForiOS.a; sourceTree = "<group>"; };
@@ -655,6 +674,20 @@
 			path = HWRefresh;
 			sourceTree = "<group>";
 		};
+		04115E492682D760003B192F /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				04115E4E2682D760003B192F /* IFLYQRCodeView.h */,
+				04115E4B2682D760003B192F /* IFLYQRCodeView.m */,
+				04115E4C2682D760003B192F /* IFLYQRCodeUtils.h */,
+				04115E502682D760003B192F /* IFLYQRCodeUtils.m */,
+				04115E4F2682D760003B192F /* QRCodeViewController.h */,
+				04115E4D2682D760003B192F /* QRCodeViewController.m */,
+				04115E4A2682D760003B192F /* QRCodeViewController.xib */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
 		04261957261EFE19000D95D6 = {
 			isa = PBXGroup;
 			children = (
@@ -676,6 +709,7 @@
 		04261962261EFE1A000D95D6 /* smartwasp */ = {
 			isa = PBXGroup;
 			children = (
+				04115E492682D760003B192F /* QRCode */,
 				040B95342666464C00B306D2 /* HWRefresh */,
 				040B94AC2666464800B306D2 /* Sources */,
 				0476D48B2660940000F8DE42 /* extension */,
@@ -745,6 +779,8 @@
 		0476D48B2660940000F8DE42 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				04115E572682D843003B192F /* UIView+UIView_alertView.h */,
+				04115E582682D843003B192F /* UIView+UIView_alertView.m */,
 				045E5D862658E1F200672251 /* UIImage+Extension.h */,
 				045E5D852658E1F200672251 /* UIImage+Extension.m */,
 				040ED77D26550B12001A2755 /* UIView+Extension.h */,
@@ -777,8 +813,8 @@
 				04D738D526202A8400E4F00C /* UserViewController.xib */,
 				0425CD51262ECE17004D4D23 /* MainViewController.h */,
 				0425CD52262ECE17004D4D23 /* MainViewController.m */,
-				0425CD62262EE154004D4D23 /* BaseTabViewController.h */,
-				0425CD63262EE154004D4D23 /* BaseTabViewController.m */,
+				0425CD62262EE154004D4D23 /* NotifyViewController.h */,
+				0425CD63262EE154004D4D23 /* NotifyViewController.m */,
 				045276402671DBE5000ECA78 /* ItemViewController.h */,
 				045276412671DBE5000ECA78 /* ItemViewController.m */,
 				045276422671DBE5000ECA78 /* ItemViewController.xib */,
@@ -793,6 +829,9 @@
 				04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */,
 				F39EEE9A267EC9E600F89B2D /* UsrCenterViewController.h */,
 				F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */,
+				04DE8A342683184F002AAA7D /* AddDeviceViewController.h */,
+				04DE8A352683184F002AAA7D /* AddDeviceViewController.m */,
+				04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -1052,6 +1091,7 @@
 				04B93A0F267C49080036C0B6 /* SkillDetailViewController.xib in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
 				04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */,
+				04115E512682D760003B192F /* QRCodeViewController.xib in Resources */,
 				0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */,
 				0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */,
 				0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */,
@@ -1071,6 +1111,7 @@
 				04261A1D261F167C000D95D6 /* icon_tab_dialog_selected@2x.png in Resources */,
 				04261A1B261F167C000D95D6 /* icon_tab_dialog@2x.png in Resources */,
 				04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */,
+				04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */,
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
 				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
@@ -1159,6 +1200,7 @@
 				040B94932666228F00B306D2 /* GroupBean.m in Sources */,
 				040B950D2666464800B306D2 /* JXCategoryTitleVerticalZoomView.m in Sources */,
 				04D738D026202A7700E4F00C /* FinderViewController.m in Sources */,
+				04115E592682D843003B192F /* UIView+UIView_alertView.m in Sources */,
 				040B95162666464800B306D2 /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				040ED78C26561699001A2755 /* PageLineLayout.m in Sources */,
 				04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */,
@@ -1168,10 +1210,12 @@
 				040B952C2666464800B306D2 /* JXCategoryIndicatorParamsModel.m in Sources */,
 				040B95262666464800B306D2 /* JXCategoryNumberView.m in Sources */,
 				040B95302666464800B306D2 /* JXCategoryBaseView.m in Sources */,
-				0425CD64262EE154004D4D23 /* BaseTabViewController.m in Sources */,
+				0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */,
 				F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */,
 				040B95122666464800B306D2 /* JXCategoryIndicatorImageView.m in Sources */,
+				04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */,
 				045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */,
+				04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */,
 				040B95152666464800B306D2 /* JXCategoryIndicatorDotLineView.m in Sources */,
 				040B951C2666464800B306D2 /* JXCategoryDotCellModel.m in Sources */,
 				040B95112666464800B306D2 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
@@ -1205,11 +1249,13 @@
 				040B95172666464800B306D2 /* JXCategoryIndicatorCellModel.m in Sources */,
 				040B95202666464800B306D2 /* JXCategoryTitleCellModel.m in Sources */,
 				040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */,
+				04115E522682D760003B192F /* IFLYQRCodeView.m in Sources */,
 				042B4E9C26672420009BE328 /* BannerBean.m in Sources */,
 				045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */,
 				04B5D1D32680964700323E3C /* SpeakerBean.m in Sources */,
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
 				04B5D1D72680969B00323E3C /* MusicStateBean.m in Sources */,
+				04115E532682D760003B192F /* QRCodeViewController.m in Sources */,
 				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,
 				045276432671DBE5000ECA78 /* ItemViewController.m in Sources */,

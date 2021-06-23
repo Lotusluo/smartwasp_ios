@@ -19,6 +19,9 @@
 #import "iToast.h"
 #import "NewPageViewController.h"
 #import "NetDAO.h"
+#import "AppDelegate.h"
+
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 #define LOGIN_PAGE @"loginPage"
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -77,11 +80,8 @@
  */
 -(void) onLoginSuccess{
     //登陆成功之后请求用户信息并保存本地并提交私有服务器
+    [Loading show:nil];
     [[IFLYOSSDK shareInstance] getUserInfo:^(NSInteger code) {
-        if(code != 200){
-            //登陆失败
-            [[iToast makeText:@"请重试!"] show];
-        }
     } requestSuccess:^(id _Nonnull success) {
         UserBean *user = [UserBean yy_modelWithJSON:success];
         if(user){
@@ -93,24 +93,34 @@
             }else{
                 //登陆失败
                 [[iToast makeText:@"请重试!"] show];
+                [Loading dismiss];
             }
         }else{
             //登陆失败
-            [[iToast makeText:@"请重试!"] show];
+            [[iToast makeText:@"登陆信息错误,请重试!"] show];
+            [Loading dismiss];
         }
     } requestFail:^(id _Nonnull error) {
         //登陆失败
-        [[iToast makeText:@"请重试!"] show];
+        [Loading dismiss];
+        [[iToast makeText:@"登陆失败,请重试!"] show];
     }];
 }
 
 //向服务器提交用户信息
 -(void)registerUuid:(UserBean*) user{
-    [[NetDAO sharedInstance] post:@{@"uid":user.user_id} path:@"api/register"  callBack:^(BaseBean * _Nonnull cData) {
-        AppDelegate* delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        delegate.user = user;
-        [delegate toMain];
-        [delegate requestBindDevices];
+    [[NetDAO sharedInstance] post:@{@"uid":user.user_id,
+                                    @"deviceType":@"IOS"}
+                             path:@"api/register"  callBack:^(BaseBean * _Nonnull cData) {
+        [Loading dismiss];
+        if(!cData.errCode || cData.errCode == 407){
+            APPDELEGATE.user = user;
+            [APPDELEGATE toMain];
+            [APPDELEGATE requestBindDevices];
+        }else{
+            //登陆失败
+            [[iToast makeText:@"登陆失败,请重试!"] show];
+        }
     }];
 }
 

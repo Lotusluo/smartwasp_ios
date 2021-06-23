@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DeviceBean.h"
+#import "MusicStateBean.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BaseTabViewController : UIViewController
+@interface NotifyViewController : UIViewController
+
+-(void)devSetObserver:(NSNotification* __nullable)notification;
 
 @end
 

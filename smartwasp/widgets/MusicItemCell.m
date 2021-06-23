@@ -7,6 +7,7 @@
 
 #import "MusicItemCell.h"
 #import "AppDialog.h"
+#import <Masonry.h>
 
 @interface MusicItemCell()
 
@@ -45,7 +46,10 @@
 
 -(void)setSubtitle:(NSString *)subtitle{
     if(!subtitle || [subtitle isEqualToString:@""]){
-        subtitle = @"-";
+        subtitle = @"";
+        [self.labelTitle mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(self);
+        }];
     }
     if(self.labelSubtitle){
         self.labelSubtitle.text = subtitle;

@@ -6,16 +6,13 @@
 //
 #import "AppDelegate.h"
 #import "AppDelegate+Global.h"
-#import <iflyosSDKForiOS/iflyosCommonSDK.h>
-#import "ConfigDAO.h"
-#import "NSObject+YYModel.h"
 #import "LoginViewController.h"
 #import "MainViewController.h"
 
 @implementation AppDelegate (Global)
 
 //请求绑定的设备
-- (void) requestBindDevices{
+- (void)requestBindDevices{
     if(self.user){
         [[IFLYOSSDK shareInstance] getUserDevices:^(NSInteger code) {
             if(code != 200){
@@ -46,6 +43,50 @@
         } requestFail:^(id _Nonnull error) {
             //加载错误
         }];
+    }
+}
+
+//订阅求当前设备的媒体状态
+-(void)subscribeMediaStatus{
+    //获取当前设备媒体状态并进行订阅
+    [[IFLYOSSDK shareInstance] getMusicControlState:self.curDevice.device_id statusCode:^(NSInteger code) {
+        if(code != 200){
+            NSLog(@"获取设备媒体状态失败");
+        }
+    } requestSuccess:^(id _Nonnull data) {
+        MusicStateBean *musicStateBean = [MusicStateBean yy_modelWithJSON:data];
+        StatusBean<MusicStateBean*> *statusBean = StatusBean.new;
+        statusBean.data = musicStateBean;
+        self.mediaStatus = statusBean;
+    } requestFail:^(id _Nonnull data) {
+        NSLog(@"获取设备媒体状态失败");
+    }];
+    
+    if(mediaStatePushService){
+        [mediaStatePushService close];
+        mediaStatePushService = nil;
+    }
+    //开始订阅媒体状态
+    NSString *token = [IFLYOSSDK shareInstance].getToken;
+    if (token){
+        mediaStatePushService = [IFLYOSPushService createSocket:token command:@"connect" fromType:@"ALIAS" deviceId:self.curDevice.device_id];
+        mediaStatePushService.delegate = (id)self;
+        [mediaStatePushService open];
+    }
+}
+
+//订阅当前用户的设备状态
+-(void)subscribeDeviceStatus{
+    if(deviceStatePushService){
+        [deviceStatePushService close];
+        deviceStatePushService = nil;
+    }
+    //开始订阅媒体状态
+    NSString *token = [IFLYOSSDK shareInstance].getToken;
+    if (token){
+        deviceStatePushService = [IFLYOSPushService createSocket:token command:@"connect" fromType:@"ACCOUNT" deviceId:self.user.user_id];
+        deviceStatePushService.delegate = (id)self;
+        [deviceStatePushService open];
     }
 }
 

@@ -1,21 +1,21 @@
 //
-//  BaseTabViewController.m
+//  AddDeviceViewController.m
 //  smartwasp
 //
-//  Created by luotao on 2021/4/20.
+//  Created by luotao on 2021/6/23.
 //
 
-#import "BaseTabViewController.h"
+#import "AddDeviceViewController.h"
 
-@interface BaseTabViewController ()
+@interface AddDeviceViewController ()
 
 @end
 
-@implementation BaseTabViewController
+@implementation AddDeviceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view from its nib.
 }
 
 /*

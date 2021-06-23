@@ -9,5 +9,10 @@
 
 @implementation MusicStateBean
 
+-(BOOL)isPlaying{
+    if(!self.music_player)
+        return NO;
+    return self.music_player.playing;
+}
 
 @end

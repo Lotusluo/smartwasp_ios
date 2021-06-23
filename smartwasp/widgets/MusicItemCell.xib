@@ -56,7 +56,7 @@
                 <constraint firstItem="LFs-m5-5Qr" firstAttribute="width" secondItem="tKt-rb-IIb" secondAttribute="width" id="cAV-aI-hIK"/>
                 <constraint firstItem="LFs-m5-5Qr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="8" id="kPo-Pt-Kmt"/>
                 <constraint firstItem="mlU-gC-Ztm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rz2-lm-vH5"/>
-                <constraint firstItem="tKt-rb-IIb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="sSo-dW-wCu"/>
+                <constraint firstItem="tKt-rb-IIb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="750" constant="-10" id="sSo-dW-wCu"/>
                 <constraint firstItem="LFs-m5-5Qr" firstAttribute="leading" secondItem="tKt-rb-IIb" secondAttribute="leading" id="ueK-GX-fGy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

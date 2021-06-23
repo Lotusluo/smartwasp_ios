@@ -45,7 +45,7 @@ static ConfigDAO *sharedSingleton = nil;
 }
 
 //插入kv方法
--(BOOL) setKey:(NSString*)key forValue:(NSString*) value{
+-(BOOL)setKey:(NSString*)key forValue:(NSString*) value{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithContentsOfFile:self.plistFilePath] ;
     if(!dict){
         dict = [[NSMutableDictionary alloc] init];

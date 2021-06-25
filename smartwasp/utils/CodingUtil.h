@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 //hex字符串转二进制数据
 +(NSData*) dataFromHexString:(NSString*)string;
 
++(NSDictionary*)dictionaryFromQuery:(NSString*)query;
+
 @end
 
 NS_ASSUME_NONNULL_END

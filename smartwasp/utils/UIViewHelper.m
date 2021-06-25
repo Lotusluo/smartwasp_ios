@@ -47,4 +47,27 @@
     return nil;
 }
 
++(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target{
+    [self showAlert:title message:msg target:target callBack:nil];
+}
+
++(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nonnull)(void)) callback{
+    if ([msg isKindOfClass:[NSDictionary class]]) {
+        NSError *parseError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg options:NSJSONWritingPrettyPrinted error:&parseError];
+        msg = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    alertView.title = title;
+    alertView.message = msg;
+    [alertView addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if(callback){
+            callback();
+        }
+    }]];
+    [target presentViewController:alertView animated:YES completion:^{
+        
+    }];
+}
+
 @end

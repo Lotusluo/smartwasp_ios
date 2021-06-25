@@ -17,7 +17,7 @@
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "HWHeadRefresh.h"
 #import "GroupView.h"
-#import "NewPageViewController.h"
+#import "WebPageViewController.h"
 #import "ItemViewController.h"
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
@@ -208,7 +208,7 @@ static NSString *const ID = @"CellIdentifier";
     musicPayView.frame = CGRectMake(SCREEN_WIDTH * 0.15, 0, SCREEN_WIDTH * 0.7, PAYVIEW_HEIGHT);
     UILabel *label = [musicPayView.subviews objectAtIndex:1];
     label.text = music.text;
-    [musicPayView.subviews objectAtIndex:0].transform = CGAffineTransformMakeRotation(M_PI);
+//    [musicPayView.subviews objectAtIndex:0].transform = CGAffineTransformMakeRotation(M_PI);
 }
 
 //添加指示器
@@ -255,7 +255,7 @@ static NSString *const ID = @"CellIdentifier";
 #pragma mark --UICollectionViewDelegate
 -( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
     BannerBean *bannerBean = _findBean.banners[indexPath.row];
-    NewPageViewController *newPage = [NewPageViewController createNewPageWithUrl:bannerBean.url];
+    WebPageViewController *newPage = [WebPageViewController createNewPageWithUrl:bannerBean.url];
     newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
     NSLog(@"%@",bannerBean.url);

@@ -6,20 +6,22 @@
 //  Copyright © 2018年 test. All rights reserved.
 //
 
-#import "NewPageViewController.h"
+#import "WebPageViewController.h"
 #import <WebKit/WebKit.h>
 #import "AppDelegate.h"
+#import "CodingUtil.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
-#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
-#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#import "UIViewHelper.h"
+
+
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
-@interface NewPageViewController ()<WKNavigationDelegate>
+@interface WebPageViewController ()<WKNavigationDelegate,IFLYOSsdkAuthDelegate>
 @property(strong,nonatomic) WKWebView *webView;
 @property(copy,nonatomic) NSString *Tag;
 @end
 
-@implementation NewPageViewController
+@implementation WebPageViewController
 
 -(int) randomInt{
     int value = (arc4random() % 10000) + 1;
@@ -34,11 +36,10 @@
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc]init];
     configuration.userContentController = userContentController;
     self.webView.configuration.userContentController = userContentController;
-    self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:configuration];
+    self.webView = [[WKWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds] configuration:configuration];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
     [self.view addSubview:self.webView];
  
-    
     
     if (self.contextTag) {
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
@@ -56,6 +57,11 @@
     if(self.path){
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openWebPage:self.Tag pageIndex:self.path deviceId:APPDELEGATE.curDevice.device_id];
+    }
+    
+    if(self.authUrl){
+        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
+        [[IFLYOSSDK shareInstance] openAuthorizePage:self.Tag url:self.authUrl];
     }
  
     if(self.isInterupt){
@@ -85,14 +91,8 @@
 }
 
 -(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
-    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
+    WebPageViewController *newPage = [WebPageViewController createNewPageWithTag:tag];
     [self.navigationController pushViewController:newPage animated:YES];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /**
@@ -109,6 +109,8 @@
 -(void) dealloc{
     NSLog(@"newPage释放");
 }
+
+
 /*
 #pragma mark - Navigation
 
@@ -119,7 +121,7 @@
 }
 */
 
-#pragma mark - WKNavigationDelegate
+#pragma mark -- WKNavigationDelegate
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     if(!self.isInterupt) return;
     NSString *urlStr = navigationAction.request.URL.absoluteString;
@@ -140,7 +142,6 @@
     decisionHandler(WKNavigationActionPolicyAllow);
 }
     
-
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [self.webView evaluateJavaScript:@"document.title" completionHandler:^(id object, NSError * error) {
         NSString *tittle = [NSString stringWithFormat:@"%@",object];
@@ -150,25 +151,44 @@
     }];
 }
 
+#pragma mark -- IFLYOSsdkAuthDelegate
+-(void)onAuthSuccess{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:self.authUrl userInfo:nil];
+}
 
+-(void)onAuthFailed{
+    [UIViewHelper showAlert:@"提示" message:@"授权失败,请重试" target:self];
+}
 
-+(NewPageViewController *) createNewPageWithTag:(NSString *) tag{
-    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
+-(void)onAuthReject{
+    [UIViewHelper showAlert:@"提示" message:@"授权失败,请重试" target:self];
+}
+
++(WebPageViewController *)createNewPageWithTag:(NSString *)tag{
+    WebPageViewController *vc = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil];
     vc.contextTag = tag;
     vc.disappearHideBar = YES;
     return vc;
 }
 
-+(NewPageViewController *) createNewPageWithUrl:(NSString *) url{
-    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
++(WebPageViewController *)createNewPageWithUrl:(NSString *)url{
+    WebPageViewController *vc = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil];
     vc.openUrl = url;
     vc.disappearHideBar = YES;
     return vc;
 }
 
-+(NewPageViewController *) createNewPageWithpath:(URL_PATH_ENUM) path{
-    NewPageViewController *vc = [[NewPageViewController alloc] initWithNibName:@"NewPageViewController" bundle:nil];
++(WebPageViewController *)createNewPageWithPath:(URL_PATH_ENUM) path{
+    WebPageViewController *vc = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil];
     vc.path = path;
+    vc.disappearHideBar = YES;
+    return vc;
+}
+
++(WebPageViewController *)createNewPageWithAuth:(NSString *)url{
+    WebPageViewController *vc = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil];
+    vc.authUrl = url;
     vc.disappearHideBar = YES;
     return vc;
 }

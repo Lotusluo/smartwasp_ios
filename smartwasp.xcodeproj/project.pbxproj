@@ -53,6 +53,7 @@
 		040B953F2666464C00B306D2 /* HWRefreshKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B95392666464C00B306D2 /* HWRefreshKeyValue.m */; };
 		040B95402666464C00B306D2 /* HWFooterRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B953B2666464C00B306D2 /* HWFooterRefresh.m */; };
 		040B95412666464C00B306D2 /* HWHeadRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B953D2666464C00B306D2 /* HWHeadRefresh.m */; };
+		040C0CBF26858D2100EBC267 /* ic_dangjian.png in Resources */ = {isa = PBXBuildFile; fileRef = 040C0CBE26858D2100EBC267 /* ic_dangjian.png */; };
 		040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED77E26550B13001A2755 /* UIView+Extension.m */; };
 		040ED78C26561699001A2755 /* PageLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 040ED78B26561699001A2755 /* PageLineLayout.m */; };
 		0410BE21267B410900CE993E /* SkillBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0410BE20267B410900CE993E /* SkillBean.m */; };
@@ -61,10 +62,11 @@
 		04115E522682D760003B192F /* IFLYQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E4B2682D760003B192F /* IFLYQRCodeView.m */; };
 		04115E532682D760003B192F /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E4D2682D760003B192F /* QRCodeViewController.m */; };
 		04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E502682D760003B192F /* IFLYQRCodeUtils.m */; };
-		04115E592682D843003B192F /* UIView+UIView_alertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E582682D843003B192F /* UIView+UIView_alertView.m */; };
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
 		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
+		041F0BC7268584CB00D545BC /* ic_screen_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0BC6268584CB00D545BC /* ic_screen_box.png */; };
+		0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422A35B2684289E004E9D55 /* WebPageViewController.xib */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
 		0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* NotifyViewController.m */; };
 		0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0425CD68262EE437004D4D23 /* CommonTabController.xib */; };
@@ -88,6 +90,17 @@
 		04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */; };
 		04283ACB267AF4A000FFBF84 /* DeviceSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */; };
 		04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */; };
+		042A95522685A1D200C017FD /* WifiInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A95502685A1D200C017FD /* WifiInfoViewController.m */; };
+		042A95532685A1D200C017FD /* WifiInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A95512685A1D200C017FD /* WifiInfoViewController.xib */; };
+		042A955F2685AFC200C017FD /* ic_pwd_visible.png in Resources */ = {isa = PBXBuildFile; fileRef = 042A955D2685AFC200C017FD /* ic_pwd_visible.png */; };
+		042A95602685AFC200C017FD /* ic_pwd_invisible.png in Resources */ = {isa = PBXBuildFile; fileRef = 042A955E2685AFC200C017FD /* ic_pwd_invisible.png */; };
+		042A95642685B85400C017FD /* ServiceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A95632685B85400C017FD /* ServiceUtil.m */; };
+		042A95692685BCBA00C017FD /* WaitLAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A95672685BCBA00C017FD /* WaitLAViewController.m */; };
+		042A956A2685BCBA00C017FD /* WaitLAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A95682685BCBA00C017FD /* WaitLAViewController.xib */; };
+		042A956D2685BF0D00C017FD /* ic_la001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 042A956C2685BF0D00C017FD /* ic_la001.jpg */; };
+		042A95722685C40B00C017FD /* MatchLAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A95702685C40B00C017FD /* MatchLAViewController.m */; };
+		042A95732685C40B00C017FD /* MatchLAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A95712685C40B00C017FD /* MatchLAViewController.xib */; };
+		042A957A2685D83800C017FD /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 042A95782685D83800C017FD /* cJSON.c */; };
 		042B4E9026672127009BE328 /* MusicBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E8F26672127009BE328 /* MusicBean.m */; };
 		042B4E94266721C0009BE328 /* UserBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E93266721C0009BE328 /* UserBean.m */; };
 		042B4E9826672371009BE328 /* DeviceBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E9726672371009BE328 /* DeviceBean.m */; };
@@ -98,8 +111,7 @@
 		043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DC2A62630426400A7F680 /* AppDelegate+Global.m */; };
 		043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */; };
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
-		044D723726396C8E0075994F /* NewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D723526396C8E0075994F /* NewPageViewController.m */; };
-		044D723826396C8E0075994F /* NewPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044D723626396C8E0075994F /* NewPageViewController.xib */; };
+		044D723726396C8E0075994F /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D723526396C8E0075994F /* WebPageViewController.m */; };
 		044EAE74267886F800CC122A /* MusicItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE73267886F800CC122A /* MusicItemCell.xib */; };
 		044EAE7C2678916C00CC122A /* icon_clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE772678916B00CC122A /* icon_clock@2x.png */; };
 		044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 044EAE782678916B00CC122A /* icon_arrow@2x.png */; };
@@ -126,6 +138,9 @@
 		04725168265E30F8003C4625 /* Toolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04725165265E30F7003C4625 /* Toolbar.xib */; };
 		04725178265E32C4003C4625 /* DeviceDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 04725175265E32C4003C4625 /* DeviceDialog.m */; };
 		04725179265E32C4003C4625 /* DeviceDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04725177265E32C4003C4625 /* DeviceDialog.xib */; };
+		047267072684800900446189 /* PrevBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047267052684800900446189 /* PrevBindViewController.m */; };
+		047267082684800900446189 /* PrevBindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047267062684800900446189 /* PrevBindViewController.xib */; };
+		0472671626848C2D00446189 /* ZFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472671526848C2D00446189 /* ZFCheckbox.m */; };
 		0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476D47D2660865000F8DE42 /* DeviceBannerCell.m */; };
 		0476D4842660877300F8DE42 /* DeviceChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476D4822660877300F8DE42 /* DeviceChooseCell.m */; };
 		0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D4832660877300F8DE42 /* DeviceChooseCell.xib */; };
@@ -155,6 +170,8 @@
 		04D738E02620453200E4F00C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738DE2620453200E4F00C /* LoginViewController.m */; };
 		04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE8A352683184F002AAA7D /* AddDeviceViewController.m */; };
 		04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */; };
+		04DE8A4026831FE7002AAA7D /* ic_r_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A3F26831FE7002AAA7D /* ic_r_scan@2x.png */; };
+		04DE8A432683262E002AAA7D /* ic_navback_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A422683262E002AAA7D /* ic_navback_right@2x.png */; };
 		04E00B1C26214A6A00080581 /* libiflyosPushService.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1926214A6A00080581 /* libiflyosPushService.a */; };
 		04E00B1D26214A6A00080581 /* libiflyosSDKForiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1A26214A6A00080581 /* libiflyosSDKForiOS.a */; };
 		04E00B1E26214A6A00080581 /* libiflyosQuietSDKForiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1B26214A6A00080581 /* libiflyosQuietSDKForiOS.a */; };
@@ -268,6 +285,7 @@
 		040B953B2666464C00B306D2 /* HWFooterRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWFooterRefresh.m; sourceTree = "<group>"; };
 		040B953C2666464C00B306D2 /* HWRefreshKeyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWRefreshKeyValue.h; sourceTree = "<group>"; };
 		040B953D2666464C00B306D2 /* HWHeadRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWHeadRefresh.m; sourceTree = "<group>"; };
+		040C0CBE26858D2100EBC267 /* ic_dangjian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_dangjian.png; sourceTree = "<group>"; };
 		040ED77D26550B12001A2755 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		040ED77E26550B13001A2755 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		040ED78A26561699001A2755 /* PageLineLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageLineLayout.h; sourceTree = "<group>"; };
@@ -282,14 +300,14 @@
 		04115E4E2682D760003B192F /* IFLYQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYQRCodeView.h; sourceTree = "<group>"; };
 		04115E4F2682D760003B192F /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
 		04115E502682D760003B192F /* IFLYQRCodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFLYQRCodeUtils.m; sourceTree = "<group>"; };
-		04115E572682D843003B192F /* UIView+UIView_alertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_alertView.h"; sourceTree = "<group>"; };
-		04115E582682D843003B192F /* UIView+UIView_alertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_alertView.m"; sourceTree = "<group>"; };
 		0415EAA62660E43400A73CE7 /* NormalNaviCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalNaviCell.h; sourceTree = "<group>"; };
 		0415EAA72660E43400A73CE7 /* NormalNaviCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalNaviCell.m; sourceTree = "<group>"; };
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
 		0415EADB26649A6D00A73CE7 /* ISWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISWDelegate.h; sourceTree = "<group>"; };
 		0415EAE92664D9E500A73CE7 /* FindBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
 		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
+		041F0BC6268584CB00D545BC /* ic_screen_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_screen_box.png; sourceTree = "<group>"; };
+		0422A35B2684289E004E9D55 /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageViewController.xib; sourceTree = "<group>"; };
 		0425CD51262ECE17004D4D23 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0425CD52262ECE17004D4D23 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		0425CD62262EE154004D4D23 /* NotifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyViewController.h; sourceTree = "<group>"; };
@@ -324,6 +342,22 @@
 		04283AC8267AF4A000FFBF84 /* DeviceSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSetViewController.h; sourceTree = "<group>"; };
 		04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSetViewController.m; sourceTree = "<group>"; };
 		04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceSetViewController.xib; sourceTree = "<group>"; };
+		042A954F2685A1D200C017FD /* WifiInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiInfoViewController.h; sourceTree = "<group>"; };
+		042A95502685A1D200C017FD /* WifiInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiInfoViewController.m; sourceTree = "<group>"; };
+		042A95512685A1D200C017FD /* WifiInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiInfoViewController.xib; sourceTree = "<group>"; };
+		042A955D2685AFC200C017FD /* ic_pwd_visible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pwd_visible.png; sourceTree = "<group>"; };
+		042A955E2685AFC200C017FD /* ic_pwd_invisible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pwd_invisible.png; sourceTree = "<group>"; };
+		042A95622685B85400C017FD /* ServiceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceUtil.h; sourceTree = "<group>"; };
+		042A95632685B85400C017FD /* ServiceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceUtil.m; sourceTree = "<group>"; };
+		042A95662685BCBA00C017FD /* WaitLAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitLAViewController.h; sourceTree = "<group>"; };
+		042A95672685BCBA00C017FD /* WaitLAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitLAViewController.m; sourceTree = "<group>"; };
+		042A95682685BCBA00C017FD /* WaitLAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitLAViewController.xib; sourceTree = "<group>"; };
+		042A956C2685BF0D00C017FD /* ic_la001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_la001.jpg; sourceTree = "<group>"; };
+		042A956F2685C40B00C017FD /* MatchLAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchLAViewController.h; sourceTree = "<group>"; };
+		042A95702685C40B00C017FD /* MatchLAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchLAViewController.m; sourceTree = "<group>"; };
+		042A95712685C40B00C017FD /* MatchLAViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchLAViewController.xib; sourceTree = "<group>"; };
+		042A95782685D83800C017FD /* cJSON.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cJSON.c; sourceTree = "<group>"; };
+		042A95792685D83800C017FD /* cJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cJSON.h; sourceTree = "<group>"; };
 		042B4E8E26672127009BE328 /* MusicBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicBean.h; sourceTree = "<group>"; };
 		042B4E8F26672127009BE328 /* MusicBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicBean.m; sourceTree = "<group>"; };
 		042B4E92266721C0009BE328 /* UserBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBean.h; sourceTree = "<group>"; };
@@ -340,9 +374,8 @@
 		043DC2A62630426400A7F680 /* AppDelegate+Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Global.m"; sourceTree = "<group>"; };
 		043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_agreement.html; sourceTree = "<group>"; };
 		043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_privacypolicy.html; sourceTree = "<group>"; };
-		044D723426396C8E0075994F /* NewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPageViewController.h; sourceTree = "<group>"; };
-		044D723526396C8E0075994F /* NewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPageViewController.m; sourceTree = "<group>"; };
-		044D723626396C8E0075994F /* NewPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPageViewController.xib; sourceTree = "<group>"; };
+		044D723426396C8E0075994F /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPageViewController.h; sourceTree = "<group>"; };
+		044D723526396C8E0075994F /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPageViewController.m; sourceTree = "<group>"; };
 		044EAE73267886F800CC122A /* MusicItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicItemCell.xib; sourceTree = "<group>"; };
 		044EAE772678916B00CC122A /* icon_clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_clock@2x.png"; sourceTree = "<group>"; };
 		044EAE782678916B00CC122A /* icon_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@2x.png"; sourceTree = "<group>"; };
@@ -381,6 +414,11 @@
 		04725175265E32C4003C4625 /* DeviceDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceDialog.m; sourceTree = "<group>"; };
 		04725176265E32C4003C4625 /* DeviceDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceDialog.h; sourceTree = "<group>"; };
 		04725177265E32C4003C4625 /* DeviceDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceDialog.xib; sourceTree = "<group>"; };
+		047267042684800900446189 /* PrevBindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrevBindViewController.h; sourceTree = "<group>"; };
+		047267052684800900446189 /* PrevBindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrevBindViewController.m; sourceTree = "<group>"; };
+		047267062684800900446189 /* PrevBindViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrevBindViewController.xib; sourceTree = "<group>"; };
+		0472671426848C2C00446189 /* ZFCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFCheckbox.h; sourceTree = "<group>"; };
+		0472671526848C2D00446189 /* ZFCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFCheckbox.m; sourceTree = "<group>"; };
 		0476D47B2660865000F8DE42 /* DeviceBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceBannerCell.h; sourceTree = "<group>"; };
 		0476D47D2660865000F8DE42 /* DeviceBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceBannerCell.m; sourceTree = "<group>"; };
 		0476D4812660877300F8DE42 /* DeviceChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceChooseCell.h; sourceTree = "<group>"; };
@@ -428,6 +466,8 @@
 		04DE8A342683184F002AAA7D /* AddDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		04DE8A352683184F002AAA7D /* AddDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
 		04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
+		04DE8A3F26831FE7002AAA7D /* ic_r_scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_r_scan@2x.png"; sourceTree = "<group>"; };
+		04DE8A422683262E002AAA7D /* ic_navback_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_navback_right@2x.png"; sourceTree = "<group>"; };
 		04E00B1926214A6A00080581 /* libiflyosPushService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiflyosPushService.a; sourceTree = "<group>"; };
 		04E00B1A26214A6A00080581 /* libiflyosSDKForiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiflyosSDKForiOS.a; sourceTree = "<group>"; };
 		04E00B1B26214A6A00080581 /* libiflyosQuietSDKForiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libiflyosQuietSDKForiOS.a; sourceTree = "<group>"; };
@@ -688,6 +728,28 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		041F0BBD268576BE00D545BC /* apMoudles */ = {
+			isa = PBXGroup;
+			children = (
+				04DE8A342683184F002AAA7D /* AddDeviceViewController.h */,
+				04DE8A352683184F002AAA7D /* AddDeviceViewController.m */,
+				04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */,
+				047267042684800900446189 /* PrevBindViewController.h */,
+				047267052684800900446189 /* PrevBindViewController.m */,
+				047267062684800900446189 /* PrevBindViewController.xib */,
+				042A954F2685A1D200C017FD /* WifiInfoViewController.h */,
+				042A95502685A1D200C017FD /* WifiInfoViewController.m */,
+				042A95512685A1D200C017FD /* WifiInfoViewController.xib */,
+				042A95662685BCBA00C017FD /* WaitLAViewController.h */,
+				042A95672685BCBA00C017FD /* WaitLAViewController.m */,
+				042A95682685BCBA00C017FD /* WaitLAViewController.xib */,
+				042A956F2685C40B00C017FD /* MatchLAViewController.h */,
+				042A95702685C40B00C017FD /* MatchLAViewController.m */,
+				042A95712685C40B00C017FD /* MatchLAViewController.xib */,
+			);
+			path = apMoudles;
+			sourceTree = "<group>";
+		};
 		04261957261EFE19000D95D6 = {
 			isa = PBXGroup;
 			children = (
@@ -736,6 +798,13 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				042A956C2685BF0D00C017FD /* ic_la001.jpg */,
+				042A955E2685AFC200C017FD /* ic_pwd_invisible.png */,
+				042A955D2685AFC200C017FD /* ic_pwd_visible.png */,
+				040C0CBE26858D2100EBC267 /* ic_dangjian.png */,
+				041F0BC6268584CB00D545BC /* ic_screen_box.png */,
+				04DE8A3F26831FE7002AAA7D /* ic_r_scan@2x.png */,
+				04DE8A422683262E002AAA7D /* ic_navback_right@2x.png */,
 				044EAE82267891C200CC122A /* ic_more@2x.png */,
 				044EAE7B2678916B00CC122A /* icon_about@2x.png */,
 				044EAE7A2678916B00CC122A /* icon_account@2x.png */,
@@ -779,8 +848,6 @@
 		0476D48B2660940000F8DE42 /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				04115E572682D843003B192F /* UIView+UIView_alertView.h */,
-				04115E582682D843003B192F /* UIView+UIView_alertView.m */,
 				045E5D862658E1F200672251 /* UIImage+Extension.h */,
 				045E5D852658E1F200672251 /* UIImage+Extension.m */,
 				040ED77D26550B12001A2755 /* UIView+Extension.h */,
@@ -796,9 +863,10 @@
 		047FF9C8261FEC10005E87A7 /* moudle */ = {
 			isa = PBXGroup;
 			children = (
-				044D723426396C8E0075994F /* NewPageViewController.h */,
-				044D723526396C8E0075994F /* NewPageViewController.m */,
-				044D723626396C8E0075994F /* NewPageViewController.xib */,
+				041F0BBD268576BE00D545BC /* apMoudles */,
+				044D723426396C8E0075994F /* WebPageViewController.h */,
+				044D723526396C8E0075994F /* WebPageViewController.m */,
+				0422A35B2684289E004E9D55 /* WebPageViewController.xib */,
 				04D738DD2620453200E4F00C /* LoginViewController.h */,
 				04D738DE2620453200E4F00C /* LoginViewController.m */,
 				04F840DB26316DA10068EFAF /* LoginViewController.xib */,
@@ -829,9 +897,6 @@
 				04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */,
 				F39EEE9A267EC9E600F89B2D /* UsrCenterViewController.h */,
 				F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */,
-				04DE8A342683184F002AAA7D /* AddDeviceViewController.h */,
-				04DE8A352683184F002AAA7D /* AddDeviceViewController.m */,
-				04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -876,6 +941,8 @@
 		04B261ED262D7BB000A92083 /* widgets */ = {
 			isa = PBXGroup;
 			children = (
+				0472671426848C2C00446189 /* ZFCheckbox.h */,
+				0472671526848C2D00446189 /* ZFCheckbox.m */,
 				04B5D1BB2680615B00323E3C /* LXSEQView.h */,
 				04B5D1BA2680615B00323E3C /* LXSEQView.m */,
 				04EBA376267CAB15001D4FDF /* InsetsLabel.h */,
@@ -981,6 +1048,8 @@
 		04E00B492621544000080581 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				042A95782685D83800C017FD /* cJSON.c */,
+				042A95792685D83800C017FD /* cJSON.h */,
 				04783314262D1F3600684E9C /* iToast.h */,
 				04783313262D1F3500684E9C /* iToast.m */,
 				04E7DF1A2621ABDA007C3790 /* Loading.h */,
@@ -994,6 +1063,8 @@
 				04CE3402267DD155001C4216 /* GSMonitorKeyboard.m */,
 				F306DD24267F7CA800BBD170 /* JCGCDTimer.h */,
 				F306DD25267F7CA800BBD170 /* JCGCDTimer.m */,
+				042A95622685B85400C017FD /* ServiceUtil.h */,
+				042A95632685B85400C017FD /* ServiceUtil.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1078,16 +1149,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				04725179265E32C4003C4625 /* DeviceDialog.xib in Resources */,
+				047267082684800900446189 /* PrevBindViewController.xib in Resources */,
 				044EAE802678916C00CC122A /* icon_about@2x.png in Resources */,
 				0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */,
+				042A95732685C40B00C017FD /* MatchLAViewController.xib in Resources */,
+				042A956D2685BF0D00C017FD /* ic_la001.jpg in Resources */,
 				043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */,
 				04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */,
 				044EAE7F2678916C00CC122A /* icon_account@2x.png in Resources */,
+				042A955F2685AFC200C017FD /* ic_pwd_visible.png in Resources */,
 				04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */,
 				04261A3E261F1D36000D95D6 /* icon_tab_mine_selected@2x.png in Resources */,
 				042B4EA3266724D0009BE328 /* GroupView.xib in Resources */,
 				04261A41261F1D36000D95D6 /* icon_tab_smart_selected@2x.png in Resources */,
 				044EAE74267886F800CC122A /* MusicItemCell.xib in Resources */,
+				040C0CBF26858D2100EBC267 /* ic_dangjian.png in Resources */,
 				04B93A0F267C49080036C0B6 /* SkillDetailViewController.xib in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
 				04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */,
@@ -1100,15 +1176,20 @@
 				0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */,
 				04725168265E30F8003C4625 /* Toolbar.xib in Resources */,
 				044EAE8F2678A98D00CC122A /* SongsPlayDialog.xib in Resources */,
+				04DE8A4026831FE7002AAA7D /* ic_r_scan@2x.png in Resources */,
+				042A956A2685BCBA00C017FD /* WaitLAViewController.xib in Resources */,
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
+				041F0BC7268584CB00D545BC /* ic_screen_box.png in Resources */,
 				0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */,
 				04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */,
 				04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */,
+				0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */,
 				043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */,
 				044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */,
 				0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */,
 				04261A4C261F1D36000D95D6 /* icon_tab_mine@2x.png in Resources */,
 				04261A1D261F167C000D95D6 /* icon_tab_dialog_selected@2x.png in Resources */,
+				042A95532685A1D200C017FD /* WifiInfoViewController.xib in Resources */,
 				04261A1B261F167C000D95D6 /* icon_tab_dialog@2x.png in Resources */,
 				04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */,
 				04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */,
@@ -1126,10 +1207,11 @@
 				044EAE83267891C200CC122A /* ic_more@2x.png in Resources */,
 				042B4EA826672D9E009BE328 /* GroupItemCell.xib in Resources */,
 				04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */,
+				04DE8A432683262E002AAA7D /* ic_navback_right@2x.png in Resources */,
 				04D738D726202A8400E4F00C /* UserViewController.xib in Resources */,
 				04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */,
+				042A95602685AFC200C017FD /* ic_pwd_invisible.png in Resources */,
 				0410BE24267B54D900CE993E /* SkillView.xib in Resources */,
-				044D723826396C8E0075994F /* NewPageViewController.xib in Resources */,
 				042619F7261F09A6000D95D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1200,7 +1282,6 @@
 				040B94932666228F00B306D2 /* GroupBean.m in Sources */,
 				040B950D2666464800B306D2 /* JXCategoryTitleVerticalZoomView.m in Sources */,
 				04D738D026202A7700E4F00C /* FinderViewController.m in Sources */,
-				04115E592682D843003B192F /* UIView+UIView_alertView.m in Sources */,
 				040B95162666464800B306D2 /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				040ED78C26561699001A2755 /* PageLineLayout.m in Sources */,
 				04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */,
@@ -1213,7 +1294,9 @@
 				0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */,
 				F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */,
 				040B95122666464800B306D2 /* JXCategoryIndicatorImageView.m in Sources */,
+				042A95522685A1D200C017FD /* WifiInfoViewController.m in Sources */,
 				04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */,
+				047267072684800900446189 /* PrevBindViewController.m in Sources */,
 				045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */,
 				04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */,
 				040B95152666464800B306D2 /* JXCategoryIndicatorDotLineView.m in Sources */,
@@ -1231,6 +1314,7 @@
 				040B952B2666464800B306D2 /* JXCategoryCollectionView.m in Sources */,
 				040B952A2666464800B306D2 /* JXCategoryFactory.m in Sources */,
 				045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */,
+				042A95722685C40B00C017FD /* MatchLAViewController.m in Sources */,
 				0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */,
 				042B4E9026672127009BE328 /* MusicBean.m in Sources */,
 				04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */,
@@ -1243,7 +1327,8 @@
 				040B95242666464800B306D2 /* JXCategoryImageCell.m in Sources */,
 				043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */,
 				040B95402666464C00B306D2 /* HWFooterRefresh.m in Sources */,
-				044D723726396C8E0075994F /* NewPageViewController.m in Sources */,
+				0472671626848C2D00446189 /* ZFCheckbox.m in Sources */,
+				044D723726396C8E0075994F /* WebPageViewController.m in Sources */,
 				04B93A0E267C49080036C0B6 /* SkillDetailViewController.m in Sources */,
 				04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */,
 				040B95172666464800B306D2 /* JXCategoryIndicatorCellModel.m in Sources */,
@@ -1273,13 +1358,16 @@
 				04B5D1DB26809B9E00323E3C /* StatusBean.m in Sources */,
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
+				042A957A2685D83800C017FD /* cJSON.c in Sources */,
 				040B95312666464800B306D2 /* JXCategoryBaseCell.m in Sources */,
 				F39EEE9D267EC9E600F89B2D /* UsrCenterViewController.m in Sources */,
 				040B95212666464800B306D2 /* JXCategoryTitleCell.m in Sources */,
 				0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */,
 				046EEFB726298954001213DB /* ConfigDAO.m in Sources */,
 				04725178265E32C4003C4625 /* DeviceDialog.m in Sources */,
+				042A95642685B85400C017FD /* ServiceUtil.m in Sources */,
 				04B5D1C62680938000323E3C /* MusicPlayerBean.m in Sources */,
+				042A95692685BCBA00C017FD /* WaitLAViewController.m in Sources */,
 				040B951E2666464800B306D2 /* JXCategoryTitleImageCell.m in Sources */,
 				04261976261EFE1C000D95D6 /* main.m in Sources */,
 				040B95232666464800B306D2 /* JXCategoryImageView.m in Sources */,

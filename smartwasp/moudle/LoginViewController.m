@@ -15,10 +15,10 @@
 #import "CodingUtil.h"
 #import "ConfigDAO.h"
 #import "NSObject+YYModel.h"
-#import "AppDelegate+Global.h"
 #import "iToast.h"
-#import "NewPageViewController.h"
+#import "WebPageViewController.h"
 #import "NetDAO.h"
+#import "AppDelegate+Global.h"
 #import "AppDelegate.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -70,7 +70,7 @@
  */
 -(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
     NSLog(@"打开新网页：%@ noBack:%@",tag,noBack);
-    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
+    WebPageViewController *newPage = [WebPageViewController createNewPageWithTag:tag];
     newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
 }
@@ -116,7 +116,6 @@
         if(!cData.errCode || cData.errCode == 407){
             APPDELEGATE.user = user;
             [APPDELEGATE toMain];
-            [APPDELEGATE requestBindDevices];
         }else{
             //登陆失败
             [[iToast makeText:@"登陆失败,请重试!"] show];

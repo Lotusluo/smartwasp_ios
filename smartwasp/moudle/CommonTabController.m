@@ -11,7 +11,7 @@
 
 #import <WebKit/WebKit.h>
 #import <Masonry.h>
-#import "NewPageViewController.h"
+#import "WebPageViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -105,7 +105,7 @@
 
 //打开一个新页面
 -(void)openNewPage:(id) tag noBack:(NSNumber *)noBack{
-    NewPageViewController *newPage = [NewPageViewController createNewPageWithTag:tag];
+    WebPageViewController *newPage = [WebPageViewController createNewPageWithTag:tag];
     [self.navigationController pushViewController:newPage animated:YES];
 }
 

@@ -14,19 +14,18 @@
 -(instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
     image = [UIImage imageNamed:@"icon_add"];
+    if (@available(iOS 14.0, *)) {
+        [self setIndicatorImage:image forPage:0];
+    }
     return self;
 }
 
--(void) setCurrentPage:(NSInteger)currentPage{
+-(void)setCurrentPage:(NSInteger)currentPage{
     [super setCurrentPage:currentPage];
     if (@available(iOS 14.0, *)) {
-        if(self.tag != 1){
-            self.tag = 1;
-            [self setIndicatorImage:image forPage:0];
-        }
-    } else {
-        [self updateDots];
+        return;
     }
+    [self updateDots];
 }
 
 

@@ -42,8 +42,6 @@
 
 //比较两个设备是否相等
 - (BOOL)isEqual:(id)other {
-    if (other == self)
-        return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
     DeviceBean *otherDev = (DeviceBean*) other;

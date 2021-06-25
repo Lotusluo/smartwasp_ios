@@ -13,8 +13,8 @@
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
 
-//是否需要刷新绑定的设备的详细信息
-BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
+
+BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 
 @interface AppDelegate ()<IFLYOSPushServiceProtocol>{
     NSInteger mediaErrTimez;
@@ -25,7 +25,11 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
 
 @implementation AppDelegate
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *json = @"{\"client_id\": \"65e8d4f8-da9e-4633-8cac-84b0b47496b6\",\"pid\": \"62\",\"did\": \"XHFH0070000008\"}";
+    NSLog(@"json:%@",json);
+    NSLog(@"readStream:%@",[json yy_modelToJSONObject]);
     // Override point for customization after application launch.
     [[IFLYOSSDK shareInstance] initAppId:APPID schema:@"smartwasp" loginType:DEFAULT];
     [[IFLYOSSDK shareInstance] setDebugModel:NO];
@@ -40,7 +44,6 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if(self.user){
         [self toMain];
-        [self requestBindDevices];
     }else{
         [self toLogin];
     }
@@ -48,20 +51,46 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
     return YES;
 }
 
+//设置设备列表
+-(void)setDevices:(NSArray<DeviceBean *> *)devices{
+    _devices = devices;
+    NSLog(@"当前设备列表:%@",_devices);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"devsSetNotification" object:nil userInfo:nil];
+    if(!self.devices || self.devices.count < 1){
+        self.curDevice = nil;
+        return;
+    }
+    //上一次选择的设备
+    NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev_selected"];
+    if(devValue && ![devValue isEqualToString:@""]){
+        for(DeviceBean *devBean in self.devices){
+            if([devBean.device_id isEqualToString:devValue]){
+                self.curDevice = devBean;
+                break;
+            }
+        }
+    }else{
+        self.curDevice = devices[0];
+    }
+}
+
 //设置当前设备选择方法
-- (void)setCurDevice:(DeviceBean *)curDevice{
-    if(!curDevice)
+-(void)setCurDevice:(DeviceBean *)curDevice{
+    if(_curDevice && curDevice && [_curDevice isEqual:curDevice]){
+        //设备未更改则返回
         return;
-    if(_curDevice && [_curDevice isEqual:curDevice])
-        return;
+    }
     _curDevice = curDevice;
+    //取消订阅设备状态
+    [self disSubscribeMediaStatus];
     //通知刷新当前选择的设备
-    NSLog(@"当前选择的设备:%@",curDevice.alias);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"devSetNotification" object:nil userInfo:nil];
-    //开始订阅此设备媒体状态
-    mediaErrTimez = 0;
-    [self subscribeMediaStatus];
-    self.mediaStatus = nil;
+    if(self.curDevice){
+        NSLog(@"当前选择的设备:%@",curDevice.alias);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"devSetNotification" object:nil userInfo:nil];
+        //开始订阅此设备媒体状态
+        mediaErrTimez = 0;
+        [self subscribeMediaStatus];
+    }
 }
 
 //设置当前设备媒体状态
@@ -87,7 +116,7 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
 /**
  * socket连接成功
  */
--(void) onSockectOpenSuccess:(IFLYOSPushService *) socket{
+-(void)onSockectOpenSuccess:(IFLYOSPushService *) socket{
     if(socket == mediaStatePushService){
         NSLog(@"媒体状态监听打开成功");
     }else if(socket == deviceStatePushService){
@@ -99,7 +128,7 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
  * socket连接失败
  * error:失败原因
 */
--(void) onSockect:(IFLYOSPushService *) socket error:(NSError *) error{
+-(void)onSockect:(IFLYOSPushService *) socket error:(NSError *) error{
     if(socket == mediaStatePushService){
         NSLog(@"媒体状态监听打开失败：%@",error);
         mediaStatePushService = nil;
@@ -122,7 +151,7 @@ BOOL NEED_REFRESH_DEVICES_DETAIL = YES;
  * reason:关闭原因
  * wasClean:是否清除
 */
--(void) onSockect:(IFLYOSPushService *) socket didCloseWithCode:(NSInteger) code reason:(NSString *) reason wasClean:(BOOL)wasClean{
+-(void)onSockect:(IFLYOSPushService *) socket didCloseWithCode:(NSInteger) code reason:(NSString *) reason wasClean:(BOOL)wasClean{
     if(socket == mediaStatePushService){
         NSLog(@"媒体状态监听已关闭：%@",reason);
     }else if(socket == deviceStatePushService){

@@ -48,6 +48,7 @@ static NetDAO *sharedSingleton = nil;
     [_afManager POST:api parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(responseObject){
+            NSLog(@"responseObject:%@",responseObject);
             BaseBean<id> *bean = [BaseBean yy_modelWithJSON:responseObject];
             complete(bean);
         }else{

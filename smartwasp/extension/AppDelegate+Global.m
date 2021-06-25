@@ -13,35 +13,16 @@
 
 //请求绑定的设备
 - (void)requestBindDevices{
-    if(self.user){
+    if(self.user && NEED_MAIN_REFRESH_DEVICES){
         [[IFLYOSSDK shareInstance] getUserDevices:^(NSInteger code) {
-            if(code != 200){
-                //加载错误
-                NSLog(@"获取设备列表失败");
-            }
+            NEED_MAIN_REFRESH_DEVICES = NO;
         } requestSuccess:^(id _Nonnull success)  {
             //刷新绑定的设备列表
             NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];
-            NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev"];
-            for(DeviceBean *dev in devices){
-                if(self.curDevice && [self.curDevice isEqual:dev]){
-                    //刷新可能存在的设备信息更改
-                    self.curDevice = dev;
-                }else if (!self.curDevice&& [dev.device_id isEqualToString:devValue]){
-                    //刷新上一次应用的设备选择记录
-                    self.curDevice = dev;
-                }
-            }
             self.devices = [devices copy];
-            if(!self.curDevice && self.devices.count > 0){
-                //默认选择第一个
-                self.curDevice = self.devices[0];
-            }
-            if(!self.curDevice){
-                //设备为空
-            }
         } requestFail:^(id _Nonnull error) {
             //加载错误
+            self.devices = nil;
         }];
     }
 }
@@ -61,11 +42,7 @@
     } requestFail:^(id _Nonnull data) {
         NSLog(@"获取设备媒体状态失败");
     }];
-    
-    if(mediaStatePushService){
-        [mediaStatePushService close];
-        mediaStatePushService = nil;
-    }
+    [self disSubscribeMediaStatus];
     //开始订阅媒体状态
     NSString *token = [IFLYOSSDK shareInstance].getToken;
     if (token){
@@ -75,18 +52,31 @@
     }
 }
 
+//取消订阅媒体状态
+-(void)disSubscribeMediaStatus{
+    if(mediaStatePushService){
+        [mediaStatePushService close];
+        mediaStatePushService = nil;
+    }
+}
+
 //订阅当前用户的设备状态
 -(void)subscribeDeviceStatus{
-    if(deviceStatePushService){
-        [deviceStatePushService close];
-        deviceStatePushService = nil;
-    }
+    [self disSubscribeDeviceStatus];
     //开始订阅媒体状态
     NSString *token = [IFLYOSSDK shareInstance].getToken;
     if (token){
         deviceStatePushService = [IFLYOSPushService createSocket:token command:@"connect" fromType:@"ACCOUNT" deviceId:self.user.user_id];
         deviceStatePushService.delegate = (id)self;
         [deviceStatePushService open];
+    }
+}
+
+//取消当前用户的设备状态
+-(void)disSubscribeDeviceStatus{
+    if(deviceStatePushService){
+        [deviceStatePushService close];
+        deviceStatePushService = nil;
     }
 }
 

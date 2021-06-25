@@ -35,7 +35,6 @@
     [self updateToolbarUI:APPDELEGATE.curDevice];
     [self mediaSetCallback:APPDELEGATE.mediaStatus.data];
    
-    _imageView.layer.shadowOffset = CGSizeMake(-10, 10);
     _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
 //    self.container.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.container.bounds cornerRadius:100.0].CGPath;
 

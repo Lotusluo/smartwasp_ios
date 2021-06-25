@@ -13,11 +13,12 @@
 #import "PageControl2.h"
 #import "NormalNaviCell.h"
 #import "DeviceSetViewController.h"
-#import "NewPageViewController.h"
+#import "WebPageViewController.h"
 #import <Masonry.h>
 #import "IFLYOSSDK.h"
 #import "LXSEQView.h"
 #import "UsrCenterViewController.h"
+#import "AddDeviceViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -61,6 +62,11 @@ static NSString *const ID = @"CellIdentifier";
     [self initpageCtr];
     [self initMenuList];
     [self reloadData];
+    //对选择的设备进行监听
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(devsSetObserver:)
+                                                 name:@"devsSetNotification"
+                                               object:nil];
 }
 
 //初始化设备选择栏
@@ -71,6 +77,11 @@ static NSString *const ID = @"CellIdentifier";
     self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     self.collectionView.backgroundColor = [UIColor clearColor];
     [self.collectionView registerNib:[UINib nibWithNibName:@"DeviceBannerCell" bundle:nil] forCellWithReuseIdentifier:ID];
+}
+
+//处理设备列表通知
+-(void)devsSetObserver:(NSNotification*)notification {
+    [self reloadData];
 }
 
 //处理设备媒体状态通知
@@ -113,7 +124,6 @@ static NSString *const ID = @"CellIdentifier";
 //菜单点击事件
 -(void)onClick:(NSInteger)tag{
     if(tag == 4){
-       
         return;
     }
     URL_PATH_ENUM path;
@@ -124,20 +134,25 @@ static NSString *const ID = @"CellIdentifier";
     }else {
         path = ACCOUNTS;
     }
-    NewPageViewController *nvc = [NewPageViewController createNewPageWithpath:path];
+    WebPageViewController *nvc = [WebPageViewController createNewPageWithPath:path];
     [self.navigationController pushViewController:nvc animated:YES];
 }
 
 //重加载数据
 -(void)reloadData{
     self.pageControl.numberOfPages = APPDELEGATE.devices ? APPDELEGATE.devices.count + 1 : 1;
-    self.pageControl.tag = 0;
     [self.collectionView reloadData];
-    [self setCurrentPage:0];
+    //判断当前的设备索引号
+    if(APPDELEGATE.curDevice){
+        NSInteger index = [APPDELEGATE.devices indexOfObject:APPDELEGATE.curDevice] + 1;
+        [self setCurrentPage:index];
+    }else{
+        [self setCurrentPage:0];
+    }
 }
 
 #pragma mark --UICollectionViewDelegate
--( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row){
         //点击进入设备详情界面
         DeviceBean *selctedBean = APPDELEGATE.devices[indexPath.row - 1];
@@ -146,6 +161,8 @@ static NSString *const ID = @"CellIdentifier";
         return;
     }
     //进入添加设备界面
+    AddDeviceViewController *avc = AddDeviceViewController.new;
+    [self.navigationController pushViewController:avc animated:YES];
 }
 
 #pragma mark --UICollectionViewDataSource
@@ -183,6 +200,15 @@ static NSString *const ID = @"CellIdentifier";
 
 -(void)setCurrentPage:(NSInteger) page{
     [self.pageControl setCurrentPage:page];
+    CGFloat offsetX = floor(page * (APAGE_SIZE.width + 30));
+    if(self.collectionView.contentOffset.x == offsetX)
+        return;
+    __weak typeof(self) SELF = self;
+    dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 0.2* NSEC_PER_SEC);
+    dispatch_after(time_t, dispatch_get_main_queue(), ^{
+        SELF.collectionView.contentOffset = CGPointMake(offsetX, 0);
+        [SELF.pageControl setCurrentPage:page];
+    });
 }
 
 

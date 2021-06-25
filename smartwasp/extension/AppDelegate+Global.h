@@ -14,12 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 //请求绑定的数据
 - (void)requestBindDevices;
 
-
 //订阅当前设备的媒体状态
 -(void)subscribeMediaStatus;
 
+//取消订阅媒体状态
+-(void)disSubscribeMediaStatus;
+
 //订阅当前用户的设备状态
 -(void)subscribeDeviceStatus;
+
+//取消当前用户的设备状态
+-(void)disSubscribeDeviceStatus;
 
 //进入主界面
 -(void)toMain;

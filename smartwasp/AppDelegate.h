@@ -16,7 +16,7 @@
 #import <iflyosPushService/IFLYOSPushServiceProtocol.h>
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 
-extern BOOL NEED_REFRESH_DEVICES_DETAIL;
+extern BOOL NEED_MAIN_REFRESH_DEVICES;
 
 static inline UIEdgeInsets sgm_safeAreaInset(UIView *view) {
     if (@available(iOS 11.0, *)) {

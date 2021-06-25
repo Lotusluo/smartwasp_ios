@@ -20,7 +20,7 @@
 #import "UIView+Extension.h"
 #import "SkillDetailViewController.h"
 #import "GSMonitorKeyboard.h"
-#import "NewPageViewController.h"
+#import "WebPageViewController.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define MaxLength 8
@@ -53,7 +53,6 @@
     self.switchBtn.transform = CGAffineTransformMakeScale(0.75, 0.75);
     [self.deviceName addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.deviceZone addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
-    NEED_REFRESH_DEVICES_DETAIL = YES;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -83,29 +82,25 @@
 
 //刷新讯飞数据
 -(void)refresh{
-    if(NEED_REFRESH_DEVICES_DETAIL){
-        NSString *deviceID = self.deviceBean.device_id;
-        [Loading show:nil];
-        [[IFLYOSSDK shareInstance] getDeviceInfo:deviceID statusCode:
-         ^(NSInteger statusCode) {
-            NEED_REFRESH_DEVICES_DETAIL = NO;
-            if(statusCode != 200){
-                NSLog(@"加载失败");
-            }
-        } requestSuccess:^(id _Nonnull data) {
-            [Loading dismiss];
-            DeviceBean *device = [DeviceBean yy_modelWithDictionary:data];
-            device.client_id = self.deviceBean.client_id;
-            device.device_id = self.deviceBean.device_id;
-            self.deviceBean = device;
-            [self attachUI];
-            [self innerRefresh:0];
-        } requestFail:^(id _Nonnull data) {
-            [Loading dismiss];
+    NSString *deviceID = self.deviceBean.device_id;
+    [Loading show:nil];
+    [[IFLYOSSDK shareInstance] getDeviceInfo:deviceID statusCode:
+     ^(NSInteger statusCode) {
+        if(statusCode != 200){
             NSLog(@"加载失败");
-        }];
-       
-    }
+        }
+    } requestSuccess:^(id _Nonnull data) {
+        [Loading dismiss];
+        DeviceBean *device = [DeviceBean yy_modelWithDictionary:data];
+        device.client_id = self.deviceBean.client_id;
+        device.device_id = self.deviceBean.device_id;
+        self.deviceBean = device;
+        [self attachUI];
+        [self innerRefresh:0];
+    } requestFail:^(id _Nonnull data) {
+        [Loading dismiss];
+        NSLog(@"加载失败");
+    }];
 }
 
 //刷新私有数据
@@ -175,7 +170,7 @@
 - (IBAction)onMusicClick:(id)sender {
     if(![self canClick])
         return;
-    NewPageViewController *nvc = [NewPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
+    WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
     [self.navigationController pushViewController:nvc animated:YES];
 }
 
@@ -255,7 +250,6 @@
     NSString *pattern = @"^[a-zA-Z\u4E00-\u9FA5\\d]*$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
     BOOL isMatch = [pred evaluateWithObject:str];
-    
     if (!isMatch) {
         NSString *other = @"➋➌➍➎➏➐➑➒";
         unsigned long len=str.length;

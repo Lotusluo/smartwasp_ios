@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
           repeats:(BOOL) repeats
              async:(BOOL)async;
 
-+(void)canelTimer:(NSString*) timerName;
++(void)canelTimer:(NSString*)timerName;
 
 @end
 

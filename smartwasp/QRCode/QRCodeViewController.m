@@ -8,32 +8,30 @@
 
 #import "QRCodeViewController.h"
 #import "IFLYQRCodeView.h"
-@interface QRCodeViewController ()<IFLYQRCodeDelegate>
+@interface QRCodeViewController ()<IFLYQRCodeDelegate>{
+    
+}
+@property (weak, nonatomic) IBOutlet UIButton *naviBtn;
 @property (strong, nonatomic) IFLYQRCodeView *qrCodeView;
 @end
 
 @implementation QRCodeViewController
 
--(IFLYQRCodeView *) qrCodeView{
+-(IFLYQRCodeView *)qrCodeView{
     if (!_qrCodeView) {
         _qrCodeView = [[IFLYQRCodeView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     }
     return _qrCodeView;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
-}
-
--(void) viewDidAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.qrCodeView.delegate = self;
     [self.view addSubview:self.qrCodeView];
+    [self.view bringSubviewToFront:self.naviBtn];
 }
 
--(void) viewDidDisappear:(BOOL)animated{
+-(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [self.qrCodeView removeFromSuperview];
     _qrCodeView = nil;
@@ -43,9 +41,14 @@
  *  二维码回调
  *  qrcodeStr : 二维码字符串
  */
--(void) callBack:(NSString *) qrcodeStr{
-    NSLog(@"QRCode : %@",qrcodeStr);
-   
+-(void)callBack:(NSString *)qrcodeStr{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"qrCodeNotification" object:qrcodeStr userInfo:nil];
+}
+
+//回退
+- (IBAction)onBackPress:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 /*
 #pragma mark - Navigation

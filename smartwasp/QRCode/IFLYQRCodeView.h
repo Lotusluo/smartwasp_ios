@@ -32,18 +32,15 @@
 
 @property (nonatomic) id<IFLYQRCodeDelegate> delegate;
 
-@property (strong,nonatomic)AVCaptureDevice * device;
-@property (strong,nonatomic)AVCaptureDeviceInput * input;
-@property (strong,nonatomic)AVCaptureMetadataOutput * output;
-@property (strong,nonatomic)AVCaptureSession * session;
-@property (strong,nonatomic)AVCaptureVideoPreviewLayer * preview;
-
-@property (nonatomic, strong) UIImageView * line;
-@property (weak, nonatomic) IBOutlet UIButton *localImage;
+@property (strong,nonatomic)AVCaptureDevice *device;
+@property (strong,nonatomic)AVCaptureDeviceInput *input;
+@property (strong,nonatomic)AVCaptureMetadataOutput *output;
+@property (strong,nonatomic)AVCaptureSession *session;
+@property (strong,nonatomic)AVCaptureVideoPreviewLayer *preview;
 
 @property (nonatomic) BOOL isSuccess;//扫描成功
 
--(void) initScanView;
-- (void)setCropRect:(CGRect)cropRect;
-- (void)setupCamera;
+-(void)initScanView;
+-(void)setCropRect:(CGRect)cropRect;
+-(void)setupCamera;
 @end

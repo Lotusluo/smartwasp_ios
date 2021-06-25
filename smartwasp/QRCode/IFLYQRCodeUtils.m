@@ -28,8 +28,7 @@
         CGColorRef colorRef = [color CGColor];
         long numComponents = CGColorGetNumberOfComponents(colorRef);
         
-        if (numComponents == 4)
-        {
+        if (numComponents == 4){
             const CGFloat *components = CGColorGetComponents(colorRef);
             R = components[0];
             G = components[1];
@@ -77,9 +76,11 @@
     return [UIImage imageWithCGImage:scaledImage];
 }
 
+
 void ProviderReleaseData (void *info, const void *data, size_t size){
     free((void*)data);
 }
+
 + (UIImage*)imageBlackToTransparent:(UIImage*)image withRed:(CGFloat)red andGreen:(CGFloat)green andBlue:(CGFloat)blue{
     const int imageWidth = image.size.width;
     const int imageHeight = image.size.height;

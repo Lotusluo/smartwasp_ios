@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)attachClick:(UIView*)view target:(nullable id)target action:(nullable SEL)action;
 //获取当前附着的VC
 +(UIViewController*)getAttachController:(UIView*)view;
+//显示弹出框
++(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nonnull)(void)) callback;
++(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target;
 
 @end
 

@@ -6,6 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ApAuthCode.h"
+
+
+extern NSString * _Nullable SSID;
+extern NSString * _Nullable PWD;
+extern ApAuthCode * _Nullable AUTHCODE;
 
 typedef NS_ENUM(NSUInteger,BindType){
     SCREEN_TYPE = 1,
@@ -18,12 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 //绑定的类型
 @property(nonatomic,assign)BindType mBindType;
-//ssid
-@property(nonatomic,copy)NSString *ssid;
-//密码
-@property(nonatomic,copy)NSString *pwd;
-//授权码
-@property(nonatomic,copy)NSString *authCode;
 
 @end
 

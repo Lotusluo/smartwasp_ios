@@ -50,6 +50,8 @@ ISWClickDelegate>
 /**###############按钮视图###############*/
 @property (weak, nonatomic) IBOutlet UIStackView *naviContent;
 
+@property(nonatomic)BOOL test;
+
 @end
 
 @implementation UserViewController

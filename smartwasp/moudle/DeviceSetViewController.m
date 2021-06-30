@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "IFLYOSSDK.h"
 #import "Loading.h"
+#import "iToast.h"
 #import "NSObject+YYModel.h"
 #import "NetDAO.h"
 #import "BaseBean.h"
@@ -21,9 +22,11 @@
 #import "SkillDetailViewController.h"
 #import "GSMonitorKeyboard.h"
 #import "WebPageViewController.h"
+#import "UIViewHelper.h"
+
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
-#define MaxLength 8
+#define MaxLength 15
 
 @interface DeviceSetViewController ()<UITextFieldDelegate>
 
@@ -41,6 +44,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *skillContainerHeight;
 //私有技能控件容器
 @property (weak, nonatomic) IBOutlet UIStackView *skillContainer;
+//是否刷新设备详情页
+@property (nonatomic)BOOL NEED_REFRESH_DETAIL;
 
 @end
 
@@ -48,6 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.NEED_REFRESH_DETAIL = YES;
     self.toolBar.title = self.deviceBean.name;
     self.toolBar.titleColor = [UIColor blackColor];
     self.switchBtn.transform = CGAffineTransformMakeScale(0.75, 0.75);
@@ -62,7 +68,10 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self refresh];
+    if(self.NEED_REFRESH_DETAIL){
+        [self refresh];
+        self.NEED_REFRESH_DETAIL = NO;
+    }
 }
 
 -(void)viewWillLayoutSubviews{
@@ -163,13 +172,38 @@
 - (IBAction)onUnbindClick:(id)sender {
     if(![self canClick])
         return;
-    NSLog(@"onUnbindClick");
+    [UIViewHelper showAlert:@"是否解绑该设备？" target:self callBack:^{
+        [Loading show:nil];
+        [[IFLYOSSDK shareInstance] deleteUserDevice:self.deviceBean.device_id
+                                         statusCode:^(NSInteger code) {
+
+        } requestSuccess:^(id _Nonnull data) {
+            NEED_MAIN_REFRESH_DEVICES = YES;
+            NSString *deviceID = self.deviceBean.device_id;
+            deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
+            //解绑成功,开始内部解绑
+            [[NetDAO sharedInstance]
+             post:@{@"uid":APPDELEGATE.user.user_id,
+                    @"clientId":self.deviceBean.client_id,
+                    @"deviceId":deviceID
+             }
+             path:@"api/unbind"
+             callBack:^(BaseBean* _Nonnull cData) {
+                [Loading dismiss];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+        } requestFail:^(id _Nonnull data) {
+            [Loading dismiss];
+            [[iToast makeText:@"解绑失败,请重试!"] show];
+        }];
+    } negative:YES];
 }
 
 //音乐畅听点击
 - (IBAction)onMusicClick:(id)sender {
     if(![self canClick])
         return;
+    self.NEED_REFRESH_DETAIL = YES;
     WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
     [self.navigationController pushViewController:nvc animated:YES];
 }
@@ -181,6 +215,11 @@
         return NO;
     }
     return YES;
+}
+
+//销毁
+-(void)dealloc{
+    NSLog(@"%@ dealloc",[self class]);
 }
 
 /*

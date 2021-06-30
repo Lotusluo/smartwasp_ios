@@ -67,7 +67,7 @@
             if(granted){
                 [self onScanClick];
             }else{
-                [UIViewHelper showAlert:@"提示" message:@"您禁止了相机权限,请去设置页面打开。" target:self];
+                [UIViewHelper showAlert:@"您禁止了相机权限,请去设置页面打开。" target:self];
             }
         });
     }];
@@ -105,28 +105,38 @@
             return;
         }
     }
-    [UIViewHelper showAlert:@"提示" message:@"二维码错误，请重试！" target:self];
+    [UIViewHelper showAlert:@"二维码错误，请重试！" target:self];
 }
 
 #pragma mark --音箱绑定成功通知
 -(void)devBindObserver:(NSNotification*)notification {
     NSString *query = notification.object;
+    if([query isEqualToString:@"error"]){
+        NEED_MAIN_REFRESH_DEVICES = NO;
+        [self goParent];
+        return;
+    }
     //解析相应的参数
     NSDictionary *params = [CodingUtil dictionaryFromQuery:query];
     [[NetDAO sharedInstance] post:@{@"clientIds":params[@"clientId"],
                                     @"deviceIds":params[@"sn"],
                                     @"uid":APPDELEGATE.user.user_id}
                              path:@"api/bind"  callBack:^(BaseBean * _Nonnull cData) {
-        if(!cData.errCode ){
+//        if(!cData.errCode ){
             NEED_MAIN_REFRESH_DEVICES = YES;
-        }
-        for(id cvc in self.navigationController.childViewControllers){
-            if([cvc isKindOfClass:MainViewController.class]){
-                [self.navigationController popToViewController:cvc animated:YES];
-                break;;
-            }
-        }
+//        }
+        [self goParent];
     }];
+}
+
+//跳转上一页
+-(void)goParent{
+    for(id cvc in self.navigationController.childViewControllers){
+        if([cvc isKindOfClass:MainViewController.class]){
+            [self.navigationController popToViewController:cvc animated:YES];
+            break;;
+        }
+    }
 }
 
 -(void)dealloc{

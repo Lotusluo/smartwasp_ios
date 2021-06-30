@@ -50,8 +50,8 @@
     }
     PrevBindViewController *pvc = PrevBindViewController.new;
     pvc.mBindType = NO_SCREEN_TYPE;
-    pvc.ssid = wifiNameTxt;
-    pvc.pwd = pwdTxt;
+    SSID = wifiNameTxt;
+    PWD = pwdTxt;
     [self.navigationController pushViewController:pvc animated:YES];
 }
 

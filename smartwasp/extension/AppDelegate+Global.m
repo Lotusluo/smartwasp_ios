@@ -19,7 +19,11 @@
         } requestSuccess:^(id _Nonnull success)  {
             //刷新绑定的设备列表
             NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];
-            self.devices = [devices copy];
+            if(devices && devices.count > 0){
+                self.devices = devices;
+            }else{
+                self.devices = nil;
+            }
         } requestFail:^(id _Nonnull error) {
             //加载错误
             self.devices = nil;

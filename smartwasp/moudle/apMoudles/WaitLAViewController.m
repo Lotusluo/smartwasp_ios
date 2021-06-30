@@ -9,11 +9,13 @@
 #import "MatchLAViewController.h"
 #import "JCGCDTimer.h"
 #import "ServiceUtil.h"
+#import "iToast.h"
 
 @interface WaitLAViewController ()
 
 //等待连接到LA网络的任务
 @property(nonatomic,strong)NSString *taskLAName;
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @end
 
@@ -21,24 +23,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.nextBtn.hidden = YES;
     //循环检查当前wifi是否为LA开头
     self.taskLAName = [JCGCDTimer timerTask:^{
         NSString *cssid = ServiceUtil.wifiSsid;
-        NSLog(@"search ssid:%@",cssid);
         NSRange range = [cssid rangeOfString:@"^LA_" options:NSRegularExpressionSearch];
-        if (range.location != NSNotFound) {
-            if (self.isViewLoaded && self.view.window){
-                //发现连接到设备，开始进入配网
-                MatchLAViewController *mvc = MatchLAViewController.new;
-                [self.navigationController pushViewController:mvc animated:YES];
-            }
-            [JCGCDTimer canelTimer:self.taskLAName];
-        }
-    } start:0 interval:5 repeats:YES async:NO];
+        self.nextBtn.hidden = range.location == NSNotFound;
+    } start:1 interval:5 repeats:YES async:NO];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [JCGCDTimer canelTimer:self.taskLAName];
 }
 
@@ -48,6 +44,13 @@
 
 - (IBAction)onBackPress:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (IBAction)onNextClick:(id)sender {
+    //发现连接到设备，开始进入配网
+    MatchLAViewController *mvc = MatchLAViewController.new;
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 
 /*

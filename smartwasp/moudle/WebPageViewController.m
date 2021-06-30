@@ -158,11 +158,11 @@
 }
 
 -(void)onAuthFailed{
-    [UIViewHelper showAlert:@"提示" message:@"授权失败,请重试" target:self];
+    [UIViewHelper showAlert:@"授权失败,请重试" target:self];
 }
 
 -(void)onAuthReject{
-    [UIViewHelper showAlert:@"提示" message:@"授权失败,请重试" target:self];
+    [UIViewHelper showAlert:@"授权失败,请重试" target:self];
 }
 
 +(WebPageViewController *)createNewPageWithTag:(NSString *)tag{

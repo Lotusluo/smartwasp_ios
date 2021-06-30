@@ -43,7 +43,7 @@ CGFloat const kLine2SelectedEnd = 0.28;
 
 - (void)setup{
     // default
-    self.lineWidth = 1;
+    self.lineWidth = 2;
     self.lineColor = [UIColor orangeColor];
     self.lineBackgroundColor = [UIColor orangeColor];
     self.animateDuration = 0.4;

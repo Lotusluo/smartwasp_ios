@@ -28,7 +28,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_more" translatesAutoresizingMaskIntoConstraints="NO" id="D8L-sO-HFD">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_more_x" translatesAutoresizingMaskIntoConstraints="NO" id="D8L-sO-HFD">
                     <rect key="frame" x="419" y="23.5" width="30" height="30"/>
                     <color key="tintColor" red="0.69474148749999998" green="0.68475753070000001" blue="0.61793631319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -70,6 +70,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_more" width="24" height="24"/>
+        <image name="icon_more_x" width="24" height="24"/>
     </resources>
 </document>

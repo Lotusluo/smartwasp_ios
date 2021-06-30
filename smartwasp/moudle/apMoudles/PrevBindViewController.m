@@ -10,7 +10,13 @@
 #import "WaitLAViewController.h"
 #import "UIViewHelper.h"
 #import "ZFCheckbox.h"
+#import "IFLYOSSDK.h"
+#import "Loading.h"
+#import "NSObject+YYModel.h"
 
+NSString *SSID = @"";
+NSString *PWD = @"";
+ApAuthCode *AUTHCODE;
 
 @interface PrevBindViewController ()
 
@@ -39,7 +45,7 @@
         self.titleView.text = @"设备进入配网模式";
         self.labelHeader.text = @"接通电源,设备开机,长按静音键,进入配网模式";
         self.labelFooter.text = @"设备正在配网";
-        NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"ic_dangjian.png" ofType:nil];
+        NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"ic_dangjian@2x.png" ofType:nil];
         self.imageView.image = [UIImage imageWithContentsOfFile:bundleStr];
 
     }
@@ -55,15 +61,33 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 - (IBAction)onNextClick:(id)sender {
     if(self.mBindType == NO_SCREEN_TYPE){
         //获取授权码
-        WaitLAViewController *wvc = WaitLAViewController.new;
-        [self.navigationController pushViewController:wvc animated:YES];
+        [Loading show:nil];
+        [[IFLYOSSDK shareInstance] getAuthCode:@"65e8d4f8-da9e-4633-8cac-84b0b47496b6"
+                                    statusCode:^(NSInteger code) {
+            [Loading dismiss];
+        } requestSuccess:^(id _Nonnull data) {
+            AUTHCODE = [ApAuthCode yy_modelWithJSON:data];
+            WaitLAViewController *wvc = WaitLAViewController.new;
+            [self.navigationController pushViewController:wvc animated:YES];
+        } requestFail:^(id _Nonnull data) {
+            
+        }];
     }else{
         QRCodeViewController *qvc = QRCodeViewController.new;
         [self.navigationController pushViewController:qvc animated:YES];
     }
+}
+
+//销毁
+-(void)dealloc{
+    SSID = nil;
+    PWD = nil;
+    AUTHCODE = nil;
+    NSLog(@"PrevBindViewController dealloc");
 }
 
 /*

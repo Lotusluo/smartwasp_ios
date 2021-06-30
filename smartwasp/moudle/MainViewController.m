@@ -13,6 +13,7 @@
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "AppDelegate+Global.h"
 #import "AppDelegate.h"
+#import "JCGCDTimer.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -103,7 +104,8 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [APPDELEGATE requestBindDevices];
 }
 

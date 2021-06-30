@@ -21,6 +21,7 @@
 #import "ItemViewController.h"
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
+#import "Loading.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -65,12 +66,12 @@ static NSString *const ID = @"CellIdentifier";
     [super viewDidLoad];
     //添加toolbar
     _toolbar = [Toolbar newView];
+    _toolbar.canSearch = YES;
     [self.view addSubview:_toolbar];
     //添加刷新控件
     [self.scrollView addSubview:self.headerView];
     self.scrollView.showsVerticalScrollIndicator = YES;
     self.scrollView.delegate = self;
-    [self devSetObserver:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -83,12 +84,7 @@ static NSString *const ID = @"CellIdentifier";
 
 #pragma mark - 处理通知
 -(void)devSetCallback:(DeviceBean* __nullable) device {
-    if(device){
-        self.toolbar.device = device;
-        [self reloadData:device];
-    }else{
-        [self.toolbar setEmpty];
-    }
+    [self reloadData:device];
 }
 
 //处理设备媒体状态通知
@@ -108,37 +104,56 @@ static NSString *const ID = @"CellIdentifier";
     [self.toolbar update];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(self.NEED_REFRESH_UI){
+        [self reloadData:APPDELEGATE.curDevice];
+    }
+}
+
 //重加载数据
 -(void)reloadData:(DeviceBean *) device{
-    //获取发现页面数据
-    [[IFLYOSSDK shareInstance] getMusicGroups:device.device_id statusCode:^(NSInteger statusCode) {
-        if(statusCode != 200){
-            [self loadDataEccur];
-        }
-    } requestSuccess:^(id _Nonnull data) {
-        FindBean *findBean = [FindBean yy_modelWithJSON:data];
-        if(findBean){
-            [self loadDataSucess:findBean];
-        }else{
-            [self loadDataEccur];
-        }
-    } requestFail:^(id _Nonnull data) {
+    if (!self.isViewLoaded || !self.view.window){
+        self.NEED_REFRESH_UI = YES;
+        NSLog(@"不可见不可见");
+        return;
+    }
+    self.toolbar.device = device;
+    if(device){
+        //获取发现页面数据
+        [Loading show:nil];
+        [[IFLYOSSDK shareInstance] getMusicGroups:device.device_id statusCode:^(NSInteger statusCode) {
+            [Loading dismiss];
+            self.NEED_REFRESH_UI = NO;
+            if(statusCode != 200){
+                [self loadDataEccur];
+            }
+            [self.headerView hw_endRefreshState];
+        } requestSuccess:^(id _Nonnull data) {
+            FindBean *findBean = [FindBean yy_modelWithJSON:data];
+            if(findBean){
+                [self loadDataSucess:findBean];
+            }else{
+                [self loadDataEccur];
+            }
+        } requestFail:^(id _Nonnull data) {}];
+    }else{
+        NSLog(@"为空");
         [self loadDataEccur];
-    }];
+    }
 }
 
 //加载数据遇到错误
 -(void)loadDataEccur{
-    NSLog(@"loadDataEccur");
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.findBean = nil;
 }
 
 //加载数据成功
 -(void)loadDataSucess:(FindBean*)bean{
     //清空容器
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
     self.findBean = bean;
-    
     //刷新Banner数据
     [self.collectionView reloadData];
     [self.scrollView addSubview:self.collectionView];
@@ -350,10 +365,7 @@ static NSString *const ID = @"CellIdentifier";
     if(!_headerView){
         _headerView = HWHeadRefresh.new;
         [_headerView hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
-            dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 3* NSEC_PER_SEC);
-            dispatch_after(time_t, dispatch_get_main_queue(), ^{
-                [self->_headerView hw_endRefreshState];
-            });
+            [self reloadData:APPDELEGATE.curDevice];
         }];
     }
     return _headerView;

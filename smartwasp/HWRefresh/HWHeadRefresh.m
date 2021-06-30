@@ -106,13 +106,10 @@
     self.refLabel.frame = CGRectMake(HWRefreshRefLabelX, HWRefreshRefLabelY, HWRefreshRefLabelW, HWRefreshRefLabelH);
     self.refLabel.text = HWHeadRefreshViewNoneText;
     [self.refreshView addSubview:self.refLabel];
-    
 }
 
 - (void)_viewRefreshing{
-    if (!_actView){
-        [self.refreshView addSubview:self.actView];
-    }
+    [self.refreshView addSubview:self.actView];
     self.actView.frame = CGRectMake(HWRefreshRefActViewX, HWRefreshRefActViewY, HWRefreshRefActViewW, HWRefreshRefActViewH);
     self.refLabel.text = HWHeadRefreshViewRefreshingText;
     [self.actView startAnimating];
@@ -184,7 +181,7 @@
     self.isRefreshing = NO;
     [self _viewRefreshNone];
     __weak typeof(self) _self = self;
-    [UIView animateWithDuration:0.3f animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         _self.scrollView.contentInset = UIEdgeInsetsZero;
         _self.scrollView.contentOffset = CGPointZero;
     }];
@@ -199,7 +196,7 @@
     [self _viewRefreshing];
     self.isRefreshing = YES;
     __weak typeof(self) _self = self;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         _self.scrollView.contentOffset = CGPointMake(0.0f, -HWRefreshViewH);
     } completion:^(BOOL finished) {
         if (_self.hwHeadRefreshBlock){

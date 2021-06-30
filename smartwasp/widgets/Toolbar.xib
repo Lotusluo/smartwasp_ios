@@ -51,6 +51,18 @@
                         <action selector="onClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="mV4-KQ-qOj"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdY-XN-avf" userLabel="search">
+                    <rect key="frame" x="277" y="24" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="J6t-jM-6Uf"/>
+                        <constraint firstAttribute="width" constant="25" id="b0D-fa-5Bd"/>
+                    </constraints>
+                    <color key="tintColor" red="0.96550041440000001" green="0.56509715319999998" blue="0.1091286018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="icon_search"/>
+                    <connections>
+                        <action selector="onSearchClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="1gZ-f1-xHw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -59,11 +71,13 @@
                 <constraint firstItem="0tO-WM-4LZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Dmf-iF-ZYt"/>
                 <constraint firstItem="xfv-cg-yJB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LKw-TG-P1j"/>
                 <constraint firstAttribute="trailing" secondItem="R6C-pd-UQz" secondAttribute="trailing" constant="10" id="S7L-r2-FJO"/>
+                <constraint firstItem="PdY-XN-avf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Vdi-Sn-Zhb"/>
                 <constraint firstItem="4TS-El-c5l" firstAttribute="leading" secondItem="xfv-cg-yJB" secondAttribute="trailing" id="WV1-8w-nxV"/>
                 <constraint firstItem="4TS-El-c5l" firstAttribute="leading" secondItem="WFd-Lk-qdd" secondAttribute="trailing" constant="4" id="dOS-FA-LuZ"/>
                 <constraint firstItem="WFd-Lk-qdd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dSO-3u-IBV"/>
                 <constraint firstItem="xfv-cg-yJB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="faF-C0-fu3"/>
                 <constraint firstAttribute="bottom" secondItem="xfv-cg-yJB" secondAttribute="bottom" id="gJ9-la-u7G"/>
+                <constraint firstItem="R6C-pd-UQz" firstAttribute="leading" secondItem="PdY-XN-avf" secondAttribute="trailing" constant="20" id="hY5-Q7-5PJ"/>
                 <constraint firstItem="R6C-pd-UQz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qFJ-HU-CQ2"/>
                 <constraint firstItem="0tO-WM-4LZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rrP-OC-8Zb"/>
                 <constraint firstItem="4TS-El-c5l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="slW-YF-5hD"/>
@@ -76,6 +90,7 @@
                 <outlet property="devNameTxt" destination="WFd-Lk-qdd" id="fb2-ZJ-Bie"/>
                 <outlet property="devStatusIcon" destination="0tO-WM-4LZ" id="YSd-YB-H2D"/>
                 <outlet property="jump" destination="R6C-pd-UQz" id="jLp-Xi-Lub"/>
+                <outlet property="searchView" destination="PdY-XN-avf" id="Wdu-kb-Xkp"/>
             </connections>
             <point key="canvasLocation" x="-74.637681159420296" y="289.62053571428572"/>
         </view>
@@ -83,6 +98,7 @@
     <resources>
         <image name="abc_btn_radio_to_on.png" width="20" height="20"/>
         <image name="ic_triangle_down.png" width="16" height="16"/>
+        <image name="icon_search" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

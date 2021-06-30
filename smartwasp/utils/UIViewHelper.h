@@ -22,8 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 //获取当前附着的VC
 +(UIViewController*)getAttachController:(UIView*)view;
 //显示弹出框
-+(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nonnull)(void)) callback;
-+(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target;
++(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback negative:(BOOL) negative;
++(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback;
++(void)showAlert:(NSString *)msg target:(UIViewController *)target;
+
 
 @end
 

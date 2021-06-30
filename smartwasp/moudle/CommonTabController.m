@@ -13,6 +13,10 @@
 #import <Masonry.h>
 #import "WebPageViewController.h"
 
+#import "AppDelegate.h"
+
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
@@ -37,7 +41,6 @@
     [self.view addSubview:self.webView];
     [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:_tag];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:_tag];
-    [self devSetObserver:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -62,15 +65,7 @@
 
 //设备选择通知
 -(void)devSetCallback:(DeviceBean* __nullable) device{
-    if(device){
-        self.toolbar.device = device;
-        NSInteger code = [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:device.device_id];
-        if (code == -3) {
-            NSLog(@"未登录，请先登录");
-        }
-    }else{
-        [self.toolbar setEmpty];
-    }
+    [self reloadData:device];
 }
 
 //处理设备媒体状态通知
@@ -87,6 +82,27 @@
 //设备在线状态变更
 -(void)onLineChangedCallback{
     [self.toolbar update];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(self.NEED_REFRESH_UI){
+        [self reloadData:APPDELEGATE.curDevice];
+    }
+}
+
+//重加载数据
+-(void)reloadData:(DeviceBean *) device{
+    self.toolbar.device = device;
+    if (!self.isViewLoaded || !self.view.window){
+        self.NEED_REFRESH_UI = YES;
+        return;
+    }
+    if(device){
+        [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:device.device_id];
+    }else{
+        NSLog(@"为空");
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{

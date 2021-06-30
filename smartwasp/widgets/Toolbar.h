@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(Toolbar*)newView;
 //当前显示的设备信息
 @property(nonatomic,strong) DeviceBean *device;
+@property(nonatomic) IBInspectable BOOL canSearch;
 //更新信息
 -(void)update;
 //暂无设备

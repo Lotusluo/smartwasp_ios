@@ -69,7 +69,7 @@
 }
 
 //弹出框动画效果
--(void) doFadeIn:(BOOL) flag{
+-(void) doFadeIn:(Boolean) flag{
     [self.layer removeAllAnimations];
     CABasicAnimation *transAnimation  = [CABasicAnimation animationWithKeyPath:@"position"];
     if(!flag){
@@ -87,14 +87,14 @@
     transAnimation.duration = 0.2;
     transAnimation.removedOnCompletion = NO;
     transAnimation.fillMode = kCAFillModeForwards;
-    [self.layer addAnimation:transAnimation forKey:[NSString stringWithFormat:@"position:%d",flag]];
+    [self.layer addAnimation:transAnimation forKey:@"position"];
     
     //透明度变化
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.fromValue = [NSNumber numberWithFloat:flag ? 0 : 1];
     opacityAnimation.toValue = [NSNumber numberWithFloat:flag ? 1 : 0];
-    opacityAnimation.duration = 0.2;
-    opacityAnimation.removedOnCompletion = NO;
+    opacityAnimation.duration = 0.22;
+    transAnimation.removedOnCompletion = NO;
     [self.mask.layer addAnimation:opacityAnimation forKey:@"opacity"];
 }
 

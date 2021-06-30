@@ -47,24 +47,31 @@
     return nil;
 }
 
-+(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target{
-    [self showAlert:title message:msg target:target callBack:nil];
++(void)showAlert:(NSString *)msg target:(UIViewController *)target{
+    [self showAlert:msg target:target callBack:nil];
 }
 
-+(void)showAlert:(NSString *)title message:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nonnull)(void)) callback{
++(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback{
+    [self showAlert:msg target:target callBack:callback negative:NO];
+}
+
++(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback negative:(BOOL) negative{
     if ([msg isKindOfClass:[NSDictionary class]]) {
         NSError *parseError = nil;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg options:NSJSONWritingPrettyPrinted error:&parseError];
         msg = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
-    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-    alertView.title = title;
-    alertView.message = msg;
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
     [alertView addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if(callback){
             callback();
         }
     }]];
+    if(negative){
+        [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+    }
     [target presentViewController:alertView animated:YES completion:^{
         
     }];

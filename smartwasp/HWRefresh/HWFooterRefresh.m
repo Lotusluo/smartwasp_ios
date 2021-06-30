@@ -96,6 +96,7 @@
     NSValue *sizeValue =  [change objectForKey:NSKeyValueChangeNewKey];
     CGSize size = [sizeValue CGSizeValue];
     self.loadView.frame  = CGRectMake(0.0f,size.height, CGRectGetWidth(self.scrollView.bounds), HWHeadRefreshViewHeight);
+    self.loadView.hidden = size.height < 1;
 }
 
 /**

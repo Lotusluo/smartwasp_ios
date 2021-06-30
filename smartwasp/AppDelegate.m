@@ -10,6 +10,7 @@
 #import "CodingUtil.h"
 #import "GSMonitorKeyboard.h"
 
+
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
 
@@ -55,23 +56,23 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 -(void)setDevices:(NSArray<DeviceBean *> *)devices{
     _devices = devices;
     NSLog(@"当前设备列表:%@",_devices);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"devsSetNotification" object:nil userInfo:nil];
     if(!self.devices || self.devices.count < 1){
         self.curDevice = nil;
-        return;
-    }
-    //上一次选择的设备
-    NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev_selected"];
-    if(devValue && ![devValue isEqualToString:@""]){
-        for(DeviceBean *devBean in self.devices){
-            if([devBean.device_id isEqualToString:devValue]){
-                self.curDevice = devBean;
-                break;
-            }
-        }
     }else{
-        self.curDevice = devices[0];
+        //上一次选择的设备
+        NSString *devValue = [[ConfigDAO sharedInstance] findByKey:@"dev_selected"];
+        if(devValue && ![devValue isEqualToString:@""]){
+            for(DeviceBean *devBean in self.devices){
+                if([devBean.device_id isEqualToString:devValue]){
+                    self.curDevice = devBean;
+                    break;
+                }
+            }
+        }else{
+            self.curDevice = devices[0];
+        }
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"devsSetNotification" object:nil userInfo:nil];
 }
 
 //设置当前设备选择方法
@@ -86,11 +87,13 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
     //通知刷新当前选择的设备
     if(self.curDevice){
         NSLog(@"当前选择的设备:%@",curDevice.alias);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"devSetNotification" object:nil userInfo:nil];
         //开始订阅此设备媒体状态
         mediaErrTimez = 0;
         [self subscribeMediaStatus];
+    }else{
+        NSLog(@"当前没有可选择的设备");
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"devSetNotification" object:nil userInfo:nil];
 }
 
 //设置当前设备媒体状态

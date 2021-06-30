@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)devSetObserver:(NSNotification* __nullable)notification;
 
+//是否需要刷新UI数据
+@property(nonatomic)BOOL NEED_REFRESH_UI;
+
 @end
 
 NS_ASSUME_NONNULL_END

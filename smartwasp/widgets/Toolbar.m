@@ -16,6 +16,7 @@
 #import "UIImageView+WebCache.h"
 #import "LXSEQView.h"
 #import "UIViewHelper.h"
+#import "SearchViewController.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet LXSEQView *jump;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint;
+@property (weak, nonatomic) IBOutlet UIButton *searchView;
 
 @end
 
@@ -68,10 +70,25 @@
     }
 }
 
+
+-(void)layoutSubviews{
+    _searchView.hidden = !self.canSearch;
+}
+
+- (IBAction)onSearchClick:(id)sender {
+    SearchViewController *svc = SearchViewController.new;
+    UIViewController *cvc = [UIViewHelper getAttachController:self];
+    [cvc.navigationController pushViewController:svc animated:YES];
+}
+
 //添加设备信息
 -(void)setDevice:(DeviceBean *)device{
     _device = device;
-    [self update];
+    if(_device){
+        [self update];
+    }else{
+        [self setEmpty];
+    }
 }
 
 //更新设备信息

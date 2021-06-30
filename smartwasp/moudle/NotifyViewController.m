@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.NEED_REFRESH_UI = YES;
     //对选择的设备进行监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(devSetObserver:)

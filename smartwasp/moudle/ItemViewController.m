@@ -17,7 +17,12 @@
 #import <Masonry.h>
 #import "MusicItemCell.h"
 #import "Loading.h"
+#import "LXSEQView.h"
+#import "iToast.h"
+#import "MusicPlayViewController.h"
+#import "UIViewHelper.h"
 
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define ONE_PAGE 10
 
 @interface ItemViewController ()<
@@ -34,6 +39,7 @@ UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *listHeight;
+@property (weak, nonatomic) IBOutlet LXSEQView *musicView;
 //数据
 @property (strong,nonatomic) ItemBean *bean;
 //音乐数据
@@ -56,6 +62,7 @@ static NSString *const ID = @"MusicItemCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.toolBar.title = @"歌单";
     self.toolBar.titleColor = [UIColor whiteColor];
     self.songsData = NSMutableArray.new;
@@ -65,10 +72,17 @@ static NSString *const ID = @"MusicItemCell";
             self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
     }
+    [UIViewHelper attachClick:self.musicView target:self action:@selector(doTapMethod)];
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) attachUI{
+//音乐控件点击
+-(void)doTapMethod{
+    MusicPlayViewController *mvc = MusicPlayViewController.new;
+    [self.navigationController pushViewController:mvc animated:YES];
+}
+
+-(void)attachUI{
     self.nameView.text = self.bean.name;
     self.fromView.text =  self.bean.from;
     self.blurImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -99,7 +113,26 @@ static NSString *const ID = @"MusicItemCell";
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self refresh];
+    if(self.NEED_REFRESH_UI){
+        [self refresh];
+    }
+}
+
+//处理设备媒体状态通知
+-(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
+    if (self.isViewLoaded && self.view.window){
+//#pragma GCC diagnostic ignored "-Wundeclared-selector"
+//#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        [self.tableView.visibleCells makeObjectsPerformSelector:@selector(updatePlayStatus:) withObject:musicStateBean];
+#pragma clang diagnostic pop
+        if(musicStateBean && musicStateBean.isPlaying){
+            [self.musicView startAnimation];
+            return;
+        }
+    }
+    [self.musicView stopAnimation];
 }
 
 +(ItemViewController *) createNewPage:(ItemBean *) bean{
@@ -113,6 +146,7 @@ static NSString *const ID = @"MusicItemCell";
     [Loading show:nil];
     [self.songsData removeAllObjects];
     [self request:1 limit:2 * ONE_PAGE];
+    self.NEED_REFRESH_UI = NO;
 }
 
 #pragma mark --HWFooterRefresh懒加载
@@ -177,9 +211,9 @@ static NSString *const ID = @"MusicItemCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MusicItemCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
     SongBean *song=[self.songsData objectAtIndex:indexPath.row];
-    cell.title = song.name;
-    cell.subtitle = song.artist;
+    cell.song = song;
     cell.serial = indexPath.row + 1;
+    cell.groupID = self.bean._id;
     return cell;
 }
 
@@ -189,6 +223,16 @@ static NSString *const ID = @"MusicItemCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //进行播放
+    [Loading show:nil];
+    SongBean *song=[self.songsData objectAtIndex:indexPath.row];
+    [[IFLYOSSDK shareInstance] musicControlPlayGroup:APPDELEGATE.curDevice.device_id groupId:self.bean._id mediaId:song._id statusCode:^(NSInteger code) {
+        [Loading dismiss];
+    } requestSuccess:^(id _Nonnull data) {
+        [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",song.name]] show];
+    } requestFail:^(id _Nonnull data) {
+        [[iToast makeText:@"请开通音乐权限或重试!"] show];
+    }];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

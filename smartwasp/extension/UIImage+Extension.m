@@ -118,7 +118,7 @@
                                              (CGBitmapInfo)kCGImageAlphaNoneSkipLast);
 
     
-    CGImageRef imageRef = CGBitmapContextCreateImage (ctx);
+    CGImageRef imageRef = CGBitmapContextCreateImage(ctx);
 
     
     

@@ -17,6 +17,8 @@
 #import "LXSEQView.h"
 #import "UIViewHelper.h"
 #import "SearchViewController.h"
+#import "AddDeviceViewController.h"
+#import "iToast.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -58,11 +60,22 @@
 
 //设备选择点击
 -(IBAction)onClick:(id)sender {
+    if(!APPDELEGATE.curDevice){
+        //添加设备
+        UIViewController *cvc = [UIViewHelper getAttachController:self];
+        AddDeviceViewController *avc = AddDeviceViewController.new;
+        [cvc.navigationController pushViewController:avc animated:YES];
+        return;
+    }
     [DeviceDialog create];
 }
 
 //音乐控件点击
 -(void)doTapMethod{
+    if(!APPDELEGATE.curDevice){
+        [[iToast makeText:@"暂无设备"] show];
+        return;
+    }
     UIViewController *cvc = [UIViewHelper getAttachController:self];
     if(cvc){
         MusicPlayViewController *mvc = MusicPlayViewController.new;
@@ -76,6 +89,10 @@
 }
 
 - (IBAction)onSearchClick:(id)sender {
+    if(!APPDELEGATE.curDevice){
+        [[iToast makeText:@"暂无设备"] show];
+        return;
+    }
     SearchViewController *svc = SearchViewController.new;
     UIViewController *cvc = [UIViewHelper getAttachController:self];
     [cvc.navigationController pushViewController:svc animated:YES];

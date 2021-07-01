@@ -33,11 +33,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateToolbarUI:APPDELEGATE.curDevice];
-    [self mediaSetCallback:APPDELEGATE.mediaStatus.data];
-   
-    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
-//    self.container.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.container.bounds cornerRadius:100.0].CGPath;
-
+//    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_imageView.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(10, 10)];
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+//    maskLayer.frame = _imageView.bounds;
+//    maskLayer.path = maskPath.CGPath;
+//    _imageView.layer.mask = maskLayer;
+    self.imageView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.imageView.bounds cornerRadius:100.0].CGPath;
 }
 
 
@@ -97,7 +99,7 @@
         self.sliderView.value = musicStateBean.speaker.volume;
         self.playView.selected = musicStateBean.isPlaying;
         self.titleView.text = musicStateBean.music.name;
-//        [self.imageView sd_setImageWithURL:[NSURL URLWithString:musicStateBean.music.image]];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:musicStateBean.music.image]];
     }
 }
 

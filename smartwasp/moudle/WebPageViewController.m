@@ -77,9 +77,8 @@
     }
 }
 
--(void) viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     [[IFLYOSSDK shareInstance] webViewDisappear:self.Tag];
     if(!self.navigationController.isNavigationBarHidden && self.disappearHideBar){
         [self.navigationController setNavigationBarHidden:YES];

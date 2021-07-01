@@ -103,9 +103,17 @@
 		042B4EA0266724C0009BE328 /* GroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B4E9F266724C0009BE328 /* GroupView.m */; };
 		042B4EA3266724D0009BE328 /* GroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B4EA2266724D0009BE328 /* GroupView.xib */; };
 		042B4EA826672D9E009BE328 /* GroupItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B4EA726672D9E009BE328 /* GroupItemCell.xib */; };
+		043811B5268C95CD00BE2571 /* ic_smartwasp_launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 043811B4268C95CD00BE2571 /* ic_smartwasp_launch.png */; };
 		043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DC2A62630426400A7F680 /* AppDelegate+Global.m */; };
 		043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */; };
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
+		043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC5268D975000703FBE /* ic_sound_min_black@2x.png */; };
+		043F8BCC268D975100703FBE /* ic_skip_next_blac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC6268D975000703FBE /* ic_skip_next_blac@2x.png */; };
+		043F8BCD268D975100703FBE /* ic_play_arrow_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC7268D975000703FBE /* ic_play_arrow_black@2x.png */; };
+		043F8BCE268D975100703FBE /* ic_pause_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC8268D975000703FBE /* ic_pause_black@2x.png */; };
+		043F8BCF268D975100703FBE /* ic_skip_previous_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC9268D975000703FBE /* ic_skip_previous_black@2x.png */; };
+		043F8BD0268D975100703FBE /* ic_sound_max_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BCA268D975000703FBE /* ic_sound_max_black@2x.png */; };
+		043F8BDE268DB6F800703FBE /* icon_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BDD268DB6F800703FBE /* icon_empty@2x.png */; };
 		044D4E07268B11B000BAD622 /* ApHsBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D4E06268B11B000BAD622 /* ApHsBean.m */; };
 		044D4E0B268B1D1600BAD622 /* ApAuthCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D4E0A268B1D1600BAD622 /* ApAuthCode.m */; };
 		044D723726396C8E0075994F /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D723526396C8E0075994F /* WebPageViewController.m */; };
@@ -371,10 +379,18 @@
 		042B4E9F266724C0009BE328 /* GroupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupView.m; sourceTree = "<group>"; };
 		042B4EA2266724D0009BE328 /* GroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupView.xib; sourceTree = "<group>"; };
 		042B4EA726672D9E009BE328 /* GroupItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupItemCell.xib; sourceTree = "<group>"; };
+		043811B4268C95CD00BE2571 /* ic_smartwasp_launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_smartwasp_launch.png; sourceTree = "<group>"; };
 		043DC2A52630423900A7F680 /* AppDelegate+Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Global.h"; sourceTree = "<group>"; };
 		043DC2A62630426400A7F680 /* AppDelegate+Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Global.m"; sourceTree = "<group>"; };
 		043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_agreement.html; sourceTree = "<group>"; };
 		043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_privacypolicy.html; sourceTree = "<group>"; };
+		043F8BC5268D975000703FBE /* ic_sound_min_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sound_min_black@2x.png"; sourceTree = "<group>"; };
+		043F8BC6268D975000703FBE /* ic_skip_next_blac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_skip_next_blac@2x.png"; sourceTree = "<group>"; };
+		043F8BC7268D975000703FBE /* ic_play_arrow_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_play_arrow_black@2x.png"; sourceTree = "<group>"; };
+		043F8BC8268D975000703FBE /* ic_pause_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_pause_black@2x.png"; sourceTree = "<group>"; };
+		043F8BC9268D975000703FBE /* ic_skip_previous_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_skip_previous_black@2x.png"; sourceTree = "<group>"; };
+		043F8BCA268D975000703FBE /* ic_sound_max_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sound_max_black@2x.png"; sourceTree = "<group>"; };
+		043F8BDD268DB6F800703FBE /* icon_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_empty@2x.png"; sourceTree = "<group>"; };
 		044D4E05268B11B000BAD622 /* ApHsBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApHsBean.h; sourceTree = "<group>"; };
 		044D4E06268B11B000BAD622 /* ApHsBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApHsBean.m; sourceTree = "<group>"; };
 		044D4E09268B1D1600BAD622 /* ApAuthCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApAuthCode.h; sourceTree = "<group>"; };
@@ -814,6 +830,14 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				043F8BDD268DB6F800703FBE /* icon_empty@2x.png */,
+				043F8BC8268D975000703FBE /* ic_pause_black@2x.png */,
+				043F8BC7268D975000703FBE /* ic_play_arrow_black@2x.png */,
+				043F8BC6268D975000703FBE /* ic_skip_next_blac@2x.png */,
+				043F8BC9268D975000703FBE /* ic_skip_previous_black@2x.png */,
+				043F8BCA268D975000703FBE /* ic_sound_max_black@2x.png */,
+				043F8BC5268D975000703FBE /* ic_sound_min_black@2x.png */,
+				043811B4268C95CD00BE2571 /* ic_smartwasp_launch.png */,
 				04E816D1268C4AC800B36123 /* ic_search@2x.png */,
 				04E816C7268C4A9500B36123 /* ic_dangjian@2x.png */,
 				04E816CA268C4A9500B36123 /* ic_la001@2x.jpg */,
@@ -1205,14 +1229,18 @@
 				042A956A2685BCBA00C017FD /* WaitLAViewController.xib in Resources */,
 				04E816CF268C4A9600B36123 /* ic_la001@2x.jpg in Resources */,
 				04E816DE268C520B00B36123 /* SearchViewController.xib in Resources */,
+				043F8BDE268DB6F800703FBE /* icon_empty@2x.png in Resources */,
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
+				043F8BCD268D975100703FBE /* ic_play_arrow_black@2x.png in Resources */,
 				0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */,
 				04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */,
 				04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */,
 				0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */,
 				04E816CC268C4A9600B36123 /* ic_dangjian@2x.png in Resources */,
 				043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */,
+				043F8BCE268D975100703FBE /* ic_pause_black@2x.png in Resources */,
 				044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */,
+				043F8BCF268D975100703FBE /* ic_skip_previous_black@2x.png in Resources */,
 				0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */,
 				04261A4C261F1D36000D95D6 /* icon_tab_mine@2x.png in Resources */,
 				04261A1D261F167C000D95D6 /* icon_tab_dialog_selected@2x.png in Resources */,
@@ -1223,9 +1251,12 @@
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
 				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
+				043811B5268C95CD00BE2571 /* ic_smartwasp_launch.png in Resources */,
 				04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */,
 				04E816CD268C4A9600B36123 /* ic_pwd_invisible@2x.png in Resources */,
 				04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */,
+				043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */,
+				043F8BD0268D975100703FBE /* ic_sound_max_black@2x.png in Resources */,
 				044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */,
 				042619E6261F06ED000D95D6 /* Localizable.strings in Resources */,
 				045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */,
@@ -1240,6 +1271,7 @@
 				04D738D726202A8400E4F00C /* UserViewController.xib in Resources */,
 				04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */,
 				0410BE24267B54D900CE993E /* SkillView.xib in Resources */,
+				043F8BCC268D975100703FBE /* ic_skip_next_blac@2x.png in Resources */,
 				042619F7261F09A6000D95D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

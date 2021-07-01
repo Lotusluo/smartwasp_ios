@@ -42,7 +42,7 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
                             <real key="value" value="0.20000000000000001"/>
                         </userDefinedRuntimeAttribute>
@@ -57,7 +57,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-Xg-3Fh" userLabel="Play">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-Xg-3Fh" userLabel="Play">
                     <rect key="frame" x="192" y="517.5" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="KSh-xq-gKk"/>
@@ -65,37 +65,37 @@
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal">
-                        <imageReference key="image" image="play.fill" catalog="system" symbolScale="large"/>
+                        <imageReference key="image" image="ic_play_arrow_black.png" symbolScale="large"/>
                     </state>
                     <state key="selected">
-                        <imageReference key="image" image="pause.fill" catalog="system" symbolScale="large"/>
+                        <imageReference key="image" image="ic_pause_black.png" symbolScale="large"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyG-rT-Ovi" userLabel="Next">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyG-rT-Ovi" userLabel="Next">
                     <rect key="frame" x="272" y="517.5" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="v4c-LL-kqh"/>
                         <constraint firstAttribute="height" constant="30" id="zPk-BE-NO0"/>
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="forward.end.fill" catalog="system"/>
+                    <state key="normal" image="ic_skip_next_blac.png"/>
                     <connections>
                         <action selector="onBackward:" destination="-1" eventType="touchUpInside" id="hmt-iD-eVL"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95y-nz-YBg" userLabel="Prev">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95y-nz-YBg" userLabel="Prev">
                     <rect key="frame" x="112" y="517.5" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="EO1-rc-gKi"/>
                         <constraint firstAttribute="width" constant="30" id="lbf-vL-ORg"/>
                     </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="backward.end.fill" catalog="system"/>
+                    <state key="normal" image="ic_skip_previous_black.png"/>
                     <connections>
                         <action selector="onForward:" destination="-1" eventType="touchUpInside" id="qDT-da-JQq"/>
                     </connections>
                 </button>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" minimumValueImage="volume.slash.fill" catalog="system" maximumValueImage="volume.2.fill" translatesAutoresizingMaskIntoConstraints="NO" id="n4t-bj-LGe">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" minimumValueImage="ic_sound_min_black.png" maximumValueImage="ic_sound_max_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4t-bj-LGe">
                     <rect key="frame" x="18" y="577.5" width="378" height="31"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="minimumTrackTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +109,9 @@
                         <constraint firstAttribute="height" constant="30" id="DyD-BF-MNH"/>
                         <constraint firstAttribute="width" constant="30" id="fqR-go-Nu3"/>
                     </constraints>
+                    <state key="normal">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
                     <connections>
                         <action selector="onPlayOrPause:" destination="-1" eventType="touchUpInside" id="fkJ-M0-HB1"/>
                     </connections>
@@ -144,12 +147,12 @@
         </view>
     </objects>
     <resources>
-        <image name="backward.end.fill" catalog="system" width="128" height="102"/>
-        <image name="forward.end.fill" catalog="system" width="128" height="102"/>
-        <image name="pause.fill" catalog="system" width="116" height="128"/>
-        <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="volume.2.fill" catalog="system" width="128" height="90"/>
-        <image name="volume.slash.fill" catalog="system" width="124" height="128"/>
+        <image name="ic_pause_black.png" width="24" height="24"/>
+        <image name="ic_play_arrow_black.png" width="24" height="24"/>
+        <image name="ic_skip_next_blac.png" width="24" height="24"/>
+        <image name="ic_skip_previous_black.png" width="24" height="24"/>
+        <image name="ic_sound_max_black.png" width="24" height="24"/>
+        <image name="ic_sound_min_black.png" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

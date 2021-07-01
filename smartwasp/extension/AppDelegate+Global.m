@@ -35,16 +35,12 @@
 -(void)subscribeMediaStatus{
     //获取当前设备媒体状态并进行订阅
     [[IFLYOSSDK shareInstance] getMusicControlState:self.curDevice.device_id statusCode:^(NSInteger code) {
-        if(code != 200){
-            NSLog(@"获取设备媒体状态失败");
-        }
     } requestSuccess:^(id _Nonnull data) {
         MusicStateBean *musicStateBean = [MusicStateBean yy_modelWithJSON:data];
         StatusBean<MusicStateBean*> *statusBean = StatusBean.new;
         statusBean.data = musicStateBean;
         self.mediaStatus = statusBean;
     } requestFail:^(id _Nonnull data) {
-        NSLog(@"获取设备媒体状态失败");
     }];
     [self disSubscribeMediaStatus];
     //开始订阅媒体状态

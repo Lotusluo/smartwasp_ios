@@ -6,14 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SongBean.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MusicItemCell : UITableViewCell
 
+
+@property (nonatomic,strong)SongBean *song;
 @property (nonatomic) NSInteger serial;
-@property (nonatomic, copy) NSString* title;
-@property (nonatomic, copy) NSString* subtitle;
+@property(nonatomic,strong) NSString *groupID;
 
 @end
 

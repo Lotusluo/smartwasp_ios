@@ -9,6 +9,8 @@
 #import "AppDelegate+Global.h"
 #import "CodingUtil.h"
 #import "GSMonitorKeyboard.h"
+#import "AFNetworkReachabilityManager.h"
+
 
 
 //定义小黄蜂appid
@@ -28,9 +30,6 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSString *json = @"{\"client_id\": \"65e8d4f8-da9e-4633-8cac-84b0b47496b6\",\"pid\": \"62\",\"did\": \"XHFH0070000008\"}";
-    NSLog(@"json:%@",json);
-    NSLog(@"readStream:%@",[json yy_modelToJSONObject]);
     // Override point for customization after application launch.
     [[IFLYOSSDK shareInstance] initAppId:APPID schema:@"smartwasp" loginType:DEFAULT];
     [[IFLYOSSDK shareInstance] setDebugModel:NO];
@@ -42,6 +41,8 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         NSData *usrData = [CodingUtil dataFromHexString:usrValue];
         self.user = [NSKeyedUnarchiver unarchiveObjectWithData:usrData];
     }
+    [self observeNetWork];
+    [NSThread sleepForTimeInterval:3];
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if(self.user){
         [self toMain];
@@ -49,7 +50,35 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         [self toLogin];
     }
     [self.window makeKeyAndVisible];
+//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//
+//     CFShow(infoDictionary);
+//
+//    // app名称
+//
+//    NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+//
+//    // app版本
+//
+//    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+//
+//    // app build版本
+//
+//    NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+
     return YES;
+}
+
+// 监听网络状态
+- (void)observeNetWork {
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
+            NSLog(@"无网络连接！");
+        } else {
+            NSLog(@"有网络连接！");
+        }
+    }];
 }
 
 //设置设备列表
@@ -81,9 +110,10 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         //设备未更改则返回
         return;
     }
-    _curDevice = curDevice;
     //取消订阅设备状态
     [self disSubscribeMediaStatus];
+    _curDevice = curDevice;
+    self.mediaStatus = nil;
     //通知刷新当前选择的设备
     if(self.curDevice){
         NSLog(@"当前选择的设备:%@",curDevice.alias);
@@ -98,9 +128,7 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 
 //设置当前设备媒体状态
 -(void)setMediaStatus:(StatusBean<MusicStateBean *> *)mediaStatus{
-    if(!mediaStatus)
-        return;
-    if(_mediaStatus && [_mediaStatus isNewerThan:mediaStatus])
+    if(_mediaStatus && mediaStatus && [_mediaStatus isNewerThan:mediaStatus])
         return;
     _mediaStatus = mediaStatus;
     NSLog(@"当前设备媒体状态:%d",mediaStatus.data.music_player.playing);
@@ -170,6 +198,7 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
     NSString *json = [NSString stringWithFormat:@"%@",receiveMessage];
     if(socket == mediaStatePushService){
         StatusBean<MusicStateBean*> *statusBeanMedia = [StatusBean yy_modelWithJSON:json];
+        NSLog(@"mediaStatePushService:%@",json);
         self.mediaStatus = statusBeanMedia;
     }else if(socket == deviceStatePushService){
         StatusBean<DeviceBean*> *statusBeanDevice = [StatusBean yy_modelWithJSON:json];

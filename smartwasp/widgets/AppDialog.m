@@ -15,12 +15,12 @@
 @implementation AppDialog
 //静态生成音乐播放弹出框
 +(AppDialog*) createDialog:(NSString*) nib
-              heightParams:(CGFloat (^)(void)) heightFun{
+              heightParam:(CGFloat) heightParam{
     AppDialog *appDialog = AppDialog.new;
     appDialog.backgroundColor = [UIColor whiteColor];
     appDialog.baseView = [[[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil] lastObject];
     appDialog.mask = UIView.new;
-    appDialog.heightFun = heightFun;
+    appDialog.heightParam = heightParam;
     return appDialog;
 }
 
@@ -50,6 +50,9 @@
     [mask addGestureRecognizer:click];
 }
 
+-(void)dismiss{
+    [self dismiss:nil];
+}
 
 -(void)dismiss:(id)sender{
     [self doFadeIn:NO];
@@ -61,7 +64,7 @@
     CGFloat safeBottom = sgm_safeAreaInset(self).bottom;
     [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.superview);
-        make.height.mas_equalTo(self.heightFun() + safeBottom);
+        make.height.mas_equalTo(self.heightParam + safeBottom);
         make.bottom.equalTo(self.superview);
     }];
     [self acs_radiusWithRadius:10 corner:UIRectCornerTopLeft | UIRectCornerTopRight];

@@ -17,15 +17,17 @@ NS_ASSUME_NONNULL_BEGIN
 //mask
 @property(strong,nonatomic) UIView *mask;
 
-//动态获取高度方法
-@property (strong,nonatomic) CGFloat (^heightFun)(void);
+//弹出框高度
+@property (nonatomic) CGFloat heightParam;
 
 //呈现
 -(void)show;
 
+-(void)dismiss;
+
 //创建dialog
 +(AppDialog*) createDialog:(NSString*) nib
-              heightParams:(CGFloat (^)(void)) heightFun;
+              heightParam:(CGFloat) heightParam;
 
 @end
 

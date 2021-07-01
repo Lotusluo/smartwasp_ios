@@ -91,7 +91,6 @@ static NSString *const ID = @"CellIdentifier";
 -(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
     if (self.isViewLoaded && self.view.window){
         if(musicStateBean && musicStateBean.isPlaying){
-            NSLog(@"startJump");
             [self.toolbar startJump];
             return;
         }
@@ -115,11 +114,12 @@ static NSString *const ID = @"CellIdentifier";
 -(void)reloadData:(DeviceBean *) device{
     if (!self.isViewLoaded || !self.view.window){
         self.NEED_REFRESH_UI = YES;
-        NSLog(@"不可见不可见");
         return;
     }
+    UIView *emptyView = [self.view viewWithTag:1001];
     self.toolbar.device = device;
     if(device){
+        emptyView.hidden = YES;
         //获取发现页面数据
         [Loading show:nil];
         [[IFLYOSSDK shareInstance] getMusicGroups:device.device_id statusCode:^(NSInteger statusCode) {
@@ -138,7 +138,8 @@ static NSString *const ID = @"CellIdentifier";
             }
         } requestFail:^(id _Nonnull data) {}];
     }else{
-        NSLog(@"为空");
+        [self.view bringSubviewToFront:emptyView];
+        emptyView.hidden = NO;
         [self loadDataEccur];
     }
 }

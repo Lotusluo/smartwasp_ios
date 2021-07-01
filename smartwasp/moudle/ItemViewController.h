@@ -7,10 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ItemBean.h"
+#import "NotifyViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ItemViewController : UIViewController
+@interface ItemViewController : NotifyViewController
 
 +(ItemViewController *) createNewPage:(ItemBean *) bean;
 

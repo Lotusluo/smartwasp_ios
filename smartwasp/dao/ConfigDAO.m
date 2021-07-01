@@ -23,6 +23,7 @@ static ConfigDAO *sharedSingleton = nil;
         sharedSingleton = [[self alloc] init];
         //初始化沙箱目录中属性列表文件路径
         sharedSingleton.plistFilePath = [sharedSingleton applicationDocumentsDirectoryFile];
+        NSLog(@"sharedSingleton.plistFilePath:%@",sharedSingleton.plistFilePath);
         //初始化属性列表文件
         [sharedSingleton createEditableCopyOfDatabaseIfNeeded];
     });
@@ -52,21 +53,23 @@ static ConfigDAO *sharedSingleton = nil;
     }
     [dict setValue:value forKey:key];
     BOOL isOk = [dict writeToFile:self.plistFilePath atomically:TRUE];
+    NSLog(@"setKey:%@,value:%@,isOk:%d",key,value,isOk);
     return isOk;
 }
 
 //删除kv方法
--(int) remove:(NSString*)key{
+-(int)remove:(NSString*)key{
+    [self setKey:key forValue:@""];
     return 0;
 }
 
 //按照k查询数据方法
--(NSString*) findByKey:(NSString*)key{
+-(NSString*)findByKey:(NSString*)key{
     NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:self.plistFilePath];
     NSEnumerator *enumerator = [dict keyEnumerator];
     id next;
     while ((next = [enumerator nextObject])) {
-        if([next  isEqualToString:key]){
+        if([next isEqualToString:key]){
             return dict[key];
         }
     }

@@ -6,8 +6,18 @@
 //
 
 #import "UsrCenterViewController.h"
+#import "AppDelegate.h"
+#import "AppDelegate+Global.h"
+#import "UIViewHelper.h"
+#import "ConfigDAO.h"
+#import "iToast.h"
+#import "Loading.h"
+#import "JCGCDTimer.h"
 
-@interface UsrCenterViewController ()
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+
+@interface UsrCenterViewController ()<IFLYOSsdkLoginDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *usrPhone;
 
 @end
 
@@ -17,6 +27,7 @@
     [super viewDidLoad];
     self.title = @"个人中心";
     self.tableView.rowHeight = 44;
+    self.usrPhone.text = APPDELEGATE.user.phone;
 //    self.tableView.backgroundView = ({
 //    UIView * view = [[UIView alloc] initWithFrame:self.tableView.bounds];
 //    view.backgroundColor = [UIColor redColor];
@@ -25,12 +36,12 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
--(void) viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES];
 }
@@ -54,6 +65,46 @@
     }
     return headerView;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    UITouch *touch=[touches anyObject];
+//    CGPoint cureentTouchPosition=[touch locationInView:self.TableView];
+//    NSIndexPath *indexPath=[self.TableView indexPathForRowAtPoint:cureentTouchPosition];
+//    NSLog(@"section----%li,----row---%li",(long)indexPath.section,(long)indexPath.row);
+    if(indexPath.section == 1){
+        //用户码
+        [UIViewHelper showAlert:APPDELEGATE.user.user_id target:self callBack:^{
+            UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+            pasteboard.string = APPDELEGATE.user.user_id;
+            [[iToast makeText:@"已复制到剪贴板!"] show];
+        } positiveTxt:@"复制" negativeTxt:@"确定"];
+    }else if(indexPath.section == 2){
+        //退出登陆
+        [Loading show:nil];
+        [[IFLYOSSDK shareInstance] logout:self];
+    }
+}
+
+
+/**
+ *  注销成功
+ */
+-(void)onLogoutSuccess{
+    [Loading dismiss];
+    [[ConfigDAO sharedInstance] remove:@"usr"];
+    [APPDELEGATE toLogin];
+}
+
+/**
+ *  注销失败
+ */
+-(void)onLogoutFailed:(NSInteger) type error:(NSError *) error{
+    [Loading dismiss];
+    [[iToast makeText:@"退出登陆失败，请重试!"] show];
+}
+
 /*
 #pragma mark - Navigation
 

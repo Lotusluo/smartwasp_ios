@@ -56,19 +56,23 @@
 }
 
 +(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback negative:(BOOL) negative{
-    if ([msg isKindOfClass:[NSDictionary class]]) {
-        NSError *parseError = nil;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg options:NSJSONWritingPrettyPrinted error:&parseError];
-        msg = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
+//    if ([msg isKindOfClass:[NSDictionary class]]) {
+//        NSError *parseError = nil;
+//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg options:NSJSONWritingPrettyPrinted error:&parseError];
+//        msg = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//    }
+    [self showAlert:msg target:target callBack:callback positiveTxt:@"确定" negativeTxt:negative?@"取消":nil];
+}
+
++(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback positiveTxt:(NSString*) positiveTxt negativeTxt:(NSString*) negativeTxt{
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    [alertView addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertView addAction:[UIAlertAction actionWithTitle:positiveTxt style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if(callback){
             callback();
         }
     }]];
-    if(negative){
-        [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    if(negativeTxt){
+        [alertView addAction:[UIAlertAction actionWithTitle:negativeTxt style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
     }

@@ -12,6 +12,7 @@
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "AppDelegate.h"
 #import "Loading.h"
+#import "iToast.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -64,7 +65,7 @@ static NSString *const ID = @"MusicItemCell";
 
 -(void)onCancelInput{
     [self.view endEditing:YES];
-    self.searchBar.text = self.keyWords;
+//    self.searchBar.text = self.keyWords;
 }
 
 - (IBAction)onPressBack:(id)sender {
@@ -117,8 +118,7 @@ static NSString *const ID = @"MusicItemCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MusicItemCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
     SongBean *song=[self.songsData objectAtIndex:indexPath.row];
-    cell.title = song.name;
-    cell.subtitle = song.artist;
+    cell.song = song;
     cell.serial = indexPath.row + 1;
     return cell;
 }
@@ -129,6 +129,15 @@ static NSString *const ID = @"MusicItemCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [Loading show:nil];
+    SongBean *song=[self.songsData objectAtIndex:indexPath.row];
+    [[IFLYOSSDK shareInstance] musicControlPlay:APPDELEGATE.curDevice.device_id mediaId:song._id sourceType:song.source_type statusCode:^(NSInteger code) {
+        [Loading dismiss];
+    } requestSuccess:^(id _Nonnull data) {
+        [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",song.name]] show];
+    } requestFail:^(id _Nonnull data) {
+        [[iToast makeText:@"请开通音乐权限或重试!"] show];
+    }];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

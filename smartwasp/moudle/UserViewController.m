@@ -19,6 +19,9 @@
 #import "LXSEQView.h"
 #import "UsrCenterViewController.h"
 #import "AddDeviceViewController.h"
+#import "iToast.h"
+#import "UIViewHelper.h"
+#import "MusicPlayViewController.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -69,6 +72,17 @@ static NSString *const ID = @"CellIdentifier";
                                              selector:@selector(devsSetObserver:)
                                                  name:@"devsSetNotification"
                                                object:nil];
+    [UIViewHelper attachClick:self.musicView target:self action:@selector(doTapMethod)];
+}
+
+//音乐控件点击
+-(void)doTapMethod{
+    if(!APPDELEGATE.curDevice){
+        [[iToast makeText:@"暂无设备"] show];
+        return;
+    }
+    MusicPlayViewController *mvc = MusicPlayViewController.new;
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 
 //初始化设备选择栏

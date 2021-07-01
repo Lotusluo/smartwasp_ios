@@ -98,9 +98,13 @@
         self.NEED_REFRESH_UI = YES;
         return;
     }
+    UIView *emptyView = [self.view viewWithTag:1001];
     if(device){
+        emptyView.hidden = YES;
         [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:device.device_id];
     }else{
+        [self.view bringSubviewToFront:emptyView];
+        emptyView.hidden = NO;
         NSLog(@"为空");
     }
 }

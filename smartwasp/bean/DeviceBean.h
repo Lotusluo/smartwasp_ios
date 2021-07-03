@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *zone;
 //music
 @property(nonatomic,strong) MusicBean *music;
+@property(nonatomic,assign)BOOL continous_mode;
 //@property(nonatomic,strong) id brand;
 
 //设备是否在线

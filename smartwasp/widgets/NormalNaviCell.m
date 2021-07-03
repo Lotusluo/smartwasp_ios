@@ -17,6 +17,8 @@
 //右侧图标
 @property(nonatomic,strong) UIImageView *rightImage;
 
+@property(nonatomic)CGFloat startY;
+
 @end
 
 @implementation NormalNaviCell
@@ -74,33 +76,37 @@
     //添加文本
     _titleTxt = [UILabel new];
     _titleTxt.font = [UIFont systemFontOfSize:15];
+    _titleTxt.userInteractionEnabled = NO;
     [self addSubview:_titleTxt];
     
     //添加右侧ICON
     _rightImage = [UIImageView new];
     [self addSubview:_rightImage];
     
-    self.userInteractionEnabled = YES;
-    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doCallMethod:)];
-    recognizer.delegate = self;
-    recognizer.minimumPressDuration = 0.0;
-    [self addGestureRecognizer:recognizer];
+//    self.userInteractionEnabled = YES;
+//    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(doCallMethod:)];
+//    recognizer.delegate = self;
+//    recognizer.minimumPressDuration = 0.0;
+//    [self addGestureRecognizer:recognizer];
 }
 
-- (void)doCallMethod:(UILongPressGestureRecognizer*)sender {
-    if(sender.state == UIGestureRecognizerStateBegan){
-        self.backgroundColor = [UIColor lightTextColor];
-    }else if (sender.state == UIGestureRecognizerStateChanged){
-        sender.enabled = NO;
-    }else if (sender.state == UIGestureRecognizerStateCancelled){
-        self.backgroundColor = [UIColor whiteColor];
-        sender.enabled = YES;
-    }else if (sender.state == UIGestureRecognizerStateEnded){
-        self.backgroundColor = [UIColor whiteColor];
-        if(self.delegate && [self.delegate respondsToSelector:@selector(onClick:)]){
-            [self.delegate onClick: self.tag];
-        }
-    }
+- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event{
+    NSLog(@"beginTrackingWithTouch");
+    CGPoint cureentTouchPosition=[touch locationInView:self];
+    self.startY = cureentTouchPosition.y;
+    return YES;
+}
+
+-(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(nullable UIEvent *)event{
+    CGPoint cureentTouchPosition=[touch locationInView:self];
+    return fabs(self.startY - cureentTouchPosition.y) >= 5;
+}
+
+-(void)endTrackingWithTouch:(nullable UITouch *)touch withEvent:(nullable UIEvent *)event;{
+    [self.delegate onClick: self.tag];
+}
+
+- (void)cancelTrackingWithEvent:(nullable UIEvent *)event{
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {

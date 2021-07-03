@@ -35,18 +35,6 @@
     [view addGestureRecognizer:tap];
 }
 
-//获取当前附着的VC
-+(UIViewController*)getAttachController:(UIView*)view{
-    for (UIView* next = [view superview]; next; next = next.superview) {
-        UIResponder* nextResponder = [next nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            UIViewController *vc = (UIViewController *)nextResponder;
-            return vc;
-        }
-    }
-    return nil;
-}
-
 +(void)showAlert:(NSString *)msg target:(UIViewController *)target{
     [self showAlert:msg target:target callBack:nil];
 }

@@ -82,8 +82,10 @@
         } positiveTxt:@"复制" negativeTxt:@"确定"];
     }else if(indexPath.section == 2){
         //退出登陆
-        [Loading show:nil];
-        [[IFLYOSSDK shareInstance] logout:self];
+        [UIViewHelper showAlert:@"是否退出登陆？" target:self callBack:^{
+            [Loading show:nil];
+            [[IFLYOSSDK shareInstance] logout:self];
+        } negative:YES];
     }
 }
 

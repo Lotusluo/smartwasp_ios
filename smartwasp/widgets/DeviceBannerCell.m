@@ -25,12 +25,12 @@
 
 - (instancetype) initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
-    if(self){
-        //画外边框
+//    if(self){
+//        //画外边框
         self.borderColor =  [UIColor lightGrayColor];
         self.cornerRadius = 15;
         self.borderWidth = 0.8;
-    }
+//    }
     return self;
 }
 
@@ -54,6 +54,7 @@
         //添加设备信息
         [self drawDevice];
     }
+    [self setNeedsDisplay];
 }
 
 //添加主控设备界面
@@ -96,6 +97,45 @@
     onlineTxt.text  = _device.isOnLine ? @"在线" : @"离线";
     [onlineTxt setLeftSquareDrawable:[image renderImageWithColor:color]];
 }
+
+- (void)drawRect:(CGRect)rect {
+    if([_device.alias isEqualToString:@"header"])
+        return;
+    //绘制未开通音乐权限提示
+    CGFloat height = self.bounds.size.height;
+    CGFloat halfValue = height / 2;
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextMoveToPoint (context, 0, halfValue);
+    CGContextAddLineToPoint (context, halfValue, height);
+    CGContextAddLineToPoint (context, 20, height);
+    CGContextAddLineToPoint (context, 0, height - 20);
+    CGContextClosePath(context);
+    [[UIColor orangeColor] setFill];
+    [[UIColor clearColor] setStroke];
+    CGContextDrawPath(context, kCGPathFillStroke);
+    
+    NSString *tip = _device.music.enable ? @"已开通" : @"未开通";
+    CGFloat radius = distanceBetweenPoints(CGPointMake(0, halfValue + 20),CGPointMake(halfValue - 20, height)) / 2;
+    UIFont *font = [UIFont systemFontOfSize:12.0];
+    CGPoint tranPoint = CGPointMake(cos(M_PI_4) * radius, halfValue + (height - 20 - halfValue) / 2 + sin(M_PI_4) * radius);
+    CGSize textSize = [tip sizeWithAttributes:@{NSFontAttributeName:font}];
+    CGAffineTransform t = CGAffineTransformMakeTranslation(tranPoint.x, tranPoint.y);
+    CGAffineTransform r = CGAffineTransformMakeRotation(M_PI_4);
+    CGContextConcatCTM(context, t);
+    CGContextConcatCTM(context, r);
+    [tip drawAtPoint:CGPointMake(-1 * textSize.width / 2, -1 * textSize.height / 2) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    CGContextConcatCTM(context, CGAffineTransformInvert(r));
+    CGContextConcatCTM(context, CGAffineTransformInvert(t));
+    
+//    [@"iOS text" drawAtPoint:CGPointMake(10, 80) withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Heiti SC" size:40], NSFontAttributeName,[UIColor blueColor],NSForegroundColorAttributeName, nil]];
+
+}
+
+CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
+    CGFloat deltaX = second.x - first.x;
+    CGFloat deltaY = second.y - first.y;
+    return sqrt(deltaX*deltaX + deltaY*deltaY);
+};
 
 @end
 

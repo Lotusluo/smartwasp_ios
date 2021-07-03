@@ -22,6 +22,8 @@
 #import "iToast.h"
 #import "UIViewHelper.h"
 #import "MusicPlayViewController.h"
+#import "AboutViewController.h"
+#import "Loading.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -140,6 +142,8 @@ static NSString *const ID = @"CellIdentifier";
 //菜单点击事件
 -(void)onClick:(NSInteger)tag{
     if(tag == 4){
+        AboutViewController *amv = AboutViewController.new;
+        [self.navigationController pushViewController:amv animated:YES];
         return;
     }
     URL_PATH_ENUM path;
@@ -220,10 +224,12 @@ static NSString *const ID = @"CellIdentifier";
     if(self.collectionView.contentOffset.x == offsetX)
         return;
     __weak typeof(self) SELF = self;
+    [Loading show:nil];
     dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 0.2* NSEC_PER_SEC);
     dispatch_after(time_t, dispatch_get_main_queue(), ^{
         SELF.collectionView.contentOffset = CGPointMake(offsetX, 0);
         [SELF.pageControl setCurrentPage:page];
+        [Loading dismiss];
     });
 }
 

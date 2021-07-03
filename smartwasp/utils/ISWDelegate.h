@@ -13,6 +13,9 @@
 @protocol ISWClickDelegate<NSObject>
 @required
 -(void) onClick:(NSInteger)tag;
+@optional
+-(void)onConfirmClick;
+-(void)onCancelClick;
 @end
 
 

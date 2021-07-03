@@ -22,6 +22,7 @@
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
 #import "Loading.h"
+#import "UIViewHelper.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -47,6 +48,7 @@ ISelectedDelegate>
 //Banner图
 @property (strong, nonatomic)  UICollectionView *collectionView;
 @property (strong, nonatomic)  PageLineLayout *lineLayout;
+@property (strong,nonatomic) UIPageControl *pageCtrl;
 //指示器
 @property (strong,nonatomic) JXCategoryTitleView *categoryView;
 //发现页数据
@@ -127,6 +129,10 @@ static NSString *const ID = @"CellIdentifier";
             self.NEED_REFRESH_UI = NO;
             if(statusCode != 200){
                 [self loadDataEccur];
+                self.NEED_REFRESH_UI = YES;
+                [UIViewHelper showAlert:@"加载数据失败！" target:self callBack:^{
+                    [self reloadData:APPDELEGATE.curDevice];
+                } positiveTxt:@"重试" negativeTxt:@"取消"];
             }
             [self.headerView hw_endRefreshState];
         } requestSuccess:^(id _Nonnull data) {
@@ -158,6 +164,7 @@ static NSString *const ID = @"CellIdentifier";
     //刷新Banner数据
     [self.collectionView reloadData];
     [self.scrollView addSubview:self.collectionView];
+    [self.scrollView addSubview:self.pageCtrl];
     //对collectionView进行约束
     [self.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(APAGE_SIZE.width);
@@ -165,6 +172,14 @@ static NSString *const ID = @"CellIdentifier";
         make.centerX.mas_equalTo(self.view);
         //IOS 11.4不设置会出现布局紊乱
         make.top.mas_equalTo(0);
+    }];
+    self.pageCtrl.numberOfPages = self.findBean ? self.findBean.banners.count : 0;
+    self.pageCtrl.currentPage = 0;
+    [self.pageCtrl mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.collectionView);
+        make.height.mas_equalTo(50);
+        make.centerX.mas_equalTo(self.view);
+        make.bottom.equalTo(self.collectionView).offset(10);
     }];
 
     //是否显示购买音乐控件
@@ -224,7 +239,13 @@ static NSString *const ID = @"CellIdentifier";
     musicPayView.frame = CGRectMake(SCREEN_WIDTH * 0.15, 0, SCREEN_WIDTH * 0.7, PAYVIEW_HEIGHT);
     UILabel *label = [musicPayView.subviews objectAtIndex:1];
     label.text = music.text;
+    [UIViewHelper attachClick:musicPayView target:self action:@selector(onPayClick)];
 //    [musicPayView.subviews objectAtIndex:0].transform = CGAffineTransformMakeRotation(M_PI);
+}
+
+-(void)onPayClick{
+    WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:APPDELEGATE.curDevice.music.redirect_url];
+    [self.navigationController pushViewController:nvc animated:YES];
 }
 
 //添加指示器
@@ -241,8 +262,9 @@ static NSString *const ID = @"CellIdentifier";
 
 #pragma mark --UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if([scrollView isKindOfClass:UICollectionView.class])
+    if([scrollView isKindOfClass:UICollectionView.class]){
         return;
+    }
     CGFloat topY = (APPDELEGATE.curDevice.music.enable ? 0 : PAYVIEW_HEIGHT + VIEW_GAP);
     [self.categoryView mas_updateConstraints:^(MASConstraintMaker *make) {
         CGFloat referY = APAGE_SIZE.height  + topY;
@@ -267,6 +289,19 @@ static NSString *const ID = @"CellIdentifier";
     }
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if([scrollView isKindOfClass:UICollectionView.class]){
+        BOOL scrollToScrollStop = !scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
+        if (scrollToScrollStop) {
+            int page = floor(scrollView.contentOffset.x / (APAGE_SIZE.width + 30));
+            if(self.pageCtrl){
+                self.pageCtrl.currentPage = page;
+            }
+        }
+        return;
+    }
+}
+
 
 #pragma mark --UICollectionViewDelegate
 -( void )collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
@@ -274,7 +309,6 @@ static NSString *const ID = @"CellIdentifier";
     WebPageViewController *newPage = [WebPageViewController createNewPageWithUrl:bannerBean.url];
     newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
-    NSLog(@"%@",bannerBean.url);
 }
 
 #pragma mark --UICollectionViewDataSource
@@ -370,6 +404,17 @@ static NSString *const ID = @"CellIdentifier";
         }];
     }
     return _headerView;
+}
+
+#pragma mark --指示器懒加载
+-(UIPageControl*) pageCtrl{
+    if(!_pageCtrl){
+        _pageCtrl = UIPageControl.new;
+        _pageCtrl.pageIndicatorTintColor =  [UIColor lightGrayColor];
+        _pageCtrl.currentPageIndicatorTintColor = [UIColor whiteColor];
+        _pageCtrl.enabled = NO;
+    }
+    return _pageCtrl;
 }
 
 @end

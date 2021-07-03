@@ -8,6 +8,7 @@
 #import "NormalToolbar.h"
 #import "AppDelegate.h"
 #import "UIViewHelper.h"
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 @interface NormalToolbar()
 
@@ -29,10 +30,7 @@
 }
 */
 - (IBAction)onPressback:(id)sender {
-    UIViewController *cvc = [UIViewHelper getAttachController:self];
-    if(cvc){
-        [cvc.navigationController popViewControllerAnimated:YES];
-    }
+    [APPDELEGATE.rootNavC popViewControllerAnimated:YES];
 }
 
 -(void)setTitle:(NSString *)title{

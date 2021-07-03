@@ -48,7 +48,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfv-cg-yJB">
                     <rect key="frame" x="0.0" y="0.0" width="107.5" height="73"/>
                     <connections>
-                        <action selector="onClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="mV4-KQ-qOj"/>
+                        <action selector="onClick1:" destination="iN0-l3-epB" eventType="touchUpInside" id="SJ3-gk-vCq"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdY-XN-avf" userLabel="search">

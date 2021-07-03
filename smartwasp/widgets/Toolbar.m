@@ -23,7 +23,7 @@
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
-@interface Toolbar ()
+@interface Toolbar ()<ISWClickDelegate>
 
 //设备表示状态图标
 @property (weak, nonatomic) IBOutlet UIImageView *devStatusIcon;
@@ -58,16 +58,24 @@
     [UIViewHelper attachClick:self.jump target:self action:@selector(doTapMethod)];
 }
 
+-(void) onClick:(NSInteger)tag{
+    
+}
 //设备选择点击
--(IBAction)onClick:(id)sender {
+-(IBAction)onClick1:(id)sender {
     if(!APPDELEGATE.curDevice){
         //添加设备
-        UIViewController *cvc = [UIViewHelper getAttachController:self];
         AddDeviceViewController *avc = AddDeviceViewController.new;
-        [cvc.navigationController pushViewController:avc animated:YES];
+        [APPDELEGATE.rootNavC pushViewController:avc animated:YES];
         return;
     }
-    [DeviceDialog create];
+    [DeviceDialog create].delegate = self;
+}
+
+-(void)onConfirmClick{
+    NSLog(@"onConfirmClick");
+    AddDeviceViewController *avc = AddDeviceViewController.new;
+    [APPDELEGATE.rootNavC pushViewController:avc animated:YES];
 }
 
 //音乐控件点击
@@ -76,11 +84,8 @@
         [[iToast makeText:@"暂无设备"] show];
         return;
     }
-    UIViewController *cvc = [UIViewHelper getAttachController:self];
-    if(cvc){
-        MusicPlayViewController *mvc = MusicPlayViewController.new;
-        [cvc.navigationController pushViewController:mvc animated:YES];
-    }
+    MusicPlayViewController *mvc = MusicPlayViewController.new;
+    [APPDELEGATE.rootNavC pushViewController:mvc animated:YES];
 }
 
 
@@ -94,8 +99,7 @@
         return;
     }
     SearchViewController *svc = SearchViewController.new;
-    UIViewController *cvc = [UIViewHelper getAttachController:self];
-    [cvc.navigationController pushViewController:svc animated:YES];
+    [APPDELEGATE.rootNavC pushViewController:svc animated:YES];
 }
 
 //添加设备信息

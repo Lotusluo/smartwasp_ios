@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 IB_DESIGNABLE
-@interface NormalNaviCell : UIView
+@interface NormalNaviCell : UIControl
 
 //左侧图标
 @property (nonatomic, strong)IBInspectable UIImage* leftIcon;

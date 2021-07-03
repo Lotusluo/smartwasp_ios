@@ -146,6 +146,11 @@
 		047267072684800900446189 /* PrevBindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047267052684800900446189 /* PrevBindViewController.m */; };
 		047267082684800900446189 /* PrevBindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047267062684800900446189 /* PrevBindViewController.xib */; };
 		0472671626848C2D00446189 /* ZFCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472671526848C2D00446189 /* ZFCheckbox.m */; };
+		0473B89D268F10B100471A6A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473B89B268F10B100471A6A /* AboutViewController.m */; };
+		0473B89E268F10B100471A6A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0473B89C268F10B100471A6A /* AboutViewController.xib */; };
+		0473B8A1268F125400471A6A /* ic_launcher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0473B8A0268F125400471A6A /* ic_launcher@2x.png */; };
+		0473B8AF268F2BE000471A6A /* LDSRouterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473B8AC268F2BE000471A6A /* LDSRouterInfo.m */; };
+		0473B8B0268F2BE000471A6A /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = 0473B8AD268F2BE000471A6A /* SimplePing.m */; };
 		0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476D47D2660865000F8DE42 /* DeviceBannerCell.m */; };
 		0476D4842660877300F8DE42 /* DeviceChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0476D4822660877300F8DE42 /* DeviceChooseCell.m */; };
 		0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D4832660877300F8DE42 /* DeviceChooseCell.xib */; };
@@ -173,6 +178,7 @@
 		04D738D626202A8400E4F00C /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738D426202A8400E4F00C /* UserViewController.m */; };
 		04D738D726202A8400E4F00C /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D738D526202A8400E4F00C /* UserViewController.xib */; };
 		04D738E02620453200E4F00C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738DE2620453200E4F00C /* LoginViewController.m */; };
+		04DA6D56268FF6B80082869B /* IFlyOSBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA6D55268FF6B80082869B /* IFlyOSBean.m */; };
 		04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE8A352683184F002AAA7D /* AddDeviceViewController.m */; };
 		04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */; };
 		04DE8A4026831FE7002AAA7D /* ic_r_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A3F26831FE7002AAA7D /* ic_r_scan@2x.png */; };
@@ -440,6 +446,15 @@
 		047267062684800900446189 /* PrevBindViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrevBindViewController.xib; sourceTree = "<group>"; };
 		0472671426848C2C00446189 /* ZFCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFCheckbox.h; sourceTree = "<group>"; };
 		0472671526848C2D00446189 /* ZFCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFCheckbox.m; sourceTree = "<group>"; };
+		0473B89A268F10B100471A6A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		0473B89B268F10B100471A6A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		0473B89C268F10B100471A6A /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		0473B8A0268F125400471A6A /* ic_launcher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_launcher@2x.png"; sourceTree = "<group>"; };
+		0473B8AA268F2BE000471A6A /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
+		0473B8AB268F2BE000471A6A /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
+		0473B8AC268F2BE000471A6A /* LDSRouterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDSRouterInfo.m; sourceTree = "<group>"; };
+		0473B8AD268F2BE000471A6A /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
+		0473B8AE268F2BE000471A6A /* LDSRouterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDSRouterInfo.h; sourceTree = "<group>"; };
 		0476D47B2660865000F8DE42 /* DeviceBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceBannerCell.h; sourceTree = "<group>"; };
 		0476D47D2660865000F8DE42 /* DeviceBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceBannerCell.m; sourceTree = "<group>"; };
 		0476D4812660877300F8DE42 /* DeviceChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceChooseCell.h; sourceTree = "<group>"; };
@@ -484,6 +499,8 @@
 		04D738D526202A8400E4F00C /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		04D738DD2620453200E4F00C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		04D738DE2620453200E4F00C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		04DA6D54268FF6B80082869B /* IFlyOSBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFlyOSBean.h; sourceTree = "<group>"; };
+		04DA6D55268FF6B80082869B /* IFlyOSBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFlyOSBean.m; sourceTree = "<group>"; };
 		04DE8A342683184F002AAA7D /* AddDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		04DE8A352683184F002AAA7D /* AddDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
 		04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
@@ -830,6 +847,7 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				0473B8A0268F125400471A6A /* ic_launcher@2x.png */,
 				043F8BDD268DB6F800703FBE /* icon_empty@2x.png */,
 				043F8BC8268D975000703FBE /* ic_pause_black@2x.png */,
 				043F8BC7268D975000703FBE /* ic_play_arrow_black@2x.png */,
@@ -884,6 +902,18 @@
 				04CCC4EB264B7CEB00A1F09F /* NetDAO.m */,
 			);
 			path = dao;
+			sourceTree = "<group>";
+		};
+		0473B8A9268F2BE000471A6A /* Ping */ = {
+			isa = PBXGroup;
+			children = (
+				0473B8AA268F2BE000471A6A /* SimplePing.h */,
+				0473B8AB268F2BE000471A6A /* route.h */,
+				0473B8AC268F2BE000471A6A /* LDSRouterInfo.m */,
+				0473B8AD268F2BE000471A6A /* SimplePing.m */,
+				0473B8AE268F2BE000471A6A /* LDSRouterInfo.h */,
+			);
+			path = Ping;
 			sourceTree = "<group>";
 		};
 		0476D48B2660940000F8DE42 /* extension */ = {
@@ -941,6 +971,9 @@
 				04E816DA268C520B00B36123 /* SearchViewController.h */,
 				04E816DB268C520B00B36123 /* SearchViewController.m */,
 				04E816DC268C520B00B36123 /* SearchViewController.xib */,
+				0473B89A268F10B100471A6A /* AboutViewController.h */,
+				0473B89B268F10B100471A6A /* AboutViewController.m */,
+				0473B89C268F10B100471A6A /* AboutViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -984,6 +1017,8 @@
 				044D4E0A268B1D1600BAD622 /* ApAuthCode.m */,
 				04E816E0268C654400B36123 /* SearchBean.h */,
 				04E816E1268C654400B36123 /* SearchBean.m */,
+				04DA6D54268FF6B80082869B /* IFlyOSBean.h */,
+				04DA6D55268FF6B80082869B /* IFlyOSBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -1098,6 +1133,7 @@
 		04E00B492621544000080581 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				0473B8A9268F2BE000471A6A /* Ping */,
 				042A95782685D83800C017FD /* cJSON.c */,
 				042A95792685D83800C017FD /* cJSON.h */,
 				04783314262D1F3600684E9C /* iToast.h */,
@@ -1227,7 +1263,9 @@
 				04E816D2268C4AC800B36123 /* ic_search@2x.png in Resources */,
 				04DE8A4026831FE7002AAA7D /* ic_r_scan@2x.png in Resources */,
 				042A956A2685BCBA00C017FD /* WaitLAViewController.xib in Resources */,
+				0473B8A1268F125400471A6A /* ic_launcher@2x.png in Resources */,
 				04E816CF268C4A9600B36123 /* ic_la001@2x.jpg in Resources */,
+				0473B89E268F10B100471A6A /* AboutViewController.xib in Resources */,
 				04E816DE268C520B00B36123 /* SearchViewController.xib in Resources */,
 				043F8BDE268DB6F800703FBE /* icon_empty@2x.png in Resources */,
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
@@ -1337,6 +1375,7 @@
 				0476D4842660877300F8DE42 /* DeviceChooseCell.m in Sources */,
 				040B950C2666464800B306D2 /* JXCategoryTitleVerticalZoomCell.m in Sources */,
 				0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */,
+				0473B8AF268F2BE000471A6A /* LDSRouterInfo.m in Sources */,
 				040B951D2666464800B306D2 /* JXCategoryTitleImageView.m in Sources */,
 				040B95272666464800B306D2 /* JXCategoryNumberCell.m in Sources */,
 				04D738E02620453200E4F00C /* LoginViewController.m in Sources */,
@@ -1397,6 +1436,7 @@
 				040B95202666464800B306D2 /* JXCategoryTitleCellModel.m in Sources */,
 				040ED77F26550B13001A2755 /* UIView+Extension.m in Sources */,
 				04115E522682D760003B192F /* IFLYQRCodeView.m in Sources */,
+				0473B89D268F10B100471A6A /* AboutViewController.m in Sources */,
 				042B4E9C26672420009BE328 /* BannerBean.m in Sources */,
 				045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */,
 				04B5D1D32680964700323E3C /* SpeakerBean.m in Sources */,
@@ -1422,10 +1462,12 @@
 				04B5D1DB26809B9E00323E3C /* StatusBean.m in Sources */,
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
+				04DA6D56268FF6B80082869B /* IFlyOSBean.m in Sources */,
 				042A957A2685D83800C017FD /* cJSON.c in Sources */,
 				040B95312666464800B306D2 /* JXCategoryBaseCell.m in Sources */,
 				F39EEE9D267EC9E600F89B2D /* UsrCenterViewController.m in Sources */,
 				040B95212666464800B306D2 /* JXCategoryTitleCell.m in Sources */,
+				0473B8B0268F2BE000471A6A /* SimplePing.m in Sources */,
 				0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */,
 				046EEFB726298954001213DB /* ConfigDAO.m in Sources */,
 				04725178265E32C4003C4625 /* DeviceDialog.m in Sources */,
@@ -1608,6 +1650,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",
@@ -1662,6 +1705,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
+				MARKETING_VERSION = 1.0.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",

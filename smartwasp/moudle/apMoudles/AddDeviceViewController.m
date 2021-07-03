@@ -62,12 +62,13 @@
         [self.navigationController pushViewController:pvc animated:YES];
         return;
     }
+    __weak typeof(self) SELF = self;
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if(granted){
-                [self onScanClick];
+                [SELF onScanClick];
             }else{
-                [UIViewHelper showAlert:@"您禁止了相机权限,请去设置页面打开。" target:self];
+                [UIViewHelper showAlert:@"您禁止了相机权限,请去设置页面打开。" target:SELF];
             }
         });
     }];
@@ -116,6 +117,7 @@
         [self goParent];
         return;
     }
+    __weak typeof(self) SELF = self;
     //解析相应的参数
     NSDictionary *params = [CodingUtil dictionaryFromQuery:query];
     [[NetDAO sharedInstance] post:@{@"clientIds":params[@"clientId"],
@@ -125,7 +127,7 @@
 //        if(!cData.errCode ){
             NEED_MAIN_REFRESH_DEVICES = YES;
 //        }
-        [self goParent];
+        [SELF goParent];
     }];
 }
 

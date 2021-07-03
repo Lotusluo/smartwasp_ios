@@ -9,7 +9,6 @@
 #import "AppDelegate+Global.h"
 #import "CodingUtil.h"
 #import "GSMonitorKeyboard.h"
-#import "AFNetworkReachabilityManager.h"
 
 
 
@@ -41,7 +40,6 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         NSData *usrData = [CodingUtil dataFromHexString:usrValue];
         self.user = [NSKeyedUnarchiver unarchiveObjectWithData:usrData];
     }
-    [self observeNetWork];
     [NSThread sleepForTimeInterval:3];
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     if(self.user){
@@ -50,35 +48,7 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         [self toLogin];
     }
     [self.window makeKeyAndVisible];
-//    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-//
-//     CFShow(infoDictionary);
-//
-//    // app名称
-//
-//    NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-//
-//    // app版本
-//
-//    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-//
-//    // app build版本
-//
-//    NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
-
     return YES;
-}
-
-// 监听网络状态
-- (void)observeNetWork {
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
-            NSLog(@"无网络连接！");
-        } else {
-            NSLog(@"有网络连接！");
-        }
-    }];
 }
 
 //设置设备列表
@@ -117,6 +87,7 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
     //通知刷新当前选择的设备
     if(self.curDevice){
         NSLog(@"当前选择的设备:%@",curDevice.alias);
+        [[ConfigDAO sharedInstance] setKey:@"dev_selected" forValue:self.curDevice.device_id];
         //开始订阅此设备媒体状态
         mediaErrTimez = 0;
         [self subscribeMediaStatus];
@@ -141,6 +112,13 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
     //订阅设备状态
     deviceErrTimez = 0;
     [self subscribeDeviceStatus];
+}
+
+-(UINavigationController*)rootNavC{
+    if(self.window.rootViewController){
+        return (UINavigationController*)self.window.rootViewController;
+    }
+    return nil;
 }
 
 #pragma mark --IFLYOSPushServiceProtocol

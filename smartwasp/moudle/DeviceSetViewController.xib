@@ -17,7 +17,7 @@
                 <outlet property="scrollView" destination="lyx-Oi-DI1" id="8hq-ed-Ynn"/>
                 <outlet property="skillContainer" destination="dYe-F2-Ahi" id="02g-rR-9aS"/>
                 <outlet property="skillContainerHeight" destination="uYp-Df-m21" id="HJV-hw-9Gg"/>
-                <outlet property="switchBtn" destination="C8j-07-CNV" id="HHX-Yh-2w9"/>
+                <outlet property="switchBtn" destination="C8j-07-CNV" id="S4C-vg-Ujx"/>
                 <outlet property="timeView" destination="ONU-oB-mtk" id="eme-Qm-o9S"/>
                 <outlet property="toolBar" destination="PZ1-2p-orf" id="WH4-oT-eSo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

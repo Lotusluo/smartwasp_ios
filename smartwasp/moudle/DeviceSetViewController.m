@@ -23,6 +23,7 @@
 #import "GSMonitorKeyboard.h"
 #import "WebPageViewController.h"
 #import "UIViewHelper.h"
+#import "NetDAO.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -86,12 +87,14 @@
         self.deviceName.text = self.deviceBean.name;
         self.deviceZone.text = self.deviceBean.zone;
         self.timeView.text = self.deviceBean.music.value;
+        self.switchBtn.on = self.deviceBean.continous_mode;
     }
 }
 
 //刷新讯飞数据
 -(void)refresh{
     NSString *deviceID = self.deviceBean.device_id;
+    __weak typeof(self) SELF = self;
     [Loading show:nil];
     [[IFLYOSSDK shareInstance] getDeviceInfo:deviceID statusCode:
      ^(NSInteger statusCode) {
@@ -101,11 +104,11 @@
     } requestSuccess:^(id _Nonnull data) {
         [Loading dismiss];
         DeviceBean *device = [DeviceBean yy_modelWithDictionary:data];
-        device.client_id = self.deviceBean.client_id;
-        device.device_id = self.deviceBean.device_id;
-        self.deviceBean = device;
-        [self attachUI];
-        [self innerRefresh:0];
+        device.client_id = SELF.deviceBean.client_id;
+        device.device_id = SELF.deviceBean.device_id;
+        SELF.deviceBean = device;
+        [SELF attachUI];
+        [SELF innerRefresh:0];
     } requestFail:^(id _Nonnull data) {
         [Loading dismiss];
         NSLog(@"加载失败");
@@ -117,6 +120,7 @@
     if(bindCount == 0){
         [Loading show:nil];
     }
+    __weak typeof(self) SELF = self;
     NSString *deviceID = self.deviceBean.device_id;
     deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
     //先请求私有技能
@@ -129,23 +133,35 @@
      callBack:^(BaseBean* _Nonnull cData) {
         if(cData.errCode == 0){
             [Loading dismiss];
-            [self.skillContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-            self.skillArray = [NSArray yy_modelArrayWithClass:SkillBean.class json:cData.data];
-            self.skillContainerHeight.constant = 50 * self.skillArray.count;
+            [SELF.skillContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            SELF.skillArray = [NSArray yy_modelArrayWithClass:SkillBean.class json:cData.data];
+            SELF.skillContainerHeight.constant = 50 * SELF.skillArray.count;
             NSInteger index = 0;
-            for(SkillBean* skill in self.skillArray){
+            for(SkillBean* skill in SELF.skillArray){
                 UIView *skillView = [UIViewHelper loadNibByName:@"SkillView"];
                 skillView.tag = index++;
                 [UIViewHelper attachText:skill.shopName widget:skillView.subviews[0]];
-                [UIViewHelper attachClick:skillView target:self action:@selector(doTapMethod:)];
+                [UIViewHelper attachClick:skillView target:SELF action:@selector(doTapMethod:)];
                 skillView.height = 50;
-                [self.skillContainer addArrangedSubview:skillView];
+                [SELF.skillContainer addArrangedSubview:skillView];
             }
         }else if(cData.errCode == 408){
             //重新绑定再获取技能
+            [Loading dismiss];
+            if(bindCount <= 1){
+                NSString *deviceID = SELF.deviceBean.device_id;
+                deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
+                [[NetDAO sharedInstance] post:@{@"clientIds":self.deviceBean.client_id,
+                                                @"deviceIds":deviceID,
+                                                @"uid":APPDELEGATE.user.user_id}
+                                         path:@"api/bind"  callBack:^(BaseBean * _Nonnull cData) {
+                    if(!cData.errCode ){
+                        [SELF innerRefresh:bindCount + 1];
+                    }
+                }];
+            }
         }else{
             [Loading dismiss];
-            NSLog(@"技能加载错误");
         }
     }];
 }
@@ -165,13 +181,23 @@
 - (IBAction)onPrimaryAction:(id)sender {
     if(![self canClick])
         return;
-    NSLog(@"onPrimaryAction");
+    [Loading show:nil];
+    BOOL exceptValue = self.switchBtn.on;
+    __weak typeof(self) SELF = self;
+    [[IFLYOSSDK shareInstance] setDeviceAlias:self.deviceBean.device_id alias:nil continousMode:exceptValue childrenMode:nil zone:nil statusCode:^(NSInteger code) {
+        [Loading dismiss];
+    } requestSuccess:^(id _Nonnull data) {
+    } requestFail:^(id _Nonnull data) {
+        SELF.switchBtn.on = !exceptValue;
+        [[iToast makeText:@"修改失败,请重试!"] show];
+    }];
 }
 
 //解除绑定点击
 - (IBAction)onUnbindClick:(id)sender {
     if(![self canClick])
         return;
+    __weak typeof(self) SELF = self;
     [UIViewHelper showAlert:@"是否解绑该设备？" target:self callBack:^{
         [Loading show:nil];
         [[IFLYOSSDK shareInstance] deleteUserDevice:self.deviceBean.device_id
@@ -179,7 +205,7 @@
 
         } requestSuccess:^(id _Nonnull data) {
             NEED_MAIN_REFRESH_DEVICES = YES;
-            NSString *deviceID = self.deviceBean.device_id;
+            NSString *deviceID = SELF.deviceBean.device_id;
             deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
             //解绑成功,开始内部解绑
             [[NetDAO sharedInstance]
@@ -190,7 +216,7 @@
              path:@"api/unbind"
              callBack:^(BaseBean* _Nonnull cData) {
                 [Loading dismiss];
-                [self.navigationController popViewControllerAnimated:YES];
+                [SELF.navigationController popViewControllerAnimated:YES];
             }];
         } requestFail:^(id _Nonnull data) {
             [Loading dismiss];
@@ -237,9 +263,25 @@
     if(textField == self.deviceName){
         //音箱名称修改
         NSLog(@"name modify");
+        [Loading show:nil];
+        [[IFLYOSSDK shareInstance] setDeviceAlias:self.deviceBean.device_id alias:textField.text continousMode:nil childrenMode:nil zone:nil statusCode:^(NSInteger code) {
+            [Loading dismiss];
+        } requestSuccess:^(id _Nonnull data) {
+            NEED_MAIN_REFRESH_DEVICES = YES;
+        } requestFail:^(id _Nonnull data) {
+            [[iToast makeText:@"修改失败,请重试!"] show];
+        }];
     }else if(textField == self.deviceZone){
         //音箱位置修改
         NSLog(@"position modify");
+        [Loading show:nil];
+        [[IFLYOSSDK shareInstance] setDeviceAlias:self.deviceBean.device_id alias:nil continousMode:nil childrenMode:nil zone:textField.text statusCode:^(NSInteger code) {
+            [Loading dismiss];
+        } requestSuccess:^(id _Nonnull data) {
+            NEED_MAIN_REFRESH_DEVICES = YES;
+        } requestFail:^(id _Nonnull data) {
+            [[iToast makeText:@"修改失败,请重试!"] show];
+        }];
     }
     return YES;
 }
@@ -366,5 +408,10 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [[self nextResponder] touchesBegan:touches withEvent:event];
 }
+
+-(BOOL)touchesShouldCancelInContentView:(UIView *)view{
+    return YES;
+}
+
 
 @end

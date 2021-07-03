@@ -17,6 +17,7 @@
 #import "PrevBindViewController.h"
 #import "JCGCDTimer.h"
 #import "UIViewHelper.h"
+#import "IFlyOSBean.h"
 
 static MatchLAViewController *matchMV;
 
@@ -161,7 +162,8 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
         } requestFail:^(id _Nonnull data) {
             if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
                 NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                if([errMsg containsString:@"3001"]){
+                IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
+                if(osBean.code == 3001){
                     //未添加白名单
                     [JCGCDTimer canelTimer:self.taskAskName];
                     [UIViewHelper showAlert:@"请联系客服添加白名单" target:self callBack:^{

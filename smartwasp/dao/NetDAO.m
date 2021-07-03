@@ -49,7 +49,7 @@ static NetDAO *sharedSingleton = nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(responseObject){
             NSLog(@"responseObject:%@",responseObject);
-            BaseBean<id> *bean = [BaseBean yy_modelWithJSON:responseObject];
+            BaseBean<id> *bean = [BaseBean<id> yy_modelWithJSON:responseObject];
             complete(bean);
         }else{
             BaseBean *emptyBean = BaseBean.new;

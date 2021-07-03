@@ -10,6 +10,9 @@
 #import "DeviceBean.h"
 #import <Masonry.h>
 #import "AppDelegate.h"
+#import "UIViewHelper.h"
+#import "AddDeviceViewController.h"
+#import "JCGCDTimer.h"
 
 #define CELL_HEIGHT 40.0f
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -20,8 +23,6 @@
 //设备选择列表
 @property (weak, nonatomic) IBOutlet UITableView *devList;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *devListHeight;
-//回调函数
-@property(strong,nonatomic) didSelectIndex delegate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *safeBottom;
 //mask
 @property(weak,nonatomic) UIView *mask;
@@ -100,9 +101,11 @@
     if (footerView == nil){
         footerView =  [[[NSBundle mainBundle] loadNibNamed:@"DeviceAddCell" owner:nil options:nil] lastObject];
         footerView.contentView.backgroundColor = [UIColor whiteColor];
+        [UIViewHelper attachClick:footerView target:self action:@selector(onAddClick)];
     }
     return footerView;
 }
+
 
 //cell被点击
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -117,6 +120,13 @@
     if (@available(iOS 3.0, *)) {
         
     }
+}
+
+-(void)onAddClick{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(onConfirmClick)]){
+        [self.delegate onConfirmClick];
+    }
+    [self dismiss:nil];
 }
 
 //构建弹出框

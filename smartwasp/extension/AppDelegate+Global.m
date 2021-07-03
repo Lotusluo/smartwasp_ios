@@ -8,11 +8,14 @@
 #import "AppDelegate+Global.h"
 #import "LoginViewController.h"
 #import "MainViewController.h"
+#import "IFlyOSBean.h"
+#import "UIViewHelper.h"
 
 @implementation AppDelegate (Global)
 
 //请求绑定的设备
 - (void)requestBindDevices{
+    __weak typeof(self) SELF = self;
     if(self.user && NEED_MAIN_REFRESH_DEVICES){
         [[IFLYOSSDK shareInstance] getUserDevices:^(NSInteger code) {
             NEED_MAIN_REFRESH_DEVICES = NO;
@@ -20,13 +23,24 @@
             //刷新绑定的设备列表
             NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];
             if(devices && devices.count > 0){
-                self.devices = devices;
+                SELF.devices = devices;
             }else{
-                self.devices = nil;
+                SELF.devices = nil;
             }
         } requestFail:^(id _Nonnull error) {
             //加载错误
-            self.devices = nil;
+            SELF.devices = nil;
+            if([NSStringFromClass([error class]) containsString:@"_NSInlineData"]){
+                NSString * errMsg = [[NSString alloc] initWithData:error encoding:NSUTF8StringEncoding];
+                IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
+                if(osBean.code == 401){
+                    //401错误为token失效，需要重新登陆
+                    [UIViewHelper showAlert:@"登陆状态失效，是否重新登陆？" target:self.rootNavC callBack:^{
+                        [[ConfigDAO sharedInstance] remove:@"usr"];
+                        [SELF toLogin];
+                    } negative:YES];
+                }
+            }
         }];
     }
 }

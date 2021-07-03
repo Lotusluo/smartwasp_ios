@@ -22,13 +22,13 @@
                     <rect key="frame" x="0.0" y="93" width="414" height="769"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_empty.png" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-ka-MSD">
-                            <rect key="frame" x="124" y="291.5" width="166" height="166"/>
+                            <rect key="frame" x="165.5" y="333" width="83" height="83"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="s1r-ka-MSD" secondAttribute="height" multiplier="1:1" id="EUv-49-2v8"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fed-eM-a2s">
-                            <rect key="frame" x="178" y="467.5" width="58" height="17"/>
+                            <rect key="frame" x="178" y="426" width="58" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                         <constraint firstItem="fed-eM-a2s" firstAttribute="top" secondItem="s1r-ka-MSD" secondAttribute="bottom" constant="10" id="9Rq-s5-Zwj"/>
                         <constraint firstItem="s1r-ka-MSD" firstAttribute="centerX" secondItem="DEh-Ch-aaI" secondAttribute="centerX" id="GBf-aJ-zr0"/>
                         <constraint firstItem="s1r-ka-MSD" firstAttribute="centerY" secondItem="DEh-Ch-aaI" secondAttribute="centerY" constant="-10" id="RQd-DY-mQC"/>
-                        <constraint firstItem="s1r-ka-MSD" firstAttribute="width" secondItem="DEh-Ch-aaI" secondAttribute="width" multiplier="0.4" id="fON-FA-E3G"/>
+                        <constraint firstItem="s1r-ka-MSD" firstAttribute="width" secondItem="DEh-Ch-aaI" secondAttribute="width" multiplier="0.2" id="fON-FA-E3G"/>
                         <constraint firstItem="fed-eM-a2s" firstAttribute="centerX" secondItem="DEh-Ch-aaI" secondAttribute="centerX" id="xtX-be-e1W"/>
                     </constraints>
                 </view>

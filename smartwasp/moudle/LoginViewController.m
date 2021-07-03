@@ -20,6 +20,8 @@
 #import "NetDAO.h"
 #import "AppDelegate+Global.h"
 #import "AppDelegate.h"
+#import "AFNetworkReachabilityManager.h"
+#import "UIViewHelper.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -50,17 +52,34 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) viewWillAppear:(BOOL)animated{
+// 监听网络状态
+- (void)observeNetWork {
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
+            [UIViewHelper showAlert:@"无网络，请打开网络！" target:self];
+        } else {
+            [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
+        }
+    }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:LOGIN_PAGE];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:LOGIN_PAGE];
-    [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
+   
 }
 
 
--(void) viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[IFLYOSSDK shareInstance] unregisterWebView:LOGIN_PAGE];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self observeNetWork];
 }
 
 /**
@@ -68,7 +87,7 @@
  *  tag : 标识符
  *  noBack : 禁止手势返回（1:禁止 ， 0:不禁止）
  */
--(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
+-(void)openNewPage:(id) tag noBack:(NSNumber *)noBack{
     NSLog(@"打开新网页：%@ noBack:%@",tag,noBack);
     WebPageViewController *newPage = [WebPageViewController createNewPageWithTag:tag];
     newPage.isInterupt = true;
@@ -78,7 +97,7 @@
 /**
  *  登录成功
  */
--(void) onLoginSuccess{
+-(void)onLoginSuccess{
     //登陆成功之后请求用户信息并保存本地并提交私有服务器
     [Loading show:nil];
     [[IFLYOSSDK shareInstance] getUserInfo:^(NSInteger code) {
@@ -126,28 +145,28 @@
 /**
  *  登录失败
  */
--(void) onLoginFailed:(NSInteger) type error:(NSError *) error{
+-(void)onLoginFailed:(NSInteger) type error:(NSError *) error{
     NSLog(@"登录失败:%li,%@",type,error.localizedDescription);
 }
 
 /**
  *  注销成功
  */
--(void) onLogoutSuccess{
+-(void)onLogoutSuccess{
     NSLog(@"注销成功");
 }
 
 /**
  *  注销失败
  */
--(void) onLogoutFailed:(NSInteger) type error:(id) error{
+-(void)onLogoutFailed:(NSInteger) type error:(id) error{
     
 }
 
 /**
  *  关闭页面打开
  */
--(void) closePage{
+-(void)closePage{
     NSLog(@"关闭页面");
 }
 
@@ -156,7 +175,7 @@
  * <meta name="head-color">#FFFFFF</meta>
  * 的标签时，将回调颜色
  */
--(void) updateHeaderColor:(NSString *) color{
+-(void)updateHeaderColor:(NSString *) color{
     self.webView.scrollView.backgroundColor = [UIColor colorWithHexString:color];
     self.view.backgroundColor = [UIColor colorWithHexString:color];
 }
@@ -164,11 +183,11 @@
 /**
  * 网页加载完成时，将回调标题
  */
--(void) updateTitle:(NSString *) title{
+-(void)updateTitle:(NSString *) title{
     
 }
 
--(void) dealloc{
+-(void)dealloc{
     NSLog(@"离开");
 }
 

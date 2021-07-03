@@ -46,5 +46,7 @@ static inline UIEdgeInsets sgm_safeAreaInset(UIView *view) {
 //当前设备的媒体状态
 @property(nonatomic,strong)StatusBean<MusicStateBean*> *mediaStatus;
 
+@property(nonatomic,strong)UINavigationController *rootNavC;
+
 @end
 

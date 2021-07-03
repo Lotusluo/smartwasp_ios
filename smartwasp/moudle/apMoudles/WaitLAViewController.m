@@ -10,6 +10,9 @@
 #import "JCGCDTimer.h"
 #import "ServiceUtil.h"
 #import "iToast.h"
+#import "LDSRouterInfo.h"
+#import "UIViewHelper.h"
+
 
 @interface WaitLAViewController ()
 
@@ -48,9 +51,20 @@
 
 
 - (IBAction)onNextClick:(id)sender {
-    //发现连接到设备，开始进入配网
-    MatchLAViewController *mvc = MatchLAViewController.new;
-    [self.navigationController pushViewController:mvc animated:YES];
+    NSDictionary *dict = [LDSRouterInfo getRouterInfo];
+    NSString *router = dict[@"router"];
+    if(router && [router isEqualToString:@"192.168.51.1"]){
+        //发现连接到设备，开始进入配网
+        MatchLAViewController *mvc = MatchLAViewController.new;
+        [self.navigationController pushViewController:mvc animated:YES];
+    }else{
+        [UIViewHelper showAlert:@"请确保已连接至LA_网络" target:self];
+    }
+//    dns = "192.168.2.255";
+//    ip = "192.168.2.85";
+//    router = "192.168.2.1";
+//    subnetMask = "255.255.255.0";
+  
 }
 
 /*

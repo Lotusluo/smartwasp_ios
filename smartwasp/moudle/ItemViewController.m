@@ -21,6 +21,7 @@
 #import "iToast.h"
 #import "MusicPlayViewController.h"
 #import "UIViewHelper.h"
+#import "IFlyOSBean.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define ONE_PAGE 10
@@ -231,7 +232,13 @@ static NSString *const ID = @"MusicItemCell";
     } requestSuccess:^(id _Nonnull data) {
         [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",song.name]] show];
     } requestFail:^(id _Nonnull data) {
-        [[iToast makeText:@"请开通音乐权限或重试!"] show];
+        if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
+            NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
+            [[iToast makeText:osBean.message] show];
+        }else{
+            [[iToast makeText:@"请开通音乐权限或重试!"] show];
+        }
     }];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
@@ -275,6 +282,23 @@ static NSString *const ID = @"MusicItemCell";
             _tableView.showsVerticalScrollIndicator = YES;
         }
     }
+}
+
+- (IBAction)onPlayAll:(id)sender {
+    [Loading show:nil];
+    [[IFLYOSSDK shareInstance] musicControlPlayGroup:APPDELEGATE.curDevice.device_id groupId:self.bean._id mediaId:@"" statusCode:^(NSInteger code) {
+        [Loading dismiss];
+    } requestSuccess:^(id _Nonnull data) {
+        [[iToast makeText:@"正在播放"] show];
+    } requestFail:^(id _Nonnull data) {
+        if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
+            NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
+            [[iToast makeText:osBean.message] show];
+        }else{
+            [[iToast makeText:@"请开通音乐权限或重试!"] show];
+        }
+    }];
 }
 
 

@@ -84,7 +84,7 @@
 //界面根据数据改变
 -(void)attachUI{
     if(self.deviceBean){
-        self.deviceName.text = self.deviceBean.name;
+        self.deviceName.text = self.deviceBean.alias;
         self.deviceZone.text = self.deviceBean.zone;
         self.timeView.text = self.deviceBean.music.value;
         self.switchBtn.on = self.deviceBean.continous_mode;
@@ -204,6 +204,10 @@
                                          statusCode:^(NSInteger code) {
 
         } requestSuccess:^(id _Nonnull data) {
+            //解绑成功后，如果当前
+            if([APPDELEGATE.curDevice isEqual:SELF.deviceBean]){
+                APPDELEGATE.curDevice = nil;
+            }
             NEED_MAIN_REFRESH_DEVICES = YES;
             NSString *deviceID = SELF.deviceBean.device_id;
             deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];

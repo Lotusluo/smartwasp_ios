@@ -65,6 +65,7 @@
 
 //设备选择通知
 -(void)devSetCallback:(DeviceBean* __nullable) device{
+    self.NEED_REFRESH_UI = YES;
     [self reloadData:device];
 }
 
@@ -95,11 +96,11 @@
 -(void)reloadData:(DeviceBean *) device{
     self.toolbar.device = device;
     if (!self.isViewLoaded || !self.view.window){
-        self.NEED_REFRESH_UI = YES;
         return;
     }
     UIView *emptyView = [self.view viewWithTag:1001];
     if(device){
+        self.NEED_REFRESH_UI = NO;
         emptyView.hidden = YES;
         [[IFLYOSSDK shareInstance] openWebPage:_tag pageIndex:self.vcType deviceId:device.device_id];
     }else{

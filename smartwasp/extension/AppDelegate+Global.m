@@ -29,7 +29,6 @@
             }
         } requestFail:^(id _Nonnull error) {
             //加载错误
-            SELF.devices = nil;
             if([NSStringFromClass([error class]) containsString:@"_NSInlineData"]){
                 NSString * errMsg = [[NSString alloc] initWithData:error encoding:NSUTF8StringEncoding];
                 IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];

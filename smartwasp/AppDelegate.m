@@ -54,7 +54,6 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 //设置设备列表
 -(void)setDevices:(NSArray<DeviceBean *> *)devices{
     _devices = devices;
-    NSLog(@"当前设备列表:%@",_devices);
     if(!self.devices || self.devices.count < 1){
         self.curDevice = nil;
     }else{
@@ -67,7 +66,9 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
                     break;
                 }
             }
-        }else{
+        }
+        if(!self.curDevice){
+            //默认选择第一个
             self.curDevice = devices[0];
         }
     }
@@ -92,6 +93,7 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         mediaErrTimez = 0;
         [self subscribeMediaStatus];
     }else{
+        [[ConfigDAO sharedInstance] remove:@"dev_selected"];
         NSLog(@"当前没有可选择的设备");
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"devSetNotification" object:nil userInfo:nil];

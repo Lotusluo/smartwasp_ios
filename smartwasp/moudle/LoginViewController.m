@@ -49,10 +49,11 @@
             self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
     }
+    [self observeNetWork];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-// 监听网络状态
+// 使用AF监听网络状态
 - (void)observeNetWork {
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -79,7 +80,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self observeNetWork];
 }
 
 /**
@@ -188,7 +188,8 @@
 }
 
 -(void)dealloc{
-    NSLog(@"离开");
+    NSLog(@"LOGIN离开");
+    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
 }
 
 

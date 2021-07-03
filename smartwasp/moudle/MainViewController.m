@@ -14,11 +14,16 @@
 #import "AppDelegate+Global.h"
 #import "AppDelegate.h"
 #import "JCGCDTimer.h"
+#import "AFNetworkReachabilityManager.h"
+#import "Reachability.h"
+
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 
 @interface MainViewController ()<UIGestureRecognizerDelegate>
+
+@property (nonatomic) Reachability *hostReachability;
 
 @end
 
@@ -83,6 +88,10 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    [self.hostReachability startNotifier];
+    [self updateInterfaceWithReachability:self.hostReachability];
 //    if (@available(iOS 7.0, *)) {
 //        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
 //            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -100,6 +109,49 @@
 //    }
 //}
 
+/*!
+ * Called by Reachability whenever status changes.
+ */
+- (void) reachabilityChanged:(NSNotification *)note{
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+    [self updateInterfaceWithReachability:curReach];
+}
+
+- (void)updateInterfaceWithReachability:(Reachability *)reachability{
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    switch (netStatus){
+        case NotReachable:{
+            break;
+        }
+        case ReachableViaWiFi:
+        case ReachableViaWWAN:{
+//            @try {
+//                        NSException *e = [NSException
+//                                          exceptionWithName:@"FileNotFoundException"
+//                                          reason:@"File Not Found on System"
+//                                          userInfo:nil];
+//                        @throw e;
+//                    }
+//                    @catch (NSException *exception) {
+//                        if ([[exception name] isEqualToString:NSInvalidArgumentException]) {
+//                            NSLog(@"%@", exception);
+//                        } else {
+//                            @throw exception;
+//                        }
+//                    }
+//                    @finally {
+//                        NSLog(@"finally");
+//                    }
+            if(APPDELEGATE.curDevice){
+                [APPDELEGATE subscribeDeviceStatus];
+                [APPDELEGATE subscribeMediaStatus];
+            }
+            break;
+        }
+    }
+}
+
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
 
 }
@@ -107,6 +159,12 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [APPDELEGATE requestBindDevices];
+}
+
+-(void)dealloc{
+    NSLog(@"MAIN离开");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.hostReachability stopNotifier];
 }
 
 /*

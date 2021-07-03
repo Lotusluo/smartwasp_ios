@@ -110,9 +110,13 @@
 //cell被点击
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DeviceBean *optionItem = [APPDELEGATE.devices objectAtIndex:indexPath.row];
-    AppDelegate* app  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    app.curDevice = optionItem;
     [self dismiss:nil];
+    if([APPDELEGATE.curDevice isEqual:optionItem]){
+        NSLog(@"same device");
+        return;
+    }
+    APPDELEGATE.curDevice = optionItem;
+  
 }
 
 //上一个被选择的cell

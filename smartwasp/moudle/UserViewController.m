@@ -68,7 +68,6 @@ static NSString *const ID = @"CellIdentifier";
     [self initGallery];
     [self initpageCtr];
     [self initMenuList];
-    [self reloadData];
     //对选择的设备进行监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(devsSetObserver:)
@@ -99,6 +98,7 @@ static NSString *const ID = @"CellIdentifier";
 
 //处理设备列表通知
 -(void)devsSetObserver:(NSNotification*)notification {
+    self.NEED_REFRESH_UI = YES;
     [self reloadData];
 }
 
@@ -116,6 +116,13 @@ static NSString *const ID = @"CellIdentifier";
 //设备在线状态变更
 -(void)onLineChangedCallback{
     [self.collectionView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(self.NEED_REFRESH_UI){
+        [self reloadData];
+    }
 }
 
 //初始化page ctl
@@ -160,6 +167,9 @@ static NSString *const ID = @"CellIdentifier";
 
 //重加载数据
 -(void)reloadData{
+    if (!self.isViewLoaded || !self.view.window){
+        return;
+    }
     self.pageControl.numberOfPages = APPDELEGATE.devices ? APPDELEGATE.devices.count + 1 : 1;
     [self.collectionView reloadData];
     //判断当前的设备索引号
@@ -169,6 +179,7 @@ static NSString *const ID = @"CellIdentifier";
     }else{
         [self setCurrentPage:0];
     }
+    self.NEED_REFRESH_UI = NO;
 }
 
 #pragma mark --UICollectionViewDelegate
@@ -224,12 +235,10 @@ static NSString *const ID = @"CellIdentifier";
     if(self.collectionView.contentOffset.x == offsetX)
         return;
     __weak typeof(self) SELF = self;
-    [Loading show:nil];
     dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 0.2* NSEC_PER_SEC);
     dispatch_after(time_t, dispatch_get_main_queue(), ^{
         SELF.collectionView.contentOffset = CGPointMake(offsetX, 0);
         [SELF.pageControl setCurrentPage:page];
-        [Loading dismiss];
     });
 }
 

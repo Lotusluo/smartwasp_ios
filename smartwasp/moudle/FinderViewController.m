@@ -86,6 +86,7 @@ static NSString *const ID = @"CellIdentifier";
 
 #pragma mark - 处理通知
 -(void)devSetCallback:(DeviceBean* __nullable) device {
+    self.NEED_REFRESH_UI = YES;
     [self reloadData:device];
 }
 
@@ -115,9 +116,9 @@ static NSString *const ID = @"CellIdentifier";
 //重加载数据
 -(void)reloadData:(DeviceBean *) device{
     if (!self.isViewLoaded || !self.view.window){
-        self.NEED_REFRESH_UI = YES;
         return;
     }
+    __weak typeof(self) SELF = self;
     UIView *emptyView = [self.view viewWithTag:1001];
     self.toolbar.device = device;
     if(device){
@@ -126,21 +127,21 @@ static NSString *const ID = @"CellIdentifier";
         [Loading show:nil];
         [[IFLYOSSDK shareInstance] getMusicGroups:device.device_id statusCode:^(NSInteger statusCode) {
             [Loading dismiss];
-            self.NEED_REFRESH_UI = NO;
+            SELF.NEED_REFRESH_UI = NO;
             if(statusCode != 200){
-                [self loadDataEccur];
-                self.NEED_REFRESH_UI = YES;
-                [UIViewHelper showAlert:@"加载数据失败！" target:self callBack:^{
-                    [self reloadData:APPDELEGATE.curDevice];
+                [SELF loadDataEccur];
+                SELF.NEED_REFRESH_UI = YES;
+                [UIViewHelper showAlert:@"加载数据失败！" target:SELF callBack:^{
+                    [SELF reloadData:APPDELEGATE.curDevice];
                 } positiveTxt:@"重试" negativeTxt:@"取消"];
             }
-            [self.headerView hw_endRefreshState];
+            [SELF.headerView hw_endRefreshState];
         } requestSuccess:^(id _Nonnull data) {
             FindBean *findBean = [FindBean yy_modelWithJSON:data];
             if(findBean){
-                [self loadDataSucess:findBean];
+                [SELF loadDataSucess:findBean];
             }else{
-                [self loadDataEccur];
+                [SELF loadDataEccur];
             }
         } requestFail:^(id _Nonnull data) {}];
     }else{

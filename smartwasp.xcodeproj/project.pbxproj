@@ -181,6 +181,11 @@
 		04D738D726202A8400E4F00C /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D738D526202A8400E4F00C /* UserViewController.xib */; };
 		04D738E02620453200E4F00C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738DE2620453200E4F00C /* LoginViewController.m */; };
 		04DA6D56268FF6B80082869B /* IFlyOSBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA6D55268FF6B80082869B /* IFlyOSBean.m */; };
+		04DD88002692FD49001F037A /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD87FF2692FD49001F037A /* Bugly.framework */; };
+		04DD88032692FD69001F037A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD88022692FD69001F037A /* SystemConfiguration.framework */; };
+		04DD88052692FD6F001F037A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD88042692FD6F001F037A /* Security.framework */; };
+		04DD880B2692FDBE001F037A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD88062692FD7C001F037A /* libz.tbd */; };
+		04DD880D2692FDC8001F037A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04DD88072692FD86001F037A /* libc++.tbd */; };
 		04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE8A352683184F002AAA7D /* AddDeviceViewController.m */; };
 		04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */; };
 		04DE8A4026831FE7002AAA7D /* ic_r_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE8A3F26831FE7002AAA7D /* ic_r_scan@2x.png */; };
@@ -507,6 +512,11 @@
 		04D738DE2620453200E4F00C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		04DA6D54268FF6B80082869B /* IFlyOSBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFlyOSBean.h; sourceTree = "<group>"; };
 		04DA6D55268FF6B80082869B /* IFlyOSBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFlyOSBean.m; sourceTree = "<group>"; };
+		04DD87FF2692FD49001F037A /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		04DD88022692FD69001F037A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		04DD88042692FD6F001F037A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		04DD88062692FD7C001F037A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		04DD88072692FD86001F037A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		04DE8A342683184F002AAA7D /* AddDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		04DE8A352683184F002AAA7D /* AddDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
 		04DE8A362683184F002AAA7D /* AddDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDeviceViewController.xib; sourceTree = "<group>"; };
@@ -566,11 +576,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				043088E626903A9100FCDC98 /* ExternalAccessory.framework in Frameworks */,
+				04DD880D2692FDC8001F037A /* libc++.tbd in Frameworks */,
 				04E00B1D26214A6A00080581 /* libiflyosSDKForiOS.a in Frameworks */,
+				04DD88002692FD49001F037A /* Bugly.framework in Frameworks */,
 				04E00B1C26214A6A00080581 /* libiflyosPushService.a in Frameworks */,
 				04E00B1E26214A6A00080581 /* libiflyosQuietSDKForiOS.a in Frameworks */,
 				90B35C25DB0C4AC24B8E3DD8 /* Pods_smartwasp.framework in Frameworks */,
+				04DD88032692FD69001F037A /* SystemConfiguration.framework in Frameworks */,
+				04DD88052692FD6F001F037A /* Security.framework in Frameworks */,
 				042619B9261EFF88000D95D6 /* AVFoundation.framework in Frameworks */,
+				04DD880B2692FDBE001F037A /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,6 +861,7 @@
 				042619F9261F09A6000D95D6 /* Main.storyboard */,
 				0426196F261EFE1C000D95D6 /* Assets.xcassets */,
 				042619D1261F04D2000D95D6 /* LaunchScreen.storyboard */,
+				04DD87FF2692FD49001F037A /* Bugly.framework */,
 				04261974261EFE1C000D95D6 /* Info.plist */,
 				04261975261EFE1C000D95D6 /* main.m */,
 			);
@@ -1168,6 +1184,10 @@
 		7ADBF90B9E9F6911374DBD9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04DD88072692FD86001F037A /* libc++.tbd */,
+				04DD88062692FD7C001F037A /* libz.tbd */,
+				04DD88042692FD6F001F037A /* Security.framework */,
+				04DD88022692FD69001F037A /* SystemConfiguration.framework */,
 				043088E526903A9100FCDC98 /* ExternalAccessory.framework */,
 				042619B8261EFF88000D95D6 /* AVFoundation.framework */,
 				042619B1261EFF40000D95D6 /* libiflyosPushService.a */,
@@ -1648,7 +1668,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FUXPJ5TUQX;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/smartwasp",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib/include",
@@ -1703,7 +1726,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FUXPJ5TUQX;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/smartwasp",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib/include",

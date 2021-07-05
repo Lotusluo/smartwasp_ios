@@ -12,16 +12,18 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AppDelegate (Global)
 
 //请求绑定的数据
-- (void)requestBindDevices;
+-(void)requestBindDevices;
 
 //订阅当前设备的媒体状态
 -(void)subscribeMediaStatus;
+-(void)subscribeMediaStatusOnce;
 
 //取消订阅媒体状态
 -(void)disSubscribeMediaStatus;
 
 //订阅当前用户的设备状态
 -(void)subscribeDeviceStatus;
+-(void)subscribeDeviceStatusOnce;
 
 //取消当前用户的设备状态
 -(void)disSubscribeDeviceStatus;

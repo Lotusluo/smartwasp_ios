@@ -38,6 +38,9 @@ typedef NS_ENUM (NSUInteger,LOGIN_TYPE){
 @interface IFLYOSSDK : NSObject
 //是否停止BLE配网轮训
 @property(assign) BOOL isStopBLEConfirmLoop;
+
+
+
 /**
  *  单例
  */
@@ -854,3 +857,5 @@ typedef NS_ENUM (NSUInteger,LOGIN_TYPE){
 
 
 @end
+
+

@@ -8,7 +8,6 @@
 #import "WifiInfoViewController.h"
 #import "UIViewHelper.h"
 #import "iToast.h"
-#import "ServiceUtil.h"
 #import "PrevBindViewController.h"
 
 @interface WifiInfoViewController ()<UITextFieldDelegate>
@@ -28,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.wifiName.text = ServiceUtil.wifiSsid;
+    self.wifiName.text = self.ssid;
     [UIViewHelper attachClick:self.eyeView target:self action:@selector(onEyeViewClick)];
     // Do any additional setup after loading the view from its nib.
 }

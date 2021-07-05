@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WifiInfoViewController : UIViewController
 
+@property(nonatomic,copy)NSString *ssid;
+
 @end
 
 NS_ASSUME_NONNULL_END

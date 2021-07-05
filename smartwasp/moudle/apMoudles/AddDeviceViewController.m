@@ -18,17 +18,19 @@
 #import "NetDAO.h"
 #import "AppDelegate.h"
 #import "WifiInfoViewController.h"
+#import "ServiceUtil.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
-@interface AddDeviceViewController ()
+@interface AddDeviceViewController ()<CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
 //有屏扫码授权
 @property (weak, nonatomic) IBOutlet UIView *scanEntryBtn;
 //党建配网
 @property (weak, nonatomic) IBOutlet UIView *djEntryBtn;
+@property (strong,nonatomic) CLLocationManager * mCLLocationManager;
 
 @end
 
@@ -79,12 +81,27 @@
     //地址位置权限
     if (@available(iOS 13.0, *)) {
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-            CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-            [locationManager requestWhenInUseAuthorization];
+            self.mCLLocationManager = [[CLLocationManager alloc] init];
+            self.mCLLocationManager.delegate = self;
+            [self.mCLLocationManager requestWhenInUseAuthorization];
             return;
         }
     }
+    [self goWifiConfig];
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse ||
+        status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self goWifiConfig];
+    }
+}
+
+-(void)goWifiConfig{
+    NSLog(@"wifiName:%@",ServiceUtil.wifiSsid);
     WifiInfoViewController *wvc = WifiInfoViewController.new;
+    wvc.ssid = ServiceUtil.wifiSsid;
     [self.navigationController pushViewController:wvc animated:YES];
 }
 
@@ -140,6 +157,8 @@
         }
     }
 }
+
+
 
 -(void)dealloc{
     NSLog(@"AddDeviceViewController dealloc");

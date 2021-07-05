@@ -35,6 +35,10 @@
                                              selector:@selector(onLineChangedSetObserver:)
                                                  name:@"onLineChangedNotification"
                                                object:nil];
+    //应用切换到前台进行监听
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(becomeActiveObserver:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -67,6 +71,15 @@
 
 -(void)onLineChangedCallback{
   
+}
+
+#pragma mark --处理设备在线状态通知
+-(void)becomeActiveObserver:(NSNotification*)notification {
+    [self becomeActiveCallback];
+}
+
+-(void)becomeActiveCallback{
+    [self mediaSetObserver:nil];
 }
 
 //视图将要被呈现

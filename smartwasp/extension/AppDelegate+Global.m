@@ -46,6 +46,17 @@
 
 //订阅求当前设备的媒体状态
 -(void)subscribeMediaStatus{
+    [self disSubscribeMediaStatus];
+    //开始订阅媒体状态
+    NSString *token = [IFLYOSSDK shareInstance].getToken;
+    if (token){
+        mediaStatePushService = [IFLYOSPushService createSocket:token command:@"connect" fromType:@"ALIAS" deviceId:self.curDevice.device_id];
+        mediaStatePushService.delegate = (id)self;
+        [mediaStatePushService open];
+    }
+}
+
+-(void)subscribeMediaStatusOnce{
     //获取当前设备媒体状态并进行订阅
     [[IFLYOSSDK shareInstance] getMusicControlState:self.curDevice.device_id statusCode:^(NSInteger code) {
     } requestSuccess:^(id _Nonnull data) {
@@ -55,14 +66,6 @@
         self.mediaStatus = statusBean;
     } requestFail:^(id _Nonnull data) {
     }];
-    [self disSubscribeMediaStatus];
-    //开始订阅媒体状态
-    NSString *token = [IFLYOSSDK shareInstance].getToken;
-    if (token){
-        mediaStatePushService = [IFLYOSPushService createSocket:token command:@"connect" fromType:@"ALIAS" deviceId:self.curDevice.device_id];
-        mediaStatePushService.delegate = (id)self;
-        [mediaStatePushService open];
-    }
 }
 
 //取消订阅媒体状态
@@ -85,6 +88,23 @@
     }
 }
 
+-(void)subscribeDeviceStatusOnce{
+    [[IFLYOSSDK shareInstance] getDeviceInfo:self.curDevice.device_id
+                                  statusCode:^(NSInteger statusCode) {
+    } requestSuccess:^(id _Nonnull data) {
+        DeviceBean *dev = [DeviceBean yy_modelWithDictionary:data];
+        dev.device_id = self.curDevice.device_id;
+        for(DeviceBean *devBean in self.devices){
+            if([devBean isEqual:dev]){
+                devBean.status = dev.status;
+                NSLog(@"更新了在线状态：%@",devBean.status);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"onLineChangedNotification" object:nil userInfo:nil];
+            }
+        }
+    } requestFail:^(id _Nonnull data) {
+    }];
+}
+
 //取消当前用户的设备状态
 -(void)disSubscribeDeviceStatus{
     if(deviceStatePushService){
@@ -95,6 +115,12 @@
 
 //跳转登陆页面
 -(void)toLogin{
+    [self disSubscribeMediaStatus];
+    [self disSubscribeDeviceStatus];
+    self.mediaStatus = nil;
+    self.devices = nil;
+    self.user = nil;
+    NEED_MAIN_REFRESH_DEVICES = YES;
     LoginViewController *loginVc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:loginVc];
     [navVc setNavigationBarHidden:YES animated:YES];

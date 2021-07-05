@@ -9,11 +9,15 @@
 #import "AppDelegate+Global.h"
 #import "CodingUtil.h"
 #import "GSMonitorKeyboard.h"
+#import "JCGCDTimer.h"
+#import <Bugly/Bugly.h>
 
 
 
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
+//bugly appid
+#define BUGDLY_APPID @"ebfbb9b728"
 
 
 BOOL NEED_MAIN_REFRESH_DEVICES = YES;
@@ -21,6 +25,8 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 @interface AppDelegate ()<IFLYOSPushServiceProtocol>{
     NSInteger mediaErrTimez;
     NSInteger deviceErrTimez;
+    NSString *mediaErrNamez;
+    NSString *deviceErrNamez;
 }
 
 @end
@@ -29,6 +35,7 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Bugly startWithAppId:BUGDLY_APPID];
     // Override point for customization after application launch.
     [[IFLYOSSDK shareInstance] initAppId:APPID schema:@"smartwasp" loginType:DEFAULT];
     [[IFLYOSSDK shareInstance] setDebugModel:NO];
@@ -90,7 +97,6 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         NSLog(@"当前选择的设备:%@",curDevice.alias);
         [[ConfigDAO sharedInstance] setKey:@"dev_selected" forValue:self.curDevice.device_id];
         //开始订阅此设备媒体状态
-        mediaErrTimez = 0;
         [self subscribeMediaStatus];
     }else{
         [[ConfigDAO sharedInstance] remove:@"dev_selected"];
@@ -129,8 +135,12 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
  */
 -(void)onSockectOpenSuccess:(IFLYOSPushService *) socket{
     if(socket == mediaStatePushService){
+        mediaErrTimez = 0;
+        [self subscribeMediaStatusOnce];
         NSLog(@"媒体状态监听打开成功");
     }else if(socket == deviceStatePushService){
+        deviceErrTimez = 0;
+        [self subscribeDeviceStatusOnce];
         NSLog(@"设备状态监听打开成功");
     }
 }
@@ -146,14 +156,20 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         if(++mediaErrTimez > 1)
             return;
         //进行重试
-        [self subscribeMediaStatus];
+        [JCGCDTimer canelTimer:mediaErrNamez];
+        mediaErrNamez = [JCGCDTimer timerTask:^{
+            [self subscribeMediaStatus];
+        } start:2 interval:0 repeats:NO async:NO];
     }else if(socket == deviceStatePushService){
         NSLog(@"设备状态监听打开失败：%@",error);
         deviceStatePushService = nil;
         if(++deviceErrTimez > 1)
             return;
         //进行重试
-        [self subscribeDeviceStatus];
+        [JCGCDTimer canelTimer:deviceErrNamez];
+        deviceErrNamez = [JCGCDTimer timerTask:^{
+            [self subscribeDeviceStatus];
+        } start:2 interval:0 repeats:NO async:NO];
     }
 }
 /**
@@ -165,8 +181,24 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 -(void)onSockect:(IFLYOSPushService *) socket didCloseWithCode:(NSInteger) code reason:(NSString *) reason wasClean:(BOOL)wasClean{
     if(socket == mediaStatePushService){
         NSLog(@"媒体状态监听已关闭：%@",reason);
+        mediaStatePushService = nil;
+        if(++mediaErrTimez > 1)
+            return;
+        //进行重试
+        [JCGCDTimer canelTimer:mediaErrNamez];
+        mediaErrNamez = [JCGCDTimer timerTask:^{
+            [self subscribeMediaStatus];
+        } start:2 interval:0 repeats:NO async:NO];
     }else if(socket == deviceStatePushService){
         NSLog(@"设备状态监听已关闭：%@",reason);
+        deviceStatePushService = nil;
+        if(++deviceErrTimez > 1)
+            return;
+        //进行重试
+        [JCGCDTimer canelTimer:deviceErrNamez];
+        deviceErrNamez = [JCGCDTimer timerTask:^{
+            [self subscribeDeviceStatus];
+        } start:2 interval:0 repeats:NO async:NO];
     }
 }
 
@@ -207,11 +239,26 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+//    if(activeRefresh){
+//        [JCGCDTimer canelTimer:activeRefresh];
+//        activeRefresh = nil;
+//    }
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    //进入前台的时候
+//    if(self.curDevice){
+//        activeRefresh = [JCGCDTimer timerTask:^{
+//            if(!self->mediaStatePushService){
+//                [self subscribeDeviceStatus];
+//            }
+//            if(!self->deviceStatePushService){
+//                [self subscribeMediaStatus];
+//            }
+//        } start:2 interval:0 repeats:NO async:NO];
+//    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

@@ -66,7 +66,7 @@
                         <constraint firstAttribute="height" constant="1" id="8Lc-Cl-OL6"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="87654321" placeholder="请输入WI-FI密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xmn-eD-JCW">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入WI-FI密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xmn-eD-JCW">
                     <rect key="frame" x="40" y="262" width="334" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="7rt-mB-jc9"/>
@@ -144,8 +144,8 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_pwd_invisible.png" width="48" height="48"/>
-        <image name="ic_pwd_visible.png" width="48" height="48"/>
+        <image name="ic_pwd_invisible.png" width="24" height="24"/>
+        <image name="ic_pwd_visible.png" width="24" height="24"/>
         <image name="icon_arrow" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

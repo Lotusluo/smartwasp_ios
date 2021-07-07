@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem.title = @"";
     self.wifiName.text = self.ssid;
     [UIViewHelper attachClick:self.eyeView target:self action:@selector(onEyeViewClick)];
     // Do any additional setup after loading the view from its nib.
@@ -52,11 +53,6 @@
     SSID = wifiNameTxt;
     PWD = pwdTxt;
     [self.navigationController pushViewController:pvc animated:YES];
-}
-
-//返回
-- (IBAction)onBackPress:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark --UITextFieldDelegate

@@ -159,10 +159,10 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [APPDELEGATE requestBindDevices];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 -(void)dealloc{
-    NSLog(@"MAIN离开");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.hostReachability stopNotifier];
 }

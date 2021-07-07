@@ -10,6 +10,11 @@
 #import "MainViewController.h"
 #import "IFlyOSBean.h"
 #import "UIViewHelper.h"
+#import "IFLYOSUIColor+IFLYOSColorUtil.h"
+
+@interface AppDelegate(Global)<UIGestureRecognizerDelegate>
+
+@end
 
 @implementation AppDelegate (Global)
 
@@ -89,20 +94,18 @@
 }
 
 -(void)subscribeDeviceStatusOnce{
-    [[IFLYOSSDK shareInstance] getDeviceInfo:self.curDevice.device_id
-                                  statusCode:^(NSInteger statusCode) {
-    } requestSuccess:^(id _Nonnull data) {
-        DeviceBean *dev = [DeviceBean yy_modelWithDictionary:data];
-        dev.device_id = self.curDevice.device_id;
-        for(DeviceBean *devBean in self.devices){
-            if([devBean isEqual:dev]){
-                devBean.status = dev.status;
-                NSLog(@"更新了在线状态：%@",devBean.status);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"onLineChangedNotification" object:nil userInfo:nil];
-            }
-        }
-    } requestFail:^(id _Nonnull data) {
-    }];
+    for(DeviceBean *devBean in self.devices){
+        [[IFLYOSSDK shareInstance] getDeviceInfo:devBean.device_id
+                                      statusCode:^(NSInteger statusCode) {
+        } requestSuccess:^(id _Nonnull data) {
+            DeviceBean *dev = [DeviceBean yy_modelWithDictionary:data];
+            devBean.status = dev.status;
+            NSLog(@"更新设备在线状态1：%@,%@",devBean.name,devBean.status);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"onLineChangedNotification" object:nil userInfo:nil];
+        } requestFail:^(id _Nonnull data) {
+        }];
+    }
+   
 }
 
 //取消当前用户的设备状态
@@ -132,10 +135,17 @@
 -(void)toMain{
     MainViewController *tabVc =[[MainViewController alloc] init];
     UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:tabVc];
-    //默认隐藏导航条
-    [navVc setNavigationBarHidden:YES animated:YES];
-    navVc.navigationBar.topItem.title = @"";
+    navVc.interactivePopGestureRecognizer.delegate = self;
+    //去除背景
+    [navVc.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
+    //去除横线
+    [navVc.navigationBar setShadowImage:[[UIImage alloc]init]];
     self.window.rootViewController = navVc;
+    
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return self.rootNavC.viewControllers.count > 1;
 }
 
 @end

@@ -21,47 +21,35 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mE-os-Qa4">
-                    <rect key="frame" x="0.0" y="44" width="60" height="49"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="49" id="SRM-QT-bQy"/>
-                        <constraint firstAttribute="width" constant="60" id="dUe-yV-UrK"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
-                    <state key="normal" image="icon_arrow"/>
-                    <connections>
-                        <action selector="onBackPress:" destination="-1" eventType="touchUpInside" id="Jj0-6e-EZn"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备联网" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsB-Q3-ctG">
-                    <rect key="frame" x="172" y="93" width="70" height="21"/>
+                    <rect key="frame" x="172" y="44" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dangjian.png" translatesAutoresizingMaskIntoConstraints="NO" id="V9c-Re-en1">
-                    <rect key="frame" x="83" y="134" width="248" height="248.5"/>
+                    <rect key="frame" x="83" y="85" width="248" height="248.5"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="V9c-Re-en1" secondAttribute="height" multiplier="1:1" id="z2Y-VY-jv9"/>
                     </constraints>
                 </imageView>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Pe-78-gt8">
-                    <rect key="frame" x="40" y="382.5" width="334" height="4"/>
+                    <rect key="frame" x="40" y="333.5" width="334" height="4"/>
                 </progressView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备联网中...请稍后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBa-aa-WNV">
-                    <rect key="frame" x="139" y="406.5" width="136" height="18"/>
+                    <rect key="frame" x="139" y="357.5" width="136" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" systemColor="systemGray2Color"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请保证手机切换回来的网络能够正常联网" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84M-EL-6ye">
-                    <rect key="frame" x="78" y="474.5" width="258" height="17"/>
+                    <rect key="frame" x="78" y="425.5" width="258" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="若设备提示联网成功且进度条依然卡住，请重启软件" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-6Y-7Ug">
-                    <rect key="frame" x="43" y="501.5" width="328.5" height="17"/>
+                    <rect key="frame" x="43" y="452.5" width="328.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -76,14 +64,12 @@
                 <constraint firstItem="dsB-Q3-ctG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hiq-6V-t2u"/>
                 <constraint firstItem="4Pe-78-gt8" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="40" id="JOI-Tb-JBF"/>
                 <constraint firstItem="c1E-6Y-7Ug" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="L2R-sd-1Ge"/>
-                <constraint firstItem="dsB-Q3-ctG" firstAttribute="top" secondItem="3mE-os-Qa4" secondAttribute="bottom" id="NJP-p4-rXC"/>
-                <constraint firstItem="3mE-os-Qa4" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="aSf-Zn-wq2"/>
+                <constraint firstItem="dsB-Q3-ctG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="Nnn-Zd-5q3"/>
                 <constraint firstItem="84M-EL-6ye" firstAttribute="top" secondItem="vBa-aa-WNV" secondAttribute="bottom" constant="50" id="aX0-VW-TtC"/>
                 <constraint firstItem="vBa-aa-WNV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bVM-0c-naA"/>
                 <constraint firstItem="vBa-aa-WNV" firstAttribute="top" secondItem="4Pe-78-gt8" secondAttribute="bottom" constant="20" id="gfQ-Sl-9V4"/>
                 <constraint firstItem="84M-EL-6ye" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rCw-Mo-gPY"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4Pe-78-gt8" secondAttribute="trailing" constant="40" id="u5M-dx-xhV"/>
-                <constraint firstItem="3mE-os-Qa4" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="uSU-5a-I2M"/>
                 <constraint firstItem="V9c-Re-en1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xSu-kj-mQU"/>
                 <constraint firstItem="c1E-6Y-7Ug" firstAttribute="top" secondItem="84M-EL-6ye" secondAttribute="bottom" constant="10" id="xu2-wR-SHI"/>
             </constraints>
@@ -91,8 +77,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_dangjian.png" width="204" height="204"/>
-        <image name="icon_arrow" width="24" height="24"/>
+        <image name="ic_dangjian.png" width="102" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

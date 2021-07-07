@@ -44,6 +44,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+}
+
 //初始化自定义导航条
 -(void)initToolbar{
     self.toolbar = [Toolbar newView];
@@ -87,6 +91,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self.toolbar update];
     if(self.NEED_REFRESH_UI){
         [self reloadData:APPDELEGATE.curDevice];
     }

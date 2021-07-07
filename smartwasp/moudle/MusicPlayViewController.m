@@ -12,7 +12,6 @@
 #import "UIImage+Extension.h"
 #import "DeviceBean.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
-#import "NormalToolbar.h"
 #import "UIImageView+WebCache.h"
 #import "IFLYOSSDK.h"
 
@@ -20,11 +19,10 @@
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 @interface MusicPlayViewController ()
-
-@property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UILabel *titleView;
+@property (weak, nonatomic) IBOutlet UILabel *nameView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UISlider *sliderView;
-@property (weak, nonatomic) IBOutlet UILabel *titleView;
 @property (weak, nonatomic) IBOutlet UIButton *playView;
 
 @end
@@ -41,6 +39,7 @@
 //    maskLayer.path = maskPath.CGPath;
 //    _imageView.layer.mask = maskLayer;
     self.imageView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.imageView.bounds cornerRadius:100.0].CGPath;
+    self.navigationItem.titleView = self.titleView;
 }
 
 
@@ -48,9 +47,8 @@
 -(void)updateToolbarUI:(DeviceBean*)device{
     UIImage *image =[UIImage imageNamed:@"icon_status"];
     UIColor *color = [UIColor colorWithHexString:device.isOnLine ?  @"#03F484":@"#B8B8B8"];
-    UILabel *titleView = self.toolBar.txtView;
-    titleView.text = device.name;
-    [titleView setLeftSquareDrawable:[image renderImageWithColor:color]];
+    self.titleView.text = device.name;
+    [self.titleView setLeftSquareDrawable:[image renderImageWithColor:color]];
 }
 
 
@@ -99,7 +97,7 @@
     if(musicStateBean){
         self.sliderView.value = musicStateBean.speaker.volume;
         self.playView.selected = musicStateBean.isPlaying;
-        self.titleView.text = musicStateBean.music.name;
+        self.nameView.text = musicStateBean.music.name ? musicStateBean.music.name : @"未在播放";
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:musicStateBean.music.image]];
     }
 }

@@ -25,26 +25,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEG-0s-puN">
-                    <rect key="frame" x="5" y="44" width="60" height="49"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="60" id="jBI-VP-NHo"/>
-                        <constraint firstAttribute="height" constant="49" id="uYd-tz-5MQ"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
-                    <state key="normal" image="icon_arrow"/>
-                    <connections>
-                        <action selector="onBackPress:" destination="-1" eventType="touchUpInside" id="w1s-AM-roR"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备进入配网模式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXO-3T-S97">
-                    <rect key="frame" x="137.5" y="93" width="139" height="20.5"/>
+                    <rect key="frame" x="137.5" y="44" width="139" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始配网" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-Tz-vyD">
-                    <rect key="frame" x="40" y="133.5" width="334" height="17"/>
+                    <rect key="frame" x="40" y="84.5" width="334" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.69474148749999998" green="0.68475753070000001" blue="0.61793631319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -94,8 +82,6 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fEG-0s-puN" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="5" id="2bp-nb-VOz"/>
-                <constraint firstItem="AXO-3T-S97" firstAttribute="top" secondItem="fEG-0s-puN" secondAttribute="bottom" id="3Us-uS-apz"/>
                 <constraint firstItem="Iwg-xP-qou" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9vV-Hz-3sk"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="7h2-Tz-vyD" secondAttribute="trailing" constant="40" id="A0H-Je-wbt"/>
                 <constraint firstItem="7h2-Tz-vyD" firstAttribute="top" secondItem="AXO-3T-S97" secondAttribute="bottom" constant="20" id="Hlg-IQ-3hD"/>
@@ -107,7 +93,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Xi7-VV-UXO" secondAttribute="trailing" constant="10" id="Vyp-mC-mzn"/>
                 <constraint firstItem="7h2-Tz-vyD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZrW-fZ-CHt"/>
                 <constraint firstItem="AXO-3T-S97" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pWC-On-qoy"/>
-                <constraint firstItem="fEG-0s-puN" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="t42-bC-bn0"/>
+                <constraint firstItem="AXO-3T-S97" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="uIa-t6-dBo"/>
                 <constraint firstItem="Iwg-xP-qou" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ydW-7I-QKq"/>
                 <constraint firstItem="Iwg-xP-qou" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="zvq-wt-o5e"/>
             </constraints>
@@ -115,7 +101,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_screen_box.png" width="204" height="194"/>
-        <image name="icon_arrow" width="24" height="24"/>
+        <image name="ic_screen_box.png" width="102" height="97"/>
     </resources>
 </document>

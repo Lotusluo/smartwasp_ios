@@ -7,7 +7,6 @@
 
 #import "DeviceSetViewController.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
-#import "NormalToolbar.h"
 #import "AppDelegate.h"
 #import "IFLYOSSDK.h"
 #import "Loading.h"
@@ -31,7 +30,6 @@
 
 @interface DeviceSetViewController ()<UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UISwitch *switchBtn;
 @property (weak, nonatomic) IBOutlet UIView *keepView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -55,8 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.NEED_REFRESH_DETAIL = YES;
-    self.toolBar.title = self.deviceBean.name;
-    self.toolBar.titleColor = [UIColor blackColor];
+    self.title = self.deviceBean.name;
     self.switchBtn.transform = CGAffineTransformMakeScale(0.75, 0.75);
     [self.deviceName addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.deviceZone addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -383,6 +380,7 @@
     }
     return nil;
 }
+
 
 //静态方式生成ViewController
 +(DeviceSetViewController *) createNewPage:(DeviceBean *) deviceBean{

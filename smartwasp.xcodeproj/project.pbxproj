@@ -139,6 +139,7 @@
 		045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D792658D51700672251 /* UILabel+Extension.m */; };
 		045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D852658E1F200672251 /* UIImage+Extension.m */; };
 		045E5D9026590BF600672251 /* PageControl2.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D8F26590BF600672251 /* PageControl2.m */; };
+		045EDDEA26947DC300E4F572 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */; };
 		046EEFAC26298475001213DB /* CodingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFAB26298475001213DB /* CodingUtil.m */; };
 		046EEFB726298954001213DB /* ConfigDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFB626298954001213DB /* ConfigDAO.m */; };
 		04725167265E30F8003C4625 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04725164265E30F7003C4625 /* Toolbar.m */; };
@@ -442,6 +443,8 @@
 		045E5D862658E1F200672251 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		045E5D8E26590BF400672251 /* PageControl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl2.h; sourceTree = "<group>"; };
 		045E5D8F26590BF600672251 /* PageControl2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl2.m; sourceTree = "<group>"; };
+		045EDDE826947DC300E4F572 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		046EEFAA26298475001213DB /* CodingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodingUtil.h; sourceTree = "<group>"; };
 		046EEFAB26298475001213DB /* CodingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingUtil.m; sourceTree = "<group>"; };
 		046EEFB526298954001213DB /* ConfigDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigDAO.h; sourceTree = "<group>"; };
@@ -943,6 +946,8 @@
 		0476D48B2660940000F8DE42 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				045EDDE826947DC300E4F572 /* UIViewController+BackButtonHandler.h */,
+				045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */,
 				045E5D862658E1F200672251 /* UIImage+Extension.h */,
 				045E5D852658E1F200672251 /* UIImage+Extension.m */,
 				040ED77D26550B12001A2755 /* UIView+Extension.h */,
@@ -1394,6 +1399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045EDDEA26947DC300E4F572 /* UIViewController+BackButtonHandler.m in Sources */,
 				04B93A09267C325F0036C0B6 /* UIViewHelper.m in Sources */,
 				044D4E07268B11B000BAD622 /* ApHsBean.m in Sources */,
 				040B95142666464800B306D2 /* JXCategoryIndicatorComponentView.m in Sources */,

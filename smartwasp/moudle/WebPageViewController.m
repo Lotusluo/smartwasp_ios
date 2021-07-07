@@ -72,17 +72,11 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     [[IFLYOSSDK shareInstance] webViewAppear:self.Tag];
-    if(self.navigationController.isNavigationBarHidden){
-        [self.navigationController setNavigationBarHidden:NO];
-    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[IFLYOSSDK shareInstance] webViewDisappear:self.Tag];
-    if(!self.navigationController.isNavigationBarHidden && self.disappearHideBar){
-        [self.navigationController setNavigationBarHidden:YES];
-    }
 }
 
 -(void) closePage{
@@ -97,7 +91,7 @@
 /**
  * 网页加载完成时，将回调标题
  */
--(void) updateTitle:(NSString *) title{
+-(void)updateTitle:(NSString *) title{
     title = (title == NULL || title.length < 1 ) ? @"技能详情" : title;
     self.navigationItem.leftBarButtonItem.title = @"";
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];

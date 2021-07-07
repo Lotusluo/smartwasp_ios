@@ -46,10 +46,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"qrCodeNotification" object:qrcodeStr userInfo:nil];
 }
 
-//回退
-- (IBAction)onBackPress:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 /*
 #pragma mark - Navigation
 

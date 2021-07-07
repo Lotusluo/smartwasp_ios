@@ -25,6 +25,8 @@ UICollectionViewDelegate
 //组视图布局
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *groupViewLayout;
 
+@property (nonatomic)BOOL canLoad;
+
 @end
 
 @implementation GroupView
@@ -47,22 +49,38 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 //获取控件高度
--(CGFloat) uiHeight{
+-(CGFloat)uiHeight{
     CGFloat itemHeight = (SCREEN_WIDTH - (4 * 20)) / GROUP_COL + 20;
     int row = ceilf(self.groupBean.items.count / GROUP_COL);
     return 18 + 10 + 20 + ((row - 1) * 20) + (row) * itemHeight;
 }
 
 //设置组数据
--(void) setGroupBean:(GroupBean *)groupBean{
+-(void)setGroupBean:(GroupBean *)groupBean{
     _groupBean = groupBean;
-    [_groupView reloadData];
     _abbrLabel.text = groupBean.abbr;
     _moreLabel.hidden = !groupBean.has_more;
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo([self uiHeight]);
     }];
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    [self checkToLoad];
+}
+
+-(void)checkToLoad{
+    if(!self.canLoad){
+        UIView *parent = self.superview.superview.superview;
+        CGRect visRect = parent.frame;
+        CGRect tranRect = [self convertRect:(self.bounds) toView:parent];
+        if(!CGRectIsNull(CGRectIntersection(visRect, tranRect))){
+            self.canLoad = YES;
+            [self.groupView reloadData];
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -76,19 +94,22 @@ static NSString *const ID = @"CellIdentifier";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [self. groupView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    NSInteger idx = indexPath.section * GROUP_COL + indexPath.row;
-    if (self.groupBean.items.count <= idx) {
-        return cell;
+    if(self.canLoad){
+        NSInteger idx = indexPath.section * GROUP_COL + indexPath.row;
+        if (self.groupBean.items.count <= idx) {
+            return cell;
+        }
+        ItemBean *bean = self.groupBean.items[idx];
+        UIImageView *imageView = cell.subviews[0];
+        CGFloat itemWidth = (SCREEN_WIDTH - (4 * 20)) / GROUP_COL;
+        [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(itemWidth);
+        }];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:bean.image]];
+        UILabel *label = cell.subviews[1];
+        label.text = bean.name;
     }
-    ItemBean *bean = self.groupBean.items[idx];
-    UIImageView *imageView = cell.subviews[0];
-    CGFloat itemWidth = (SCREEN_WIDTH - (4 * 20)) / GROUP_COL;
-    [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(itemWidth);
-    }];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:bean.image]];
-    UILabel *label = cell.subviews[1];
-    label.text = bean.name;
+
 //    int R = (arc4random() % 256) ;
 //    int G = (arc4random() % 256) ;
 //    int B = (arc4random() % 256) ;

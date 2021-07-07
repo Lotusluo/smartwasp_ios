@@ -57,10 +57,6 @@ ApAuthCode *AUTHCODE;
     self.nextBtn.enabled = self.checkBox.selected;
 }
 
-- (IBAction)onBackPress:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 - (IBAction)onNextClick:(id)sender {
     if(self.mBindType == NO_SCREEN_TYPE){
@@ -89,6 +85,7 @@ ApAuthCode *AUTHCODE;
     AUTHCODE = nil;
     NSLog(@"PrevBindViewController dealloc");
 }
+
 
 /*
 #pragma mark - Navigation

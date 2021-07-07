@@ -47,19 +47,6 @@
     }];
 }
 
--(void) viewWillAppear:(BOOL)animated{
-    if(self.navigationController.isNavigationBarHidden){
-        [self.navigationController setNavigationBarHidden:NO];
-    }
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    if(!self.navigationController.isNavigationBarHidden){
-        [self.navigationController setNavigationBarHidden:YES];
-    }
-}
-
 /*
 #pragma mark - Navigation
 

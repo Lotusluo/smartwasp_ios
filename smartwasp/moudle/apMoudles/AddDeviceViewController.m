@@ -8,7 +8,6 @@
 #import "AddDeviceViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "NormalToolbar.h"
 #import "UIViewHelper.h"
 #import "CodingUtil.h"
 #import "PrevBindViewController.h"
@@ -25,7 +24,6 @@
 
 @interface AddDeviceViewController ()<CLLocationManagerDelegate>
 
-@property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
 //有屏扫码授权
 @property (weak, nonatomic) IBOutlet UIView *scanEntryBtn;
 //党建配网
@@ -38,8 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.toolBar.title = @"添加主控设备";
-    self.toolBar.titleColor = [UIColor blackColor];
+    self.title = @"添加主控设备";
     [UIViewHelper attachClick:self.scanEntryBtn target:self action:@selector(onScanClick)];
     [UIViewHelper attachClick:self.djEntryBtn target:self action:@selector(onDJClick)];
     //添加二维码扫码监听
@@ -148,6 +145,7 @@
     }];
 }
 
+
 //跳转上一页
 -(void)goParent{
     for(id cvc in self.navigationController.childViewControllers){
@@ -157,8 +155,6 @@
         }
     }
 }
-
-
 
 -(void)dealloc{
     NSLog(@"AddDeviceViewController dealloc");

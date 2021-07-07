@@ -18,10 +18,11 @@
 #import "JCGCDTimer.h"
 #import "UIViewHelper.h"
 #import "IFlyOSBean.h"
+#import "UIViewController+BackButtonHandler.h"
 
 static MatchLAViewController *matchMV;
 
-@interface MatchLAViewController (){
+@interface MatchLAViewController ()<BackButtonHandlerProtocol>{
     BOOL isOpen;
     CFSocketRef socket;
     char *buffer;//总缓存
@@ -49,10 +50,12 @@ static MatchLAViewController *matchMV;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem.title = @"";
     //先定义总缓存指向
     bufferLen = BUFSIZ;
     buffer = (char *)malloc(bufferLen);
     matchMV = self;
+    self.navigationItem.leftBarButtonItem.title = @"";
     [NSThread detachNewThreadSelector:@selector(connectServer) toTarget:self withObject:nil];
     // Do any additional setup after loading the view from its nib.
 }
@@ -242,13 +245,14 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     });
 }
 
-//退出
-- (IBAction)onBackPress:(id)sender {
+- (BOOL)navigationShouldPopOnBackButton{
     [UIViewHelper showAlert:@"配网尚未完成，是否强制退出？" target:self callBack:^{
         //强制退出
         [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:@"error" userInfo:nil];
     } negative:YES];
+    return NO;
 }
+
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

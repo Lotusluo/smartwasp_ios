@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem.title = @"";
     self.nextBtn.hidden = YES;
     //循环检查当前wifi是否为LA开头
     self.taskLAName = [JCGCDTimer timerTask:^{
@@ -44,11 +45,6 @@
 -(void)dealloc{
     NSLog(@"WaitLAViewController dealloc");
 }
-
-- (IBAction)onBackPress:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 - (IBAction)onNextClick:(id)sender {
     NSDictionary *dict = [LDSRouterInfo getRouterInfo];

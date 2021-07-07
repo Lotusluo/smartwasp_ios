@@ -24,6 +24,7 @@
 #import "IFlyOSBean.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+#define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
 #define ONE_PAGE 10
 
 @interface ItemViewController ()<
@@ -31,8 +32,8 @@ UITableViewDataSource,
 UITableViewDelegate>
 
 /**########################引用的控件########################*/
-@property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIImageView *blurImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *jumpTop;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UILabel *nameView;
 @property (weak, nonatomic) IBOutlet UILabel *fromView;
@@ -64,17 +65,23 @@ static NSString *const ID = @"MusicItemCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-    self.toolBar.title = @"歌单";
-    self.toolBar.titleColor = [UIColor whiteColor];
+    self.title = @"歌单";
     self.songsData = NSMutableArray.new;
-    [self attachUI];
+    [self customRightItem];
     if (@available(iOS 11.0, *)) {
         if ([self.scrollView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
             self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
     }
-    [UIViewHelper attachClick:self.musicView target:self action:@selector(doTapMethod)];
+    [self attachUI];
     // Do any additional setup after loading the view from its nib.
+}
+
+//自定义右侧导航按钮
+-(void)customRightItem{
+    [UIViewHelper attachClick:self.musicView target:self action:@selector(doTapMethod)];
+    UIBarButtonItem * jumpItem = [[UIBarButtonItem alloc] initWithCustomView:self.musicView];
+    self.navigationItem.rightBarButtonItem = jumpItem;
 }
 
 //音乐控件点击
@@ -87,26 +94,27 @@ static NSString *const ID = @"MusicItemCell";
     self.nameView.text = self.bean.name;
     self.fromView.text =  self.bean.from;
     self.blurImage.contentMode = UIViewContentModeScaleAspectFill;
-    [self.blurImage sd_setImageWithURL:[NSURL URLWithString:self.bean.image] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.blurImage sd_setImageWithURL:[NSURL URLWithString:self.bean.image]];
+    self.iconView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:self.bean.image] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         if(image){
             __weak typeof(self) _self = self;
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 UIImage *blur = [UIImage imageBlurImage:image WithBlurNumber:0.5];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"blurImage:%@",_self.blurImage);
                     _self.blurImage.image = blur;
                 });
             });
         }
     }];
-    self.iconView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:self.bean.image]];
     [self.tableView addSubview:self.footerView];
     [self.tableView registerNib:[UINib nibWithNibName:ID bundle:nil] forCellReuseIdentifier:ID];
 }
 
--(void) viewWillLayoutSubviews{
+-(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    self.iconTop.constant = sgm_safeAreaInset(self.view).top + 49;
+    self.iconTop.constant = sgm_safeAreaInset(self.view).top;
     self.headerHeight.constant = self.iconTop.constant + self.iconView.frame.size.height + 20;
     self.zeroValue = self.headerHeight.constant - self.iconTop.constant;
     self.listHeight.constant = self.scrollView.frame.size.height - (self.headerHeight.constant - self.zeroValue + 26);
@@ -134,6 +142,16 @@ static NSString *const ID = @"MusicItemCell";
         }
     }
     [self.musicView stopAnimation];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setTitleTextAttributes:nil];
 }
 
 +(ItemViewController *) createNewPage:(ItemBean *) bean{

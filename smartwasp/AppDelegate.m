@@ -210,7 +210,6 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
     NSString *json = [NSString stringWithFormat:@"%@",receiveMessage];
     if(socket == mediaStatePushService){
         StatusBean<MusicStateBean*> *statusBeanMedia = [StatusBean yy_modelWithJSON:json];
-        NSLog(@"mediaStatePushService:%@",json);
         self.mediaStatus = statusBeanMedia;
     }else if(socket == deviceStatePushService){
         StatusBean<DeviceBean*> *statusBeanDevice = [StatusBean yy_modelWithJSON:json];
@@ -219,10 +218,10 @@ BOOL NEED_MAIN_REFRESH_DEVICES = YES;
         for(DeviceBean *devBean in self.devices){
             if([devBean isEqual:dev]){
                 devBean.status = dev.status;
-                NSLog(@"更新了在线状态：%@",devBean.status);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"onLineChangedNotification" object:nil userInfo:nil];
+                NSLog(@"更新设备在线状态：%@,%@",devBean.name,devBean.status);
             }
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"onLineChangedNotification" object:nil userInfo:nil];
     }
 }
 

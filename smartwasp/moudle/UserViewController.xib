@@ -18,6 +18,7 @@
                 <outlet property="musicView" destination="85K-rU-k55" id="HYf-Nw-07s"/>
                 <outlet property="naviContent" destination="etN-Fb-Q7F" id="UJA-S9-2vQ"/>
                 <outlet property="pageControl" destination="W8r-cG-hyo" id="uBe-Mx-eQJ"/>
+                <outlet property="toolBarHeight" destination="yLm-Tl-2cg" id="rT3-Yz-FJl"/>
                 <outlet property="toolbar" destination="QtB-dZ-qJG" id="xMU-Yf-UcE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-dZ-qJG" userLabel="ToolBar">
-                    <rect key="frame" x="0.0" y="44" width="414" height="49"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gre-4t-yih">
                             <rect key="frame" x="190.5" y="15" width="33" height="19.5"/>
@@ -69,7 +70,7 @@
                     </constraints>
                 </view>
                 <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cXn-7F-feu" userLabel="DeviceBanner">
-                    <rect key="frame" x="87" y="93" width="240" height="128"/>
+                    <rect key="frame" x="87" y="49" width="240" height="128"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="00q-Ix-032"/>
                         <constraint firstAttribute="height" constant="128" id="vgw-VM-Mqk"/>
@@ -86,7 +87,7 @@
                     </connections>
                 </collectionView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-g7-xDM" userLabel="NaviContainer" customClass="NSScrollView">
-                    <rect key="frame" x="0.0" y="281" width="414" height="581"/>
+                    <rect key="frame" x="0.0" y="237" width="414" height="625"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="etN-Fb-Q7F" userLabel="Content">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
@@ -164,14 +165,14 @@
                     </constraints>
                 </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="W8r-cG-hyo" userLabel="Indicator" customClass="PageControl2">
-                    <rect key="frame" x="10" y="221" width="394" height="50"/>
+                    <rect key="frame" x="10" y="177" width="394" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3nR-Bk-Hxa"/>
                     </constraints>
                 </pageControl>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.97277528049999995" green="0.97293823960000003" blue="0.97275239229999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="pgl-g7-xDM" secondAttribute="bottom" id="34T-rF-5K7"/>
                 <constraint firstItem="W8r-cG-hyo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="EO0-43-FRc"/>
@@ -183,7 +184,7 @@
                 <constraint firstAttribute="trailing" secondItem="W8r-cG-hyo" secondAttribute="trailing" constant="10" id="pwT-vV-tD7"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="QtB-dZ-qJG" secondAttribute="trailing" id="qUT-cz-LYe"/>
                 <constraint firstItem="cXn-7F-feu" firstAttribute="top" secondItem="QtB-dZ-qJG" secondAttribute="bottom" priority="750" id="vkf-Sq-Gix"/>
-                <constraint firstItem="QtB-dZ-qJG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="yLm-Tl-2cg"/>
+                <constraint firstItem="QtB-dZ-qJG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yLm-Tl-2cg"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="pgl-g7-xDM" secondAttribute="trailing" id="zjW-lg-hmh"/>
             </constraints>
             <point key="canvasLocation" x="82.608695652173921" y="70.3125"/>

@@ -44,7 +44,7 @@ ISelectedDelegate>
 //工具栏
 @property(nonatomic) Toolbar *toolbar;
 //滚动控件
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) UIScrollView *scrollView;
 //Banner图
 @property (strong, nonatomic)  UICollectionView *collectionView;
 @property (strong, nonatomic)  PageLineLayout *lineLayout;
@@ -71,18 +71,25 @@ static NSString *const ID = @"CellIdentifier";
     _toolbar.canSearch = YES;
     [self.view addSubview:_toolbar];
     //添加刷新控件
+    self.scrollView = [UIScrollView new];
+    [self.view addSubview:_scrollView];
     [self.scrollView addSubview:self.headerView];
     self.scrollView.showsVerticalScrollIndicator = YES;
     self.scrollView.delegate = self;
     // Do any additional setup after loading the view from its nib.
 }
 
-//即将被布局
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    //布局前重置一下toolbar的frame
     _toolbar.frame = CGRectMake(0, STATUS_HEIGHT, SCREEN_WIDTH, 49);
+    [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.top.equalTo(_toolbar.mas_bottom);
+        CGFloat tabBarHeight = self.tabBarController.tabBar.frame.size.height;
+        make.bottom.equalTo(self.view.mas_bottom).offset(-tabBarHeight);
+    }];
 }
+
 
 #pragma mark - 处理通知
 -(void)devSetCallback:(DeviceBean* __nullable) device {
@@ -108,6 +115,7 @@ static NSString *const ID = @"CellIdentifier";
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self.toolbar update];
     if(self.NEED_REFRESH_UI){
         [self reloadData:APPDELEGATE.curDevice];
     }
@@ -220,6 +228,7 @@ static NSString *const ID = @"CellIdentifier";
         [self.verticalLayout addArrangedSubview:groupView];
         height += groupView.uiHeight;
     }
+    
 
     //设置垂直布局约束
     [self.verticalLayout mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -288,6 +297,7 @@ static NSString *const ID = @"CellIdentifier";
             [self.categoryView selectItemAtIndex:index];
         }
     }
+    [self.verticalLayout.subviews makeObjectsPerformSelector:@selector(checkToLoad)];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

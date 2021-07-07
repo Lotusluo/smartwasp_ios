@@ -24,32 +24,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrV-eW-91w">
-                    <rect key="frame" x="0.0" y="44" width="60" height="49"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="49" id="gSo-09-NSN"/>
-                        <constraint firstAttribute="width" constant="60" id="soT-2g-A07"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="30" maxY="0.0"/>
-                    <state key="normal" image="icon_arrow"/>
-                    <connections>
-                        <action selector="onBackPress:" destination="-1" eventType="touchUpInside" id="lGn-Fw-ZDn"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="填写WI-FI信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JB0-nV-a7Y">
-                    <rect key="frame" x="151.5" y="93" width="111" height="21"/>
+                    <rect key="frame" x="151.5" y="44" width="111" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂不支持链接5G WI-FI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb8-Zq-1Yg">
-                    <rect key="frame" x="135" y="134" width="144" height="17"/>
+                    <rect key="frame" x="135" y="85" width="144" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入WI-FI名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAr-XE-JQP">
-                    <rect key="frame" x="40" y="201" width="334" height="20"/>
+                    <rect key="frame" x="40" y="152" width="334" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="BVn-Yi-XpD"/>
                     </constraints>
@@ -60,14 +48,14 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vso-4c-XQC" userLabel="line1">
-                    <rect key="frame" x="40" y="231" width="334" height="1"/>
+                    <rect key="frame" x="40" y="182" width="334" height="1"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="8Lc-Cl-OL6"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入WI-FI密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xmn-eD-JCW">
-                    <rect key="frame" x="40" y="262" width="334" height="20"/>
+                    <rect key="frame" x="40" y="213" width="334" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="7rt-mB-jc9"/>
                     </constraints>
@@ -78,14 +66,14 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaM-xa-QMu" userLabel="line2">
-                    <rect key="frame" x="40" y="292" width="334" height="1"/>
+                    <rect key="frame" x="40" y="243" width="334" height="1"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="U8x-9y-TjT"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVV-YK-HLL">
-                    <rect key="frame" x="50" y="343" width="314" height="40"/>
+                    <rect key="frame" x="50" y="294" width="314" height="40"/>
                     <color key="backgroundColor" red="0.96550434829999998" green="0.56288033879999999" blue="0.10833080589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="jbo-9b-jb6"/>
@@ -103,7 +91,7 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pwd_visible.png" highlightedImage="ic_pwd_invisible.png" translatesAutoresizingMaskIntoConstraints="NO" id="fGM-NO-kD4">
-                    <rect key="frame" x="334" y="257" width="30" height="30"/>
+                    <rect key="frame" x="334" y="208" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="BON-bi-ue2"/>
                         <constraint firstAttribute="height" constant="30" id="mw2-JW-P4H"/>
@@ -116,19 +104,17 @@
                 <constraint firstItem="WAr-XE-JQP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4RG-oq-bND"/>
                 <constraint firstItem="OaM-xa-QMu" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="40" id="5Dk-zD-ADS"/>
                 <constraint firstItem="dVV-YK-HLL" firstAttribute="top" secondItem="OaM-xa-QMu" secondAttribute="bottom" constant="50" id="5M6-SX-jIe"/>
-                <constraint firstItem="JB0-nV-a7Y" firstAttribute="top" secondItem="wrV-eW-91w" secondAttribute="bottom" id="7db-Py-VZP"/>
                 <constraint firstAttribute="trailing" secondItem="fGM-NO-kD4" secondAttribute="trailing" constant="50" id="B6s-UE-80m"/>
                 <constraint firstItem="Vso-4c-XQC" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="40" id="Btk-3d-FAA"/>
                 <constraint firstItem="WAr-XE-JQP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="40" id="CAR-dq-287"/>
                 <constraint firstItem="xmn-eD-JCW" firstAttribute="top" secondItem="Vso-4c-XQC" secondAttribute="bottom" constant="30" id="Dbs-Fw-Dx2"/>
                 <constraint firstItem="Vb8-Zq-1Yg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="J1r-2S-e30"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Vso-4c-XQC" secondAttribute="trailing" constant="40" id="KFf-rh-B5Z"/>
-                <constraint firstItem="wrV-eW-91w" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="RHY-WB-K1r"/>
                 <constraint firstItem="xmn-eD-JCW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SOe-nJ-LGW"/>
+                <constraint firstItem="JB0-nV-a7Y" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="V3S-SG-py6"/>
                 <constraint firstItem="WAr-XE-JQP" firstAttribute="top" secondItem="Vb8-Zq-1Yg" secondAttribute="bottom" constant="50" id="Ybu-wp-0bT"/>
                 <constraint firstItem="Vb8-Zq-1Yg" firstAttribute="top" secondItem="JB0-nV-a7Y" secondAttribute="bottom" constant="20" id="Zeh-0I-0PG"/>
                 <constraint firstItem="fGM-NO-kD4" firstAttribute="centerY" secondItem="xmn-eD-JCW" secondAttribute="centerY" id="a9i-1j-J4n"/>
-                <constraint firstItem="wrV-eW-91w" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ay0-pw-Sxh"/>
                 <constraint firstItem="dVV-YK-HLL" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="50" id="dqZ-2a-dYb"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="WAr-XE-JQP" secondAttribute="trailing" constant="40" id="fM9-hb-Ndz"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="dVV-YK-HLL" secondAttribute="trailing" constant="50" id="hCL-ep-m2m"/>
@@ -146,7 +132,6 @@
     <resources>
         <image name="ic_pwd_invisible.png" width="24" height="24"/>
         <image name="ic_pwd_visible.png" width="24" height="24"/>
-        <image name="icon_arrow" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

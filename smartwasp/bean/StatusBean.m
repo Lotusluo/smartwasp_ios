@@ -29,6 +29,8 @@
 
 //比较时间戳
 -(BOOL) isNewerThan:(StatusBean *) other{
+    if(!other.timestamp)
+        return NO;
     return [self.timestamp longLongValue] > [other.timestamp longLongValue];
 }
 

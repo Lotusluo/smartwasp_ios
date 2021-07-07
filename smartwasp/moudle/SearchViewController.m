@@ -15,6 +15,8 @@
 #import "iToast.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+#define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 
 #define ONE_PAGE 10
@@ -28,8 +30,7 @@ UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //音乐数据
 @property (strong,nonatomic) NSMutableArray *songsData;
-//搜索控件
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong,nonatomic)UISearchBar *searchBar;
 //数据是否在请求中
 @property (nonatomic) BOOL isRequest;
 //刷新控件
@@ -45,31 +46,16 @@ static NSString *const ID = @"MusicItemCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.songsData = NSMutableArray.new;
-    [self setSearchBar];
     [self.tableView addSubview:self.footerView];
     [self.tableView registerNib:[UINib nibWithNibName:ID bundle:nil] forCellReuseIdentifier:ID];
+    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithCustomView:self.searchBar];
+    self.navigationItem.rightBarButtonItem = searchItem;
     // Do any additional setup after loading the view from its nib.
-}
-
--(void)setSearchBar{
-    self.searchBar.delegate = self;
-    [[[[self.searchBar.subviews objectAtIndex:0] subviews] objectAtIndex:0] removeFromSuperview];
-    [self.searchBar setBackgroundColor:[UIColor clearColor]];
-    id s = [self.searchBar valueForKeyPath:@"searchField"];
-    id b = [s valueForKeyPath:@"_clearButton"];
-    if([b isKindOfClass:[UIButton class]]){
-        UIButton *btn = (UIButton*)b;
-        [btn addTarget:self action:@selector(onCancelInput) forControlEvents:UIControlEventTouchUpInside];
-    }
 }
 
 -(void)onCancelInput{
     [self.view endEditing:YES];
 //    self.searchBar.text = self.keyWords;
-}
-
-- (IBAction)onPressBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -167,6 +153,26 @@ static NSString *const ID = @"MusicItemCell";
         }];
     }
     return _footerView;
+}
+
+#pragma mark --searchBar懒加载
+-(UISearchBar*)searchBar{
+    if(!_searchBar){
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 80, 44)];
+        _searchBar.delegate = self;
+        [[[[_searchBar.subviews objectAtIndex:0] subviews] objectAtIndex:0] removeFromSuperview];
+        _searchBar.backgroundColor = [UIColor clearColor];
+        _searchBar.layer.borderWidth = 1;
+        _searchBar.layer.cornerRadius = 10;
+        _searchBar.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        id s = [_searchBar valueForKeyPath:@"searchField"];
+        id b = [s valueForKeyPath:@"_clearButton"];
+        if([b isKindOfClass:[UIButton class]]){
+            UIButton *btn = (UIButton*)b;
+            [btn addTarget:self action:@selector(onCancelInput) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+    return _searchBar;
 }
 
 /*

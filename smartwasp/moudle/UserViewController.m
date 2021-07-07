@@ -24,6 +24,7 @@
 #import "MusicPlayViewController.h"
 #import "AboutViewController.h"
 #import "Loading.h"
+#import "UIView+Extension.h"
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
@@ -39,6 +40,7 @@ ISWClickDelegate>
 
 
 /**###############ToolBar###############*/
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarHeight;
 @property (weak, nonatomic) IBOutlet UIView *toolbar;
 @property (weak, nonatomic) IBOutlet LXSEQView *musicView;
 @property (weak, nonatomic) IBOutlet UIImageView *leftItem;
@@ -68,6 +70,7 @@ static NSString *const ID = @"CellIdentifier";
     [self initGallery];
     [self initpageCtr];
     [self initMenuList];
+    self.toolBarHeight.constant = STATUS_HEIGHT;
     //对选择的设备进行监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(devsSetObserver:)

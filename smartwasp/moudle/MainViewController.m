@@ -16,6 +16,7 @@
 #import "JCGCDTimer.h"
 #import "AFNetworkReachabilityManager.h"
 #import "Reachability.h"
+#import "UIViewHelper.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -92,6 +93,8 @@
     self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
+    
+    
 //    if (@available(iOS 7.0, *)) {
 //        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
 //            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
@@ -122,6 +125,10 @@
     NetworkStatus netStatus = [reachability currentReachabilityStatus];
     switch (netStatus){
         case NotReachable:{
+            [UIViewHelper showAlert:@"无网络，请打开网络！" target:self callBack:^{
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            } negative:YES];
             break;
         }
         case ReachableViaWiFi:

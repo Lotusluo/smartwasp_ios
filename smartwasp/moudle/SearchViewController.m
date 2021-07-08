@@ -55,6 +55,7 @@ static NSString *const ID = @"MusicItemCell";
 
 -(void)onCancelInput{
     [self.view endEditing:YES];
+    [self.searchBar resignFirstResponder];
 //    self.searchBar.text = self.keyWords;
 }
 
@@ -131,9 +132,10 @@ static NSString *const ID = @"MusicItemCell";
     return 60;
 }
 
+
 #pragma mark -UIBarPositioningDelegate
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self.view endEditing:YES];
+    [searchBar resignFirstResponder];
     [self search:searchBar.text];
 }
 

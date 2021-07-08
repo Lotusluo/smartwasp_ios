@@ -68,6 +68,10 @@
     }
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+}
+
 - (void)_setup{
     [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
     [self.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
@@ -129,7 +133,6 @@
 - (void)_toNoneState{
     if(self.loadLabel.text == HWFooterRefreshViewNoneText1)
         return;
-    self.loadView.hidden = NO;
     self.loadLabel.text = HWFooterRefreshViewNoneText;
     self.loadLabel.frame = CGRectMake(HWRefreshRefLabelX, HWRefreshRefLabelY, HWRefreshRefLabelW, HWRefreshRefLabelH);
 }

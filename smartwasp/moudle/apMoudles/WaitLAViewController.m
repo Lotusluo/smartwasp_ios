@@ -12,13 +12,16 @@
 #import "iToast.h"
 #import "LDSRouterInfo.h"
 #import "UIViewHelper.h"
+#import "SimplePing.h"
+#import "Loading.h"
 
 
-@interface WaitLAViewController ()
+@interface WaitLAViewController ()<SimplePingDelegate>
 
 //等待连接到LA网络的任务
 @property(nonatomic,strong)NSString *taskLAName;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+@property (nonatomic,strong) SimplePing *ping;
 
 @end
 
@@ -31,8 +34,10 @@
     //循环检查当前wifi是否为LA开头
     self.taskLAName = [JCGCDTimer timerTask:^{
         NSString *cssid = ServiceUtil.wifiSsid;
-        NSRange range = [cssid rangeOfString:@"^LA_" options:NSRegularExpressionSearch];
-        self.nextBtn.hidden = range.location == NSNotFound;
+        if(cssid){
+            NSRange range = [cssid rangeOfString:@"^LA_" options:NSRegularExpressionSearch];
+            self.nextBtn.hidden = range.location == NSNotFound;
+        }
     } start:1 interval:5 repeats:YES async:NO];
     // Do any additional setup after loading the view from its nib.
 }
@@ -47,13 +52,18 @@
 }
 
 - (IBAction)onNextClick:(id)sender {
+    if(self.ping){
+        [self.ping stop];
+    }
+    [Loading show:nil];
     NSDictionary *dict = [LDSRouterInfo getRouterInfo];
     NSString *router = dict[@"router"];
-    if(router && [router isEqualToString:@"192.168.51.1"]){
-        //发现连接到设备，开始进入配网
-        MatchLAViewController *mvc = MatchLAViewController.new;
-        [self.navigationController pushViewController:mvc animated:YES];
+    if(router){
+        self.ping = [[SimplePing alloc] initWithHostName:router];
+        self.ping.delegate = self;
+        [self.ping start];
     }else{
+        [Loading dismiss];
         [UIViewHelper showAlert:@"请确保已连接至LA_网络" target:self];
     }
 //    dns = "192.168.2.255";
@@ -61,6 +71,19 @@
 //    router = "192.168.2.1";
 //    subnetMask = "255.255.255.0";
   
+}
+
+- (void)simplePing:(SimplePing *)pinger didStartWithAddress:(NSData *)address{
+    NSLog(@"simplePing ok");
+    [Loading dismiss];
+    //发现连接到设备，开始进入配网
+    MatchLAViewController *mvc = MatchLAViewController.new;
+    [self.navigationController pushViewController:mvc animated:YES];
+}
+
+- (void)simplePing:(SimplePing *)pinger didFailWithError:(NSError *)error{
+    NSLog(@"simplePing error");
+    [Loading dismiss];
 }
 
 /*

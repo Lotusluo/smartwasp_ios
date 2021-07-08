@@ -14,6 +14,7 @@
 #import "Loading.h"
 #import "NSObject+YYModel.h"
 
+
 NSString *SSID = @"";
 NSString *PWD = @"";
 ApAuthCode *AUTHCODE;

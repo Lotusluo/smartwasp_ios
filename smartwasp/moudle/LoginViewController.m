@@ -58,7 +58,10 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
-            [UIViewHelper showAlert:@"无网络，请打开网络！" target:self];
+            [UIViewHelper showAlert:@"无网络，请打开网络！" target:self callBack:^{
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+            } negative:YES];
         } else {
             [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
         }

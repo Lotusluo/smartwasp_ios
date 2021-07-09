@@ -113,8 +113,7 @@
     [[UIColor orangeColor] setFill];
     [[UIColor clearColor] setStroke];
     CGContextDrawPath(context, kCGPathFillStroke);
-    
-    NSString *tip = _device.music.enable ? @"已开通" : @"未开通";
+    NSString *tip = NSLocalizedString(_device.music.enable ? @"enabled_music" : @"disenabled_music", nil);
     CGFloat radius = distanceBetweenPoints(CGPointMake(0, halfValue + 20),CGPointMake(halfValue - 20, height)) / 2;
     UIFont *font = [UIFont systemFontOfSize:12.0];
     CGPoint tranPoint = CGPointMake(cos(M_PI_4) * radius, halfValue + (height - 20 - halfValue) / 2 + sin(M_PI_4) * radius);

@@ -42,7 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"技能详情";
+    self.title = NSLocalizedString(@"skill_desc", nil);
     [self attachUI];
     // Do any additional setup after loading the view from its nib.
 }
@@ -64,7 +64,7 @@
     self.versionView.text = self.skillBean.version;
     self.timeView.text = self.skillBean.updateTime;
     if(self.skillBean.hitTextS.count > 0){
-        self.guideView.text = [NSString stringWithFormat:@"您可以说 %@",self.skillBean.hitTextS[0]];
+        self.guideView.text = [NSString stringWithFormat:NSLocalizedString(@"you_can_say", nil),self.skillBean.hitTextS[0]];
         __block NSInteger index = 0;
         for(NSString *skillStr in self.skillBean.hitTextS){
             InsetsLabel *skillView = InsetsLabel.new;

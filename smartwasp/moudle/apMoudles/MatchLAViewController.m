@@ -125,7 +125,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
             __block int count = 5;
             self.taskCountName = [JCGCDTimer timerTask:^{
                 [self setProgress:1];
-                self.tipView.text = [NSString stringWithFormat:@"AP配网授权成功，请等待%d秒",count];
+                self.tipView.text = [NSString stringWithFormat:NSLocalizedString(@"ok_net", nil),count];
                 if(count--<=1){
                     [JCGCDTimer canelTimer:self.taskCountName];
                     self.step = 4;
@@ -155,7 +155,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
             }
             if(self->askTimez>= 60){
                 [JCGCDTimer canelTimer:self.taskAskName];
-                [UIViewHelper showAlert:@"配网超时，请重试！" target:self callBack:^{
+                [UIViewHelper showAlert:NSLocalizedString(@"err_net1", nil) target:self callBack:^{
                     //强制退出
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:@"error" userInfo:nil];
                 }];
@@ -169,7 +169,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
                 if(osBean.code == 3001){
                     //未添加白名单
                     [JCGCDTimer canelTimer:self.taskAskName];
-                    [UIViewHelper showAlert:@"请联系客服添加白名单" target:self callBack:^{
+                    [UIViewHelper showAlert:NSLocalizedString(@"err_net2", nil) target:self callBack:^{
                         //强制退出
                         [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:@"error" userInfo:nil];
                     }];
@@ -232,7 +232,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     [self releaseSocket];
     if(askTimez > 0)
         return;
-    [UIViewHelper showAlert:@"配网错误，请重试！" target:self callBack:^{
+    [UIViewHelper showAlert:NSLocalizedString(@"err_net3", nil) target:self callBack:^{
         //强制退出
         [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:@"error" userInfo:nil];
     }];
@@ -246,7 +246,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
 }
 
 - (BOOL)navigationShouldPopOnBackButton{
-    [UIViewHelper showAlert:@"配网尚未完成，是否强制退出？" target:self callBack:^{
+    [UIViewHelper showAlert:NSLocalizedString(@"err_net4", nil) target:self callBack:^{
         //强制退出
         [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:@"error" userInfo:nil];
     } negative:YES];

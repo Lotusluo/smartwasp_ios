@@ -92,7 +92,7 @@
  * 网页加载完成时，将回调标题
  */
 -(void)updateTitle:(NSString *) title{
-    title = (title == NULL || title.length < 1 ) ? @"技能详情" : title;
+    title = (title == NULL || title.length < 1 ) ? NSLocalizedString(@"skill_desc", nil) : title;
     self.navigationItem.leftBarButtonItem.title = @"";
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = item;
@@ -151,11 +151,11 @@
 }
 
 -(void)onAuthFailed{
-    [UIViewHelper showAlert:@"授权失败,请重试" target:self];
+    [UIViewHelper showAlert:NSLocalizedString(@"auth_err", nil) target:self];
 }
 
 -(void)onAuthReject{
-    [UIViewHelper showAlert:@"授权失败,请重试" target:self];
+    [UIViewHelper showAlert:NSLocalizedString(@"auth_err", nil) target:self];
 }
 
 +(WebPageViewController *)createNewPageWithTag:(NSString *)tag{

@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"关于我们";
+    self.title = NSLocalizedString(@"about_us", nil);
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     self.versionView.text = [NSString stringWithFormat:@"Version %@",infoDictionary[@"CFBundleShortVersionString"]];
 
@@ -39,10 +39,10 @@
             if(new_build.intValue > app_build.intValue){
                 
             }else{
-                [UIViewHelper showAlert:@"当前已是最新版本" target:self];
+                [UIViewHelper showAlert:NSLocalizedString(@"newer_version", nil) target:self];
             }
         }else{
-            [[iToast makeText:@"检查更新失败,请重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"error_version", nil)] show];
         }
     }];
 }

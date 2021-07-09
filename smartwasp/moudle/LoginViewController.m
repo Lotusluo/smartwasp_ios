@@ -58,7 +58,7 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
-            [UIViewHelper showAlert:@"无网络，请打开网络！" target:self callBack:^{
+            [UIViewHelper showAlert:NSLocalizedString(@"no_internet", @"no_internet") target:self callBack:^{
                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                 [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
             } negative:YES];
@@ -114,18 +114,18 @@
                 [self registerUuid:user];
             }else{
                 //登陆失败
-                [[iToast makeText:@"请重试!"] show];
+                [[iToast makeText:NSLocalizedString(@"retry", nil)] show];
                 [Loading dismiss];
             }
         }else{
             //登陆失败
-            [[iToast makeText:@"登陆信息错误,请重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"login_info_err", nil)] show];
             [Loading dismiss];
         }
     } requestFail:^(id _Nonnull error) {
         //登陆失败
         [Loading dismiss];
-        [[iToast makeText:@"登陆失败,请重试!"] show];
+        [[iToast makeText:NSLocalizedString(@"login_err", nil)] show];
     }];
 }
 
@@ -140,7 +140,7 @@
             [APPDELEGATE toMain];
         }else{
             //登陆失败
-            [[iToast makeText:@"登陆失败,请重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"login_err", nil)] show];
         }
     }];
 }

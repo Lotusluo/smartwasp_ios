@@ -139,9 +139,9 @@ static NSString *const ID = @"CellIdentifier";
             if(statusCode != 200){
                 [SELF loadDataEccur];
                 SELF.NEED_REFRESH_UI = YES;
-                [UIViewHelper showAlert:@"加载数据失败！" target:SELF callBack:^{
+                [UIViewHelper showAlert:NSLocalizedString(@"load_data_err", nil) target:SELF callBack:^{
                     [SELF reloadData:APPDELEGATE.curDevice];
-                } positiveTxt:@"重试" negativeTxt:@"取消"];
+                } positiveTxt:NSLocalizedString(@"retry_btn", nil) negativeTxt:NSLocalizedString(@"cancel_btn", nil)];
             }
             [SELF.headerView hw_endRefreshState];
         } requestSuccess:^(id _Nonnull data) {

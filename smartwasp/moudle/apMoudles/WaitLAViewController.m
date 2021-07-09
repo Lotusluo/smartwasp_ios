@@ -64,7 +64,7 @@
         [self.ping start];
     }else{
         [Loading dismiss];
-        [UIViewHelper showAlert:@"请确保已连接至LA_网络" target:self];
+        [UIViewHelper showAlert:NSLocalizedString(@"net_set3", nil) target:self];
     }
 //    dns = "192.168.2.255";
 //    ip = "192.168.2.85";

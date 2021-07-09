@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"添加主控设备";
+    self.title = NSLocalizedString(@"add_device", nil);
     [UIViewHelper attachClick:self.scanEntryBtn target:self action:@selector(onScanClick)];
     [UIViewHelper attachClick:self.djEntryBtn target:self action:@selector(onDJClick)];
     //添加二维码扫码监听
@@ -67,7 +67,7 @@
             if(granted){
                 [SELF onScanClick];
             }else{
-                [UIViewHelper showAlert:@"您禁止了相机权限,请去设置页面打开。" target:SELF];
+                [UIViewHelper showAlert:NSLocalizedString(@"cam_per", nil) target:SELF];
             }
         });
     }];
@@ -120,7 +120,7 @@
             return;
         }
     }
-    [UIViewHelper showAlert:@"二维码错误，请重试！" target:self];
+    [UIViewHelper showAlert:NSLocalizedString(@"qr_err", nil) target:self];
 }
 
 #pragma mark --音箱绑定成功通知

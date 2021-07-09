@@ -121,9 +121,9 @@ static NSString *const ID = @"MusicItemCell";
     [[IFLYOSSDK shareInstance] musicControlPlay:APPDELEGATE.curDevice.device_id mediaId:song._id sourceType:song.source_type statusCode:^(NSInteger code) {
         [Loading dismiss];
     } requestSuccess:^(id _Nonnull data) {
-        [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",song.name]] show];
+        [[iToast makeText:[NSString stringWithFormat:NSLocalizedString(@"play_now", nil),song.name]] show];
     } requestFail:^(id _Nonnull data) {
-        [[iToast makeText:@"请开通音乐权限或重试!"] show];
+        [[iToast makeText:NSLocalizedString(@"load_music_err", nil)] show];
     }];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

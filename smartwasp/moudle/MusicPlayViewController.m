@@ -97,7 +97,7 @@
     if(musicStateBean){
         self.sliderView.value = musicStateBean.speaker.volume;
         self.playView.selected = musicStateBean.isPlaying;
-        self.nameView.text = musicStateBean.music.name ? musicStateBean.music.name : @"未在播放";
+        self.nameView.text = musicStateBean.music.name ? musicStateBean.music.name : NSLocalizedString(@"un_play_now1", nil);
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:musicStateBean.music.image]];
     }
 }

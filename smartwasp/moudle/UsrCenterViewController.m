@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"个人中心";
+    self.title = NSLocalizedString(@"usr_center", nil);
     self.tableView.rowHeight = 44;
     self.usrPhone.text = APPDELEGATE.user.phone;
 //    self.tableView.backgroundView = ({
@@ -67,11 +67,11 @@
         [UIViewHelper showAlert:APPDELEGATE.user.user_id target:self callBack:^{
             UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
             pasteboard.string = APPDELEGATE.user.user_id;
-            [[iToast makeText:@"已复制到剪贴板!"] show];
-        } positiveTxt:@"复制" negativeTxt:@"确定"];
+            [[iToast makeText:NSLocalizedString(@"clip_board", nil)] show];
+        } positiveTxt:NSLocalizedString(@"copy_btn", nil) negativeTxt:NSLocalizedString(@"confirm_btn", nil)];
     }else if(indexPath.section == 2){
         //退出登陆
-        [UIViewHelper showAlert:@"是否退出登陆？" target:self callBack:^{
+        [UIViewHelper showAlert:NSLocalizedString(@"login_out", nil) target:self callBack:^{
             [Loading show:nil];
             [[IFLYOSSDK shareInstance] logout:self];
         } negative:YES];
@@ -93,7 +93,7 @@
  */
 -(void)onLogoutFailed:(NSInteger) type error:(NSError *) error{
     [Loading dismiss];
-    [[iToast makeText:@"退出登陆失败，请重试!"] show];
+    [[iToast makeText:NSLocalizedString(@"login_out_err", nil)] show];
 }
 
 /*

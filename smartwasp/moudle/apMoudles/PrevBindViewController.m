@@ -43,9 +43,9 @@ ApAuthCode *AUTHCODE;
 //更新UI
 -(void)updateUI{
     if(self.mBindType == NO_SCREEN_TYPE){
-        self.titleView.text = @"设备进入配网模式";
-        self.labelHeader.text = @"接通电源,设备开机,长按静音键,进入配网模式";
-        self.labelFooter.text = @"设备正在配网";
+        self.titleView.text = NSLocalizedString(@"net_set", nil);
+        self.labelHeader.text = NSLocalizedString(@"net_set1", nil);;
+        self.labelFooter.text = NSLocalizedString(@"net_set2", nil);;
         NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"ic_dangjian@2x.png" ofType:nil];
         self.imageView.image = [UIImage imageWithContentsOfFile:bundleStr];
 

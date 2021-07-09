@@ -38,7 +38,7 @@
 //设置设备是否在线
 - (void) setDevStatus:(Boolean) isOnline{
     _devStatusIcon.tintColor = [UIColor colorWithHexString:isOnline  ?  @"#03F484":@"#B8B8B8"];
-    _devStatusTip.text = isOnline ? @"设备在线" : @"设备离线";
+    _devStatusTip.text = NSLocalizedString(isOnline ? @"onLine" : @"offLine", nil);
 }
 
 //设置设备名称

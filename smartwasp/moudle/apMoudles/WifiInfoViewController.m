@@ -45,7 +45,7 @@
     NSString *wifiNameTxt = self.wifiName.text;
     NSString *pwdTxt = self.wifiPwd.text;
     if(!wifiNameTxt.length || !pwdTxt.length || pwdTxt.length < 8){
-        [[iToast makeText:@"Wi-Fi信息错误，请重试！"] show];
+        [[iToast makeText:NSLocalizedString(@"err_net", nil)] show];
         return;
     }
     PrevBindViewController *pvc = PrevBindViewController.new;

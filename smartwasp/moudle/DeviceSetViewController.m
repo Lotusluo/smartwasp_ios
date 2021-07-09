@@ -195,7 +195,7 @@
     if(![self canClick])
         return;
     __weak typeof(self) SELF = self;
-    [UIViewHelper showAlert:@"是否解绑该设备？" target:self callBack:^{
+    [UIViewHelper showAlert:NSLocalizedString(@"unbind_device", nil) target:self callBack:^{
         [Loading show:nil];
         [[IFLYOSSDK shareInstance] deleteUserDevice:self.deviceBean.device_id
                                          statusCode:^(NSInteger code) {
@@ -221,7 +221,7 @@
             }];
         } requestFail:^(id _Nonnull data) {
             [Loading dismiss];
-            [[iToast makeText:@"解绑失败,请重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"unbind_err", nil)] show];
         }];
     } negative:YES];
 }
@@ -270,7 +270,7 @@
         } requestSuccess:^(id _Nonnull data) {
             NEED_MAIN_REFRESH_DEVICES = YES;
         } requestFail:^(id _Nonnull data) {
-            [[iToast makeText:@"修改失败,请重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"modify_err", nil)] show];
         }];
     }else if(textField == self.deviceZone){
         //音箱位置修改
@@ -281,7 +281,7 @@
         } requestSuccess:^(id _Nonnull data) {
             NEED_MAIN_REFRESH_DEVICES = YES;
         } requestFail:^(id _Nonnull data) {
-            [[iToast makeText:@"修改失败,请重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"modify_err", nil)] show];
         }];
     }
     return YES;

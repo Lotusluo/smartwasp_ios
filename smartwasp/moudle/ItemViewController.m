@@ -248,14 +248,14 @@ static NSString *const ID = @"MusicItemCell";
     [[IFLYOSSDK shareInstance] musicControlPlayGroup:APPDELEGATE.curDevice.device_id groupId:self.bean._id mediaId:song._id statusCode:^(NSInteger code) {
         [Loading dismiss];
     } requestSuccess:^(id _Nonnull data) {
-        [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",song.name]] show];
+        [[iToast makeText:[NSString stringWithFormat:NSLocalizedString(@"play_now", nil),song.name]] show];
     } requestFail:^(id _Nonnull data) {
         if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
             NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
             [[iToast makeText:osBean.message] show];
         }else{
-            [[iToast makeText:@"请开通音乐权限或重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"load_music_err", nil)] show];
         }
     }];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -307,14 +307,14 @@ static NSString *const ID = @"MusicItemCell";
     [[IFLYOSSDK shareInstance] musicControlPlayGroup:APPDELEGATE.curDevice.device_id groupId:self.bean._id mediaId:@"" statusCode:^(NSInteger code) {
         [Loading dismiss];
     } requestSuccess:^(id _Nonnull data) {
-        [[iToast makeText:@"正在播放"] show];
+        [[iToast makeText:NSLocalizedString(@"play_now1", nil)] show];
     } requestFail:^(id _Nonnull data) {
         if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
             NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
             [[iToast makeText:osBean.message] show];
         }else{
-            [[iToast makeText:@"请开通音乐权限或重试!"] show];
+            [[iToast makeText:NSLocalizedString(@"load_music_err", nil)] show];
         }
     }];
 }

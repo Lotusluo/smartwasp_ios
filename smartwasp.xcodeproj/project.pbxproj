@@ -64,6 +64,10 @@
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
 		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
+		041AFED8269848AB004D7289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041AFED7269848AB004D7289 /* Main.storyboard */; };
+		041AFEDB269848AE004D7289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */; };
+		041AFEE126984909004D7289 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEDF26984909004D7289 /* Localizable.strings */; };
+		041AFEE226984909004D7289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEE026984909004D7289 /* InfoPlist.strings */; };
 		0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422A35B2684289E004E9D55 /* WebPageViewController.xib */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
 		0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* NotifyViewController.m */; };
@@ -72,10 +76,6 @@
 		04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0426196F261EFE1C000D95D6 /* Assets.xcassets */; };
 		04261976261EFE1C000D95D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04261975261EFE1C000D95D6 /* main.m */; };
 		042619B9261EFF88000D95D6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042619B8261EFF88000D95D6 /* AVFoundation.framework */; };
-		042619D3261F04D3000D95D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042619D1261F04D2000D95D6 /* LaunchScreen.storyboard */; };
-		042619E6261F06ED000D95D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 042619E8261F06ED000D95D6 /* Localizable.strings */; };
-		042619F1261F0828000D95D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 042619F3261F0828000D95D6 /* InfoPlist.strings */; };
-		042619F7261F09A6000D95D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042619F9261F09A6000D95D6 /* Main.storyboard */; };
 		04261A1B261F167C000D95D6 /* icon_tab_dialog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A15261F167C000D95D6 /* icon_tab_dialog@2x.png */; };
 		04261A1D261F167C000D95D6 /* icon_tab_dialog_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A17261F167C000D95D6 /* icon_tab_dialog_selected@2x.png */; };
 		04261A3E261F1D36000D95D6 /* icon_tab_mine_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A20261F1D34000D95D6 /* icon_tab_mine_selected@2x.png */; };
@@ -333,6 +333,10 @@
 		0415EADB26649A6D00A73CE7 /* ISWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISWDelegate.h; sourceTree = "<group>"; };
 		0415EAE92664D9E500A73CE7 /* FindBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
 		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
+		041AFED7269848AB004D7289 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		041AFEDF26984909004D7289 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		041AFEE026984909004D7289 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		0422A35B2684289E004E9D55 /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageViewController.xib; sourceTree = "<group>"; };
 		0425CD51262ECE17004D4D23 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0425CD52262ECE17004D4D23 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -349,10 +353,6 @@
 		042619B1261EFF40000D95D6 /* libiflyosPushService.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiflyosPushService.a; path = smartwasp/lib/libiflyosPushService.a; sourceTree = "<group>"; };
 		042619B2261EFF40000D95D6 /* libiflyosQuietSDKForiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiflyosQuietSDKForiOS.a; path = smartwasp/lib/libiflyosQuietSDKForiOS.a; sourceTree = "<group>"; };
 		042619B8261EFF88000D95D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		042619D1261F04D2000D95D6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		042619E7261F06ED000D95D6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		042619F2261F0828000D95D6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		042619F8261F09A6000D95D6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		04261A15261F167C000D95D6 /* icon_tab_dialog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_dialog@2x.png"; sourceTree = "<group>"; };
 		04261A17261F167C000D95D6 /* icon_tab_dialog_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_dialog_selected@2x.png"; sourceTree = "<group>"; };
 		04261A20261F1D34000D95D6 /* icon_tab_mine_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_mine_selected@2x.png"; sourceTree = "<group>"; };
@@ -859,11 +859,11 @@
 				04261A11261F164F000D95D6 /* resource */,
 				04261963261EFE1A000D95D6 /* AppDelegate.h */,
 				04261964261EFE1A000D95D6 /* AppDelegate.m */,
-				042619F3261F0828000D95D6 /* InfoPlist.strings */,
-				042619E8261F06ED000D95D6 /* Localizable.strings */,
-				042619F9261F09A6000D95D6 /* Main.storyboard */,
+				041AFED7269848AB004D7289 /* Main.storyboard */,
+				041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */,
+				041AFEE026984909004D7289 /* InfoPlist.strings */,
+				041AFEDF26984909004D7289 /* Localizable.strings */,
 				0426196F261EFE1C000D95D6 /* Assets.xcassets */,
-				042619D1261F04D2000D95D6 /* LaunchScreen.storyboard */,
 				04DD87FF2692FD49001F037A /* Bugly.framework */,
 				04261974261EFE1C000D95D6 /* Info.plist */,
 				04261975261EFE1C000D95D6 /* main.m */,
@@ -1323,8 +1323,10 @@
 				04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */,
 				04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */,
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
+				041AFEDB269848AE004D7289 /* LaunchScreen.storyboard in Resources */,
 				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
+				041AFED8269848AB004D7289 /* Main.storyboard in Resources */,
 				043811B5268C95CD00BE2571 /* ic_smartwasp_launch.png in Resources */,
 				04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */,
 				04E816CD268C4A9600B36123 /* ic_pwd_invisible@2x.png in Resources */,
@@ -1332,11 +1334,9 @@
 				043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */,
 				043F8BD0268D975100703FBE /* ic_sound_max_black@2x.png in Resources */,
 				044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */,
-				042619E6261F06ED000D95D6 /* Localizable.strings in Resources */,
+				041AFEE226984909004D7289 /* InfoPlist.strings in Resources */,
 				045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */,
-				042619F1261F0828000D95D6 /* InfoPlist.strings in Resources */,
 				04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */,
-				042619D3261F04D3000D95D6 /* LaunchScreen.storyboard in Resources */,
 				044EAE83267891C200CC122A /* ic_more@2x.png in Resources */,
 				042B4EA826672D9E009BE328 /* GroupItemCell.xib in Resources */,
 				04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */,
@@ -1344,9 +1344,9 @@
 				04E816CB268C4A9600B36123 /* ic_pwd_visible@2x.png in Resources */,
 				04D738D726202A8400E4F00C /* UserViewController.xib in Resources */,
 				04261970261EFE1C000D95D6 /* Assets.xcassets in Resources */,
+				041AFEE126984909004D7289 /* Localizable.strings in Resources */,
 				0410BE24267B54D900CE993E /* SkillView.xib in Resources */,
 				043F8BCC268D975100703FBE /* ic_skip_next_blac@2x.png in Resources */,
-				042619F7261F09A6000D95D6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1521,33 +1521,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		042619E8261F06ED000D95D6 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				042619E7261F06ED000D95D6 /* zh-Hans */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		042619F3261F0828000D95D6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				042619F2261F0828000D95D6 /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		042619F9261F09A6000D95D6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				042619F8261F09A6000D95D6 /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0426198D261EFE1C000D95D6 /* Debug */ = {

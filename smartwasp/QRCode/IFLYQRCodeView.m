@@ -35,6 +35,8 @@
     [cropLayer setOpacity:0.6];
     [cropLayer setNeedsDisplay];
     
+    CGPathRelease(path);
+    
     [self.layer addSublayer:cropLayer];
     
     [self performSelector:@selector(setupCamera) withObject:nil afterDelay:0];

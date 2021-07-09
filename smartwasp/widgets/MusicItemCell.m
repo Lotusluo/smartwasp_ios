@@ -13,6 +13,7 @@
 #import "Loading.h"
 #import "iToast.h"
 #import "AppDelegate.h"
+#import "IFlyOSBean.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -56,7 +57,13 @@
         } requestSuccess:^(id _Nonnull data) {
             [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",self.song.name]] show];
         } requestFail:^(id _Nonnull data) {
-            [[iToast makeText:@"请开通音乐权限或重试!"] show];
+            if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
+                NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
+                [[iToast makeText:osBean.message] show];
+            }else{
+                [[iToast makeText:@"请开通音乐权限或重试!"] show];
+            }
         }];
     }else{
         [[IFLYOSSDK shareInstance] musicControlPlay:APPDELEGATE.curDevice.device_id mediaId:self.song._id sourceType:self.song.source_type statusCode:^(NSInteger code) {
@@ -64,7 +71,13 @@
         } requestSuccess:^(id _Nonnull data) {
             [[iToast makeText:[NSString stringWithFormat:@"正在播放:%@",self.song.name]] show];
         } requestFail:^(id _Nonnull data) {
-            [[iToast makeText:@"请开通音乐权限或重试!"] show];
+            if([NSStringFromClass([data class]) containsString:@"_NSInlineData"]){
+                NSString * errMsg = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                IFlyOSBean *osBean = [IFlyOSBean yy_modelWithJSON:errMsg];
+                [[iToast makeText:osBean.message] show];
+            }else{
+                [[iToast makeText:@"请开通音乐权限或重试!"] show];
+            }
         }];
     }
 }

@@ -167,7 +167,10 @@ static NSString *const ID = @"MusicItemCell";
         _searchBar.layer.borderWidth = 1;
         _searchBar.layer.cornerRadius = 10;
         _searchBar.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _searchBar.barTintColor = [UIColor clearColor];
         id s = [_searchBar valueForKeyPath:@"searchField"];
+        UIView *searchField = s;
+        searchField.backgroundColor = [UIColor clearColor];
         id b = [s valueForKeyPath:@"_clearButton"];
         if([b isKindOfClass:[UIButton class]]){
             UIButton *btn = (UIButton*)b;
@@ -176,6 +179,7 @@ static NSString *const ID = @"MusicItemCell";
     }
     return _searchBar;
 }
+
 
 /*
 #pragma mark - Navigation

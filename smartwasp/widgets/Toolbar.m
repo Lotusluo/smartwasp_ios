@@ -135,7 +135,7 @@
 -(void)setEmpty{
     _devStatusIcon.hidden = true;
     _combo.hidden = true;
-    _devNameTxt.text = @"请添加设备";
+    _devNameTxt.text = @"点击添加设备";
     self.constraint.priority = 250;
 }
 

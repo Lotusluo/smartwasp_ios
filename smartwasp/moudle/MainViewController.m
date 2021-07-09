@@ -125,6 +125,11 @@
     NetworkStatus netStatus = [reachability currentReachabilityStatus];
     switch (netStatus){
         case NotReachable:{
+            for(UIViewController *vc in APPDELEGATE.rootNavC.viewControllers){
+                if([NSStringFromClass(vc.class) containsString:@"AddDeviceViewController"]){
+                    return;
+                }
+            }
             [UIViewHelper showAlert:@"无网络，请打开网络！" target:self callBack:^{
                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                 [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];

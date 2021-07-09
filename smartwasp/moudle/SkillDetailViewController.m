@@ -42,7 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.toolBar.title = @"技能详情";
+    self.title = @"技能详情";
     [self attachUI];
     // Do any additional setup after loading the view from its nib.
 }

@@ -21,8 +21,8 @@
                         <constraint firstAttribute="height" constant="15" id="wbf-bn-L1a"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请添加设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-Lk-qdd">
-                    <rect key="frame" x="32" y="27.5" width="71.5" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击添加设备" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-Lk-qdd">
+                    <rect key="frame" x="32" y="27.5" width="86" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="fsr-C3-cDs"/>
                     </constraints>
@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_triangle_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="4TS-El-c5l">
-                    <rect key="frame" x="107.5" y="26.5" width="20" height="20"/>
+                    <rect key="frame" x="122" y="26.5" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="F98-VZ-GV7"/>
                         <constraint firstAttribute="width" constant="20" id="J3o-4G-gBp"/>
@@ -46,7 +46,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfv-cg-yJB">
-                    <rect key="frame" x="0.0" y="0.0" width="107.5" height="73"/>
+                    <rect key="frame" x="0.0" y="0.0" width="122" height="73"/>
                     <connections>
                         <action selector="onClick1:" destination="iN0-l3-epB" eventType="touchUpInside" id="SJ3-gk-vCq"/>
                     </connections>

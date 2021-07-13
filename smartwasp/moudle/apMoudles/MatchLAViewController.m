@@ -19,6 +19,8 @@
 #import "UIViewHelper.h"
 #import "IFlyOSBean.h"
 #import "UIViewController+BackButtonHandler.h"
+#import "AppDelegate.h"
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 static MatchLAViewController *matchMV;
 
@@ -62,13 +64,15 @@ static MatchLAViewController *matchMV;
 
 //连接服务器
 - (void)connectServer{
+    [NSThread sleepForTimeInterval:2];
+    NSLog(@"connectServer");
     socket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_STREAM, IPPROTO_TCP, kCFSocketConnectCallBack, serverConnectCallBack, NULL);
     if (socket != nil) {
         struct sockaddr_in addr;
         memset(&addr, 0, sizeof(addr));
         addr.sin_len = sizeof(addr);
         addr.sin_family = AF_INET;
-        addr.sin_addr.s_addr = inet_addr("192.168.51.1");
+        addr.sin_addr.s_addr = inet_addr([self.hostName UTF8String]);
         addr.sin_port = htons(8080);
         CFDataRef address = CFDataCreate(kCFAllocatorDefault, (UInt8*)&addr, sizeof((addr)));
         //连接服务器
@@ -93,6 +97,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
         return;
     }
     //开始握手
+    NSLog(@"连接成功，开始握手");
     time_t timestamp;
     time(&timestamp);
     cJSON *jsonObject;
@@ -104,6 +109,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     send(CFSocketGetNative(socket), out, strlen(out) + 1, 1);
     cJSON_Delete(jsonObject);
     matchMV.step = 1;
+
 }
 
 //设置操作步骤
@@ -121,18 +127,22 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
             //配网成功开始倒计时关闭
             [JCGCDTimer canelTimer:self.taskAskName];
             [JCGCDTimer canelTimer:self.taskCountName];
+            NSLog(@"canelTimer taskCountName");
             //TODO 测试__block对当前对象的引用关系
             __block int count = 5;
             self.taskCountName = [JCGCDTimer timerTask:^{
                 [self setProgress:1];
-                self.tipView.text = [NSString stringWithFormat:NSLocalizedString(@"ok_net", nil),count];
+                NSLog(@"taskCount");
+                self.tipView.text = [NSString stringWithFormat:@"AP配网授权成功，请等待%d秒",count];
                 if(count--<=1){
                     [JCGCDTimer canelTimer:self.taskCountName];
+                    NSLog(@"canelTimer taskCountName");
                     self.step = 4;
                     return;
                 }
             } start:0 interval:1 repeats:YES async:NO];
         }else if(_step == 4){
+            matchMV = nil;
             //派发配网成功通知
             NSString *authUrl = [NSString stringWithFormat:@"clientId=%@&sn=%@",self.aphsBean.client_id,self.aphsBean.did];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:authUrl userInfo:nil];
@@ -147,6 +157,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     //轮询是否配网成功
     [JCGCDTimer canelTimer:self.taskAskName];
     [JCGCDTimer canelTimer:self.taskCountName];
+    NSLog(@"canelTimer taskCountName");
     self.taskAskName = [JCGCDTimer timerTask:^{
         [[IFLYOSSDK shareInstance] checkAuthCode:AUTHCODE.auth_code statusCode:^(NSInteger code) {
             self->askTimez++;
@@ -186,6 +197,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     ssize_t readLen;
     while((readLen = recv(CFSocketGetNative(socket),buff,BUFSIZ,0))){
         if(readLen > 0){
+            NSLog(@"读取到数据:%zd",readLen);
             ssize_t total = bufferPos + readLen;
             if(total > bufferLen){
                 char *temp = buffer;
@@ -258,6 +270,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     [super viewWillDisappear:animated];
     [JCGCDTimer canelTimer:self.taskAskName];
     [JCGCDTimer canelTimer:self.taskCountName];
+    NSLog(@"canelTimer taskCountName");
 }
 
 //释放连接服务
@@ -279,7 +292,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
 //销毁
 -(void)dealloc{
     [self releaseSocket];
-    matchMV = nil;
+    AUTHCODE = nil;
     NSLog(@"MatchLAViewController dealloc");
 }
 

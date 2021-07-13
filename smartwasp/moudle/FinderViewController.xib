@@ -33,14 +33,32 @@
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udq-ML-zib">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <connections>
+                                <action selector="onRefreshClick:" destination="-1" eventType="touchUpInside" id="DnL-NI-XTp"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击空白区域刷新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iol-4p-FSU">
+                            <rect key="frame" x="149.5" y="791" width="115" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Udq-ML-zib" secondAttribute="trailing" id="4fD-vo-dds"/>
                         <constraint firstItem="sS7-w9-lRW" firstAttribute="width" secondItem="xoh-ig-Cz7" secondAttribute="width" multiplier="0.2" id="AI6-ns-YMh"/>
+                        <constraint firstAttribute="bottom" secondItem="Iol-4p-FSU" secondAttribute="bottom" constant="10" id="BpN-VB-RZf"/>
+                        <constraint firstItem="Udq-ML-zib" firstAttribute="top" secondItem="xoh-ig-Cz7" secondAttribute="top" id="Da2-DW-JQU"/>
                         <constraint firstItem="XIC-kz-XfN" firstAttribute="centerX" secondItem="xoh-ig-Cz7" secondAttribute="centerX" id="DjT-Kr-2Sa"/>
                         <constraint firstItem="XIC-kz-XfN" firstAttribute="top" secondItem="sS7-w9-lRW" secondAttribute="bottom" constant="10" id="VXD-iC-aOO"/>
                         <constraint firstItem="sS7-w9-lRW" firstAttribute="centerX" secondItem="xoh-ig-Cz7" secondAttribute="centerX" id="dq4-v4-AIm"/>
                         <constraint firstItem="sS7-w9-lRW" firstAttribute="centerY" secondItem="xoh-ig-Cz7" secondAttribute="centerY" constant="-10" id="kAX-5J-nqg"/>
+                        <constraint firstItem="Udq-ML-zib" firstAttribute="leading" secondItem="xoh-ig-Cz7" secondAttribute="leading" id="n5a-4r-UPV"/>
+                        <constraint firstItem="Iol-4p-FSU" firstAttribute="centerX" secondItem="xoh-ig-Cz7" secondAttribute="centerX" id="xXF-ii-uX3"/>
+                        <constraint firstAttribute="bottom" secondItem="Udq-ML-zib" secondAttribute="bottom" id="xd9-QS-3jR"/>
                     </constraints>
                 </view>
             </subviews>

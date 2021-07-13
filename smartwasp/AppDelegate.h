@@ -12,6 +12,7 @@
 #import "MusicStateBean.h"
 #import "ConfigDAO.h"
 #import "NSObject+YYModel.h"
+#import "ApAuthCode.h"
 #import <iflyosPushService/IFLYOSPushService.h>
 #import <iflyosPushService/IFLYOSPushServiceProtocol.h>
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>

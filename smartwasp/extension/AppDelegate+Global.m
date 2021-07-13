@@ -11,6 +11,7 @@
 #import "IFlyOSBean.h"
 #import "UIViewHelper.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
+#import "Loading.h"
 
 @interface AppDelegate(Global)<UIGestureRecognizerDelegate>
 
@@ -24,6 +25,7 @@
     if(self.user && NEED_MAIN_REFRESH_DEVICES){
         [[IFLYOSSDK shareInstance] getUserDevices:^(NSInteger code) {
             NEED_MAIN_REFRESH_DEVICES = NO;
+            [Loading dismiss];
         } requestSuccess:^(id _Nonnull success)  {
             //刷新绑定的设备列表
             NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];

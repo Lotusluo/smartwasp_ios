@@ -13,6 +13,9 @@
 #import "IFLYOSSDK.h"
 #import "Loading.h"
 #import "NSObject+YYModel.h"
+#import "JCGCDTimer.h"
+#import "AppDelegate.h"
+#define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 
 NSString *SSID = @"";
@@ -48,7 +51,6 @@ ApAuthCode *AUTHCODE;
         self.labelFooter.text = NSLocalizedString(@"net_set2", nil);;
         NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"ic_dangjian@2x.png" ofType:nil];
         self.imageView.image = [UIImage imageWithContentsOfFile:bundleStr];
-
     }
     self.nextBtn.enabled = self.checkBox.selected;
 }
@@ -61,29 +63,46 @@ ApAuthCode *AUTHCODE;
 
 - (IBAction)onNextClick:(id)sender {
     if(self.mBindType == NO_SCREEN_TYPE){
-        //获取授权码
-        [Loading show:nil];
-        [[IFLYOSSDK shareInstance] getAuthCode:@"65e8d4f8-da9e-4633-8cac-84b0b47496b6"
-                                    statusCode:^(NSInteger code) {
-            [Loading dismiss];
-        } requestSuccess:^(id _Nonnull data) {
-            AUTHCODE = [ApAuthCode yy_modelWithJSON:data];
+        //获取授权码,先判断授权码是否超时
+        if(AUTHCODE && [AUTHCODE isOverdue]){
+            AUTHCODE = nil;
+        }
+        if(AUTHCODE){
+            NSLog(@"已有授权码");
             WaitLAViewController *wvc = WaitLAViewController.new;
             [self.navigationController pushViewController:wvc animated:YES];
-        } requestFail:^(id _Nonnull data) {
-            
-        }];
+        }else{
+            NSLog(@"刷新授权码");
+            [self refreshAuthcode];
+        }
     }else{
         QRCodeViewController *qvc = QRCodeViewController.new;
         [self.navigationController pushViewController:qvc animated:YES];
     }
 }
 
+/**
+ 刷新授权码
+ */
+-(void)refreshAuthcode{
+    [Loading show:nil];
+    [[IFLYOSSDK shareInstance] getAuthCode:@"65e8d4f8-da9e-4633-8cac-84b0b47496b6"
+                                statusCode:^(NSInteger code) {
+        [Loading dismiss];
+    } requestSuccess:^(id _Nonnull data) {
+        AUTHCODE = [ApAuthCode yy_modelWithJSON:data];
+        AUTHCODE.created_at_local = [[NSDate date] timeIntervalSince1970];
+        WaitLAViewController *wvc = WaitLAViewController.new;
+        [self.navigationController pushViewController:wvc animated:YES];
+    } requestFail:^(id _Nonnull data) {
+        [UIViewHelper showAlert:NSLocalizedString(@"net_set4", nil) target:self];
+    }];
+}
+
 //销毁
 -(void)dealloc{
     SSID = nil;
     PWD = nil;
-    AUTHCODE = nil;
     NSLog(@"PrevBindViewController dealloc");
 }
 

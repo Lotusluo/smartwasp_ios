@@ -12,8 +12,10 @@
 #import <WebKit/WebKit.h>
 #import <Masonry.h>
 #import "WebPageViewController.h"
+#import "Loading.h"
 
 #import "AppDelegate.h"
+#import "AppDelegate+Global.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -44,8 +46,10 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
+- (IBAction)onRefreshClick:(id)sender {
+    [Loading show:nil];
+    NEED_MAIN_REFRESH_DEVICES = YES;
+    [APPDELEGATE requestBindDevices];
 }
 
 //初始化自定义导航条

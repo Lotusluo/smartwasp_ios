@@ -61,6 +61,11 @@
     return YES;
 }
 
+//销毁
+-(void)dealloc{
+    NSLog(@"WifiInfoViewController dealloc");
+}
+
 
 /*
 #pragma mark - Navigation

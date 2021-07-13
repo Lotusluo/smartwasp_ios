@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MatchLAViewController : UIViewController
 
+@property(nonatomic,copy) NSString *hostName;
+
 @end
 
 NS_ASSUME_NONNULL_END

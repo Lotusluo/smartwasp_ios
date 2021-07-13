@@ -35,24 +35,24 @@
     [view addGestureRecognizer:tap];
 }
 
-+(void)showAlert:(NSString *)msg target:(UIViewController *)target{
-    [self showAlert:msg target:target callBack:nil];
++(UIAlertController*)showAlert:(NSString *)msg target:(UIViewController *)target{
+    return [self showAlert:msg target:target callBack:nil];
 }
 
-+(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback{
-    [self showAlert:msg target:target callBack:callback negative:NO];
++(UIAlertController*)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback{
+    return [self showAlert:msg target:target callBack:callback negative:NO];
 }
 
-+(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback negative:(BOOL) negative{
++(UIAlertController*)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback negative:(BOOL) negative{
 //    if ([msg isKindOfClass:[NSDictionary class]]) {
 //        NSError *parseError = nil;
 //        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg options:NSJSONWritingPrettyPrinted error:&parseError];
 //        msg = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 //    }
-    [self showAlert:msg target:target callBack:callback positiveTxt:@"确定" negativeTxt:negative?@"取消":nil];
+    return [self showAlert:msg target:target callBack:callback positiveTxt:@"确定" negativeTxt:negative?@"取消":nil];
 }
 
-+(void)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback positiveTxt:(NSString*) positiveTxt negativeTxt:(NSString*) negativeTxt{
++(UIAlertController*)showAlert:(NSString *)msg target:(UIViewController *)target callBack:(void(^ _Nullable)(void)) callback positiveTxt:(NSString*) positiveTxt negativeTxt:(NSString*) negativeTxt{
     UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
     [alertView addAction:[UIAlertAction actionWithTitle:positiveTxt style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if(callback){
@@ -67,6 +67,7 @@
     [target presentViewController:alertView animated:YES completion:^{
         
     }];
+    return alertView;
 }
 
 @end

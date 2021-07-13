@@ -33,13 +33,31 @@
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldG-hy-mbL">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <connections>
+                                <action selector="onRefreshClick:" destination="-1" eventType="touchUpInside" id="jr8-gy-s5p"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击空白区域刷新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="as2-ur-eUd">
+                            <rect key="frame" x="149.5" y="791" width="115" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="ldG-hy-mbL" firstAttribute="top" secondItem="DEh-Ch-aaI" secondAttribute="top" id="1W7-us-dOR"/>
+                        <constraint firstAttribute="bottom" secondItem="as2-ur-eUd" secondAttribute="bottom" constant="10" id="3Wv-UA-yoO"/>
                         <constraint firstItem="fed-eM-a2s" firstAttribute="top" secondItem="s1r-ka-MSD" secondAttribute="bottom" constant="10" id="9Rq-s5-Zwj"/>
+                        <constraint firstItem="as2-ur-eUd" firstAttribute="centerX" secondItem="DEh-Ch-aaI" secondAttribute="centerX" id="Bqt-UO-LQy"/>
                         <constraint firstItem="s1r-ka-MSD" firstAttribute="centerX" secondItem="DEh-Ch-aaI" secondAttribute="centerX" id="GBf-aJ-zr0"/>
                         <constraint firstItem="s1r-ka-MSD" firstAttribute="centerY" secondItem="DEh-Ch-aaI" secondAttribute="centerY" constant="-10" id="RQd-DY-mQC"/>
+                        <constraint firstItem="ldG-hy-mbL" firstAttribute="leading" secondItem="DEh-Ch-aaI" secondAttribute="leading" id="WZr-HM-KvL"/>
                         <constraint firstItem="s1r-ka-MSD" firstAttribute="width" secondItem="DEh-Ch-aaI" secondAttribute="width" multiplier="0.2" id="fON-FA-E3G"/>
+                        <constraint firstAttribute="bottom" secondItem="ldG-hy-mbL" secondAttribute="bottom" id="m3I-En-t6n"/>
+                        <constraint firstAttribute="trailing" secondItem="ldG-hy-mbL" secondAttribute="trailing" id="vzK-Gd-vno"/>
                         <constraint firstItem="fed-eM-a2s" firstAttribute="centerX" secondItem="DEh-Ch-aaI" secondAttribute="centerX" id="xtX-be-e1W"/>
                     </constraints>
                 </view>

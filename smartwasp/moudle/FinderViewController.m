@@ -21,6 +21,7 @@
 #import "ItemViewController.h"
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
+#import "AppDelegate+Global.h"
 #import "Loading.h"
 #import "UIViewHelper.h"
 
@@ -333,6 +334,12 @@ static NSString *const ID = @"CellIdentifier";
     UIImageView *imageView = [cell.subviews objectAtIndex:0];
    [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image]];
     return cell;
+}
+
+- (IBAction)onRefreshClick:(id)sender {
+    [Loading show:nil];
+    NEED_MAIN_REFRESH_DEVICES = YES;
+    [APPDELEGATE requestBindDevices];
 }
 
 #pragma mark --UICollectionViewDelegateFlowLayout

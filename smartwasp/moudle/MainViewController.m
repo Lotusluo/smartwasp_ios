@@ -125,11 +125,14 @@
     NetworkStatus netStatus = [reachability currentReachabilityStatus];
     switch (netStatus){
         case NotReachable:{
-            [APPDELEGATE.rootNavC.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if([NSStringFromClass(obj.class) containsString:@"AddDeviceViewController"]){
+            for(UIViewController *vc in APPDELEGATE.rootNavC.viewControllers){
+                if([NSStringFromClass(vc.class) containsString:@"AddDeviceViewController"]){
                     return;
                 }
-            }];
+            }
+//            [APPDELEGATE.rootNavC.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//
+//            }];
             [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:self callBack:^{
                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                 [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];

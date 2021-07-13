@@ -87,6 +87,19 @@
     [self goWifiConfig];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(self.mCLLocationManager){
+        self.mCLLocationManager.delegate = self;
+    }
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if(self.mCLLocationManager){
+        self.mCLLocationManager.delegate = nil;
+    }
+}
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse ||
@@ -96,7 +109,6 @@
 }
 
 -(void)goWifiConfig{
-    NSLog(@"wifiName:%@",ServiceUtil.wifiSsid);
     WifiInfoViewController *wvc = WifiInfoViewController.new;
     wvc.ssid = ServiceUtil.wifiSsid;
     [self.navigationController pushViewController:wvc animated:YES];

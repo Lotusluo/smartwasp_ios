@@ -22,6 +22,8 @@
 #import "AppDelegate.h"
 #import "AFNetworkReachabilityManager.h"
 #import "UIViewHelper.h"
+#import <CoreTelephony/CTCellularData.h>
+
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -55,14 +57,23 @@
 
 // 使用AF监听网络状态
 - (void)observeNetWork {
+    static UIAlertController* alert;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
-            [UIViewHelper showAlert:NSLocalizedString(@"no_internet", @"no_internet") target:self callBack:^{
+            if(alert){
+                [alert dismissViewControllerAnimated:YES completion:nil];
+                alert = nil;
+            }
+            alert = [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:self callBack:^{
                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                 [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
             } negative:YES];
         } else {
+            if(alert){
+                [alert dismissViewControllerAnimated:YES completion:nil];
+                alert = nil;
+            }
             [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
         }
     }];
@@ -149,7 +160,7 @@
  *  登录失败
  */
 -(void)onLoginFailed:(NSInteger) type error:(NSError *) error{
-    NSLog(@"登录失败:%li,%@",type,error.localizedDescription);
+//    NSLog(@"登录失败:%li,%@",type,error.localizedDescription);
 }
 
 /**

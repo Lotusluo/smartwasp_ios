@@ -9,10 +9,9 @@ target 'smartwasp' do
   pod 'AFNetworking'
   pod 'MJExtension'
   pod 'XMLReader-PPTV'
-  pod 'WebViewJavascriptBridge'
   pod 'SocketRocket'
   pod 'YYModel'
   pod 'Masonry'
   pod 'SDWebImage'
-  
+
 end

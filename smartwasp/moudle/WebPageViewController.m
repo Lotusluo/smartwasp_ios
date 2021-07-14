@@ -58,7 +58,6 @@
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openWebPage:self.Tag pageIndex:self.path deviceId:APPDELEGATE.curDevice.device_id];
     }
-    
     if(self.authUrl){
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openAuthorizePage:self.Tag url:self.authUrl];

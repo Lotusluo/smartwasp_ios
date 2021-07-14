@@ -196,6 +196,10 @@
 		04E00B2526214AD100080581 /* quiet-profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E00B2426214AD100080581 /* quiet-profiles.json */; };
 		04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 04E00B3326214AEF00080581 /* iflyosConfig.xml */; };
 		04E6F203269E7A23001AE968 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04E6F1FF269E796F001AE968 /* InfoPlist.strings */; };
+		04E6F269269E8B84001AE968 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6F261269E8B84001AE968 /* WebViewJavascriptBridgeBase.m */; };
+		04E6F26A269E8B84001AE968 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6F262269E8B84001AE968 /* WKWebViewJavascriptBridge.m */; };
+		04E6F26C269E8B84001AE968 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6F266269E8B84001AE968 /* WebViewJavascriptBridge_JS.m */; };
+		04E6F278269E8D4C001AE968 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6F277269E8D4C001AE968 /* WebViewJavascriptBridge.m */; };
 		04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E7DF1B2621ABDA007C3790 /* Loading.m */; };
 		04E816CB268C4A9600B36123 /* ic_pwd_visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E816C6268C4A9500B36123 /* ic_pwd_visible@2x.png */; };
 		04E816CC268C4A9600B36123 /* ic_dangjian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E816C7268C4A9500B36123 /* ic_dangjian@2x.png */; };
@@ -210,7 +214,7 @@
 		04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */; };
 		04EBA377267CAB15001D4FDF /* InsetsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBA375267CAB15001D4FDF /* InsetsLabel.m */; };
 		04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F840DB26316DA10068EFAF /* LoginViewController.xib */; };
-		90B35C25DB0C4AC24B8E3DD8 /* Pods_smartwasp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */; };
+		05C5C2C627CAB9A9564E0433 /* Pods_smartwasp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578615261B9C2F9DE901FEF4 /* Pods_smartwasp.framework */; };
 		F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F306DD25267F7CA800BBD170 /* JCGCDTimer.m */; };
 		F39EEE9D267EC9E600F89B2D /* UsrCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */; };
 /* End PBXBuildFile section */
@@ -547,6 +551,14 @@
 		04E6F1FE269E796F001AE968 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04E6F200269E7973001AE968 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		04E6F205269E7A69001AE968 /* smartwaspRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = smartwaspRelease.entitlements; sourceTree = "<group>"; };
+		04E6F261269E8B84001AE968 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		04E6F262269E8B84001AE968 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		04E6F264269E8B84001AE968 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		04E6F265269E8B84001AE968 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		04E6F266269E8B84001AE968 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		04E6F268269E8B84001AE968 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		04E6F271269E8C3A001AE968 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		04E6F277269E8D4C001AE968 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		04E7DF1A2621ABDA007C3790 /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		04E7DF1B2621ABDA007C3790 /* Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loading.m; sourceTree = "<group>"; };
 		04E816C6268C4A9500B36123 /* ic_pwd_visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_pwd_visible@2x.png"; sourceTree = "<group>"; };
@@ -566,9 +578,9 @@
 		04EBA375267CAB15001D4FDF /* InsetsLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsetsLabel.m; sourceTree = "<group>"; };
 		04EBA376267CAB15001D4FDF /* InsetsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsetsLabel.h; sourceTree = "<group>"; };
 		04F840DB26316DA10068EFAF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		3502DA920BECD51243A97A8E /* Pods-smartwasp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.debug.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.debug.xcconfig"; sourceTree = "<group>"; };
-		C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smartwasp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C880A1668B648AA14A5AA2E6 /* Pods-smartwasp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.release.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.release.xcconfig"; sourceTree = "<group>"; };
+		23EB04B0D0BD343B6F6D3D57 /* Pods-smartwasp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.debug.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.debug.xcconfig"; sourceTree = "<group>"; };
+		578615261B9C2F9DE901FEF4 /* Pods_smartwasp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smartwasp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B0048DCB532A42B2092ED95 /* Pods-smartwasp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.release.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.release.xcconfig"; sourceTree = "<group>"; };
 		F306DD24267F7CA800BBD170 /* JCGCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCGCDTimer.h; sourceTree = "<group>"; };
 		F306DD25267F7CA800BBD170 /* JCGCDTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCGCDTimer.m; sourceTree = "<group>"; };
 		F39EEE9A267EC9E600F89B2D /* UsrCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsrCenterViewController.h; sourceTree = "<group>"; };
@@ -586,11 +598,11 @@
 				04DD88002692FD49001F037A /* Bugly.framework in Frameworks */,
 				04E00B1C26214A6A00080581 /* libiflyosPushService.a in Frameworks */,
 				04E00B1E26214A6A00080581 /* libiflyosQuietSDKForiOS.a in Frameworks */,
-				90B35C25DB0C4AC24B8E3DD8 /* Pods_smartwasp.framework in Frameworks */,
 				04DD88032692FD69001F037A /* SystemConfiguration.framework in Frameworks */,
 				04DD88052692FD6F001F037A /* Security.framework in Frameworks */,
 				042619B9261EFF88000D95D6 /* AVFoundation.framework in Frameworks */,
 				04DD880B2692FDBE001F037A /* libz.tbd in Frameworks */,
+				05C5C2C627CAB9A9564E0433 /* Pods_smartwasp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,6 +861,7 @@
 			children = (
 				04E6F205269E7A69001AE968 /* smartwaspRelease.entitlements */,
 				043088E426903A9100FCDC98 /* smartwaspDebug.entitlements */,
+				04E6F260269E8B84001AE968 /* WebViewJavascriptBridge */,
 				04115E492682D760003B192F /* QRCode */,
 				040B95342666464C00B306D2 /* HWRefresh */,
 				040B94AC2666464800B306D2 /* Sources */,
@@ -1189,6 +1202,21 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		04E6F260269E8B84001AE968 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				04E6F261269E8B84001AE968 /* WebViewJavascriptBridgeBase.m */,
+				04E6F262269E8B84001AE968 /* WKWebViewJavascriptBridge.m */,
+				04E6F271269E8C3A001AE968 /* WebViewJavascriptBridge.h */,
+				04E6F264269E8B84001AE968 /* WebViewJavascriptBridge_JS.h */,
+				04E6F265269E8B84001AE968 /* WebViewJavascriptBridgeBase.h */,
+				04E6F277269E8D4C001AE968 /* WebViewJavascriptBridge.m */,
+				04E6F266269E8B84001AE968 /* WebViewJavascriptBridge_JS.m */,
+				04E6F268269E8B84001AE968 /* WKWebViewJavascriptBridge.h */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 		7ADBF90B9E9F6911374DBD9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1201,7 +1229,7 @@
 				042619B1261EFF40000D95D6 /* libiflyosPushService.a */,
 				042619B2261EFF40000D95D6 /* libiflyosQuietSDKForiOS.a */,
 				042619B0261EFF40000D95D6 /* libiflyosSDKForiOS.a */,
-				C095DC454F9C0DC968C03217 /* Pods_smartwasp.framework */,
+				578615261B9C2F9DE901FEF4 /* Pods_smartwasp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1209,8 +1237,8 @@
 		C6E99B68C25C6B194A9840AE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3502DA920BECD51243A97A8E /* Pods-smartwasp.debug.xcconfig */,
-				C880A1668B648AA14A5AA2E6 /* Pods-smartwasp.release.xcconfig */,
+				23EB04B0D0BD343B6F6D3D57 /* Pods-smartwasp.debug.xcconfig */,
+				7B0048DCB532A42B2092ED95 /* Pods-smartwasp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1222,11 +1250,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0426198F261EFE1C000D95D6 /* Build configuration list for PBXNativeTarget "smartwasp" */;
 			buildPhases = (
-				7895D4C95668242935B01F4D /* [CP] Check Pods Manifest.lock */,
+				7B76DC2C2339C059861FF112 /* [CP] Check Pods Manifest.lock */,
 				0426195C261EFE1A000D95D6 /* Sources */,
 				0426195D261EFE1A000D95D6 /* Frameworks */,
 				0426195E261EFE1A000D95D6 /* Resources */,
-				2A51074FC5968B37BD89D72F /* [CP] Embed Pods Frameworks */,
+				B9EE8538C03BAEFCCA611EA1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1356,24 +1384,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A51074FC5968B37BD89D72F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-smartwasp/Pods-smartwasp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-smartwasp/Pods-smartwasp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-smartwasp/Pods-smartwasp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7895D4C95668242935B01F4D /* [CP] Check Pods Manifest.lock */ = {
+		7B76DC2C2339C059861FF112 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1393,6 +1404,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9EE8538C03BAEFCCA611EA1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-smartwasp/Pods-smartwasp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-smartwasp/Pods-smartwasp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-smartwasp/Pods-smartwasp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1438,6 +1466,7 @@
 				042A95522685A1D200C017FD /* WifiInfoViewController.m in Sources */,
 				04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */,
 				047267072684800900446189 /* PrevBindViewController.m in Sources */,
+				04E6F26C269E8B84001AE968 /* WebViewJavascriptBridge_JS.m in Sources */,
 				045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */,
 				04DE8A372683184F002AAA7D /* AddDeviceViewController.m in Sources */,
 				040B95152666464800B306D2 /* JXCategoryIndicatorDotLineView.m in Sources */,
@@ -1483,6 +1512,7 @@
 				04B5D1D32680964700323E3C /* SpeakerBean.m in Sources */,
 				046EEFAC26298475001213DB /* CodingUtil.m in Sources */,
 				04B5D1D72680969B00323E3C /* MusicStateBean.m in Sources */,
+				04E6F269269E8B84001AE968 /* WebViewJavascriptBridgeBase.m in Sources */,
 				04115E532682D760003B192F /* QRCodeViewController.m in Sources */,
 				042B4EA0266724C0009BE328 /* GroupView.m in Sources */,
 				040B95322666464800B306D2 /* JXCategoryBaseCellModel.m in Sources */,
@@ -1497,11 +1527,13 @@
 				044EAE8C2678A90A00CC122A /* AppDialog.m in Sources */,
 				04E816DD268C520B00B36123 /* SearchViewController.m in Sources */,
 				042B4E94266721C0009BE328 /* UserBean.m in Sources */,
+				04E6F278269E8D4C001AE968 /* WebViewJavascriptBridge.m in Sources */,
 				040B948E26661F7100B306D2 /* ItemBean.m in Sources */,
 				040B95132666464800B306D2 /* JXCategoryIndicatorBallView.m in Sources */,
 				04261965261EFE1A000D95D6 /* AppDelegate.m in Sources */,
 				04B5D1DB26809B9E00323E3C /* StatusBean.m in Sources */,
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
+				04E6F26A269E8B84001AE968 /* WKWebViewJavascriptBridge.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
 				04DA6D56268FF6B80082869B /* IFlyOSBean.m in Sources */,
 				042A957A2685D83800C017FD /* cJSON.c in Sources */,
@@ -1654,7 +1686,7 @@
 		};
 		04261990261EFE1C000D95D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3502DA920BECD51243A97A8E /* Pods-smartwasp.debug.xcconfig */;
+			baseConfigurationReference = 23EB04B0D0BD343B6F6D3D57 /* Pods-smartwasp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1702,8 +1734,6 @@
 					"-framework",
 					"\"WebKit\"",
 					"-framework",
-					"\"WebViewJavascriptBridge\"",
-					"-framework",
 					"\"XMLReader_PPTV\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smartwasp.assistant.ios;
@@ -1714,7 +1744,7 @@
 		};
 		04261991261EFE1C000D95D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C880A1668B648AA14A5AA2E6 /* Pods-smartwasp.release.xcconfig */;
+			baseConfigurationReference = 7B0048DCB532A42B2092ED95 /* Pods-smartwasp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1761,8 +1791,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"WebKit\"",
-					"-framework",
-					"\"WebViewJavascriptBridge\"",
 					"-framework",
 					"\"XMLReader_PPTV\"",
 				);

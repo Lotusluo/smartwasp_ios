@@ -67,7 +67,6 @@
 		041AFED8269848AB004D7289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041AFED7269848AB004D7289 /* Main.storyboard */; };
 		041AFEDB269848AE004D7289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */; };
 		041AFEE126984909004D7289 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEDF26984909004D7289 /* Localizable.strings */; };
-		041AFEE226984909004D7289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEE026984909004D7289 /* InfoPlist.strings */; };
 		0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422A35B2684289E004E9D55 /* WebPageViewController.xib */; };
 		0425CD53262ECE17004D4D23 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD52262ECE17004D4D23 /* MainViewController.m */; };
 		0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425CD63262EE154004D4D23 /* NotifyViewController.m */; };
@@ -196,6 +195,7 @@
 		04E00B1E26214A6A00080581 /* libiflyosQuietSDKForiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E00B1B26214A6A00080581 /* libiflyosQuietSDKForiOS.a */; };
 		04E00B2526214AD100080581 /* quiet-profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E00B2426214AD100080581 /* quiet-profiles.json */; };
 		04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 04E00B3326214AEF00080581 /* iflyosConfig.xml */; };
+		04E6F203269E7A23001AE968 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04E6F1FF269E796F001AE968 /* InfoPlist.strings */; };
 		04E7DF1C2621ABDB007C3790 /* Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E7DF1B2621ABDA007C3790 /* Loading.m */; };
 		04E816CB268C4A9600B36123 /* ic_pwd_visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E816C6268C4A9500B36123 /* ic_pwd_visible@2x.png */; };
 		04E816CC268C4A9600B36123 /* ic_dangjian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E816C7268C4A9500B36123 /* ic_dangjian@2x.png */; };
@@ -336,7 +336,6 @@
 		041AFED7269848AB004D7289 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041AFEDF26984909004D7289 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		041AFEE026984909004D7289 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		0422A35B2684289E004E9D55 /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebPageViewController.xib; sourceTree = "<group>"; };
 		0425CD51262ECE17004D4D23 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		0425CD52262ECE17004D4D23 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -545,6 +544,9 @@
 		04E00B3226214AEF00080581 /* IFLYOSSDKDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLYOSSDKDelegate.h; sourceTree = "<group>"; };
 		04E00B3326214AEF00080581 /* iflyosConfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = iflyosConfig.xml; sourceTree = "<group>"; };
 		04E00B3426214AEF00080581 /* iflyosSDKForiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iflyosSDKForiOS.h; sourceTree = "<group>"; };
+		04E6F1FE269E796F001AE968 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04E6F200269E7973001AE968 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		04E6F205269E7A69001AE968 /* smartwaspRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = smartwaspRelease.entitlements; sourceTree = "<group>"; };
 		04E7DF1A2621ABDA007C3790 /* Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loading.h; sourceTree = "<group>"; };
 		04E7DF1B2621ABDA007C3790 /* Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loading.m; sourceTree = "<group>"; };
 		04E816C6268C4A9500B36123 /* ic_pwd_visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_pwd_visible@2x.png"; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 		04261962261EFE1A000D95D6 /* smartwasp */ = {
 			isa = PBXGroup;
 			children = (
+				04E6F205269E7A69001AE968 /* smartwaspRelease.entitlements */,
 				043088E426903A9100FCDC98 /* smartwaspDebug.entitlements */,
 				04115E492682D760003B192F /* QRCode */,
 				040B95342666464C00B306D2 /* HWRefresh */,
@@ -861,7 +864,7 @@
 				04261964261EFE1A000D95D6 /* AppDelegate.m */,
 				041AFED7269848AB004D7289 /* Main.storyboard */,
 				041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */,
-				041AFEE026984909004D7289 /* InfoPlist.strings */,
+				04E6F1FF269E796F001AE968 /* InfoPlist.strings */,
 				041AFEDF26984909004D7289 /* Localizable.strings */,
 				0426196F261EFE1C000D95D6 /* Assets.xcassets */,
 				04DD87FF2692FD49001F037A /* Bugly.framework */,
@@ -1334,7 +1337,7 @@
 				043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */,
 				043F8BD0268D975100703FBE /* ic_sound_max_black@2x.png in Resources */,
 				044EAE7D2678916C00CC122A /* icon_arrow@2x.png in Resources */,
-				041AFEE226984909004D7289 /* InfoPlist.strings in Resources */,
+				04E6F203269E7A23001AE968 /* InfoPlist.strings in Resources */,
 				045276442671DBE5000ECA78 /* ItemViewController.xib in Resources */,
 				04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */,
 				044EAE83267891C200CC122A /* ic_more@2x.png in Resources */,
@@ -1522,6 +1525,18 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		04E6F1FF269E796F001AE968 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04E6F1FE269E796F001AE968 /* en */,
+				04E6F200269E7973001AE968 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		0426198D261EFE1C000D95D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1645,7 +1660,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = smartwasp/smartwaspDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FUXPJ5TUQX;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 79X5S2QGW5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1665,7 +1681,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",
@@ -1690,7 +1706,7 @@
 					"-framework",
 					"\"XMLReader_PPTV\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartwasp.assistant.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartwasp.assistant.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1702,8 +1718,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = smartwasp/smartwaspRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FUXPJ5TUQX;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 79X5S2QGW5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1723,7 +1741,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",
@@ -1748,7 +1766,7 @@
 					"-framework",
 					"\"XMLReader_PPTV\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.smartwasp.assistant.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartwasp.assistant.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

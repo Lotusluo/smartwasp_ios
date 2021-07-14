@@ -128,7 +128,6 @@
     NEED_MAIN_REFRESH_DEVICES = YES;
     LoginViewController *loginVc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:loginVc];
-    [navVc setNavigationBarHidden:YES animated:YES];
     navVc.navigationBar.topItem.title = @"";
     self.window.rootViewController = navVc;
 }

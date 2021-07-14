@@ -16,8 +16,8 @@
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
-@interface WebPageViewController ()<WKNavigationDelegate,IFLYOSsdkAuthDelegate>
-@property(strong,nonatomic) WKWebView *webView;
+@interface WebPageViewController ()<WKNavigationDelegate,IFLYOSsdkAuthDelegate,UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet WKWebView *webView;
 @property(copy,nonatomic) NSString *Tag;
 @end
 
@@ -36,18 +36,18 @@
     WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc]init];
     configuration.userContentController = userContentController;
     self.webView.configuration.userContentController = userContentController;
-    self.webView = [[WKWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds] configuration:configuration];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
-    [self.view addSubview:self.webView];
- 
     
     if (self.contextTag) {
+        NSLog(@"WebPageViewController:contextTag");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
         [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
     }
     
     
     if(self.openUrl){
+        NSLog(@"WebPageViewController:openUrl");
+        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.Tag];
         NSURL *url = [NSURL URLWithString:self.openUrl];
         NSURLRequest *req = [NSURLRequest requestWithURL:url];
         [self.webView loadRequest:req];
@@ -55,18 +55,31 @@
 
 
     if(self.path){
+        NSLog(@"WebPageViewController:path");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openWebPage:self.Tag pageIndex:self.path deviceId:APPDELEGATE.curDevice.device_id];
     }
+    
     if(self.authUrl){
+        NSLog(@"WebPageViewController:authUrl");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openAuthorizePage:self.Tag url:self.authUrl];
     }
  
     if(self.isInterupt){
         self.webView.navigationDelegate = self;
+        if (@available(iOS 7.0, *)) {
+            if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+                self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+                self.navigationController.interactivePopGestureRecognizer.delegate = self;
+            }
+        }
     }
     // Do any additional setup after loading the view from its nib.
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    return YES;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -99,6 +112,7 @@
 }
 
 -(void) dealloc{
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     NSLog(@"newPage释放");
 }
 

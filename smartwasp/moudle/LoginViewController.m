@@ -83,7 +83,7 @@
     [super viewWillAppear:animated];
     [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:LOGIN_PAGE];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:LOGIN_PAGE];
-   
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 
@@ -106,6 +106,7 @@
     WebPageViewController *newPage = [WebPageViewController createNewPageWithTag:tag];
     newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 /**

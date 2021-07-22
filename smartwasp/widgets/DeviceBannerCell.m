@@ -102,29 +102,29 @@
     if([_device.alias isEqualToString:@"header"])
         return;
     //绘制未开通音乐权限提示
-    CGFloat height = self.bounds.size.height;
-    CGFloat halfValue = height / 2;
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextMoveToPoint (context, 0, halfValue);
-    CGContextAddLineToPoint (context, halfValue, height);
-    CGContextAddLineToPoint (context, 20, height);
-    CGContextAddLineToPoint (context, 0, height - 20);
-    CGContextClosePath(context);
-    [[UIColor orangeColor] setFill];
-    [[UIColor clearColor] setStroke];
-    CGContextDrawPath(context, kCGPathFillStroke);
-    NSString *tip = NSLocalizedString(_device.music.enable ? @"enabled_music" : @"disenabled_music", nil);
-    CGFloat radius = distanceBetweenPoints(CGPointMake(0, halfValue + 20),CGPointMake(halfValue - 20, height)) / 2;
-    UIFont *font = [UIFont systemFontOfSize:12.0];
-    CGPoint tranPoint = CGPointMake(cos(M_PI_4) * radius, halfValue + (height - 20 - halfValue) / 2 + sin(M_PI_4) * radius);
-    CGSize textSize = [tip sizeWithAttributes:@{NSFontAttributeName:font}];
-    CGAffineTransform t = CGAffineTransformMakeTranslation(tranPoint.x, tranPoint.y);
-    CGAffineTransform r = CGAffineTransformMakeRotation(M_PI_4);
-    CGContextConcatCTM(context, t);
-    CGContextConcatCTM(context, r);
-    [tip drawAtPoint:CGPointMake(-1 * textSize.width / 2, -1 * textSize.height / 2) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    CGContextConcatCTM(context, CGAffineTransformInvert(r));
-    CGContextConcatCTM(context, CGAffineTransformInvert(t));
+//    CGFloat height = self.bounds.size.height;
+//    CGFloat halfValue = height / 2;
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextMoveToPoint (context, 0, halfValue);
+//    CGContextAddLineToPoint (context, halfValue, height);
+//    CGContextAddLineToPoint (context, 20, height);
+//    CGContextAddLineToPoint (context, 0, height - 20);
+//    CGContextClosePath(context);
+//    [[UIColor orangeColor] setFill];
+//    [[UIColor clearColor] setStroke];
+//    CGContextDrawPath(context, kCGPathFillStroke);
+//    NSString *tip = NSLocalizedString(_device.music.enable ? @"enabled_music" : @"disenabled_music", nil);
+//    CGFloat radius = distanceBetweenPoints(CGPointMake(0, halfValue + 20),CGPointMake(halfValue - 20, height)) / 2;
+//    UIFont *font = [UIFont systemFontOfSize:12.0];
+//    CGPoint tranPoint = CGPointMake(cos(M_PI_4) * radius, halfValue + (height - 20 - halfValue) / 2 + sin(M_PI_4) * radius);
+//    CGSize textSize = [tip sizeWithAttributes:@{NSFontAttributeName:font}];
+//    CGAffineTransform t = CGAffineTransformMakeTranslation(tranPoint.x, tranPoint.y);
+//    CGAffineTransform r = CGAffineTransformMakeRotation(M_PI_4);
+//    CGContextConcatCTM(context, t);
+//    CGContextConcatCTM(context, r);
+//    [tip drawAtPoint:CGPointMake(-1 * textSize.width / 2, -1 * textSize.height / 2) withAttributes:@{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    CGContextConcatCTM(context, CGAffineTransformInvert(r));
+//    CGContextConcatCTM(context, CGAffineTransformInvert(t));
     
 //    [@"iOS text" drawAtPoint:CGPointMake(10, 80) withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Heiti SC" size:40], NSFontAttributeName,[UIColor blueColor],NSForegroundColorAttributeName, nil]];
 

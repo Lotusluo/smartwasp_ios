@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,12 +17,6 @@
                     <rect key="frame" x="20" y="0.0" width="73.5" height="21.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1m-wv-9DC" userLabel="More">
-                    <rect key="frame" x="365" y="2.5" width="29" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" systemColor="systemOrangeColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VOq-hv-5go">
@@ -40,15 +33,28 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="2Mu-ne-v2Y"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1d-Qi-yR1">
+                    <rect key="frame" x="361" y="-5.5" width="33" height="32.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="更多">
+                        <color key="titleColor" red="0.96550434829999998" green="0.56504922099999999" blue="0.1062936964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        </preferredSymbolConfiguration>
+                    </state>
+                    <connections>
+                        <action selector="onMoreClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="fnJ-Gd-gGE"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="VOq-hv-5go" firstAttribute="top" secondItem="XRQ-0m-zlA" secondAttribute="bottom" constant="10" id="21j-66-Ka8"/>
-                <constraint firstItem="U1m-wv-9DC" firstAttribute="centerY" secondItem="XRQ-0m-zlA" secondAttribute="centerY" id="CVJ-gb-9At"/>
+                <constraint firstAttribute="trailing" secondItem="M1d-Qi-yR1" secondAttribute="trailing" constant="20" id="B3X-74-JzX"/>
                 <constraint firstItem="VOq-hv-5go" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="LWI-sG-hEu"/>
                 <constraint firstAttribute="trailing" secondItem="VOq-hv-5go" secondAttribute="trailing" constant="20" id="N9k-TU-qoJ"/>
                 <constraint firstItem="XRQ-0m-zlA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="WDP-77-S3a"/>
-                <constraint firstAttribute="trailing" secondItem="U1m-wv-9DC" secondAttribute="trailing" constant="20" id="blo-f6-qHh"/>
+                <constraint firstItem="M1d-Qi-yR1" firstAttribute="centerY" secondItem="XRQ-0m-zlA" secondAttribute="centerY" id="Yzg-BG-raW"/>
                 <constraint firstAttribute="bottom" secondItem="VOq-hv-5go" secondAttribute="bottom" constant="20" id="vM8-mH-PVR"/>
                 <constraint firstItem="XRQ-0m-zlA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wZd-VD-amn"/>
             </constraints>
@@ -57,14 +63,9 @@
                 <outlet property="abbrLabel" destination="XRQ-0m-zlA" id="Pps-f9-2tl"/>
                 <outlet property="groupView" destination="VOq-hv-5go" id="dON-Gy-sTa"/>
                 <outlet property="groupViewLayout" destination="vNT-Cz-tq8" id="6bi-Cu-pFv"/>
-                <outlet property="moreLabel" destination="U1m-wv-9DC" id="Ljz-eM-Da6"/>
+                <outlet property="moreBtn" destination="M1d-Qi-yR1" id="EYg-s9-2ae"/>
             </connections>
             <point key="canvasLocation" x="-170" y="-73"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

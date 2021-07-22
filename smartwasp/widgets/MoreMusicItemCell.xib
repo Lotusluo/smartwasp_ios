@@ -4,23 +4,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="MusicItemCell" id="iN0-l3-epB" customClass="MusicItemCell">
+        <view contentMode="scaleToFill" restorationIdentifier="MusicItemCell" id="iN0-l3-epB" customClass="MoreMusicItemCell">
             <rect key="frame" x="0.0" y="0.0" width="469" height="287"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlU-gC-Ztm" userLabel="Serial">
-                    <rect key="frame" x="20" y="0.0" width="7" height="287"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKt-rb-IIb">
-                    <rect key="frame" x="47" y="123.5" width="342" height="20"/>
+                    <rect key="frame" x="90" y="123.5" width="299" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Ubo-Qj-nkg"/>
                     </constraints>
@@ -29,7 +24,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFs-m5-5Qr" userLabel="Subtitle">
-                    <rect key="frame" x="47" y="143.5" width="342" height="16"/>
+                    <rect key="frame" x="90" y="143.5" width="299" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="LZD-Tg-HtO"/>
                     </constraints>
@@ -42,37 +37,48 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="7td-jS-fKl"/>
                     </constraints>
-                    <color key="tintColor" red="0.69474148749999998" green="0.68475753070000001" blue="0.61793631319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" image="icon_more_x"/>
-                    <connections>
-                        <action selector="onSheetTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="tvk-3Z-Sxy"/>
-                    </connections>
+                    <color key="tintColor" systemColor="systemGray4Color"/>
+                    <state key="normal" image="icon_arrow_right"/>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U8S-t1-Wtr">
+                    <rect key="frame" x="20" y="113.5" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="9XP-i9-m3H"/>
+                        <constraint firstAttribute="height" constant="60" id="U0b-xG-kl0"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="mlU-gC-Ztm" secondAttribute="bottom" id="03g-aD-7bN"/>
                 <constraint firstItem="0cz-Bn-HBf" firstAttribute="leading" secondItem="tKt-rb-IIb" secondAttribute="trailing" constant="20" id="3LV-S0-Uou"/>
-                <constraint firstItem="mlU-gC-Ztm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ATH-Wo-IdL"/>
                 <constraint firstAttribute="trailing" secondItem="0cz-Bn-HBf" secondAttribute="trailing" id="Dkv-Dw-HT9"/>
-                <constraint firstItem="tKt-rb-IIb" firstAttribute="leading" secondItem="mlU-gC-Ztm" secondAttribute="trailing" constant="20" id="WSr-dd-nIn"/>
+                <constraint firstItem="U8S-t1-Wtr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SQ0-Ib-ikn"/>
+                <constraint firstItem="tKt-rb-IIb" firstAttribute="leading" secondItem="U8S-t1-Wtr" secondAttribute="trailing" constant="10" id="WSr-dd-nIn"/>
                 <constraint firstItem="LFs-m5-5Qr" firstAttribute="width" secondItem="tKt-rb-IIb" secondAttribute="width" id="cAV-aI-hIK"/>
                 <constraint firstItem="0cz-Bn-HBf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="iHV-eC-4n5"/>
                 <constraint firstItem="LFs-m5-5Qr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="8" id="kPo-Pt-Kmt"/>
-                <constraint firstItem="mlU-gC-Ztm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rz2-lm-vH5"/>
+                <constraint firstItem="U8S-t1-Wtr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="rVk-PJ-S3N"/>
                 <constraint firstItem="tKt-rb-IIb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="750" constant="-10" id="sSo-dW-wCu"/>
                 <constraint firstItem="0cz-Bn-HBf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="szY-mh-Fpm"/>
                 <constraint firstItem="LFs-m5-5Qr" firstAttribute="leading" secondItem="tKt-rb-IIb" secondAttribute="leading" id="ueK-GX-fGy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="labelSerial" destination="mlU-gC-Ztm" id="DBW-mK-6he"/>
-                <outlet property="labelSubtitle" destination="LFs-m5-5Qr" id="eyr-0g-mnD"/>
-                <outlet property="labelTitle" destination="tKt-rb-IIb" id="a9p-7h-sxv"/>
+                <outlet property="mImageView" destination="U8S-t1-Wtr" id="67e-mE-dLE"/>
+                <outlet property="subtitleView" destination="LFs-m5-5Qr" id="FLm-md-oFQ"/>
+                <outlet property="titleView" destination="tKt-rb-IIb" id="2FS-dT-wxK"/>
             </connections>
             <point key="canvasLocation" x="32.608695652173914" y="25.78125"/>
         </view>
     </objects>
     <resources>
-        <image name="icon_more_x" width="24" height="24"/>
+        <image name="icon_arrow_right" width="24" height="24"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *_id;
 @property(nonatomic,strong) NSString *image;
 @property(nonatomic,strong) NSString *name;
+@property(nonatomic,strong) NSString *category_name;
 
 @end
 

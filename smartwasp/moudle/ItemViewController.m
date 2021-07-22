@@ -92,7 +92,11 @@ static NSString *const ID = @"MusicItemCell";
 
 -(void)attachUI{
     self.nameView.text = self.bean.name;
+    self.bean.from = [self.bean.from stringByReplacingOccurrencesOfString:@"内容来源" withString:@"版权所有"];
     self.fromView.text =  self.bean.from;
+//    if(self.bean.from && [self.bean.from rangeOfString:@"内容来源" options:NSRegularExpressionSearch].location != NSNotFound){
+//
+//    }
     self.blurImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.blurImage sd_setImageWithURL:[NSURL URLWithString:self.bean.image]];
     self.iconView.contentMode = UIViewContentModeScaleAspectFill;

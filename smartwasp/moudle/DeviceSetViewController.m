@@ -230,6 +230,10 @@
 - (IBAction)onMusicClick:(id)sender {
     if(![self canClick])
         return;
+    if(!self.deviceBean.music.enable){
+        [UIViewHelper showAlert:NSLocalizedString(@"no_pay_err", nil) target:self];
+        return;
+    }
     self.NEED_REFRESH_DETAIL = YES;
     WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
     [self.navigationController pushViewController:nvc animated:YES];

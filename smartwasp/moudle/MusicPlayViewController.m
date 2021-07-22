@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UISlider *sliderView;
 @property (weak, nonatomic) IBOutlet UIButton *playView;
+@property (weak, nonatomic) IBOutlet UILabel *cpView;
+
 
 @end
 
@@ -95,6 +97,11 @@
 //处理设备媒体状态通知
 -(void)mediaSetCallback:(MusicStateBean* __nullable) musicStateBean{
     if(musicStateBean){
+        if(musicStateBean.music.source && [musicStateBean.music.source isEqualToString:@""]){
+            self.cpView.text = [NSString stringWithFormat:@"版权所有：%@",musicStateBean.music.source];
+        }else{
+            self.cpView.text = @"暂无来源";
+        }
         self.sliderView.value = musicStateBean.speaker.volume;
         self.playView.selected = musicStateBean.isPlaying;
         self.nameView.text = musicStateBean.music.name ? musicStateBean.music.name : NSLocalizedString(@"un_play_now1", nil);

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FindBean : NSObject
 
 //发现页导航图片
-@property(nonatomic,strong) NSArray<BannerBean*>  *banners;
+@property(nonatomic,strong) NSMutableArray<BannerBean*>  *banners;
 
 //音源组
 @property(nonatomic,strong) NSArray<GroupBean*>  *groups;

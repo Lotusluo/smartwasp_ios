@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *image;
 @property(nonatomic,strong) NSString *_id;
 @property(nonatomic,strong) NSString *source_type;
-
+@property(nonatomic,strong) NSString *source;
 
 @end
 

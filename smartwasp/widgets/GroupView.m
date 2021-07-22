@@ -18,8 +18,7 @@ UICollectionViewDelegate
 >
 //标题名称
 @property (weak, nonatomic) IBOutlet UILabel *abbrLabel;
-//更多
-@property (weak, nonatomic) IBOutlet UILabel *moreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 //组视图
 @property (weak, nonatomic) IBOutlet UICollectionView *groupView;
 //组视图布局
@@ -35,11 +34,12 @@ static NSString *const ID = @"CellIdentifier";
 
 -(void) awakeFromNib{
     [super awakeFromNib];
+    self.moreBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [self setupCollectionView];
 }
 
 //设置集合视图布局
-- (void) setupCollectionView {
+- (void)setupCollectionView {
     //先计算每个格子宽度
     CGFloat itemWidth = (SCREEN_WIDTH - (4 * 20)) / GROUP_COL;
     _groupViewLayout.itemSize = CGSizeMake(itemWidth, itemWidth + 20);
@@ -58,12 +58,19 @@ static NSString *const ID = @"CellIdentifier";
 //设置组数据
 -(void)setGroupBean:(GroupBean *)groupBean{
     _groupBean = groupBean;
-    _abbrLabel.text = groupBean.abbr;
-    _moreLabel.hidden = !groupBean.has_more;
+    _abbrLabel.text = groupBean.name;
+    _moreBtn.hidden = !groupBean.has_more;
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo([self uiHeight]);
     }];
+}
+
+//更多点击
+- (IBAction)onMoreClick:(id)sender {
+    if(self.delegate && [self.delegate respondsToSelector:@selector(groupView:onClickMore:)]){
+        [self.delegate groupView:self onClickMore:self.groupBean];
+    }
 }
 
 -(void)layoutSubviews{

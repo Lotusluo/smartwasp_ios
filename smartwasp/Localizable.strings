@@ -20,8 +20,10 @@
 "wait"="请稍后";
 "login_err"="登陆失败,请重试!";
 "login_info_err"="登陆信息错误,请重试";
+"more_info_err"="获取更多信息错误,请重试";
 "load_data_err"="加载数据失败!";
 "load_music_err"="请开通音乐权限或重试!";
+"no_pay_err"="小黄蜂管家暂不支持支付，请使用微信或支付宝扫描音箱二维码进行开通！";
 
 "retry_btn"="重试";
 "confirm_btn"="确定";

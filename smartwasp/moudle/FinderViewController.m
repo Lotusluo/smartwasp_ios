@@ -24,6 +24,8 @@
 #import "AppDelegate+Global.h"
 #import "Loading.h"
 #import "UIViewHelper.h"
+#import "iToast.h"
+#import "ItemMoreViewController.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -53,7 +55,7 @@ ISelectedDelegate>
 //指示器
 @property (strong,nonatomic) JXCategoryTitleView *categoryView;
 //发现页数据
-@property (nonatomic,strong)FindBean *findBean;
+@property (nonatomic,strong) FindBean *findBean;
 //刷新控件
 @property (nonatomic,strong) HWHeadRefresh *headerView;
 //组布局垂直控件
@@ -171,6 +173,9 @@ static NSString *const ID = @"CellIdentifier";
     //清空容器
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.findBean = bean;
+    if(self.findBean.banners.count > 0){
+        [self.findBean.banners removeObjectAtIndex:0];
+    }
     //刷新Banner数据
     [self.collectionView reloadData];
     [self.scrollView addSubview:self.collectionView];
@@ -217,7 +222,6 @@ static NSString *const ID = @"CellIdentifier";
     self.verticalLayout.axis = UILayoutConstraintAxisVertical;
     [self.scrollView addSubview:self.verticalLayout];
     
-//    abbrs = [abbrs valueForKeyPath:@"@distinctUnionOfObjects.self"];
     [self addIndicator: array];
     
     //设置group视图约束
@@ -255,8 +259,9 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 -(void)onPayClick{
-    WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:APPDELEGATE.curDevice.music.redirect_url];
-    [self.navigationController pushViewController:nvc animated:YES];
+    [UIViewHelper showAlert:NSLocalizedString(@"no_pay_err", nil) target:self];
+//    WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:APPDELEGATE.curDevice.music.redirect_url];
+//    [self.navigationController pushViewController:nvc animated:YES];
 }
 
 //添加指示器
@@ -367,6 +372,22 @@ static NSString *const ID = @"CellIdentifier";
     //test
 //    MusicPlayViewController *mvc = [[MusicPlayViewController alloc] initWithNibName:@"MusicPlayViewController" bundle:nil];
     [self.navigationController pushViewController:ivc animated:YES];
+}
+
+-(void)groupView:(GroupView *)groupView onClickMore:(GroupBean *)bean{
+    [Loading show:nil];
+    [[IFLYOSSDK shareInstance] getMediaGroupList:bean.section_id deviceId:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger code) {
+        if(code != 200){
+            [[iToast makeText:NSLocalizedString(@"more_info_err", nil)] show];
+        }
+        [Loading dismiss];
+    } requestSuccess:^(id _Nonnull data) {
+        NSArray *items = [NSArray yy_modelArrayWithClass:ItemBean.class json:data[@"items"]];
+        ItemMoreViewController *imvc = [ItemMoreViewController createNewPage:items group:bean];
+        [self.navigationController pushViewController:imvc animated:YES];
+    } requestFail:^(id _Nonnull data) {
+        
+    }];
 }
 
 /*

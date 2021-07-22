@@ -17,7 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-- (void)groupView:(GroupView *)groupView canClickItemAtIndex:(ItemBean *)bean;
+-(void)groupView:(GroupView *)groupView canClickItemAtIndex:(ItemBean *)bean;
+
+-(void)groupView:(GroupView *)groupView onClickMore:(GroupBean *)bean;
 
 @end
 

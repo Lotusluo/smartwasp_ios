@@ -179,6 +179,7 @@
 }
 
 +(WebPageViewController *)createNewPageWithUrl:(NSString *)url{
+    NSLog(@"url:%@",url);
     WebPageViewController *vc = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil];
     vc.openUrl = url;
     vc.disappearHideBar = YES;

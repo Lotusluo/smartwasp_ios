@@ -16,7 +16,6 @@
 
 @interface SkillDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet NormalToolbar *toolBar;
 //图标控件
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 //专辑名称控件
@@ -47,17 +46,12 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void)viewWillLayoutSubviews{
-    [super viewWillLayoutSubviews];
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.width, self.skillViewContainer.height);
-}
-
 //赋值UI
 -(void)attachUI{
     if(!self.skillBean)
         return;
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:self.skillBean.icon]];
-    self.titleView.text = self.skillBean.shopName;
+    self.titleView.text = self.skillBean.skillName;
     self.coView.text = self.skillBean.developer;
     self.coView1.text = self.skillBean.developer;
     self.tipView.text = self.skillBean.skillDesc;
@@ -65,7 +59,6 @@
     self.timeView.text = self.skillBean.updateTime;
     if(self.skillBean.hitTextS.count > 0){
         self.guideView.text = [NSString stringWithFormat:NSLocalizedString(@"you_can_say", nil),self.skillBean.hitTextS[0]];
-        __block NSInteger index = 0;
         for(NSString *skillStr in self.skillBean.hitTextS){
             InsetsLabel *skillView = InsetsLabel.new;
             skillView.rightInset = 10;
@@ -81,10 +74,6 @@
             [self.skillViewContainer addArrangedSubview:skillView];
             [skillView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.height.mas_equalTo(30);
-                make.leading.mas_equalTo(5);
-                if(++index>=self.skillBean.hitTextS.count){
-                    make.bottom.equalTo(self.skillViewContainer);
-                }
             }];
         }
     }

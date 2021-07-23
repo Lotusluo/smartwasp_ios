@@ -22,12 +22,17 @@
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
-@interface AddDeviceViewController ()<CLLocationManagerDelegate>
+@interface AddDeviceViewController ()<CLLocationManagerDelegate>{
+    NSString *clientID;
+}
 
 //有屏扫码授权
 @property (weak, nonatomic) IBOutlet UIView *scanEntryBtn;
 //党建配网
 @property (weak, nonatomic) IBOutlet UIView *djEntryBtn;
+//小丹配网
+@property (weak, nonatomic) IBOutlet UIView *xdEntryBtn;
+
 @property (strong,nonatomic) CLLocationManager * mCLLocationManager;
 
 @end
@@ -39,6 +44,7 @@
     self.title = NSLocalizedString(@"add_device", nil);
     [UIViewHelper attachClick:self.scanEntryBtn target:self action:@selector(onScanClick)];
     [UIViewHelper attachClick:self.djEntryBtn target:self action:@selector(onDJClick)];
+    [UIViewHelper attachClick:self.xdEntryBtn target:self action:@selector(onXDClick)];
     //添加二维码扫码监听
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(qrCodeObserver:)
@@ -75,16 +81,32 @@
 
 //党建
 -(void)onDJClick{
+    clientID = @"65e8d4f8-da9e-4633-8cac-84b0b47496b6";
+    if([self hasLocationPermission]){
+        [self goWifiConfig];
+    }
+}
+
+//小丹
+-(void)onXDClick{
+    clientID = @"cddcdf2d-f300-4616-922c-d46a9905c09f";
+    if([self hasLocationPermission]){
+        [self goWifiConfig];
+    }
+}
+
+//检查是否有地理位置权限
+-(BOOL)hasLocationPermission{
     //地址位置权限
     if (@available(iOS 13.0, *)) {
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
             self.mCLLocationManager = [[CLLocationManager alloc] init];
             self.mCLLocationManager.delegate = self;
             [self.mCLLocationManager requestWhenInUseAuthorization];
-            return;
+            return NO;
         }
     }
-    [self goWifiConfig];
+    return YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -111,6 +133,7 @@
 -(void)goWifiConfig{
     WifiInfoViewController *wvc = WifiInfoViewController.new;
     wvc.ssid = ServiceUtil.wifiSsid;
+    wvc.clientID = clientID;
     [self.navigationController pushViewController:wvc animated:YES];
 }
 

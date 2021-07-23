@@ -14,4 +14,14 @@
     return @{@"hitTextS" : [NSString class]};
 }
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{
+        @"_id" : @[@"id"]};
+}
+
++ (NSArray *)modelPropertyBlacklist {
+    return @[@"propertyName1"];
+}
+
+
 @end

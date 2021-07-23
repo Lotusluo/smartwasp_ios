@@ -11,18 +11,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SkillBean : NSObject
 
-@property(nonatomic) NSInteger skillId;
+//技能ID
+@property(nonatomic) int _id;
+//技能名称
 @property(nonatomic,strong)NSString *skillName;
-@property(nonatomic,strong)NSString *shopName;
-@property(nonatomic)NSInteger *proId;
+//技能图标
 @property(nonatomic,strong)NSString *icon;
-@property(nonatomic)BOOL isBuy;
-@property(nonatomic,strong)NSString *expireTime;
+//技能描述
 @property(nonatomic,strong)NSString *skillDesc;
+//技能开发者
 @property(nonatomic,strong)NSString *developer;
+//技能版本
 @property(nonatomic,strong)NSString *version;
+//更新时间
 @property(nonatomic,strong)NSString *updateTime;
+//示范语句
 @property(nonatomic,strong)NSArray<NSString*> *hitTextS;
+//类别
+@property(nonatomic,strong)NSString *category_name;
 
 @end
 

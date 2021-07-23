@@ -7,12 +7,12 @@
 //
 
 #import "ListViewController.h"
-#import "MoreMusicItemCell.h"
+#import "ABUITableViewCell.h"
 #import "ItemViewController.h"
 
 @implementation ListViewController
 
-static NSString *const ID = @"MoreMusicItemCell";
+static NSString *const ID = @"ABUITableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,8 +26,8 @@ static NSString *const ID = @"MoreMusicItemCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MoreMusicItemCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
-    cell.bean = [self.lists objectAtIndex:indexPath.row];
+    ABUITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
+//    cell.bean = [self.lists objectAtIndex:indexPath.row];
     return cell;
 }
 

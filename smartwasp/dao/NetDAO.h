@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)post:(NSDictionary*) params path:(NSString*) path callBack:(void(^)(BaseBean<T>* _cData)) complete;
 
+-(void)getBos:(NSString*) bosAPI callBack:(void(^)(BaseBean<id>* cData)) complete;
+
 @end
 
 NS_ASSUME_NONNULL_END

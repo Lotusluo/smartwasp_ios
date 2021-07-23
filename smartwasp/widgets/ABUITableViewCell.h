@@ -12,7 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ABUITableViewCell : UITableViewCell
 
-@property(nonatomic,strong)ItemBean *bean;
+//设置标题
+-(void)setTitle:(NSString*)title;
+//设置副标题
+-(void)setSubtitle:(NSString*)subtitle;
+//设置图标
+-(void)setIcon:(NSString*)path;
 
 @end
 

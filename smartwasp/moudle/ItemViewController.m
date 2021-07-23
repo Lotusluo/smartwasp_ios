@@ -64,7 +64,6 @@ static NSString *const ID = @"MusicItemCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.title = @"歌单";
     self.songsData = NSMutableArray.new;
     [self customRightItem];

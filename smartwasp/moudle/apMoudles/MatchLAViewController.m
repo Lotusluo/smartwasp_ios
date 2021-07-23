@@ -59,6 +59,7 @@ static MatchLAViewController *matchMV;
     matchMV = self;
     self.navigationItem.leftBarButtonItem.title = @"";
     [NSThread detachNewThreadSelector:@selector(connectServer) toTarget:self withObject:nil];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -268,6 +269,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     [JCGCDTimer canelTimer:self.taskAskName];
     [JCGCDTimer canelTimer:self.taskCountName];
     NSLog(@"canelTimer taskCountName");

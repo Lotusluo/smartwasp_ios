@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 //id
 @property(nonatomic) int _id;
 
+//banner图标
 @property(nonatomic,strong) NSString *image;
 
+//banner链接
 @property(nonatomic,strong)NSString *url;
 
 @end

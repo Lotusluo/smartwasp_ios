@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //绑定的类型
 @property(nonatomic,assign)BindType mBindType;
+@property(nonatomic,copy)NSString *clientID;
 
 @end
 

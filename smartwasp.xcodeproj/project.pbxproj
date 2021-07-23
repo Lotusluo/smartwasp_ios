@@ -108,8 +108,7 @@
 		043AD2CA26A7D36000CCB406 /* ItemMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AD2C826A7D36000CCB406 /* ItemMoreViewController.m */; };
 		043AD2CB26A7D36000CCB406 /* ItemMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043AD2C926A7D36000CCB406 /* ItemMoreViewController.xib */; };
 		043AD2CF26A7F55600CCB406 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AD2CD26A7F55600CCB406 /* ListViewController.m */; };
-		043AD2D526A7FC8200CCB406 /* MoreMusicItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AD2D326A7FC8200CCB406 /* MoreMusicItemCell.m */; };
-		043AD2D626A7FC8200CCB406 /* MoreMusicItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043AD2D426A7FC8200CCB406 /* MoreMusicItemCell.xib */; };
+		043AD2D526A7FC8200CCB406 /* ABUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AD2D326A7FC8200CCB406 /* ABUITableViewCell.m */; };
 		043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DC2A62630426400A7F680 /* AppDelegate+Global.m */; };
 		043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */; };
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
@@ -144,6 +143,8 @@
 		045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D852658E1F200672251 /* UIImage+Extension.m */; };
 		045E5D9026590BF600672251 /* PageControl2.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D8F26590BF600672251 /* PageControl2.m */; };
 		045EDDEA26947DC300E4F572 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */; };
+		04630C5826AAB8A700F2DD91 /* FinderHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04630C5726AAB8A700F2DD91 /* FinderHeaderCell.xib */; };
+		04630C5D26AABE5600F2DD91 /* ABUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */; };
 		046EEFAC26298475001213DB /* CodingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFAB26298475001213DB /* CodingUtil.m */; };
 		046EEFB726298954001213DB /* ConfigDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFB626298954001213DB /* ConfigDAO.m */; };
 		04725167265E30F8003C4625 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04725164265E30F7003C4625 /* Toolbar.m */; };
@@ -164,7 +165,6 @@
 		0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D487266087CE00F8DE42 /* DeviceAddCell.xib */; };
 		04783315262D1F3600684E9C /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04783313262D1F3500684E9C /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0487DC0726A90F980089BC88 /* banner.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0487DC0626A90F980089BC88 /* banner.plist */; };
-		0487DC0A26A913410089BC88 /* banner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0487DC0926A913400089BC88 /* banner1.png */; };
 		0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */; };
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
@@ -221,6 +221,7 @@
 		04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */; };
 		04EBA377267CAB15001D4FDF /* InsetsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBA375267CAB15001D4FDF /* InsetsLabel.m */; };
 		04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F840DB26316DA10068EFAF /* LoginViewController.xib */; };
+		04FCC47126AA68A900CB3C21 /* ic_xiaodan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FCC47026AA68A900CB3C21 /* ic_xiaodan@2x.png */; };
 		05C5C2C627CAB9A9564E0433 /* Pods_smartwasp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578615261B9C2F9DE901FEF4 /* Pods_smartwasp.framework */; };
 		F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = F306DD25267F7CA800BBD170 /* JCGCDTimer.m */; };
 		F39EEE9D267EC9E600F89B2D /* UsrCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F39EEE9B267EC9E600F89B2D /* UsrCenterViewController.m */; };
@@ -413,9 +414,8 @@
 		043AD2C926A7D36000CCB406 /* ItemMoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemMoreViewController.xib; sourceTree = "<group>"; };
 		043AD2CD26A7F55600CCB406 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		043AD2CE26A7F55600CCB406 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		043AD2D226A7FC8200CCB406 /* MoreMusicItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreMusicItemCell.h; sourceTree = "<group>"; };
-		043AD2D326A7FC8200CCB406 /* MoreMusicItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreMusicItemCell.m; sourceTree = "<group>"; };
-		043AD2D426A7FC8200CCB406 /* MoreMusicItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreMusicItemCell.xib; sourceTree = "<group>"; };
+		043AD2D226A7FC8200CCB406 /* ABUITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABUITableViewCell.h; sourceTree = "<group>"; };
+		043AD2D326A7FC8200CCB406 /* ABUITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABUITableViewCell.m; sourceTree = "<group>"; };
 		043DC2A52630423900A7F680 /* AppDelegate+Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Global.h"; sourceTree = "<group>"; };
 		043DC2A62630426400A7F680 /* AppDelegate+Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Global.m"; sourceTree = "<group>"; };
 		043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_agreement.html; sourceTree = "<group>"; };
@@ -463,6 +463,8 @@
 		045E5D8F26590BF600672251 /* PageControl2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl2.m; sourceTree = "<group>"; };
 		045EDDE826947DC300E4F572 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		04630C5726AAB8A700F2DD91 /* FinderHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinderHeaderCell.xib; sourceTree = "<group>"; };
+		04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABUITableViewCell.xib; sourceTree = "<group>"; };
 		046EEFAA26298475001213DB /* CodingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodingUtil.h; sourceTree = "<group>"; };
 		046EEFAB26298475001213DB /* CodingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingUtil.m; sourceTree = "<group>"; };
 		046EEFB526298954001213DB /* ConfigDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigDAO.h; sourceTree = "<group>"; };
@@ -496,7 +498,6 @@
 		04783313262D1F3500684E9C /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		04783314262D1F3600684E9C /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		0487DC0626A90F980089BC88 /* banner.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = banner.plist; sourceTree = "<group>"; };
-		0487DC0926A913400089BC88 /* banner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner1.png; sourceTree = "<group>"; };
 		0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_choose@2x.png"; sourceTree = "<group>"; };
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
@@ -595,6 +596,7 @@
 		04EBA375267CAB15001D4FDF /* InsetsLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsetsLabel.m; sourceTree = "<group>"; };
 		04EBA376267CAB15001D4FDF /* InsetsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsetsLabel.h; sourceTree = "<group>"; };
 		04F840DB26316DA10068EFAF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		04FCC47026AA68A900CB3C21 /* ic_xiaodan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_xiaodan@2x.png"; sourceTree = "<group>"; };
 		23EB04B0D0BD343B6F6D3D57 /* Pods-smartwasp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.debug.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.debug.xcconfig"; sourceTree = "<group>"; };
 		578615261B9C2F9DE901FEF4 /* Pods_smartwasp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smartwasp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0048DCB532A42B2092ED95 /* Pods-smartwasp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smartwasp.release.xcconfig"; path = "Target Support Files/Pods-smartwasp/Pods-smartwasp.release.xcconfig"; sourceTree = "<group>"; };
@@ -908,7 +910,6 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				0487DC0926A913400089BC88 /* banner1.png */,
 				0473B8A0268F125400471A6A /* ic_launcher@2x.png */,
 				043F8BDD268DB6F800703FBE /* icon_empty@2x.png */,
 				043F8BC8268D975000703FBE /* ic_pause_black@2x.png */,
@@ -919,6 +920,7 @@
 				043F8BC5268D975000703FBE /* ic_sound_min_black@2x.png */,
 				043811B4268C95CD00BE2571 /* ic_smartwasp_launch.png */,
 				04E816D1268C4AC800B36123 /* ic_search@2x.png */,
+				04FCC47026AA68A900CB3C21 /* ic_xiaodan@2x.png */,
 				04E816C7268C4A9500B36123 /* ic_dangjian@2x.png */,
 				04E816CA268C4A9500B36123 /* ic_la001@2x.jpg */,
 				04E816C8268C4A9500B36123 /* ic_pwd_invisible@2x.png */,
@@ -1132,13 +1134,14 @@
 				044EAE8526789FA800CC122A /* MusicItemCell.h */,
 				044EAE8626789FA800CC122A /* MusicItemCell.m */,
 				044EAE73267886F800CC122A /* MusicItemCell.xib */,
-				043AD2D226A7FC8200CCB406 /* MoreMusicItemCell.h */,
-				043AD2D326A7FC8200CCB406 /* MoreMusicItemCell.m */,
-				043AD2D426A7FC8200CCB406 /* MoreMusicItemCell.xib */,
+				043AD2D226A7FC8200CCB406 /* ABUITableViewCell.h */,
+				043AD2D326A7FC8200CCB406 /* ABUITableViewCell.m */,
+				04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */,
 				044EAE8A2678A90A00CC122A /* AppDialog.h */,
 				044EAE8B2678A90A00CC122A /* AppDialog.m */,
 				044EAE8E2678A98D00CC122A /* SongsPlayDialog.xib */,
 				0410BE23267B54D900CE993E /* SkillView.xib */,
+				04630C5726AAB8A700F2DD91 /* FinderHeaderCell.xib */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -1348,9 +1351,9 @@
 				04115E512682D760003B192F /* QRCodeViewController.xib in Resources */,
 				0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */,
 				0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */,
+				04630C5D26AABE5600F2DD91 /* ABUITableViewCell.xib in Resources */,
 				0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */,
 				044EAE7C2678916C00CC122A /* icon_clock@2x.png in Resources */,
-				0487DC0A26A913410089BC88 /* banner1.png in Resources */,
 				04D738D126202A7700E4F00C /* FinderViewController.xib in Resources */,
 				0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */,
 				04725168265E30F8003C4625 /* Toolbar.xib in Resources */,
@@ -1367,6 +1370,7 @@
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
 				043F8BCD268D975100703FBE /* ic_play_arrow_black@2x.png in Resources */,
 				0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */,
+				04630C5826AAB8A700F2DD91 /* FinderHeaderCell.xib in Resources */,
 				04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */,
 				04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */,
 				0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */,
@@ -1391,7 +1395,6 @@
 				043811B5268C95CD00BE2571 /* ic_smartwasp_launch.png in Resources */,
 				04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */,
 				04E816CD268C4A9600B36123 /* ic_pwd_invisible@2x.png in Resources */,
-				043AD2D626A7FC8200CCB406 /* MoreMusicItemCell.xib in Resources */,
 				04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */,
 				043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */,
 				043F8BD0268D975100703FBE /* ic_sound_max_black@2x.png in Resources */,
@@ -1409,6 +1412,7 @@
 				041AFEE126984909004D7289 /* Localizable.strings in Resources */,
 				0410BE24267B54D900CE993E /* SkillView.xib in Resources */,
 				043F8BCC268D975100703FBE /* ic_skip_next_blac@2x.png in Resources */,
+				04FCC47126AA68A900CB3C21 /* ic_xiaodan@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1554,7 +1558,7 @@
 				040B95102666464800B306D2 /* JXCategoryIndicatorTriangleView.m in Sources */,
 				040B953F2666464C00B306D2 /* HWRefreshKeyValue.m in Sources */,
 				044D4E0B268B1D1600BAD622 /* ApAuthCode.m in Sources */,
-				043AD2D526A7FC8200CCB406 /* MoreMusicItemCell.m in Sources */,
+				043AD2D526A7FC8200CCB406 /* ABUITableViewCell.m in Sources */,
 				040B95282666464800B306D2 /* JXCategoryNumberCellModel.m in Sources */,
 				04D738D626202A8400E4F00C /* UserViewController.m in Sources */,
 				040B952E2666464800B306D2 /* UIColor+JXAdd.m in Sources */,

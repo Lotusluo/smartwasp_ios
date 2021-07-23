@@ -53,7 +53,25 @@ static NSString* access_token = @"smartwasp-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMTQ
     [self.afManager POST:api parameters:params headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if(responseObject){
-            NSLog(@"responseObject:%@",responseObject);
+            BaseBean<id> *bean = [BaseBean<id> yy_modelWithJSON:responseObject];
+            complete(bean);
+        }else{
+            BaseBean *emptyBean = BaseBean.new;
+            emptyBean.errCode = -1;
+            complete(emptyBean);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        BaseBean *errorBean = BaseBean.new;
+        errorBean.errCode = -2;
+        complete(errorBean);
+    }];
+}
+
+//私有请求从BOS读取数据(get)
+-(void)getBos:(NSString*) bosAPI callBack:(void(^)(BaseBean<id>* cData)) complete{
+    [self.afManager GET:bosAPI parameters:nil headers:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if(responseObject){
             BaseBean<id> *bean = [BaseBean<id> yy_modelWithJSON:responseObject];
             complete(bean);
         }else{

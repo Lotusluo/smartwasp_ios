@@ -36,7 +36,7 @@ BOOL NEED_TIP = YES;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Bugly startWithAppId:BUGDLY_APPID];
+//    [Bugly startWithAppId:BUGDLY_APPID];
     // Override point for customization after application launch.
     [[IFLYOSSDK shareInstance] initAppId:APPID schema:@"smartwasp" loginType:DEFAULT];
     [[IFLYOSSDK shareInstance] setDebugModel:NO];

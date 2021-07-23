@@ -35,20 +35,20 @@
         //tabbar标题
         NSArray *titleSources = @[NSLocalizedString(@"tab_dialog",nil),
                                   NSLocalizedString(@"tab_find",nil),
-//                                  NSLocalizedString(@"tab_skill",nil),
-//                                  NSLocalizedString(@"tab_home",nil),
+                                  NSLocalizedString(@"tab_skill",nil),
+                                  NSLocalizedString(@"tab_home",nil),
                                   NSLocalizedString(@"tab_usr",nil)];
         
         NSArray *iconSources = @[@"icon_tab_dialog",
                                  @"icon_tab_find",
-//                                 @"icon_tab_skill",
-//                                 @"icon_tab_smart",
+                                 @"icon_tab_skill",
+                                 @"icon_tab_smart",
                                  @"icon_tab_mine"];
         
         NSArray *iconSelctedSources = @[@"icon_tab_dialog_selected",
                                         @"icon_tab_find_selected",
-//                                        @"icon_tab_skill_selected",
-//                                        @"icon_tab_smart_selected",
+                                        @"icon_tab_skill_selected",
+                                        @"icon_tab_smart_selected",
                                         @"icon_tab_mine_selected"];
       
         [self.tabBar setTintColor:  [UIColor colorWithHexString:@"#f6921e"]];
@@ -61,15 +61,15 @@
         FinderViewController *finderVc = [[FinderViewController alloc] init];
         [self addChildViewController:finderVc];
         //技能页
-//        CommonTabController *skillVc = [[CommonTabController alloc] init];
-//        skillVc.vcType = SKILLS;
-//        skillVc.tag = @"SKILLS";
-//        [self addChildViewController:skillVc];
+        CommonTabController *skillVc = [[CommonTabController alloc] init];
+        skillVc.vcType = SKILLS;
+        skillVc.tag = @"SKILLS";
+        [self addChildViewController:skillVc];
         //家居页
-//        CommonTabController *homeVc = [[CommonTabController alloc] init];
-//        homeVc.vcType =  CONTROLLED_DEVICES;
-//        homeVc.tag = @"CONTROLLED_DEVICES";
-//        [self addChildViewController:homeVc];
+        CommonTabController *homeVc = [[CommonTabController alloc] init];
+        homeVc.vcType =  CONTROLLED_DEVICES;
+        homeVc.tag = @"CONTROLLED_DEVICES";
+        [self addChildViewController:homeVc];
         //我的页
         UserViewController *userVc = [[UserViewController alloc] init];
         [self addChildViewController:userVc];

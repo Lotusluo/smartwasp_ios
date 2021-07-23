@@ -71,3 +71,5 @@
 
 "enabled_music"="已开通";
 "disenabled_music"="未开通";
+
+"song_play_tip"="此App不获取任何音源数据，也不播放任何音源。仅起到通知智慧音箱的作用，请知悉！";

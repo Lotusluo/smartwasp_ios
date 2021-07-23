@@ -24,8 +24,8 @@
     __weak typeof(self) SELF = self;
     if(self.user && NEED_MAIN_REFRESH_DEVICES){
         [[IFLYOSSDK shareInstance] getUserDevices:^(NSInteger code) {
-            NEED_MAIN_REFRESH_DEVICES = NO;
             [Loading dismiss];
+            NEED_MAIN_REFRESH_DEVICES = NO;
         } requestSuccess:^(id _Nonnull success)  {
             //刷新绑定的设备列表
             NSArray *devices = [NSArray yy_modelArrayWithClass:DeviceBean.class json:success[@"user_devices"]];
@@ -34,7 +34,9 @@
             }else{
                 SELF.devices = nil;
             }
+            
         } requestFail:^(id _Nonnull error) {
+            NSLog(@"devices error:%@",error);
             //加载错误
             if([NSStringFromClass([error class]) containsString:@"_NSInlineData"]){
                 NSString * errMsg = [[NSString alloc] initWithData:error encoding:NSUTF8StringEncoding];
@@ -47,6 +49,7 @@
                     } negative:YES];
                 }
             }
+            SELF.devices = nil;
         }];
     }
 }

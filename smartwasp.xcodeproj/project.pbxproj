@@ -163,6 +163,8 @@
 		0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D4832660877300F8DE42 /* DeviceChooseCell.xib */; };
 		0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D487266087CE00F8DE42 /* DeviceAddCell.xib */; };
 		04783315262D1F3600684E9C /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04783313262D1F3500684E9C /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0487DC0726A90F980089BC88 /* banner.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0487DC0626A90F980089BC88 /* banner.plist */; };
+		0487DC0A26A913410089BC88 /* banner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0487DC0926A913400089BC88 /* banner1.png */; };
 		0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */; };
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
@@ -493,6 +495,8 @@
 		0476D487266087CE00F8DE42 /* DeviceAddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceAddCell.xib; sourceTree = "<group>"; };
 		04783313262D1F3500684E9C /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		04783314262D1F3600684E9C /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		0487DC0626A90F980089BC88 /* banner.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = banner.plist; sourceTree = "<group>"; };
+		0487DC0926A913400089BC88 /* banner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner1.png; sourceTree = "<group>"; };
 		0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_choose@2x.png"; sourceTree = "<group>"; };
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
@@ -896,6 +900,7 @@
 				04DD87FF2692FD49001F037A /* Bugly.framework */,
 				04261974261EFE1C000D95D6 /* Info.plist */,
 				04261975261EFE1C000D95D6 /* main.m */,
+				0487DC0626A90F980089BC88 /* banner.plist */,
 			);
 			path = smartwasp;
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				0487DC0926A913400089BC88 /* banner1.png */,
 				0473B8A0268F125400471A6A /* ic_launcher@2x.png */,
 				043F8BDD268DB6F800703FBE /* icon_empty@2x.png */,
 				043F8BC8268D975000703FBE /* ic_pause_black@2x.png */,
@@ -1344,6 +1350,7 @@
 				0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */,
 				0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */,
 				044EAE7C2678916C00CC122A /* icon_clock@2x.png in Resources */,
+				0487DC0A26A913410089BC88 /* banner1.png in Resources */,
 				04D738D126202A7700E4F00C /* FinderViewController.xib in Resources */,
 				0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */,
 				04725168265E30F8003C4625 /* Toolbar.xib in Resources */,
@@ -1366,6 +1373,7 @@
 				04E816CC268C4A9600B36123 /* ic_dangjian@2x.png in Resources */,
 				043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */,
 				043F8BCE268D975100703FBE /* ic_pause_black@2x.png in Resources */,
+				0487DC0726A90F980089BC88 /* banner.plist in Resources */,
 				044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */,
 				043F8BCF268D975100703FBE /* ic_skip_previous_black@2x.png in Resources */,
 				0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */,

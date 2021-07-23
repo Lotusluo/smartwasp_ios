@@ -18,6 +18,7 @@
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 
 extern BOOL NEED_MAIN_REFRESH_DEVICES;
+extern BOOL NEED_TIP;
 
 static inline UIEdgeInsets sgm_safeAreaInset(UIView *view) {
     if (@available(iOS 11.0, *)) {

@@ -21,6 +21,7 @@
 
 
 BOOL NEED_MAIN_REFRESH_DEVICES = YES;
+BOOL NEED_TIP = YES;
 
 @interface AppDelegate ()<IFLYOSPushServiceProtocol>{
     NSInteger mediaErrTimez;

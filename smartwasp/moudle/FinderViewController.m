@@ -23,6 +23,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Global.h"
 #import "Loading.h"
+#import "ItemBean.h"
 #import "UIViewHelper.h"
 #import "iToast.h"
 #import "ItemMoreViewController.h"
@@ -173,9 +174,25 @@ static NSString *const ID = @"CellIdentifier";
     //清空容器
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.findBean = bean;
-    if(self.findBean.banners.count > 0){
-        [self.findBean.banners removeObjectAtIndex:0];
-    }
+//    //替换原来的banner
+//    NSString *bannersPath = [[NSBundle mainBundle] pathForResource:@"banner" ofType:@"plist"];
+//    NSArray *banner = [NSArray arrayWithContentsOfFile:bannersPath];
+//    self.findBean.banners = [NSArray yy_modelArrayWithClass:BannerBean.class json:banner];
+//    self.findBean.banners = []
+    //反响迭代删除
+//    NSEnumerator *enumerator = [mutArr reverseObjectEnumerator];
+//      for (id data in enumerator) {
+//        if ([data isKindOfClass:[NSString class]]) {
+//          [mutArr removeObject:data];
+//        }
+//    }
+//    //去除关于健康的内容，可能包含mg内容
+//    NSArray *filterArray = @[@"新闻时讯",@"热门节目"];
+//    if(self.findBean.groups.count > 0){
+//        [self.findBean.groups filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(GroupBean*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+//            return ![filterArray containsObject:evaluatedObject.name];
+//        }]];
+//    }
     //刷新Banner数据
     [self.collectionView reloadData];
     [self.scrollView addSubview:self.collectionView];
@@ -337,7 +354,9 @@ static NSString *const ID = @"CellIdentifier";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     NSInteger index = indexPath.row;
     UIImageView *imageView = [cell.subviews objectAtIndex:0];
-   [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image]];
+    UIImage *image = [UIImage imageNamed:_findBean.banners[index].image];
+    imageView.image = image;
+//   [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image]];
     return cell;
 }
 
@@ -368,13 +387,32 @@ static NSString *const ID = @"CellIdentifier";
 
 #pragma mark --ISelectedDelegate
 - (void)groupView:(GroupView *)groupView canClickItemAtIndex:(ItemBean *)bean{
+    if(NEED_TIP){
+        [UIViewHelper showAlert:NSLocalizedString(@"song_play_tip", nil) target:self callBack:^{
+            ItemViewController *ivc =  [ItemViewController createNewPage:bean];
+            [self.navigationController pushViewController:ivc animated:YES];
+        } negative:YES];
+        NEED_TIP = NO;
+        return;
+    }
     ItemViewController *ivc =  [ItemViewController createNewPage:bean];
-    //test
-//    MusicPlayViewController *mvc = [[MusicPlayViewController alloc] initWithNibName:@"MusicPlayViewController" bundle:nil];
     [self.navigationController pushViewController:ivc animated:YES];
+    
 }
 
 -(void)groupView:(GroupView *)groupView onClickMore:(GroupBean *)bean{
+    if(NEED_TIP){
+        [UIViewHelper showAlert:NSLocalizedString(@"song_play_tip", nil) target:self callBack:^{
+            [self onMoreClick:bean];
+        } negative:YES];
+        NEED_TIP = NO;
+        return;
+    }
+    [self onMoreClick:bean];
+}
+
+//点击加载更多
+-(void)onMoreClick:(GroupBean*)bean{
     [Loading show:nil];
     [[IFLYOSSDK shareInstance] getMediaGroupList:bean.section_id deviceId:APPDELEGATE.curDevice.device_id statusCode:^(NSInteger code) {
         if(code != 200){
@@ -383,11 +421,18 @@ static NSString *const ID = @"CellIdentifier";
         [Loading dismiss];
     } requestSuccess:^(id _Nonnull data) {
         NSArray *items = [NSArray yy_modelArrayWithClass:ItemBean.class json:data[@"items"]];
-        ItemMoreViewController *imvc = [ItemMoreViewController createNewPage:items group:bean];
+        NSMutableArray *mItems = [[NSMutableArray alloc] initWithArray:items];
+        if(mItems.count > 0){
+            [mItems filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(ItemBean*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                if([evaluatedObject.category_name containsString:@"健康"]){
+                    return NO;
+                }
+              return YES;
+            }]];
+        }
+        ItemMoreViewController *imvc = [ItemMoreViewController createNewPage:mItems group:bean];
         [self.navigationController pushViewController:imvc animated:YES];
-    } requestFail:^(id _Nonnull data) {
-        
-    }];
+    } requestFail:^(id _Nonnull data) {}];
 }
 
 /*

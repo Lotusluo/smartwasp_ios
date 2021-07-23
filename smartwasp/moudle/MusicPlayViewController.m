@@ -14,6 +14,7 @@
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "UIImageView+WebCache.h"
 #import "IFLYOSSDK.h"
+#import "UIViewHelper.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -112,6 +113,14 @@
 //设备在线状态变更
 -(void)onLineChangedCallback{
     [self updateToolbarUI:APPDELEGATE.curDevice];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(NEED_TIP){
+        [UIViewHelper showAlert:NSLocalizedString(@"song_play_tip", nil) target:self];
+        NEED_TIP = NO;
+    }
 }
 
 /*

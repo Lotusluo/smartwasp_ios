@@ -354,9 +354,9 @@ static NSString *const ID = @"CellIdentifier";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     NSInteger index = indexPath.row;
     UIImageView *imageView = [cell.subviews objectAtIndex:0];
-    UIImage *image = [UIImage imageNamed:_findBean.banners[index].image];
-    imageView.image = image;
-//   [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image]];
+//    UIImage *image = [UIImage imageNamed:_findBean.banners[index].image];
+//    imageView.image = image;
+   [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image]];
     return cell;
 }
 

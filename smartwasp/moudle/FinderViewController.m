@@ -29,6 +29,7 @@
 #import "ItemMoreViewController.h"
 #import "NetDAO.h"
 #import "ABUITableViewCell.h"
+#import "ListViewController.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -50,6 +51,7 @@ UIScrollViewDelegate>
 //Banner图
 @property (strong, nonatomic) UICollectionView *collectionView;
 //视图列表
+@property (strong, nonatomic) UIScrollView *tableViewFather;
 @property (nonatomic,strong) UITableView *tableView;
 //引导器
 @property (strong,nonatomic) UIPageControl *pageCtrl;
@@ -137,8 +139,8 @@ static NSString *const ID2 = @"FindBannerCell";
             [SELF.headerView hw_endRefreshState];
             [Loading dismiss];
             if(!cData.errCode){
-                self.findBean = [FindBean yy_modelWithJSON:cData.data];
-                if(self.findBean){
+                SELF.findBean = [FindBean yy_modelWithJSON:cData.data];
+                if(SELF.findBean){
                     //有发现页数据才算成功
                     [SELF loadDataSucess];
                     return;
@@ -178,17 +180,17 @@ static NSString *const ID2 = @"FindBannerCell";
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.collectionView).offset(10);
     }];
+    
     [self.tableView reloadData];
     [self.scrollView addSubview:self.tableView];
-    //对tableview高度进行预估计
-    NSInteger tableViewHeight = self.findBean.abbrs.count * 40 + self.findBean.skills.count * 100;
     //对tableview进行约束
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.collectionView.mas_bottom).offset(20);
         make.width.equalTo(self.scrollView);
-        make.height.mas_equalTo(tableViewHeight);
+        make.height.equalTo(self.scrollView);
     }];
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, tableViewHeight + APAGE_SIZE.height + 20);
+    
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.scrollView.frame.size.height + APAGE_SIZE.height + 20);
 }
 
 /**
@@ -207,6 +209,8 @@ static NSString *const ID2 = @"FindBannerCell";
     }
 }
 
+/***********************************Start UIScrollViewDelegate代理实现**********************************/
+
 #pragma mark --UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if([scrollView isKindOfClass:UICollectionView.class]){
@@ -220,6 +224,33 @@ static NSString *const ID2 = @"FindBannerCell";
         return;
     }
 }
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat zeroValue = APAGE_SIZE.height + 20;
+    if (scrollView == _scrollView) {
+        if (_tableView.contentOffset.y > 0) {
+            // header已经消失，开始滚动下面的_table，并让_scroll不动
+            _scrollView.contentOffset = CGPointMake(0, zeroValue);
+        }
+        if (_scrollView.contentOffset.y < zeroValue) {
+            // header已经显示出来，重置_table.contentOffset为0
+            _tableView.contentOffset = CGPointZero;
+        }
+    }
+    else if (scrollView == _tableView) {
+        if (_scrollView.contentOffset.y < zeroValue) {
+            // header还没有消失，那么_table.contentOffset一直为0
+            _tableView.contentOffset = CGPointZero;
+            _tableView.showsVerticalScrollIndicator = NO;
+        }
+        else {
+            // header已经消失
+            _scrollView.contentOffset = CGPointMake(0, zeroValue);
+            _tableView.showsVerticalScrollIndicator = YES;
+        }
+    }
+}
+
+/***********************************End UIScrollViewDelegate代理实现**********************************/
 
 /***********************************Start UICollectionView代理实现**********************************/
 
@@ -235,6 +266,7 @@ static NSString *const ID2 = @"FindBannerCell";
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.findBean.banners.count;
 }
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     NSInteger index = indexPath.row;
@@ -249,11 +281,11 @@ static NSString *const ID2 = @"FindBannerCell";
 #pragma mark --UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return indexPath.section > 0 ? UITableViewAutomaticDimension : 0;
-    return 100;
+    return 80;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 40;
+    return 30;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -262,15 +294,23 @@ static NSString *const ID2 = @"FindBannerCell";
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     if ([view isMemberOfClass:[UITableViewHeaderFooterView class]]) {
-        ((UITableViewHeaderFooterView *)view).tintColor = [UIColor clearColor];
+        ((UITableViewHeaderFooterView *)view).tintColor = self.view.backgroundColor;
     }
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ID1];
-    NSString *key = self.findBean.abbrs[section];
-    UILabel *title = [headerView viewWithTag:1];
-    title.text = key;
+    for(UIView *child in headerView.subviews){
+        if([child isKindOfClass:UILabel.class]){
+            NSString *key = self.findBean.abbrs[section];
+            UILabel *title = (UILabel*)child;
+            title.text = key;
+        }else if([child isKindOfClass:UIButton.class]){
+            UIButton *moreBtn = (UIButton*)child;
+            moreBtn.tag = section;
+            [moreBtn addTarget:self action:@selector(onMoreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
     return headerView;
 }
 
@@ -296,6 +336,7 @@ static NSString *const ID2 = @"FindBannerCell";
     NSArray<SkillBean*> *lists = self.findBean.map[key];
     SkillBean *skillBean = lists[indexPath.row];
     ABUITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:ID];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell setTitle:skillBean.skillName];
     [cell setSubtitle:skillBean.skillDesc];
     [cell setIcon:skillBean.icon];
@@ -309,6 +350,32 @@ static NSString *const ID2 = @"FindBannerCell";
     [Loading show:nil];
     NEED_MAIN_REFRESH_DEVICES = YES;
     [APPDELEGATE requestBindDevices];
+}
+
+//header更多按钮点击
+-(void)onMoreBtnClick:(id)sender{
+    UIButton *target = sender;
+    __weak typeof(self) SELF = self;
+    //获取新发现页数据
+    [Loading show:nil];
+    NSString *key = self.findBean.abbrs[target.tag];
+    NSString *bosAPI = @"https://smartwasp.bj.bcebos.com/request/newFinder%u";
+    bosAPI = [NSString stringWithFormat:bosAPI,target.tag + 1];
+    [[NetDAO sharedInstance] getBos:bosAPI callBack:^(BaseBean * _Nonnull cData) {
+        [Loading dismiss];
+        if(!cData.errCode){
+            NSArray<SkillBean*> *lists = [NSArray yy_modelArrayWithClass:SkillBean.class json:cData.data];
+            if(lists.count > 0){
+                UIStoryboard *board = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+                ListViewController *lvc = [board instantiateViewControllerWithIdentifier: @"ListViewController"];
+                lvc.lists = lists;
+                lvc.title = key;
+                [SELF.navigationController pushViewController:lvc animated:YES];
+                return;
+            }
+        }
+        [[iToast makeText:NSLocalizedString(@"retry", nil)] show];
+    }];
 }
 
 /*
@@ -340,16 +407,22 @@ static NSString *const ID2 = @"FindBannerCell";
 #pragma mark --tableCiew懒加载
 -(UITableView*) tableView{
     if(!_tableView){
+        //建立一个scrollview
+        _tableViewFather = [UIScrollView new];
         _tableView = [[UITableView alloc] init];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.scrollEnabled = NO;
-        _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor = [UIColor clearColor];
         //注册头控件
         [_tableView registerNib:[UINib nibWithNibName:ID1 bundle:nil] forHeaderFooterViewReuseIdentifier:ID1];
         //注册元素控件
         [_tableView registerNib:[UINib nibWithNibName:ID bundle:nil] forCellReuseIdentifier:ID];
+//        [_tableViewFather addSubview:_tableView];
+//        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.equalTo(_tableViewFather);
+//            make.height.equalTo(_tableViewFather);
+//        }];
     }
     return _tableView;
 }
@@ -361,6 +434,7 @@ static NSString *const ID2 = @"FindBannerCell";
         [_headerView hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
             [self reloadData:APPDELEGATE.curDevice];
         }];
+        [_scrollView addSubview:self.headerView];
     }
     return _headerView;
 }
@@ -388,11 +462,10 @@ static NSString *const ID2 = @"FindBannerCell";
 #pragma mark --ScrollView懒加载
 -(UIScrollView*) scrollView{
     if(!_scrollView){
-        _scrollView = [UIScrollView new];
+        _scrollView = [EGOScrollView new];
         _scrollView.showsVerticalScrollIndicator = YES;
         _scrollView.delegate = self;
         _scrollView.backgroundColor = [UIColor clearColor];
-        [_scrollView addSubview:self.headerView];
     }
     return _scrollView;
 }

@@ -12,6 +12,7 @@
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "InsetsLabel.h"
 #import "NormalToolbar.h"
+#import "JCGCDTimer.h"
 
 
 @interface SkillDetailViewController ()
@@ -34,6 +35,8 @@
 //更新时间控件
 @property (weak, nonatomic) IBOutlet UILabel *timeView;
 @property (weak, nonatomic) IBOutlet UIStackView *skillViewContainer;
+//底部信息块到对话块的距离
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @end
 
@@ -45,6 +48,19 @@
     [self attachUI];
     // Do any additional setup after loading the view from its nib.
 }
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    CGFloat bottomLine = self.scrollView.frame.size.height - self.bottomView.frame.origin.y - self.bottomView.frame.size.height;
+    __weak typeof(self) SELF = self;
+    if(bottomLine > 0){
+        [UIView animateWithDuration:0.2 animations:^{
+            SELF.bottomView.transform = CGAffineTransformMakeTranslation(0, bottomLine);
+        }];
+    }
+}
+
 
 //赋值UI
 -(void)attachUI{

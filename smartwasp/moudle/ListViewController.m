@@ -1,14 +1,13 @@
 //
-//  ListViewController.m
+//  ListViewController.h
 //  JXCategoryView
 //
-//  Created by jiaxin on 2018/8/8.
-//  Copyright © 2018年 jiaxin. All rights reserved.
+//  Created by luotao on 2021/7/26.
 //
 
 #import "ListViewController.h"
 #import "ABUITableViewCell.h"
-#import "ItemViewController.h"
+#import "SkillDetailViewController.h"
 
 @implementation ListViewController
 
@@ -18,6 +17,7 @@ static NSString *const ID = @"ABUITableViewCell";
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:ID bundle:nil] forCellReuseIdentifier:ID];
+    
 }
 
 #pragma mark --UITableViewDataSource 协议方法
@@ -38,9 +38,9 @@ static NSString *const ID = @"ABUITableViewCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ItemBean *bean = self.lists[indexPath.row];
-    ItemViewController *ivc =  [ItemViewController createNewPage:bean];
-    [self.navigationController pushViewController:ivc animated:YES];
+    SkillBean *bean = self.lists[indexPath.row];
+    SkillDetailViewController *svc = [SkillDetailViewController createNewPage:bean];
+    [self.navigationController pushViewController:svc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
@@ -49,13 +49,5 @@ static NSString *const ID = @"ABUITableViewCell";
     return 80;
 }
 
-#pragma mark - JXCategoryListContentViewDelegate
-
-/**
- 实现 <JXCategoryListContentViewDelegate> 协议方法，返回该视图控制器所拥有的「视图」
- */
-- (UIView *)listView {
-    return self.view;
-}
 
 @end

@@ -30,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 @property (nonatomic,strong) SimplePing *pinger;
 @property (strong,nonatomic) CLLocationManager * mCLLocationManager;
-
+@property (strong,nonatomic)UIAlertController* alert;
 @end
 
 @implementation WaitLAViewController
@@ -102,6 +102,10 @@
         dispatch_source_cancel(_timer);
         _timer = nil;
     }
+    if(self.alert){
+        [self.alert dismissViewControllerAnimated:YES completion:nil];
+        self.alert = nil;
+    }
 }
 
 - (void)checkLocalNetStatus:(NSString*)router{
@@ -131,6 +135,7 @@
     sequenceNumber:(uint16_t)sequenceNumber{
     [self stop];
     MatchLAViewController *mvc = [MatchLAViewController new];
+    mvc.iconPath = self.iconPath;
     mvc.hostName = pinger.hostName;
     NSLog(@"**可以使用局域网:%@**",pinger.hostName);
     [self.navigationController pushViewController:mvc animated:YES];
@@ -140,7 +145,7 @@
     [self stop];
     if (error.code == 65) {
         NSLog(@"**不可以使用局域网**");
-        [UIViewHelper showAlert:NSLocalizedString(@"no_internet1", nil) target:self callBack:^{
+        self.alert = [UIViewHelper showAlert:NSLocalizedString(@"no_internet1", nil) target:self callBack:^{
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
         } negative:YES];

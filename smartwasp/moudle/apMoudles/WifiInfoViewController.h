@@ -6,13 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ApClientBean.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WifiInfoViewController : UIViewController
 
 @property(nonatomic,copy)NSString *ssid;
-@property(nonatomic,copy)NSString *clientID;
+@property(nonatomic,strong)ApClientBean *client;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -38,6 +38,8 @@
     self.webView.configuration.userContentController = userContentController;
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
     
+    [self.webView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+    
     if (self.contextTag) {
         NSLog(@"WebPageViewController:contextTag");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];

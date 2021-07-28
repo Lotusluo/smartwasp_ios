@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *pwd;
 //授权码
 @property(nonatomic,copy)NSString *authCode;
+//图片资料
+@property(nonatomic,copy)NSString *iconPath;
 
 @end
 

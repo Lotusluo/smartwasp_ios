@@ -65,7 +65,7 @@
                                 <constraint firstItem="qIt-oQ-ZIk" firstAttribute="centerY" secondItem="tc7-hW-OAS" secondAttribute="centerY" id="vYC-q1-DmO"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMb-8c-8N2" userLabel="设备位置" customClass="BottomLineView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMb-8c-8N2" userLabel="设备位置">
                             <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-3m-lYt" userLabel="前缀">
@@ -100,7 +100,7 @@
                                 <constraint firstAttribute="height" id="uYp-Df-m21"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYY-gA-Ud4" userLabel="音乐畅听">
+                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYY-gA-Ud4" userLabel="音乐畅听">
                             <rect key="frame" x="0.0" y="100" width="414" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐畅听" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZES-ch-Z1b">
@@ -141,7 +141,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOP-4W-Zyn" userLabel="持续交互">
-                            <rect key="frame" x="0.0" y="160" width="414" height="100.5"/>
+                            <rect key="frame" x="0.0" y="110" width="414" height="100.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="持续交互" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79t-Aj-Dfo">
                                     <rect key="frame" x="10" y="10" width="57.5" height="17"/>
@@ -179,7 +179,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMw-fo-RHm" userLabel="解除绑定">
-                            <rect key="frame" x="0.0" y="290.5" width="414" height="50"/>
+                            <rect key="frame" x="0.0" y="240.5" width="414" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="oMd-Vs-f9c"/>
@@ -205,7 +205,7 @@
                         <constraint firstItem="UMw-fo-RHm" firstAttribute="top" secondItem="nOP-4W-Zyn" secondAttribute="bottom" constant="30" id="Jfx-uy-EO8"/>
                         <constraint firstItem="tc7-hW-OAS" firstAttribute="leading" secondItem="lyx-Oi-DI1" secondAttribute="leading" id="MtY-Bo-uaG"/>
                         <constraint firstAttribute="trailing" secondItem="CMb-8c-8N2" secondAttribute="trailing" id="XaX-Xn-A9x"/>
-                        <constraint firstItem="nOP-4W-Zyn" firstAttribute="top" secondItem="aYY-gA-Ud4" secondAttribute="bottom" constant="10" id="YRf-VW-Raa"/>
+                        <constraint firstItem="nOP-4W-Zyn" firstAttribute="top" secondItem="CMb-8c-8N2" secondAttribute="bottom" constant="10" id="YRf-VW-Raa"/>
                         <constraint firstItem="tc7-hW-OAS" firstAttribute="width" secondItem="lyx-Oi-DI1" secondAttribute="width" id="b9Y-tq-4Ua"/>
                         <constraint firstAttribute="trailing" secondItem="nOP-4W-Zyn" secondAttribute="trailing" id="bK0-nM-g3i"/>
                         <constraint firstAttribute="bottom" secondItem="UMw-fo-RHm" secondAttribute="bottom" priority="750" id="fPi-6M-7cd"/>

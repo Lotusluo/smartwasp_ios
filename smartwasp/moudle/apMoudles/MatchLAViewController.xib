@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchLAViewController">
             <connections>
+                <outlet property="iconView" destination="V9c-Re-en1" id="XBz-Kg-AMN"/>
                 <outlet property="progressBar" destination="4Pe-78-gt8" id="sft-tQ-9g4"/>
                 <outlet property="tipView" destination="vBa-aa-WNV" id="3rF-sa-aMw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

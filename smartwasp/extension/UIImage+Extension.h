@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage ()
++ (UIImage *)createImageWithColor:(UIColor *)color;
 
 - (UIImage *)renderImageWithColor:(UIColor *)color;
 

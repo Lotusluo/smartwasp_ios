@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ApAuthCode.h"
+#import "ApClientBean.h"
 
 
 extern NSString * _Nullable SSID;
@@ -24,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //绑定的类型
 @property(nonatomic,assign)BindType mBindType;
-@property(nonatomic,copy)NSString *clientID;
+@property(nonatomic,strong)ApClientBean *client;
 
 @end
 

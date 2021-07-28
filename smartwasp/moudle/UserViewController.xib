@@ -90,7 +90,7 @@
                     <rect key="frame" x="0.0" y="237" width="414" height="625"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="etN-Fb-Q7F" userLabel="Content">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                             <subviews>
                                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="574-LP-pVj" userLabel="Navi1" customClass="NormalNaviCell">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -115,30 +115,18 @@
                                         <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_clock.png"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="我的闹钟"/>
                                         <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasBottomLine" value="YES"/>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHV-3K-cDD" userLabel="Navi3" customClass="NormalNaviCell">
-                                    <rect key="frame" x="0.0" y="100" width="414" height="50"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="Ge7-KD-N1N"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="leftIcon" value="icon_account.png"/>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="内容账号"/>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="icon_arrow"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasBottomLine" value="NO"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfr-Nt-fET" userLabel="Gap">
-                                    <rect key="frame" x="0.0" y="150" width="414" height="20"/>
+                                    <rect key="frame" x="0.0" y="100" width="414" height="20"/>
                                     <color key="backgroundColor" red="0.96938079600000004" green="0.96954280140000004" blue="0.96935933829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="1or-4u-037"/>
                                     </constraints>
                                 </view>
                                 <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xID-bB-3lk" userLabel="Navi4" customClass="NormalNaviCell">
-                                    <rect key="frame" x="0.0" y="170" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="120" width="414" height="50"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="8ab-ut-J93"/>
@@ -192,7 +180,6 @@
     </objects>
     <resources>
         <image name="icon_about.png" width="32" height="32"/>
-        <image name="icon_account.png" width="32" height="32"/>
         <image name="icon_arrow" width="24" height="24"/>
         <image name="icon_arrow.png" width="24" height="24"/>
         <image name="icon_clock.png" width="32" height="32"/>

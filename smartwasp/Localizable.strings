@@ -17,12 +17,17 @@
 "no_internet"="无网络,请打开网络!";
 "no_internet1"="无法连接到局域网设备,请打开本地网络权限";
 "retry"="请重试";
+"suggest"="意见与建议";
 "wait"="请稍后";
 "login_err"="登陆失败,请重试!";
 "login_info_err"="登陆信息错误,请重试";
 "more_info_err"="获取更多信息错误,请重试";
 "load_data_err"="加载数据失败!";
 "load_music_err"="请开通音乐权限或重试!";
+"input_err"="请正确输入意见与建议";
+"email_err"="请正确输入邮箱";
+"suggest_err"="输入意见与建议失败，请重试";
+"suggest_ok"="已成功提交";
 "no_pay_err"="小黄蜂管家暂不支持支付，请使用微信或支付宝扫描音箱二维码进行开通！";
 
 "retry_btn"="重试";

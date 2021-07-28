@@ -38,6 +38,7 @@
 }
 
 - (void) commonInit {
+    self.alpha = 0;
     self.backgroundColor = [UIColor clearColor];
     _pillarWidth = 2;
     _pillarColor =  [UIColor colorWithHexString: @"#f6921e"];

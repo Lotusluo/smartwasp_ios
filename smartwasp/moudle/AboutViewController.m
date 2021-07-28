@@ -10,6 +10,7 @@
 #import "Loading.h"
 #import "UIViewHelper.h"
 #import "iToast.h"
+#import "SuggestViewController.h"
 
 @interface AboutViewController ()
 
@@ -27,6 +28,7 @@
 
     // Do any additional setup after loading the view from its nib.
 }
+//检查更新
 - (IBAction)onCheckClick:(id)sender {
     [Loading show:nil];
     [[NetDAO sharedInstance] post:@{@"type":@"3"}
@@ -45,6 +47,12 @@
             [[iToast makeText:NSLocalizedString(@"error_version", nil)] show];
         }
     }];
+}
+
+//意见建议
+- (IBAction)onSuggestClick:(id)sender {
+    SuggestViewController *svc = [SuggestViewController new];
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 /*

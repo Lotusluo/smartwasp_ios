@@ -119,6 +119,7 @@
 		043F8BCF268D975100703FBE /* ic_skip_previous_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC9268D975000703FBE /* ic_skip_previous_black@2x.png */; };
 		043F8BD0268D975100703FBE /* ic_sound_max_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BCA268D975000703FBE /* ic_sound_max_black@2x.png */; };
 		043F8BDE268DB6F800703FBE /* icon_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BDD268DB6F800703FBE /* icon_empty@2x.png */; };
+		0442A4B526B0FA460040340F /* ApClientBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0442A4B426B0FA460040340F /* ApClientBean.m */; };
 		044D4E07268B11B000BAD622 /* ApHsBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D4E06268B11B000BAD622 /* ApHsBean.m */; };
 		044D4E0B268B1D1600BAD622 /* ApAuthCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D4E0A268B1D1600BAD622 /* ApAuthCode.m */; };
 		044D723726396C8E0075994F /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D723526396C8E0075994F /* WebPageViewController.m */; };
@@ -165,6 +166,8 @@
 		0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D487266087CE00F8DE42 /* DeviceAddCell.xib */; };
 		04783315262D1F3600684E9C /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04783313262D1F3500684E9C /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0487DC0726A90F980089BC88 /* banner.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0487DC0626A90F980089BC88 /* banner.plist */; };
+		0488C39E26AFD58B00440320 /* SuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488C39C26AFD58B00440320 /* SuggestViewController.m */; };
+		0488C39F26AFD58B00440320 /* SuggestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0488C39D26AFD58B00440320 /* SuggestViewController.xib */; };
 		0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */; };
 		04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */; };
 		04B2620E262D8E7600A92083 /* ic_triangle_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */; };
@@ -427,6 +430,8 @@
 		043F8BC9268D975000703FBE /* ic_skip_previous_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_skip_previous_black@2x.png"; sourceTree = "<group>"; };
 		043F8BCA268D975000703FBE /* ic_sound_max_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sound_max_black@2x.png"; sourceTree = "<group>"; };
 		043F8BDD268DB6F800703FBE /* icon_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_empty@2x.png"; sourceTree = "<group>"; };
+		0442A4B326B0FA460040340F /* ApClientBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApClientBean.h; sourceTree = "<group>"; };
+		0442A4B426B0FA460040340F /* ApClientBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApClientBean.m; sourceTree = "<group>"; };
 		044D4E05268B11B000BAD622 /* ApHsBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApHsBean.h; sourceTree = "<group>"; };
 		044D4E06268B11B000BAD622 /* ApHsBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApHsBean.m; sourceTree = "<group>"; };
 		044D4E09268B1D1600BAD622 /* ApAuthCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApAuthCode.h; sourceTree = "<group>"; };
@@ -498,6 +503,9 @@
 		04783313262D1F3500684E9C /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		04783314262D1F3600684E9C /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		0487DC0626A90F980089BC88 /* banner.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = banner.plist; sourceTree = "<group>"; };
+		0488C39B26AFD58B00440320 /* SuggestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestViewController.h; sourceTree = "<group>"; };
+		0488C39C26AFD58B00440320 /* SuggestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestViewController.m; sourceTree = "<group>"; };
+		0488C39D26AFD58B00440320 /* SuggestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestViewController.xib; sourceTree = "<group>"; };
 		0499C7DA26356D0E00CE7D5D /* ic_choose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_choose@2x.png"; sourceTree = "<group>"; };
 		04B261F5262D81F400A92083 /* abc_btn_radio_to_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "abc_btn_radio_to_on@2x.png"; sourceTree = "<group>"; };
 		04B2620C262D8E7600A92083 /* ic_triangle_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_triangle_down@2x.png"; sourceTree = "<group>"; };
@@ -1045,6 +1053,9 @@
 				043AD2C726A7D36000CCB406 /* ItemMoreViewController.h */,
 				043AD2C826A7D36000CCB406 /* ItemMoreViewController.m */,
 				043AD2C926A7D36000CCB406 /* ItemMoreViewController.xib */,
+				0488C39B26AFD58B00440320 /* SuggestViewController.h */,
+				0488C39C26AFD58B00440320 /* SuggestViewController.m */,
+				0488C39D26AFD58B00440320 /* SuggestViewController.xib */,
 			);
 			path = moudle;
 			sourceTree = "<group>";
@@ -1090,6 +1101,8 @@
 				04E816E1268C654400B36123 /* SearchBean.m */,
 				04DA6D54268FF6B80082869B /* IFlyOSBean.h */,
 				04DA6D55268FF6B80082869B /* IFlyOSBean.m */,
+				0442A4B326B0FA460040340F /* ApClientBean.h */,
+				0442A4B426B0FA460040340F /* ApClientBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -1345,6 +1358,7 @@
 				042B4EA3266724D0009BE328 /* GroupView.xib in Resources */,
 				04261A41261F1D36000D95D6 /* icon_tab_smart_selected@2x.png in Resources */,
 				044EAE74267886F800CC122A /* MusicItemCell.xib in Resources */,
+				0488C39F26AFD58B00440320 /* SuggestViewController.xib in Resources */,
 				04B93A0F267C49080036C0B6 /* SkillDetailViewController.xib in Resources */,
 				04261A42261F1D36000D95D6 /* icon_tab_find_selected@2x.png in Resources */,
 				04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */,
@@ -1570,6 +1584,7 @@
 				040B95132666464800B306D2 /* JXCategoryIndicatorBallView.m in Sources */,
 				04261965261EFE1A000D95D6 /* AppDelegate.m in Sources */,
 				04B5D1DB26809B9E00323E3C /* StatusBean.m in Sources */,
+				0488C39E26AFD58B00440320 /* SuggestViewController.m in Sources */,
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
 				04E6F26A269E8B84001AE968 /* WKWebViewJavascriptBridge.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
@@ -1586,6 +1601,7 @@
 				04B5D1C62680938000323E3C /* MusicPlayerBean.m in Sources */,
 				042A95692685BCBA00C017FD /* WaitLAViewController.m in Sources */,
 				040B951E2666464800B306D2 /* JXCategoryTitleImageCell.m in Sources */,
+				0442A4B526B0FA460040340F /* ApClientBean.m in Sources */,
 				04261976261EFE1C000D95D6 /* main.m in Sources */,
 				040B95232666464800B306D2 /* JXCategoryImageView.m in Sources */,
 				04725167265E30F8003C4625 /* Toolbar.m in Sources */,
@@ -1730,7 +1746,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = smartwasp/smartwaspDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 79X5S2QGW5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1751,7 +1767,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
-				MARKETING_VERSION = 1.0.10;
+				MARKETING_VERSION = 1.0.11;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",
@@ -1788,7 +1804,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = smartwasp/smartwaspRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 79X5S2QGW5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1809,7 +1825,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
-				MARKETING_VERSION = 1.0.10;
+				MARKETING_VERSION = 1.0.11;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",

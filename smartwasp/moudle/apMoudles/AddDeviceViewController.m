@@ -18,12 +18,13 @@
 #import "AppDelegate.h"
 #import "WifiInfoViewController.h"
 #import "ServiceUtil.h"
+#import "ApClientBean.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 @interface AddDeviceViewController ()<CLLocationManagerDelegate>{
-    NSString *clientID;
+    ApClientBean *client;
 }
 
 //有屏扫码授权
@@ -81,7 +82,12 @@
 
 //党建
 -(void)onDJClick{
-    clientID = @"65e8d4f8-da9e-4633-8cac-84b0b47496b6";
+    client = [ApClientBean new];
+    client.clientID = @"65e8d4f8-da9e-4633-8cac-84b0b47496b6";
+    client.iconPath = @"ic_dangjian@2x";
+    if(AUTHCODE && ![client.clientID isEqualToString:AUTHCODE.clientID]){
+        AUTHCODE = nil;
+    }
     if([self hasLocationPermission]){
         [self goWifiConfig];
     }
@@ -89,7 +95,12 @@
 
 //小丹
 -(void)onXDClick{
-    clientID = @"cddcdf2d-f300-4616-922c-d46a9905c09f";
+    client = [ApClientBean new];
+    client.clientID = @"cddcdf2d-f300-4616-922c-d46a9905c09f";
+    client.iconPath = @"ic_xiaodan@2x";
+    if(AUTHCODE && ![client.clientID isEqualToString:AUTHCODE.clientID]){
+        AUTHCODE = nil;
+    }
     if([self hasLocationPermission]){
         [self goWifiConfig];
     }
@@ -133,7 +144,7 @@
 -(void)goWifiConfig{
     WifiInfoViewController *wvc = WifiInfoViewController.new;
     wvc.ssid = ServiceUtil.wifiSsid;
-    wvc.clientID = clientID;
+    wvc.client = client;
     [self.navigationController pushViewController:wvc animated:YES];
 }
 

@@ -22,7 +22,11 @@
     if(!_abbrs){
         self.map = [NSMutableDictionary new];
         NSArray *temp = [self.skills valueForKeyPath:@"category_name"];
-        temp = [temp valueForKeyPath:@"@distinctUnionOfObjects.self"];
+        //NSSet 有序化去重
+        NSOrderedSet *orderNumSet = [NSOrderedSet orderedSetWithArray:temp];
+        temp = orderNumSet.array;
+        //无序去重
+//        temp = [temp valueForKeyPath:@"@distinctUnionOfObjects.self"];
         for(NSString* key in temp){
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.category_name contains[c] %@",key];
             NSArray *values = [self.skills filteredArrayUsingPredicate:predicate];

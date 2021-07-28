@@ -21,9 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 //专辑名称控件
 @property (weak, nonatomic) IBOutlet UILabel *titleView;
-//开发者信息控件
 @property (weak, nonatomic) IBOutlet UILabel *coView;
-@property (weak, nonatomic) IBOutlet UILabel *coView1;
 //引导语
 @property (weak, nonatomic) IBOutlet UILabel *guideView;
 //提示语控件
@@ -49,16 +47,27 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
     CGFloat bottomLine = self.scrollView.frame.size.height - self.bottomView.frame.origin.y - self.bottomView.frame.size.height;
     __weak typeof(self) SELF = self;
     if(bottomLine > 0){
-        [UIView animateWithDuration:0.2 animations:^{
-            SELF.bottomView.transform = CGAffineTransformMakeTranslation(0, bottomLine);
-        }];
+        SELF.bottomView.transform = CGAffineTransformMakeTranslation(0, bottomLine);
     }
+}
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+   
 }
 
 
@@ -69,7 +78,6 @@
     [self.iconView sd_setImageWithURL:[NSURL URLWithString:self.skillBean.icon]];
     self.titleView.text = self.skillBean.skillName;
     self.coView.text = self.skillBean.developer;
-    self.coView1.text = self.skillBean.developer;
     self.tipView.text = self.skillBean.skillDesc;
     self.versionView.text = self.skillBean.version;
     self.timeView.text = self.skillBean.updateTime;

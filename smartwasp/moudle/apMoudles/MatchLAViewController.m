@@ -45,6 +45,8 @@ static MatchLAViewController *matchMV;
 @property(nonatomic,strong)NSString *taskCountName;
 //配网设备信息
 @property(nonatomic,strong)ApHsBean *aphsBean;
+//配图视图
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
 
 @end
 
@@ -53,6 +55,8 @@ static MatchLAViewController *matchMV;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem.title = @"";
+    NSString *bundleStr = [[NSBundle mainBundle] pathForResource:self.iconPath ofType:@"png"];
+    self.iconView.image = [UIImage imageWithContentsOfFile:bundleStr];
     //先定义总缓存指向
     bufferLen = BUFSIZ;
     buffer = (char *)malloc(bufferLen);
@@ -66,9 +70,9 @@ static MatchLAViewController *matchMV;
 //连接服务器
 - (void)connectServer{
     [NSThread sleepForTimeInterval:2];
-    NSLog(@"connectServer");
     socket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_STREAM, IPPROTO_TCP, kCFSocketConnectCallBack, serverConnectCallBack, NULL);
     if (socket != nil) {
+        NSLog(@"connectServer");
         struct sockaddr_in addr;
         memset(&addr, 0, sizeof(addr));
         addr.sin_len = sizeof(addr);
@@ -88,6 +92,8 @@ static MatchLAViewController *matchMV;
         CFRunLoopAddSource(runloop, source, kCFRunLoopCommonModes);
         CFRelease(source);
         CFRunLoopRun();
+    }else{
+        [matchMV onServerError:@"Socket is null!"];
     }
 }
 
@@ -110,7 +116,6 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
     send(CFSocketGetNative(socket), out, strlen(out) + 1, 1);
     cJSON_Delete(jsonObject);
     matchMV.step = 1;
-
 }
 
 //设置操作步骤
@@ -261,6 +266,7 @@ void serverConnectCallBack(CFSocketRef socket,CFSocketCallBackType type,CFDataRe
 - (BOOL)navigationShouldPopOnBackButton{
     [UIViewHelper showAlert:NSLocalizedString(@"err_net4", nil) target:self callBack:^{
         //强制退出
+        matchMV = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"devBindNotification" object:@"error" userInfo:nil];
     } negative:YES];
     return NO;

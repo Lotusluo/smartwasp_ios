@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)NSInteger created_at_local;
 @property(nonatomic,assign)NSInteger expires_in;
 @property(nonatomic,assign)NSInteger interval;
+@property(nonatomic,copy)NSString *clientID;
 
 //授权码是否过期
 -(BOOL)isOverdue;

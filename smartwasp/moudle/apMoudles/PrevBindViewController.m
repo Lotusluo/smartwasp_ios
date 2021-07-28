@@ -49,7 +49,7 @@ ApAuthCode *AUTHCODE;
         self.titleView.text = NSLocalizedString(@"net_set", nil);
         self.labelHeader.text = NSLocalizedString(@"net_set1", nil);;
         self.labelFooter.text = NSLocalizedString(@"net_set2", nil);;
-        NSString *bundleStr = [[NSBundle mainBundle] pathForResource:@"ic_dangjian@2x.png" ofType:nil];
+        NSString *bundleStr = [[NSBundle mainBundle] pathForResource:self.client.iconPath ofType:@"png"];
         self.imageView.image = [UIImage imageWithContentsOfFile:bundleStr];
     }
     self.nextBtn.enabled = self.checkBox.selected;
@@ -70,6 +70,7 @@ ApAuthCode *AUTHCODE;
         if(AUTHCODE){
             NSLog(@"已有授权码");
             WaitLAViewController *wvc = WaitLAViewController.new;
+            wvc.iconPath = self.client.iconPath;
             [self.navigationController pushViewController:wvc animated:YES];
         }else{
             NSLog(@"刷新授权码");
@@ -86,13 +87,15 @@ ApAuthCode *AUTHCODE;
  */
 -(void)refreshAuthcode{
     [Loading show:nil];
-    [[IFLYOSSDK shareInstance] getAuthCode:@"65e8d4f8-da9e-4633-8cac-84b0b47496b6"
+    [[IFLYOSSDK shareInstance] getAuthCode:self.client.clientID
                                 statusCode:^(NSInteger code) {
         [Loading dismiss];
     } requestSuccess:^(id _Nonnull data) {
         AUTHCODE = [ApAuthCode yy_modelWithJSON:data];
         AUTHCODE.created_at_local = [[NSDate date] timeIntervalSince1970];
+        AUTHCODE.clientID = self.client.clientID;
         WaitLAViewController *wvc = WaitLAViewController.new;
+        wvc.iconPath = self.client.iconPath;
         [self.navigationController pushViewController:wvc animated:YES];
     } requestFail:^(id _Nonnull data) {
         [UIViewHelper showAlert:NSLocalizedString(@"net_set4", nil) target:self];

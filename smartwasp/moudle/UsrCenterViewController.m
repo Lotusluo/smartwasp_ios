@@ -13,11 +13,18 @@
 #import "iToast.h"
 #import "Loading.h"
 #import "JCGCDTimer.h"
+#import "IFLYOSUIColor+IFLYOSColorUtil.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
+#define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define NAVI_HEIGHT (self.navigationController.navigationBar.frame.size.height)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+
 @interface UsrCenterViewController ()<IFLYOSsdkLoginDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *usrPhone;
+//替代透明导航栏背景
+@property(nonatomic,strong)UIView *mask;
 
 @end
 
@@ -28,12 +35,33 @@
     self.title = NSLocalizedString(@"usr_center", nil);
     self.tableView.rowHeight = 44;
     self.usrPhone.text = APPDELEGATE.user.phone;
+    [self.view addSubview:self.mask];
 //    self.tableView.backgroundView = ({
 //    UIView * view = [[UIView alloc] initWithFrame:self.tableView.bounds];
 //    view.backgroundColor = [UIColor redColor];
 //    view;
 //    });
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    [self.view bringSubviewToFront:self.mask];
+}
+
+#pragma mark --bgLayer懒加载
+-(UIView*)mask{
+    if(!_mask){
+        _mask = [UIView new];
+        _mask.backgroundColor = [UIColor colorWithHexString:@"F9F9F9"];
+    }
+    return _mask;
+}
+
+#pragma mark --UIUIScrollViewDelegate 协议方法
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat _H = NAVI_HEIGHT + STATUS_HEIGHT;
+    self.mask.frame = CGRectMake(0, scrollView.contentOffset.y, SCREEN_WIDTH, _H);
 }
 
 #pragma mark --UITableViewDelegate

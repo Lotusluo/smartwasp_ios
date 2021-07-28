@@ -63,6 +63,7 @@ static MatchLAViewController *matchMV;
     matchMV = self;
     self.navigationItem.leftBarButtonItem.title = @"";
     [NSThread detachNewThreadSelector:@selector(connectServer) toTarget:self withObject:nil];
+//    self.step = 3;
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     // Do any additional setup after loading the view from its nib.
 }

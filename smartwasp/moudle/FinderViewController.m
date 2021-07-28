@@ -61,10 +61,8 @@ UIScrollViewDelegate>
 @property (nonatomic,strong) FindBean *findBean;
 //刷新控件
 @property (nonatomic,strong) HWHeadRefresh *headerView;
-//临界值
-@property (nonatomic) CGFloat zeroValue;
 
-@property (nonatomic) NSString *looperTask;
+@property (nonatomic) NSString *looperTaskName;
 
 @end
 
@@ -87,7 +85,6 @@ static NSString *const ID2 = @"FindBannerCell";
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     _toolbar.frame = CGRectMake(0, STATUS_HEIGHT, SCREEN_WIDTH, 49);
-//    self.zeroValue = STATUS_HEIGHT + 49 + APAGE_SIZE.height + 20;
     //设置scrollView约束
     [self.scrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view);
@@ -173,15 +170,9 @@ static NSString *const ID2 = @"FindBannerCell";
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     //刷新Banner数据
     [self.collectionView reloadData];
+    [JCGCDTimer canelTimer:self.looperTaskName];
     __weak typeof(self) SELF = self;
-    [JCGCDTimer canelTimer:self.looperTask];
-    self.looperTask = [JCGCDTimer timerTask:^{
-        if (SELF.isViewLoaded  && SELF.view.window){
-            NSInteger nowIndex = (SELF.pageCtrl.currentPage + 1 + SELF.findBean.banners.count) % SELF.findBean.banners.count;
-            [SELF.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:nowIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-            SELF.pageCtrl.currentPage = nowIndex;
-        }
-    } start:5 interval:5 repeats:YES async:NO];
+    self.looperTaskName = [JCGCDTimer timerTask:SELF selector:@selector(looperTask) start:5 interval:5 repeats:YES async:NO];
     [self.scrollView addSubview:self.collectionView];
     [self.scrollView addSubview:self.pageCtrl];
     //对scrollView进行约束
@@ -205,14 +196,12 @@ static NSString *const ID2 = @"FindBannerCell";
     [self.tableView reloadData];
     [self.scrollView addSubview:self.tableView];
     //对tableview进行约束
-    CGFloat tableViewHeight = self.findBean.abbrs.count * 30 + self.findBean.skills.count * 80;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.collectionView.mas_bottom).offset(20);
         make.width.equalTo(self.scrollView);
-        make.height.mas_equalTo(tableViewHeight);
+        make.height.equalTo(self.scrollView);
     }];
-    
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, tableViewHeight + APAGE_SIZE.height + 20);
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, self.scrollView.frame.size.height + 20 + APAGE_SIZE.height);
 }
 
 /**
@@ -231,6 +220,15 @@ static NSString *const ID2 = @"FindBannerCell";
     }
 }
 
+//banner滚动回调
+-(void)looperTask{
+    if (self.isViewLoaded  && self.view.window){
+        NSInteger nowIndex = (self.pageCtrl.currentPage + 1 + self.findBean.banners.count) % self.findBean.banners.count;
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:nowIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        self.pageCtrl.currentPage = nowIndex;
+    }
+}
+
 /***********************************Start UIScrollViewDelegate代理实现**********************************/
 
 #pragma mark --UIScrollViewDelegate
@@ -241,36 +239,41 @@ static NSString *const ID2 = @"FindBannerCell";
             int page = floor(scrollView.contentOffset.x / (APAGE_SIZE.width + 30));
             if(self.pageCtrl){
                 self.pageCtrl.currentPage = page;
+                [JCGCDTimer canelTimer:self.looperTaskName];
+                __weak typeof(self) SELF = self;
+                self.looperTaskName = [JCGCDTimer timerTask:SELF selector:@selector(looperTask) start:5 interval:5 repeats:YES async:NO];
             }
         }
         return;
     }
 
 }
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    if (scrollView == self.scrollView) {
-//        if (self.tableView.contentOffset.y > 0) {
-//            // header已经消失，开始滚动下面的_table，并让_scroll不动
-//            self.scrollView.contentOffset = CGPointMake(0, _zeroValue);
-//        }
-//        if (self.scrollView.contentOffset.y < _zeroValue) {
-//            // header已经显示出来，重置_table.contentOffset为0
-//            self.tableView.contentOffset = CGPointZero;
-//        }
-//    }
-//    else if (scrollView == self.tableView) {
-//        if (self.scrollView.contentOffset.y < _zeroValue) {
-//            // header还没有消失，那么_table.contentOffset一直为0
-//            self.tableView.contentOffset = CGPointZero;
-//            self.tableView.showsVerticalScrollIndicator = NO;
-//        }
-//        else {
-//            // header已经消失
-//            self.scrollView.contentOffset = CGPointMake(0, _zeroValue);
-//            self.tableView.showsVerticalScrollIndicator = YES;
-//        }
-//    }
-//}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSInteger zeroValue = APAGE_SIZE.height + 20 + 0.5;
+    if (scrollView == self.scrollView) {
+        if (self.tableView.contentOffset.y > 0) {
+            // header已经消失，开始滚动下面的_table，并让_scroll不动
+            self.scrollView.contentOffset = CGPointMake(0, zeroValue);
+        }
+        if (self.scrollView.contentOffset.y < zeroValue) {
+            // header已经显示出来，重置_table.contentOffset为0
+            self.tableView.contentOffset = CGPointZero;
+        }
+    }
+    else if (scrollView == self.tableView) {
+        if (self.scrollView.contentOffset.y < zeroValue) {
+            // header还没有消失，那么_table.contentOffset一直为0
+            self.tableView.contentOffset = CGPointZero;
+            self.tableView.showsVerticalScrollIndicator = NO;
+        }
+        else {
+            // header已经消失
+            self.scrollView.contentOffset = CGPointMake(0, zeroValue);
+            self.tableView.showsVerticalScrollIndicator = YES;
+        }
+    }
+}
 
 /***********************************End UIScrollViewDelegate代理实现**********************************/
 
@@ -280,7 +283,6 @@ static NSString *const ID2 = @"FindBannerCell";
 -(void)collectionView:( UICollectionView *)collectionView didSelectItemAtIndexPath:( NSIndexPath *)indexPath{
     BannerBean *bannerBean = self.findBean.banners[indexPath.row];
     WebPageViewController *newPage = [WebPageViewController createNewPageWithUrl:bannerBean.url];
-    newPage.isInterupt = true;
     [self.navigationController pushViewController:newPage animated:YES];
 }
 
@@ -316,7 +318,9 @@ static NSString *const ID2 = @"FindBannerCell";
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     if ([view isMemberOfClass:[UITableViewHeaderFooterView class]]) {
-        ((UITableViewHeaderFooterView *)view).tintColor = self.view.backgroundColor;
+        UITableViewHeaderFooterView *tfView = (UITableViewHeaderFooterView*)view;
+        tfView.tintColor = self.view.backgroundColor;
+        tfView.contentView.backgroundColor = self.view.backgroundColor;
     }
 }
 
@@ -446,7 +450,7 @@ static NSString *const ID2 = @"FindBannerCell";
         _tableView = [[UITableView alloc] init];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.scrollEnabled = NO;
+//        _tableView.scrollEnabled = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor = [UIColor clearColor];
         //注册头控件
@@ -501,7 +505,7 @@ static NSString *const ID2 = @"FindBannerCell";
 #pragma mark --ScrollView懒加载
 -(UIScrollView*) scrollView{
     if(!_scrollView){
-        _scrollView = [UIScrollView new];
+        _scrollView = [EGOScrollView new];
         _scrollView.showsVerticalScrollIndicator = YES;
         _scrollView.delegate = self;
         _scrollView.backgroundColor = [UIColor clearColor];

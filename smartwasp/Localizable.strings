@@ -15,7 +15,7 @@
 "skill_desc"="技能详情";
 "auth_err"="授权失败,请重试";
 "no_internet"="无网络,请打开网络!";
-"no_internet1"="无法连接到局域网设备,请打开本地网络权限";
+"no_internet1"="请打开本地网络权限,如已打开请忽略";
 "retry"="请重试";
 "suggest"="意见与建议";
 "wait"="请稍后";
@@ -33,6 +33,7 @@
 "retry_btn"="重试";
 "confirm_btn"="确定";
 "cancel_btn"="取消";
+"cancel_btn1"="忽略";
 "copy_btn"="复制";
 
 "play_now"="正在播放:%@";

@@ -58,6 +58,7 @@
 // 使用AF监听网络状态
 - (void)observeNetWork {
     static UIAlertController* alert;
+    __weak typeof(self) SELF = self;
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
@@ -65,7 +66,7 @@
                 [alert dismissViewControllerAnimated:YES completion:nil];
                 alert = nil;
             }
-            alert = [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:self callBack:^{
+            alert = [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:SELF callBack:^{
                 NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
                 [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
             } negative:YES];
@@ -90,10 +91,6 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[IFLYOSSDK shareInstance] unregisterWebView:LOGIN_PAGE];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
 }
 
 /**

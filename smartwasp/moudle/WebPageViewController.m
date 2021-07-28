@@ -12,24 +12,31 @@
 #import "CodingUtil.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "UIViewHelper.h"
+#import "IFLYOSUIColor+IFLYOSColorUtil.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface WebPageViewController ()<WKNavigationDelegate,IFLYOSsdkAuthDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property(copy,nonatomic) NSString *Tag;
+@property(nonatomic)BOOL hasBeenSet;
+@property(nonatomic)BOOL needRefresh;
 @end
 
 @implementation WebPageViewController
 
--(int) randomInt{
+-(int)randomInt{
     int value = (arc4random() % 10000) + 1;
     return value;
 }
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
+    self.needRefresh = YES;
+    self.progressView.hidden = YES;
     self.Tag = [NSString stringWithFormat:@"newPage-%i",[self randomInt]];
     NSLog(@"创建webView :%@",NSStringFromClass([self class]));
     WKUserContentController *userContentController = [[WKUserContentController alloc]init];
@@ -39,65 +46,83 @@
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
     
     [self.webView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
-    
+
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if(!self.needRefresh)return;
+    NSLog(@"newPage viewWillAppear");
     if (self.contextTag) {
-        NSLog(@"WebPageViewController:contextTag");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
         [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
     }
-    
-    
     if(self.openUrl){
-        NSLog(@"WebPageViewController:openUrl");
-        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.Tag];
-        NSURL *url = [NSURL URLWithString:self.openUrl];
-        NSURLRequest *req = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:req];
+        [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.openUrl]]];
+        self.progressView.hidden = NO;
+        // 给webview添加监听
+        [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     }
 
 
     if(self.path){
-        NSLog(@"WebPageViewController:path");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openWebPage:self.Tag pageIndex:self.path deviceId:APPDELEGATE.curDevice.device_id];
     }
     
     if(self.authUrl){
-        NSLog(@"WebPageViewController:authUrl");
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openAuthorizePage:self.Tag url:self.authUrl];
     }
- 
-    if(self.isInterupt){
+    
+    if(self.isInterupt && !self.hasBeenSet){
         self.webView.navigationDelegate = self;
-        if (@available(iOS 7.0, *)) {
-            if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-                self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-                self.navigationController.interactivePopGestureRecognizer.delegate = self;
-            }
-        }
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
-    // Do any additional setup after loading the view from its nib.
+    self.needRefresh = NO;
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    NSLog(@"newPage viewDidDisappear");
+    [[IFLYOSSDK shareInstance] unregisterWebView:self.Tag];
+    self.needRefresh = YES;
+    @try {
+        [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    } @catch (NSException *exception) {
+    } @finally {
+    }
+}
+
+// 监听事件处理
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqual:@"estimatedProgress"] && object == self.webView) {
+        [self.progressView setAlpha:1.0f];
+        [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
+        if (self.webView.estimatedProgress  >= 1.0f) {
+            [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                [self.progressView setAlpha:0.0f];
+            } completion:^(BOOL finished) {
+                [self.progressView setProgress:0.0f animated:YES];
+            }];
+        }
+    }else{
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     return YES;
 }
 
--(void) viewWillAppear:(BOOL)animated{
-    [[IFLYOSSDK shareInstance] webViewAppear:self.Tag];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [[IFLYOSSDK shareInstance] webViewDisappear:self.Tag];
-}
-
--(void) closePage{
+-(void)closePage{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void) openNewPage:(id) tag noBack:(NSNumber *)noBack{
+-(void)openNewPage:(id) tag noBack:(NSNumber *)noBack{
     WebPageViewController *newPage = [WebPageViewController createNewPageWithTag:tag];
     [self.navigationController pushViewController:newPage animated:YES];
 }
@@ -113,9 +138,10 @@
     self.title = title;
 }
 
--(void) dealloc{
+-(void)dealloc{
+    [self.webView setNavigationDelegate:nil];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-    NSLog(@"newPage释放");
+    NSLog(@"================newPage释放================");
 }
 
 

@@ -386,6 +386,7 @@
 }
 
 
+
 //静态方式生成ViewController
 +(DeviceSetViewController *) createNewPage:(DeviceBean *) deviceBean{
     DeviceSetViewController *dvc = [[DeviceSetViewController alloc] initWithNibName:@"DeviceSetViewController" bundle:nil];

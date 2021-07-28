@@ -78,6 +78,28 @@ dispatch_semaphore_t semaphore_;
     return timerName;
 }
 
++ (NSString*)timerTask:(id)target
+              selector:(SEL)selector
+                 start:(NSTimeInterval)start
+              interval:(NSTimeInterval)interval
+               repeats:(BOOL)repeats
+                 async:(BOOL)async{
+    
+    if (!target || !selector) return nil;
+    
+    return [self timerTask:^{
+        
+        if ([target respondsToSelector:selector]) {
+            //（这是消除警告的处理）
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [target performSelector:selector];
+#pragma clang diagnostic pop
+        }
+        
+    } start:start interval:interval repeats:repeats async:async];
+}
+
 +(void)canelTimer:(NSString*) timerName{
     
     if (timerName.length == 0) {

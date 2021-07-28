@@ -81,8 +81,11 @@
  IOS14以上需要先判断是否有本地网络权限
  */
 -(void)onNext{
+//    MatchLAViewController *mvc = [MatchLAViewController new];
+//    mvc.iconPath = self.iconPath;
+//    mvc.hostName = @"192.168.51.1";
+//    [self.navigationController pushViewController:mvc animated:YES];
     NSString *cssid = ServiceUtil.wifiSsid;
-    NSLog(@"cssid:%@",cssid);
     if(cssid && [cssid rangeOfString:@"^LA_" options:NSRegularExpressionSearch].location != NSNotFound){
         NSDictionary *dict = [LDSRouterInfo getRouterInfo];
         NSString *router = dict[@"router"];
@@ -148,7 +151,7 @@
         self.alert = [UIViewHelper showAlert:NSLocalizedString(@"no_internet1", nil) target:self callBack:^{
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-        } negative:YES];
+        } positiveTxt:NSLocalizedString(@"confirm_btn", nil) negativeTxt:NSLocalizedString(@"cancel_btn1", nil)];
     }else{
         [[iToast makeText:NSLocalizedString(@"retry", nil)] show];
     }

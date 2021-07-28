@@ -130,7 +130,6 @@
 }
 
 -(void)dealloc{
-    [[IFLYOSSDK shareInstance] unregisterWebView:_tag];
 }
 
 //打开一个新页面

@@ -145,7 +145,8 @@
     //去除横线
     [navVc.navigationBar setShadowImage:[[UIImage alloc]init]];
     self.window.rootViewController = navVc;
-    
+  
+
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{

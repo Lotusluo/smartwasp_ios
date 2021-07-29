@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DeviceBean.h"
+#import <QuartzCore/QuartzCore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,5 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void) render:(DeviceBean*) device;
 
 @end
+
 
 NS_ASSUME_NONNULL_END

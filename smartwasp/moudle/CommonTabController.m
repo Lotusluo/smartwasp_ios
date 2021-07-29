@@ -17,6 +17,8 @@
 #import "AppDelegate.h"
 #import "AppDelegate+Global.h"
 
+#import "UIViewHelper.h"
+
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)

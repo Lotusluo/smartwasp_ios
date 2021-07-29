@@ -12,6 +12,13 @@
 #import "iToast.h"
 #import "SuggestViewController.h"
 
+#define APP_ID @"id1576321508"
+// iOS appstore的跳转
+#define APP_STORE [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/%@", APP_ID]
+// iOS 11 的评价
+#define APP_STORE_SCORE [NSString stringWithFormat:@"itms-apps://itunes.apple.com/cn/app/%@?mt=8&action=write-review", APP_ID]
+
+
 @interface AboutViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *versionView;
@@ -30,29 +37,36 @@
 }
 //检查更新
 - (IBAction)onCheckClick:(id)sender {
-    [Loading show:nil];
-    [[NetDAO sharedInstance] post:@{@"type":@"3"}
-                             path:@"api/checkUpdate"  callBack:^(BaseBean * _Nonnull cData) {
-        [Loading dismiss];
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-        NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
-        if(!cData.errCode && cData.data){
-            NSString *new_build = [infoDictionary objectForKey:@"versionCode"];
-            if(new_build.intValue > app_build.intValue){
-                
-            }else{
-                [UIViewHelper showAlert:NSLocalizedString(@"newer_version", nil) target:self];
-            }
-        }else{
-            [[iToast makeText:NSLocalizedString(@"error_version", nil)] show];
-        }
-    }];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:APP_STORE] options:@{} completionHandler:nil];
+//    [Loading show:nil];
+//    [[NetDAO sharedInstance] post:@{@"type":@"3"}
+//                             path:@"api/checkUpdate"  callBack:^(BaseBean * _Nonnull cData) {
+//        [Loading dismiss];
+//        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+//        NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+//        if(!cData.errCode && cData.data){
+//            NSString *new_build = [infoDictionary objectForKey:@"versionCode"];
+//            if(new_build.intValue > app_build.intValue){
+//
+//            }else{
+//                [UIViewHelper showAlert:NSLocalizedString(@"newer_version", nil) target:self];
+//            }
+//        }else{
+//            [[iToast makeText:NSLocalizedString(@"error_version", nil)] show];
+//        }
+//    }];
 }
 
 //意见建议
 - (IBAction)onSuggestClick:(id)sender {
     SuggestViewController *svc = [SuggestViewController new];
     [self.navigationController pushViewController:svc animated:YES];
+}
+
+
+//给我们评分
+- (IBAction)onScoreClick:(id)sender {
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:APP_STORE_SCORE] options:@{} completionHandler:nil];
 }
 
 /*

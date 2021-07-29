@@ -21,9 +21,8 @@
 @interface WebPageViewController ()<WKNavigationDelegate,IFLYOSsdkAuthDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-@property(copy,nonatomic) NSString *Tag;
-@property(nonatomic)BOOL hasBeenSet;
-@property(nonatomic)BOOL needRefresh;
+@property (copy,nonatomic) NSString *Tag;
+@property (nonatomic,assign) NSInteger count;
 @end
 
 @implementation WebPageViewController
@@ -35,7 +34,6 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.needRefresh = YES;
     self.progressView.hidden = YES;
     self.Tag = [NSString stringWithFormat:@"newPage-%i",[self randomInt]];
     NSLog(@"创建webView :%@",NSStringFromClass([self class]));
@@ -44,16 +42,7 @@
     configuration.userContentController = userContentController;
     self.webView.configuration.userContentController = userContentController;
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:self.Tag];
-    
     [self.webView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
-
-    // Do any additional setup after loading the view from its nib.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    if(!self.needRefresh)return;
-    NSLog(@"newPage viewWillAppear");
     if (self.contextTag) {
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag contextTag:self.contextTag];
         [[IFLYOSSDK shareInstance] openNewPage:self.Tag];
@@ -65,8 +54,7 @@
         // 给webview添加监听
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
     }
-
-
+    
     if(self.path){
         [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:self.Tag];
         [[IFLYOSSDK shareInstance] openWebPage:self.Tag pageIndex:self.path deviceId:APPDELEGATE.curDevice.device_id];
@@ -77,24 +65,31 @@
         [[IFLYOSSDK shareInstance] openAuthorizePage:self.Tag url:self.authUrl];
     }
     
-    if(self.isInterupt && !self.hasBeenSet){
+    if(self.isInterupt){
         self.webView.navigationDelegate = self;
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
-    self.needRefresh = NO;
+    // Do any additional setup after loading the view from its nib.
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    NSLog(@"newPage viewDidDisappear");
-    [[IFLYOSSDK shareInstance] unregisterWebView:self.Tag];
-    self.needRefresh = YES;
-    @try {
-        [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    } @catch (NSException *exception) {
-    } @finally {
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.count = self.navigationController.viewControllers.count;
+    NSLog(@"viewWillAppear:%ld",self.count);
+    [[IFLYOSSDK shareInstance] webViewAppear:self.Tag];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSInteger nowCount = self.navigationController.viewControllers.count;
+    NSLog(@"viewWillDisappear:%ld",nowCount);
+    if(self.count - 1 == nowCount){
+        //此时为该VC销毁的时候
+        [[IFLYOSSDK shareInstance] unregisterWebView:self.Tag];
+        return;
     }
+    [[IFLYOSSDK shareInstance] webViewDisappear:self.Tag];
 }
 
 // 监听事件处理
@@ -141,6 +136,11 @@
 -(void)dealloc{
     [self.webView setNavigationDelegate:nil];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    @try {
+        [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    } @catch (NSException *exception) {
+    } @finally {
+    }
     NSLog(@"================newPage释放================");
 }
 
@@ -185,6 +185,12 @@
     }];
 }
 
+-(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    if (error.code==-999) {
+        return;
+    }
+}
+
 #pragma mark -- IFLYOSsdkAuthDelegate
 -(void)onAuthSuccess{
     [self.navigationController popViewControllerAnimated:YES];
@@ -207,7 +213,6 @@
 }
 
 +(WebPageViewController *)createNewPageWithUrl:(NSString *)url{
-    NSLog(@"url:%@",url);
     WebPageViewController *vc = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil];
     vc.openUrl = url;
     vc.disappearHideBar = YES;

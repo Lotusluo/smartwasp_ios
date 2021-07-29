@@ -472,6 +472,7 @@ static NSString *const ID2 = @"FindBannerCell";
         _headerView = HWHeadRefresh.new;
         __weak typeof(self) SELF = self;
         [_headerView hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
+            NSLog(@"refresh");
             [JCGCDTimer timerTask:^{
                 SELF.NEED_REFRESH_UI = YES;
                 [SELF reloadData:APPDELEGATE.curDevice];

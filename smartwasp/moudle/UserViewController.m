@@ -57,7 +57,8 @@ ISWClickDelegate>
 /**###############按钮视图###############*/
 @property (weak, nonatomic) IBOutlet UIStackView *naviContent;
 
-@property(nonatomic)BOOL test;
+//循环的设备banner图
+@property (nonatomic,strong) NSMutableArray<DeviceBean*> *devicesBanner;
 
 @end
 
@@ -173,48 +174,52 @@ static NSString *const ID = @"CellIdentifier";
     if (!self.isViewLoaded || !self.view.window){
         return;
     }
-    self.pageControl.numberOfPages = APPDELEGATE.devices ? APPDELEGATE.devices.count + 1 : 1;
-    [self.collectionView reloadData];
-    //判断当前的设备索引号
-    if(APPDELEGATE.curDevice){
+    //初始化设备banner数组
+    self.devicesBanner = [NSMutableArray new];
+    DeviceBean *header = [[DeviceBean alloc] init];
+    header.alias = @"header";
+    [self.devicesBanner addObject:header];
+    self.pageControl.numberOfPages = 1;
+    if(APPDELEGATE.devices){
+        //如果有设备，则进入循环模式
+        [self.devicesBanner addObjectsFromArray:APPDELEGATE.devices];
+        [self.devicesBanner addObject:header];
+        [self.devicesBanner insertObject:APPDELEGATE.devices.lastObject atIndex:0];
+        self.pageControl.numberOfPages = APPDELEGATE.devices.count + 1;
+        //设置当前的设备
         NSInteger index = [APPDELEGATE.devices indexOfObject:APPDELEGATE.curDevice] + 1;
         [self setCurrentPage:index];
-    }else{
-        [self setCurrentPage:0];
+        
+        NSInteger pageWidth = (APAGE_SIZE.width + 30);
+        self.collectionView.contentOffset = CGPointMake(pageWidth * (index + 1), 0);
     }
+    [self.collectionView reloadData];
+    //判断当前的设备索引号
     self.NEED_REFRESH_UI = NO;
 }
 
 #pragma mark --UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row){
-        //点击进入设备详情界面
-        DeviceBean *selctedBean = APPDELEGATE.devices[indexPath.row - 1];
-        DeviceSetViewController *dvc = [DeviceSetViewController createNewPage:selctedBean];
-        [self.navigationController pushViewController:dvc animated:YES];
+    DeviceBean *selctedBean = self.devicesBanner[indexPath.row];
+    if([selctedBean.alias isEqualToString:@"header"]){
+        //进入添加设备界面
+        AddDeviceViewController *avc = AddDeviceViewController.new;
+        [self.navigationController pushViewController:avc animated:YES];
         return;
     }
-    //进入添加设备界面
-    AddDeviceViewController *avc = AddDeviceViewController.new;
-    [self.navigationController pushViewController:avc animated:YES];
+    //点击进入设备详情界面
+    DeviceSetViewController *dvc = [DeviceSetViewController createNewPage:selctedBean];
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 #pragma mark --UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.pageControl.numberOfPages;
+    return self.devicesBanner.count;
 }
-
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     DeviceBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    NSInteger index = indexPath.row - 1;
-    if(index == -1){
-        DeviceBean *header = [[DeviceBean alloc] init];
-        header.alias = @"header";
-        [cell render:header];
-    }else{
-        [cell render:APPDELEGATE.devices[index]];
-    }
+    [cell render:self.devicesBanner[indexPath.row]];
     return cell;
 }
 
@@ -225,24 +230,45 @@ static NSString *const ID = @"CellIdentifier";
 
 #pragma mark --UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    BOOL scrollToScrollStop = !scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
-    if (scrollToScrollStop) {
-        int page = floor(scrollView.contentOffset.x / (APAGE_SIZE.width + 30));
-        [self setCurrentPage:page];
+    [self doCycle:scrollView];
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    [self doCycle:scrollView];
+}
+
+//循环判断
+-(void)doCycle:(UIScrollView*)scrollView{
+    if(self.devicesBanner.count <= 1)
+        return;
+    NSInteger pageWidth = (APAGE_SIZE.width + 30);
+    NSInteger pageIndex = floor(scrollView.contentOffset.x / pageWidth);
+    if(pageIndex == 0){
+        self.collectionView.contentOffset = CGPointMake(pageWidth * (self.devicesBanner.count - 2), 0);
+        [self setCurrentPage:self.devicesBanner.count - 2];
+    }else if (pageIndex == self.devicesBanner.count - 1){
+        self.collectionView.contentOffset = CGPointMake(pageWidth, 0);
+        [self setCurrentPage:0];
+    }else{
+        [self setCurrentPage:pageIndex - 1];
     }
+//    BOOL scrollToScrollStop = !scrollView.tracking && !scrollView.dragging && !scrollView.decelerating;
+//    if (scrollToScrollStop) {
+//
+//    }
 }
 
 -(void)setCurrentPage:(NSInteger) page{
     [self.pageControl setCurrentPage:page];
-    CGFloat offsetX = floor(page * (APAGE_SIZE.width + 30));
-    if(self.collectionView.contentOffset.x == offsetX)
-        return;
-    __weak typeof(self) SELF = self;
-    dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 0.2* NSEC_PER_SEC);
-    dispatch_after(time_t, dispatch_get_main_queue(), ^{
-        SELF.collectionView.contentOffset = CGPointMake(offsetX, 0);
-        [SELF.pageControl setCurrentPage:page];
-    });
+//    CGFloat offsetX = floor(page * (APAGE_SIZE.width + 30));
+//    if(self.collectionView.contentOffset.x == offsetX)
+//        return;
+//    __weak typeof(self) SELF = self;
+//    dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, 0.2* NSEC_PER_SEC);
+//    dispatch_after(time_t, dispatch_get_main_queue(), ^{
+//        SELF.collectionView.contentOffset = CGPointMake(offsetX, 0);
+//        [SELF.pageControl setCurrentPage:page];
+//    });
 }
 
 

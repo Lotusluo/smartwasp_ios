@@ -36,6 +36,8 @@
 "cancel_btn1"="忽略";
 "copy_btn"="复制";
 
+"main_tip"="此版本暂不支持音源的推送及音乐卡的购买,敬请谅解";
+
 "play_now"="正在播放:%@";
 "play_now1"="正在播放";
 "un_play_now1"="未在播放";

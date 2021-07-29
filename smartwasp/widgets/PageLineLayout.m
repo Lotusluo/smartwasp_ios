@@ -36,8 +36,8 @@
     }else {
        proposedContentOffset.x = round(rawPageValue) * pageWidth;
     }
-    int page = floor(proposedContentOffset.x / pageWidth);
-    self.pageControl.currentPage = page;
+//    int page = floor(proposedContentOffset.x / pageWidth);
+//    self.pageControl.currentPage = page;
     return proposedContentOffset;
 }
 

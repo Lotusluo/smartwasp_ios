@@ -8,7 +8,6 @@
 #import "ListViewController.h"
 #import "ABUITableViewCell.h"
 #import "SkillDetailViewController.h"
-#import "UIImage+Extension.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 
 #define STATUS_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
@@ -62,7 +61,6 @@ static NSString *const ID = @"ABUITableViewCell";
     [cell setIcon:skillBean.icon];
     return cell;
 }
-
 
 #pragma mark -UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

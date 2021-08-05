@@ -8,7 +8,7 @@
 #import "ItemMoreViewController.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import <Masonry.h>
-#import "ListViewController.h"
+#import "ListViewController1.h"
 #import "LXSEQView.h"
 #import "UIViewHelper.h"
 #import "MusicPlayViewController.h"
@@ -125,7 +125,7 @@
 
 // 返回各个列表菜单下的实例，该实例需要遵守并实现 <JXCategoryListContentViewDelegate> 协议
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
-    ListViewController *list = [[ListViewController alloc] init];
+    ListViewController1 *list = [[ListViewController1 alloc] init];
     list.lists = self.map[self.categoryView.titles[index]];
     return list;
 }

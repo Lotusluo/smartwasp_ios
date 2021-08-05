@@ -4,12 +4,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicPlayViewController">
             <connections>
+                <outlet property="cpView" destination="9wp-Ud-i5V" id="Y53-gx-esT"/>
+                <outlet property="imageView" destination="lyG-ko-39f" id="gcw-fC-s9y"/>
+                <outlet property="nameView" destination="UCc-hW-D9K" id="rxN-Cy-jMS"/>
+                <outlet property="playView" destination="vMC-Xg-3Fh" id="Nhy-1q-IzF"/>
                 <outlet property="sliderView" destination="n4t-bj-LGe" id="VhQ-T2-a8G"/>
                 <outlet property="titleView" destination="WrU-Lp-44F" id="fVk-RY-ZcU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,14 +26,90 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lyG-ko-39f" userLabel="Icon">
+                    <rect key="frame" x="30" y="64" width="354" height="354"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="lyG-ko-39f" secondAttribute="height" multiplier="1:1" id="qjk-yE-1sT"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                            <real key="value" value="0.20000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                            <size key="value" width="10" height="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未在播放中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-hW-D9K">
+                    <rect key="frame" x="163.5" y="428" width="87" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-Xg-3Fh" userLabel="Play">
+                    <rect key="frame" x="192" y="478.5" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KSh-xq-gKk"/>
+                        <constraint firstAttribute="width" constant="30" id="u71-wQ-zhU"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal">
+                        <imageReference key="image" image="ic_play_arrow_black.png" symbolScale="large"/>
+                    </state>
+                    <state key="selected">
+                        <imageReference key="image" image="ic_pause_black.png" symbolScale="large"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyG-rT-Ovi" userLabel="Next">
+                    <rect key="frame" x="272" y="478.5" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="v4c-LL-kqh"/>
+                        <constraint firstAttribute="height" constant="30" id="zPk-BE-NO0"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="ic_skip_next_blac.png"/>
+                    <connections>
+                        <action selector="onBackward:" destination="-1" eventType="touchUpInside" id="hmt-iD-eVL"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95y-nz-YBg" userLabel="Prev">
+                    <rect key="frame" x="112" y="478.5" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="EO1-rc-gKi"/>
+                        <constraint firstAttribute="width" constant="30" id="lbf-vL-ORg"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="ic_skip_previous_black.png"/>
+                    <connections>
+                        <action selector="onForward:" destination="-1" eventType="touchUpInside" id="qDT-da-JQq"/>
+                    </connections>
+                </button>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" minimumValueImage="ic_sound_min_black.png" maximumValueImage="ic_sound_max_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4t-bj-LGe">
-                    <rect key="frame" x="18" y="64" width="378" height="31"/>
+                    <rect key="frame" x="18" y="538.5" width="378" height="31"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="minimumTrackTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <action selector="voiceChangedClick:" destination="-1" eventType="touchUpInside" id="kcw-fU-ERv"/>
                     </connections>
                 </slider>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS6-bD-qxD" userLabel="area">
+                    <rect key="frame" x="192" y="478.5" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="DyD-BF-MNH"/>
+                        <constraint firstAttribute="width" constant="30" id="fqR-go-Nu3"/>
+                    </constraints>
+                    <state key="normal">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                    <connections>
+                        <action selector="onPlayOrPause:" destination="-1" eventType="touchUpInside" id="fkJ-M0-HB1"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrU-Lp-44F" userLabel="Title">
                     <rect key="frame" x="186" y="80" width="0.0" height="0.0"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,20 +117,50 @@
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wp-Ud-i5V">
+                    <rect key="frame" x="207" y="454.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="0.99990195039999996" green="1" blue="0.9998797774" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="lyG-ko-39f" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="1Sl-1a-fZe"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="leading" secondItem="95y-nz-YBg" secondAttribute="trailing" constant="50" id="3IK-ai-s3a"/>
+                <constraint firstItem="lyG-ko-39f" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="30" id="4KH-Fh-J5g"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="top" secondItem="95y-nz-YBg" secondAttribute="top" id="8yf-hw-tjD"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="n4t-bj-LGe" secondAttribute="trailing" constant="20" id="9MW-d9-Rsc"/>
-                <constraint firstItem="n4t-bj-LGe" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="ZhY-8A-sBv"/>
+                <constraint firstItem="HyG-rT-Ovi" firstAttribute="leading" secondItem="vMC-Xg-3Fh" secondAttribute="trailing" constant="50" id="Dse-ea-Nd1"/>
+                <constraint firstItem="9wp-Ud-i5V" firstAttribute="top" secondItem="UCc-hW-D9K" secondAttribute="bottom" constant="6" id="JJg-9k-cky"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="top" secondItem="UCc-hW-D9K" secondAttribute="bottom" constant="30" id="JfC-BN-ifL"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="lyG-ko-39f" secondAttribute="trailing" constant="30" id="Lqg-aF-vNF"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="trailing" secondItem="CS6-bD-qxD" secondAttribute="trailing" id="TLF-es-Ps8"/>
+                <constraint firstItem="n4t-bj-LGe" firstAttribute="top" secondItem="vMC-Xg-3Fh" secondAttribute="bottom" constant="30" id="Vgq-gI-VNR"/>
+                <constraint firstItem="UCc-hW-D9K" firstAttribute="top" secondItem="lyG-ko-39f" secondAttribute="bottom" constant="10" id="Xxv-J5-UJS"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YUO-Uw-cVW"/>
                 <constraint firstItem="n4t-bj-LGe" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fQd-hM-zKB"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="top" secondItem="CS6-bD-qxD" secondAttribute="top" id="izj-ZV-Oyb"/>
+                <constraint firstItem="UCc-hW-D9K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jOB-sc-ndv"/>
+                <constraint firstItem="HyG-rT-Ovi" firstAttribute="top" secondItem="vMC-Xg-3Fh" secondAttribute="top" id="jxv-OV-ZPO"/>
                 <constraint firstItem="n4t-bj-LGe" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="lIC-0C-K6m"/>
+                <constraint firstItem="9wp-Ud-i5V" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nIZ-dx-1RQ"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="leading" secondItem="CS6-bD-qxD" secondAttribute="leading" id="pNm-C9-MeW"/>
+                <constraint firstItem="vMC-Xg-3Fh" firstAttribute="bottom" secondItem="CS6-bD-qxD" secondAttribute="bottom" id="v6k-mD-Zve"/>
             </constraints>
             <point key="canvasLocation" x="97" y="75"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_pause_black.png" width="24" height="24"/>
+        <image name="ic_play_arrow_black.png" width="24" height="24"/>
+        <image name="ic_skip_next_blac.png" width="24" height="24"/>
+        <image name="ic_skip_previous_black.png" width="24" height="24"/>
         <image name="ic_sound_max_black.png" width="24" height="24"/>
         <image name="ic_sound_min_black.png" width="24" height="24"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

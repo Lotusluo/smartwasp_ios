@@ -8,8 +8,9 @@
 #import "MainViewController.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "CommonTabController.h"
-#import "FinderViewController.h"
+#import "SkillViewController.h"
 #import "UserViewController.h"
+#import "FinderViewController.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
 #import "AppDelegate+Global.h"
 #import "AppDelegate.h"
@@ -34,19 +35,19 @@
     if(self){
         //tabbar标题
         NSArray *titleSources = @[NSLocalizedString(@"tab_dialog",nil),
-//                                  NSLocalizedString(@"tab_find",nil),
+                                  NSLocalizedString(@"tab_find",nil),
                                   NSLocalizedString(@"tab_skill",nil),
                                   NSLocalizedString(@"tab_home",nil),
                                   NSLocalizedString(@"tab_usr",nil)];
         
         NSArray *iconSources = @[@"icon_tab_dialog",
-//                                 @"icon_tab_find",
+                                 @"icon_tab_find",
                                  @"icon_tab_skill",
                                  @"icon_tab_smart",
                                  @"icon_tab_mine"];
         
         NSArray *iconSelctedSources = @[@"icon_tab_dialog_selected",
-//                                        @"icon_tab_find_selected",
+                                        @"icon_tab_find_selected",
                                         @"icon_tab_skill_selected",
                                         @"icon_tab_smart_selected",
                                         @"icon_tab_mine_selected"];
@@ -57,9 +58,12 @@
         dialogVc.vcType = TALK;
         dialogVc.tag = @"TALK";
         [self addChildViewController:dialogVc];
-        //技能页
+        //发现页
         FinderViewController *finderVc = [[FinderViewController alloc] init];
         [self addChildViewController:finderVc];
+        //技能页
+        SkillViewController *skillVc = [[SkillViewController alloc] init];
+        [self addChildViewController:skillVc];
         //家居页
         CommonTabController *homeVc = [[CommonTabController alloc] init];
         homeVc.vcType =  CONTROLLED_DEVICES;

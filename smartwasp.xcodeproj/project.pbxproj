@@ -63,7 +63,7 @@
 		04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 04115E502682D760003B192F /* IFLYQRCodeUtils.m */; };
 		0415EAA82660E43400A73CE7 /* NormalNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAA72660E43400A73CE7 /* NormalNaviCell.m */; };
 		0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */; };
-		0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* FindBean.m */; };
+		0415EAEA2664D9E500A73CE7 /* SkillerBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0415EAE92664D9E500A73CE7 /* SkillerBean.m */; };
 		041AFED8269848AB004D7289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041AFED7269848AB004D7289 /* Main.storyboard */; };
 		041AFEDB269848AE004D7289 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */; };
 		041AFEE126984909004D7289 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 041AFEDF26984909004D7289 /* Localizable.strings */; };
@@ -86,7 +86,6 @@
 		04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A3D261F1D36000D95D6 /* icon_tab_skill_selected@2x.png */; };
 		04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */; };
 		04283ACB267AF4A000FFBF84 /* DeviceSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */; };
-		04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */; };
 		042A95522685A1D200C017FD /* WifiInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A95502685A1D200C017FD /* WifiInfoViewController.m */; };
 		042A95532685A1D200C017FD /* WifiInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A95512685A1D200C017FD /* WifiInfoViewController.xib */; };
 		042A95642685B85400C017FD /* ServiceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A95632685B85400C017FD /* ServiceUtil.m */; };
@@ -138,13 +137,11 @@
 		045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 045276462671DD6D000ECA78 /* NormalToolbar.xib */; };
 		0452764C2671E282000ECA78 /* NormalToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0452764B2671E282000ECA78 /* NormalToolbar.m */; };
 		0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C71D2665DD3200CD6553 /* MusicPayView.xib */; };
-		0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0454C7262665E7D000CD6553 /* FindBannerCell.xib */; };
 		045A3F9826730E9D00A3DA62 /* SongsBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 045A3F9726730E9D00A3DA62 /* SongsBean.m */; };
 		045E5D7A2658D51700672251 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D792658D51700672251 /* UILabel+Extension.m */; };
 		045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D852658E1F200672251 /* UIImage+Extension.m */; };
 		045E5D9026590BF600672251 /* PageControl2.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E5D8F26590BF600672251 /* PageControl2.m */; };
 		045EDDEA26947DC300E4F572 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */; };
-		04630C5826AAB8A700F2DD91 /* FinderHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04630C5726AAB8A700F2DD91 /* FinderHeaderCell.xib */; };
 		04630C5D26AABE5600F2DD91 /* ABUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */; };
 		046EEFAC26298475001213DB /* CodingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFAB26298475001213DB /* CodingUtil.m */; };
 		046EEFB726298954001213DB /* ConfigDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFB626298954001213DB /* ConfigDAO.m */; };
@@ -165,6 +162,17 @@
 		0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D4832660877300F8DE42 /* DeviceChooseCell.xib */; };
 		0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D487266087CE00F8DE42 /* DeviceAddCell.xib */; };
 		04783315262D1F3600684E9C /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04783313262D1F3500684E9C /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0485839626BA8D0300E75281 /* SkillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485839526BA8D0300E75281 /* SkillViewController.xib */; };
+		0485840C26BAA19400E75281 /* SkillerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485840A26BAA19400E75281 /* SkillerHeaderCell.xib */; };
+		0485840D26BAA19400E75281 /* SkillBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485840B26BAA19400E75281 /* SkillBannerCell.xib */; };
+		0485841326BAA68F00E75281 /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485841026BAA68F00E75281 /* MusicPlayViewController.m */; };
+		0485841426BAA68F00E75281 /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485841226BAA68F00E75281 /* MusicPlayViewController.xib */; };
+		0485841926BAA6B600E75281 /* FinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485841726BAA6B500E75281 /* FinderViewController.m */; };
+		0485841A26BAA6B600E75281 /* FinderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485841826BAA6B600E75281 /* FinderViewController.xib */; };
+		0485841E26BAA6D200E75281 /* FindBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485841D26BAA6D200E75281 /* FindBean.m */; };
+		0485842126BAA75A00E75281 /* FindBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485842026BAA75A00E75281 /* FindBannerCell.xib */; };
+		0485842526BAAA5500E75281 /* ListViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 0485842326BAAA5500E75281 /* ListViewController1.m */; };
+		0485843226BAADB600E75281 /* DeviceSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485843126BAADB500E75281 /* DeviceSetViewController.xib */; };
 		0487DC0726A90F980089BC88 /* banner.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0487DC0626A90F980089BC88 /* banner.plist */; };
 		0488C39E26AFD58B00440320 /* SuggestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488C39C26AFD58B00440320 /* SuggestViewController.m */; };
 		0488C39F26AFD58B00440320 /* SuggestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0488C39D26AFD58B00440320 /* SuggestViewController.xib */; };
@@ -185,8 +193,7 @@
 		04CE3403267DD155001C4216 /* GSMonitorKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE3402267DD155001C4216 /* GSMonitorKeyboard.m */; };
 		04CED27426526B33007EFA25 /* ic_login_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CED27326526B33007EFA25 /* ic_login_out@2x.png */; };
 		04D738CA2620288A00E4F00C /* CommonTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738C82620288A00E4F00C /* CommonTabController.m */; };
-		04D738D026202A7700E4F00C /* FinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738CE26202A7700E4F00C /* FinderViewController.m */; };
-		04D738D126202A7700E4F00C /* FinderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D738CF26202A7700E4F00C /* FinderViewController.xib */; };
+		04D738D026202A7700E4F00C /* SkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738CE26202A7700E4F00C /* SkillViewController.m */; };
 		04D738D626202A8400E4F00C /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738D426202A8400E4F00C /* UserViewController.m */; };
 		04D738D726202A8400E4F00C /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D738D526202A8400E4F00C /* UserViewController.xib */; };
 		04D738E02620453200E4F00C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D738DE2620453200E4F00C /* LoginViewController.m */; };
@@ -220,8 +227,6 @@
 		04E816DD268C520B00B36123 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E816DB268C520B00B36123 /* SearchViewController.m */; };
 		04E816DE268C520B00B36123 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E816DC268C520B00B36123 /* SearchViewController.xib */; };
 		04E816E2268C654400B36123 /* SearchBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E816E1268C654400B36123 /* SearchBean.m */; };
-		04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */; };
-		04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */; };
 		04EBA377267CAB15001D4FDF /* InsetsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EBA375267CAB15001D4FDF /* InsetsLabel.m */; };
 		04F840DC26316DA10068EFAF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F840DB26316DA10068EFAF /* LoginViewController.xib */; };
 		04FCC47126AA68A900CB3C21 /* ic_xiaodan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FCC47026AA68A900CB3C21 /* ic_xiaodan@2x.png */; };
@@ -346,8 +351,8 @@
 		0415EAA72660E43400A73CE7 /* NormalNaviCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalNaviCell.m; sourceTree = "<group>"; };
 		0415EAAE2660E49C00A73CE7 /* DeviceBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceBannerCell.xib; sourceTree = "<group>"; };
 		0415EADB26649A6D00A73CE7 /* ISWDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISWDelegate.h; sourceTree = "<group>"; };
-		0415EAE92664D9E500A73CE7 /* FindBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
-		0415EAEC2664DA0400A73CE7 /* FindBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
+		0415EAE92664D9E500A73CE7 /* SkillerBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillerBean.m; sourceTree = "<group>"; };
+		0415EAEC2664DA0400A73CE7 /* SkillerBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillerBean.h; sourceTree = "<group>"; };
 		041AFED7269848AB004D7289 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		041AFEDA269848AE004D7289 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041AFEDF26984909004D7289 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -381,7 +386,6 @@
 		04261A69261F2378000D95D6 /* icon_tab_smart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_tab_smart@2x.png"; sourceTree = "<group>"; };
 		04283AC8267AF4A000FFBF84 /* DeviceSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceSetViewController.h; sourceTree = "<group>"; };
 		04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceSetViewController.m; sourceTree = "<group>"; };
-		04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceSetViewController.xib; sourceTree = "<group>"; };
 		042A954F2685A1D200C017FD /* WifiInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WifiInfoViewController.h; sourceTree = "<group>"; };
 		042A95502685A1D200C017FD /* WifiInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WifiInfoViewController.m; sourceTree = "<group>"; };
 		042A95512685A1D200C017FD /* WifiInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WifiInfoViewController.xib; sourceTree = "<group>"; };
@@ -457,7 +461,6 @@
 		0452764A2671E282000ECA78 /* NormalToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalToolbar.h; sourceTree = "<group>"; };
 		0452764B2671E282000ECA78 /* NormalToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalToolbar.m; sourceTree = "<group>"; };
 		0454C71D2665DD3200CD6553 /* MusicPayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPayView.xib; sourceTree = "<group>"; };
-		0454C7262665E7D000CD6553 /* FindBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindBannerCell.xib; sourceTree = "<group>"; };
 		045A3F9626730E9D00A3DA62 /* SongsBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SongsBean.h; sourceTree = "<group>"; };
 		045A3F9726730E9D00A3DA62 /* SongsBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongsBean.m; sourceTree = "<group>"; };
 		045E5D782658D4E100672251 /* UILabel+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
@@ -468,7 +471,6 @@
 		045E5D8F26590BF600672251 /* PageControl2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl2.m; sourceTree = "<group>"; };
 		045EDDE826947DC300E4F572 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		045EDDE926947DC300E4F572 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
-		04630C5726AAB8A700F2DD91 /* FinderHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinderHeaderCell.xib; sourceTree = "<group>"; };
 		04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABUITableViewCell.xib; sourceTree = "<group>"; };
 		046EEFAA26298475001213DB /* CodingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodingUtil.h; sourceTree = "<group>"; };
 		046EEFAB26298475001213DB /* CodingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingUtil.m; sourceTree = "<group>"; };
@@ -502,6 +504,21 @@
 		0476D487266087CE00F8DE42 /* DeviceAddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceAddCell.xib; sourceTree = "<group>"; };
 		04783313262D1F3500684E9C /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		04783314262D1F3600684E9C /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		0485839526BA8D0300E75281 /* SkillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillViewController.xib; sourceTree = "<group>"; };
+		0485840A26BAA19400E75281 /* SkillerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillerHeaderCell.xib; sourceTree = "<group>"; };
+		0485840B26BAA19400E75281 /* SkillBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillBannerCell.xib; sourceTree = "<group>"; };
+		0485841026BAA68F00E75281 /* MusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
+		0485841126BAA68F00E75281 /* MusicPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayViewController.h; sourceTree = "<group>"; };
+		0485841226BAA68F00E75281 /* MusicPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
+		0485841626BAA6B500E75281 /* FinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderViewController.h; sourceTree = "<group>"; };
+		0485841726BAA6B500E75281 /* FinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderViewController.m; sourceTree = "<group>"; };
+		0485841826BAA6B600E75281 /* FinderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderViewController.xib; sourceTree = "<group>"; };
+		0485841C26BAA6D200E75281 /* FindBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindBean.h; sourceTree = "<group>"; };
+		0485841D26BAA6D200E75281 /* FindBean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindBean.m; sourceTree = "<group>"; };
+		0485842026BAA75A00E75281 /* FindBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindBannerCell.xib; sourceTree = "<group>"; };
+		0485842326BAAA5500E75281 /* ListViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController1.m; sourceTree = "<group>"; };
+		0485842426BAAA5500E75281 /* ListViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController1.h; sourceTree = "<group>"; };
+		0485843126BAADB500E75281 /* DeviceSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceSetViewController.xib; sourceTree = "<group>"; };
 		0487DC0626A90F980089BC88 /* banner.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = banner.plist; sourceTree = "<group>"; };
 		0488C39B26AFD58B00440320 /* SuggestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuggestViewController.h; sourceTree = "<group>"; };
 		0488C39C26AFD58B00440320 /* SuggestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuggestViewController.m; sourceTree = "<group>"; };
@@ -534,9 +551,8 @@
 		04CED27326526B33007EFA25 /* ic_login_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_login_out@2x.png"; sourceTree = "<group>"; };
 		04D738C72620288A00E4F00C /* CommonTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTabController.h; sourceTree = "<group>"; };
 		04D738C82620288A00E4F00C /* CommonTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonTabController.m; sourceTree = "<group>"; };
-		04D738CD26202A7700E4F00C /* FinderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinderViewController.h; sourceTree = "<group>"; };
-		04D738CE26202A7700E4F00C /* FinderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinderViewController.m; sourceTree = "<group>"; };
-		04D738CF26202A7700E4F00C /* FinderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FinderViewController.xib; sourceTree = "<group>"; };
+		04D738CD26202A7700E4F00C /* SkillViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillViewController.h; sourceTree = "<group>"; };
+		04D738CE26202A7700E4F00C /* SkillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillViewController.m; sourceTree = "<group>"; };
 		04D738D326202A8400E4F00C /* UserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
 		04D738D426202A8400E4F00C /* UserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		04D738D526202A8400E4F00C /* UserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
@@ -598,9 +614,6 @@
 		04E816DC268C520B00B36123 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		04E816E0268C654400B36123 /* SearchBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchBean.h; sourceTree = "<group>"; };
 		04E816E1268C654400B36123 /* SearchBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchBean.m; sourceTree = "<group>"; };
-		04E88CD92679CF3400FEA24C /* MusicPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicPlayViewController.h; sourceTree = "<group>"; };
-		04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicPlayViewController.m; sourceTree = "<group>"; };
-		04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicPlayViewController.xib; sourceTree = "<group>"; };
 		04EBA375267CAB15001D4FDF /* InsetsLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsetsLabel.m; sourceTree = "<group>"; };
 		04EBA376267CAB15001D4FDF /* InsetsLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsetsLabel.h; sourceTree = "<group>"; };
 		04F840DB26316DA10068EFAF /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1011,6 +1024,8 @@
 				041F0BBD268576BE00D545BC /* apMoudles */,
 				043AD2CE26A7F55600CCB406 /* ListViewController.h */,
 				043AD2CD26A7F55600CCB406 /* ListViewController.m */,
+				0485842426BAAA5500E75281 /* ListViewController1.h */,
+				0485842326BAAA5500E75281 /* ListViewController1.m */,
 				044D723426396C8E0075994F /* WebPageViewController.h */,
 				044D723526396C8E0075994F /* WebPageViewController.m */,
 				0422A35B2684289E004E9D55 /* WebPageViewController.xib */,
@@ -1020,12 +1035,15 @@
 				04D738C72620288A00E4F00C /* CommonTabController.h */,
 				04D738C82620288A00E4F00C /* CommonTabController.m */,
 				0425CD68262EE437004D4D23 /* CommonTabController.xib */,
-				04D738CD26202A7700E4F00C /* FinderViewController.h */,
-				04D738CE26202A7700E4F00C /* FinderViewController.m */,
-				04D738CF26202A7700E4F00C /* FinderViewController.xib */,
+				04D738CD26202A7700E4F00C /* SkillViewController.h */,
+				04D738CE26202A7700E4F00C /* SkillViewController.m */,
+				0485839526BA8D0300E75281 /* SkillViewController.xib */,
 				04D738D326202A8400E4F00C /* UserViewController.h */,
 				04D738D426202A8400E4F00C /* UserViewController.m */,
 				04D738D526202A8400E4F00C /* UserViewController.xib */,
+				0485841626BAA6B500E75281 /* FinderViewController.h */,
+				0485841726BAA6B500E75281 /* FinderViewController.m */,
+				0485841826BAA6B600E75281 /* FinderViewController.xib */,
 				0425CD51262ECE17004D4D23 /* MainViewController.h */,
 				0425CD52262ECE17004D4D23 /* MainViewController.m */,
 				0425CD62262EE154004D4D23 /* NotifyViewController.h */,
@@ -1033,12 +1051,12 @@
 				045276402671DBE5000ECA78 /* ItemViewController.h */,
 				045276412671DBE5000ECA78 /* ItemViewController.m */,
 				045276422671DBE5000ECA78 /* ItemViewController.xib */,
-				04E88CD92679CF3400FEA24C /* MusicPlayViewController.h */,
-				04E88CDA2679CF3400FEA24C /* MusicPlayViewController.m */,
-				04E88CDB2679CF3400FEA24C /* MusicPlayViewController.xib */,
 				04283AC8267AF4A000FFBF84 /* DeviceSetViewController.h */,
 				04283AC9267AF4A000FFBF84 /* DeviceSetViewController.m */,
-				04283ACA267AF4A000FFBF84 /* DeviceSetViewController.xib */,
+				0485843126BAADB500E75281 /* DeviceSetViewController.xib */,
+				0485841126BAA68F00E75281 /* MusicPlayViewController.h */,
+				0485841026BAA68F00E75281 /* MusicPlayViewController.m */,
+				0485841226BAA68F00E75281 /* MusicPlayViewController.xib */,
 				04B93A0B267C49080036C0B6 /* SkillDetailViewController.h */,
 				04B93A0C267C49080036C0B6 /* SkillDetailViewController.m */,
 				04B93A0D267C49080036C0B6 /* SkillDetailViewController.xib */,
@@ -1069,14 +1087,16 @@
 				042B4E9B26672420009BE328 /* BannerBean.m */,
 				042B4E9626672371009BE328 /* DeviceBean.h */,
 				042B4E9726672371009BE328 /* DeviceBean.m */,
+				0485841C26BAA6D200E75281 /* FindBean.h */,
+				0485841D26BAA6D200E75281 /* FindBean.m */,
 				042B4E92266721C0009BE328 /* UserBean.h */,
 				042B4E93266721C0009BE328 /* UserBean.m */,
 				042B4E8E26672127009BE328 /* MusicBean.h */,
 				042B4E8F26672127009BE328 /* MusicBean.m */,
 				04063FEA264BB1AE003AD68D /* BaseBean.h */,
 				04063FEB264BB1AE003AD68D /* BaseBean.m */,
-				0415EAEC2664DA0400A73CE7 /* FindBean.h */,
-				0415EAE92664D9E500A73CE7 /* FindBean.m */,
+				0415EAEC2664DA0400A73CE7 /* SkillerBean.h */,
+				0415EAE92664D9E500A73CE7 /* SkillerBean.m */,
 				040B949026661FA900B306D2 /* ItemBean.h */,
 				040B948D26661F7100B306D2 /* ItemBean.m */,
 				040B94922666228F00B306D2 /* GroupBean.m */,
@@ -1130,6 +1150,7 @@
 				04725175265E32C4003C4625 /* DeviceDialog.m */,
 				0476D487266087CE00F8DE42 /* DeviceAddCell.xib */,
 				04725177265E32C4003C4625 /* DeviceDialog.xib */,
+				0485842026BAA75A00E75281 /* FindBannerCell.xib */,
 				0476D4812660877300F8DE42 /* DeviceChooseCell.h */,
 				0476D4822660877300F8DE42 /* DeviceChooseCell.m */,
 				0476D4832660877300F8DE42 /* DeviceChooseCell.xib */,
@@ -1139,7 +1160,6 @@
 				0415EAA62660E43400A73CE7 /* NormalNaviCell.h */,
 				0415EAA72660E43400A73CE7 /* NormalNaviCell.m */,
 				0454C71D2665DD3200CD6553 /* MusicPayView.xib */,
-				0454C7262665E7D000CD6553 /* FindBannerCell.xib */,
 				042B4E9E266724C0009BE328 /* GroupView.h */,
 				042B4E9F266724C0009BE328 /* GroupView.m */,
 				042B4EA2266724D0009BE328 /* GroupView.xib */,
@@ -1152,9 +1172,10 @@
 				04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */,
 				044EAE8A2678A90A00CC122A /* AppDialog.h */,
 				044EAE8B2678A90A00CC122A /* AppDialog.m */,
+				0485840B26BAA19400E75281 /* SkillBannerCell.xib */,
+				0485840A26BAA19400E75281 /* SkillerHeaderCell.xib */,
 				044EAE8E2678A98D00CC122A /* SongsPlayDialog.xib */,
 				0410BE23267B54D900CE993E /* SkillView.xib */,
-				04630C5726AAB8A700F2DD91 /* FinderHeaderCell.xib */,
 			);
 			path = widgets;
 			sourceTree = "<group>";
@@ -1351,6 +1372,7 @@
 				04E816CE268C4A9600B36123 /* ic_screen_box@2x.png in Resources */,
 				042A95732685C40B00C017FD /* MatchLAViewController.xib in Resources */,
 				043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */,
+				0485839626BA8D0300E75281 /* SkillViewController.xib in Resources */,
 				04261A6A261F2378000D95D6 /* icon_tab_smart@2x.png in Resources */,
 				044EAE7F2678916C00CC122A /* icon_account@2x.png in Resources */,
 				04E00B3526214AEF00080581 /* iflyosConfig.xml in Resources */,
@@ -1365,10 +1387,9 @@
 				04115E512682D760003B192F /* QRCodeViewController.xib in Resources */,
 				0499C7DC26356D0E00CE7D5D /* ic_choose@2x.png in Resources */,
 				0415EAAF2660E49C00A73CE7 /* DeviceBannerCell.xib in Resources */,
+				0485840D26BAA19400E75281 /* SkillBannerCell.xib in Resources */,
 				04630C5D26AABE5600F2DD91 /* ABUITableViewCell.xib in Resources */,
-				0454C7272665E7D000CD6553 /* FindBannerCell.xib in Resources */,
 				044EAE7C2678916C00CC122A /* icon_clock@2x.png in Resources */,
-				04D738D126202A7700E4F00C /* FinderViewController.xib in Resources */,
 				0454C71E2665DD3200CD6553 /* MusicPayView.xib in Resources */,
 				04725168265E30F8003C4625 /* Toolbar.xib in Resources */,
 				044EAE8F2678A98D00CC122A /* SongsPlayDialog.xib in Resources */,
@@ -1380,18 +1401,20 @@
 				04E816CF268C4A9600B36123 /* ic_la001@2x.jpg in Resources */,
 				0473B89E268F10B100471A6A /* AboutViewController.xib in Resources */,
 				04E816DE268C520B00B36123 /* SearchViewController.xib in Resources */,
+				0485841A26BAA6B600E75281 /* FinderViewController.xib in Resources */,
 				043F8BDE268DB6F800703FBE /* icon_empty@2x.png in Resources */,
 				04261A4B261F1D36000D95D6 /* icon_tab_skill@2x.png in Resources */,
 				043F8BCD268D975100703FBE /* ic_play_arrow_black@2x.png in Resources */,
 				0425CD69262EE437004D4D23 /* CommonTabController.xib in Resources */,
-				04630C5826AAB8A700F2DD91 /* FinderHeaderCell.xib in Resources */,
-				04283ACC267AF4A000FFBF84 /* DeviceSetViewController.xib in Resources */,
 				04B9383F2636B4680071EFBB /* ic_add_white@2x.png in Resources */,
 				0422A35C2684289E004E9D55 /* WebPageViewController.xib in Resources */,
 				04E816CC268C4A9600B36123 /* ic_dangjian@2x.png in Resources */,
 				043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */,
 				043F8BCE268D975100703FBE /* ic_pause_black@2x.png in Resources */,
+				0485840C26BAA19400E75281 /* SkillerHeaderCell.xib in Resources */,
 				0487DC0726A90F980089BC88 /* banner.plist in Resources */,
+				0485843226BAADB600E75281 /* DeviceSetViewController.xib in Resources */,
+				0485841426BAA68F00E75281 /* MusicPlayViewController.xib in Resources */,
 				044EAE7E2678916C00CC122A /* icon_routines@2x.png in Resources */,
 				043F8BCF268D975100703FBE /* ic_skip_previous_black@2x.png in Resources */,
 				0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */,
@@ -1400,6 +1423,7 @@
 				042A95532685A1D200C017FD /* WifiInfoViewController.xib in Resources */,
 				04261A1B261F167C000D95D6 /* icon_tab_dialog@2x.png in Resources */,
 				04B261F7262D81F400A92083 /* abc_btn_radio_to_on@2x.png in Resources */,
+				0485842126BAA75A00E75281 /* FindBannerCell.xib in Resources */,
 				04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */,
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
 				041AFEDB269848AE004D7289 /* LaunchScreen.storyboard in Resources */,
@@ -1407,7 +1431,6 @@
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
 				041AFED8269848AB004D7289 /* Main.storyboard in Resources */,
 				043811B5268C95CD00BE2571 /* ic_smartwasp_launch.png in Resources */,
-				04E88CDD2679CF3400FEA24C /* MusicPlayViewController.xib in Resources */,
 				04E816CD268C4A9600B36123 /* ic_pwd_invisible@2x.png in Resources */,
 				04261A55261F1D37000D95D6 /* icon_tab_skill_selected@2x.png in Resources */,
 				043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */,
@@ -1498,11 +1521,10 @@
 				04D738E02620453200E4F00C /* LoginViewController.m in Sources */,
 				040B94932666228F00B306D2 /* GroupBean.m in Sources */,
 				040B950D2666464800B306D2 /* JXCategoryTitleVerticalZoomView.m in Sources */,
-				04D738D026202A7700E4F00C /* FinderViewController.m in Sources */,
+				04D738D026202A7700E4F00C /* SkillViewController.m in Sources */,
 				040B95162666464800B306D2 /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				04E816E2268C654400B36123 /* SearchBean.m in Sources */,
 				040ED78C26561699001A2755 /* PageLineLayout.m in Sources */,
-				04E88CDC2679CF3400FEA24C /* MusicPlayViewController.m in Sources */,
 				040B951B2666464800B306D2 /* JXCategoryDotView.m in Sources */,
 				040B950B2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */,
 				04CE3403267DD155001C4216 /* GSMonitorKeyboard.m in Sources */,
@@ -1511,6 +1533,7 @@
 				040B95262666464800B306D2 /* JXCategoryNumberView.m in Sources */,
 				040B95302666464800B306D2 /* JXCategoryBaseView.m in Sources */,
 				0425CD64262EE154004D4D23 /* NotifyViewController.m in Sources */,
+				0485841326BAA68F00E75281 /* MusicPlayViewController.m in Sources */,
 				F306DD26267F7CA800BBD170 /* JCGCDTimer.m in Sources */,
 				040B95122666464800B306D2 /* JXCategoryIndicatorImageView.m in Sources */,
 				042A95522685A1D200C017FD /* WifiInfoViewController.m in Sources */,
@@ -1527,7 +1550,7 @@
 				04B5D1BC2680615B00323E3C /* LXSEQView.m in Sources */,
 				0410BE21267B410900CE993E /* SkillBean.m in Sources */,
 				0476D47F2660865000F8DE42 /* DeviceBannerCell.m in Sources */,
-				0415EAEA2664D9E500A73CE7 /* FindBean.m in Sources */,
+				0415EAEA2664D9E500A73CE7 /* SkillerBean.m in Sources */,
 				040B950F2666464800B306D2 /* JXCategoryIndicatorLineView.m in Sources */,
 				040B950E2666464800B306D2 /* RTLManager.m in Sources */,
 				04283ACB267AF4A000FFBF84 /* DeviceSetViewController.m in Sources */,
@@ -1551,6 +1574,8 @@
 				040B95402666464C00B306D2 /* HWFooterRefresh.m in Sources */,
 				0472671626848C2D00446189 /* ZFCheckbox.m in Sources */,
 				044D723726396C8E0075994F /* WebPageViewController.m in Sources */,
+				0485841926BAA6B600E75281 /* FinderViewController.m in Sources */,
+				0485841E26BAA6D200E75281 /* FindBean.m in Sources */,
 				04B93A0E267C49080036C0B6 /* SkillDetailViewController.m in Sources */,
 				04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */,
 				040B95172666464800B306D2 /* JXCategoryIndicatorCellModel.m in Sources */,
@@ -1587,6 +1612,7 @@
 				0488C39E26AFD58B00440320 /* SuggestViewController.m in Sources */,
 				040B95252666464800B306D2 /* JXCategoryImageCellModel.m in Sources */,
 				04E6F26A269E8B84001AE968 /* WKWebViewJavascriptBridge.m in Sources */,
+				0485842526BAAA5500E75281 /* ListViewController1.m in Sources */,
 				040B95222666464800B306D2 /* JXCategoryTitleView.m in Sources */,
 				04DA6D56268FF6B80082869B /* IFlyOSBean.m in Sources */,
 				042A957A2685D83800C017FD /* cJSON.c in Sources */,

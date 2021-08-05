@@ -94,12 +94,12 @@
 }
 
 - (IBAction)onSearchClick:(id)sender {
-//    if(!APPDELEGATE.curDevice){
-//        [[iToast makeText:@"暂无设备"] show];
-//        return;
-//    }
-//    SearchViewController *svc = SearchViewController.new;
-//    [APPDELEGATE.rootNavC pushViewController:svc animated:YES];
+    if(!APPDELEGATE.curDevice){
+        [[iToast makeText:@"暂无设备"] show];
+        return;
+    }
+    SearchViewController *svc = SearchViewController.new;
+    [APPDELEGATE.rootNavC pushViewController:svc animated:YES];
 }
 
 //添加设备信息

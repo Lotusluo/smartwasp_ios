@@ -208,6 +208,7 @@ static NSString *const ID = @"CellIdentifier";
         return;
     }
     //点击进入设备详情界面
+
     DeviceSetViewController *dvc = [DeviceSetViewController createNewPage:selctedBean];
     [self.navigationController pushViewController:dvc animated:YES];
 }

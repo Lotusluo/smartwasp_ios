@@ -6,7 +6,7 @@
 //
 
 #import "ABUITableViewCell.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImage.h>
 
 @interface ABUITableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleView;
@@ -19,6 +19,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.mImageView.sd_imageTransition = SDWebImageTransition.fadeTransition;
+    self.mImageView.sd_imageIndicator = SDWebImageActivityIndicator.grayIndicator;
     // Initialization code
 }
 
@@ -32,7 +34,11 @@
 }
 //设置图标
 -(void)setIcon:(NSString*)path{
-    [self.mImageView sd_setImageWithURL:[NSURL URLWithString:path]];
+    static UIImage *placeholderImage = nil;
+    if (!placeholderImage) {
+        placeholderImage = [UIImage imageNamed:@"placeholder"];
+    }
+    [self.mImageView sd_setImageWithURL:[NSURL URLWithString:path] placeholderImage:placeholderImage];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

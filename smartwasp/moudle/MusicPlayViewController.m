@@ -7,7 +7,6 @@
 
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
-#import "AppDelegate+Global.h"
 #import "UILabel+Extension.h"
 #import "UIImage+Extension.h"
 #import "DeviceBean.h"

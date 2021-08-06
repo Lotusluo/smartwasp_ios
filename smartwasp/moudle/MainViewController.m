@@ -12,20 +12,20 @@
 #import "UserViewController.h"
 #import "FinderViewController.h"
 #import <iflyosSDKForiOS/iflyosCommonSDK.h>
-#import "AppDelegate+Global.h"
 #import "AppDelegate.h"
 #import "JCGCDTimer.h"
-#import "AFNetworkReachabilityManager.h"
 #import "Reachability.h"
 #import "UIViewHelper.h"
+#import "NetDAO.h"
+#import "Loading.h"
+#import "ConfigBean.h"
+#import "NSString+Extension.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 
 @interface MainViewController ()<UIGestureRecognizerDelegate>
-
-@property (nonatomic) Reachability *hostReachability;
 
 @end
 
@@ -88,70 +88,29 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-    self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
-    [self.hostReachability startNotifier];
-    [self updateInterfaceWithReachability:self.hostReachability];
+    [self gotConfig];
     // Do any additional setup after loading the view.
-    [JCGCDTimer timerTask:^{
-        [UIViewHelper showAlert:NSLocalizedString(@"main_tip", nil) target:self];
-    } start:1 interval:0 repeats:NO async:NO];
-}
-
-
-/*!
- * Called by Reachability whenever status changes.
- */
-- (void) reachabilityChanged:(NSNotification *)note{
-    Reachability* curReach = [note object];
-    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
-    [self updateInterfaceWithReachability:curReach];
-}
-
-- (void)updateInterfaceWithReachability:(Reachability *)reachability{
-    NetworkStatus netStatus = [reachability currentReachabilityStatus];
-    switch (netStatus){
-        case NotReachable:{
-            for(UIViewController *vc in APPDELEGATE.rootNavC.viewControllers){
-                if([NSStringFromClass(vc.class) containsString:@"AddDeviceViewController"]){
-                    return;
-                }
-            }
-//            [APPDELEGATE.rootNavC.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//    [JCGCDTimer timerTask:^{
 //
-//            }];
-            [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:self callBack:^{
-                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-            } negative:YES];
-            break;
-        }
-        case ReachableViaWiFi:
-        case ReachableViaWWAN:{
-//            @try {
-//                        NSException *e = [NSException
-//                                          exceptionWithName:@"FileNotFoundException"
-//                                          reason:@"File Not Found on System"
-//                                          userInfo:nil];
-//                        @throw e;
-//                    }
-//                    @catch (NSException *exception) {
-//                        if ([[exception name] isEqualToString:NSInvalidArgumentException]) {
-//                            NSLog(@"%@", exception);
-//                        } else {
-//                            @throw exception;
-//                        }
-//                    }
-//                    @finally {
-//                        NSLog(@"finally");
-//                    }
-            if(APPDELEGATE.curDevice){
-                [APPDELEGATE subscribeDeviceStatus];
-                [APPDELEGATE subscribeMediaStatus];
+//    } start:1 interval:0 repeats:NO async:NO];
+    
+}
+
+//获取配置文件
+-(void)gotConfig{
+    __weak typeof(self) SELF = self;
+    //获取新发现页数据
+    [Loading show:nil];
+    NSString *bosAPI = @"https://smartwasp.bj.bcebos.com/request/config";
+    [[NetDAO sharedInstance] getBos:bosAPI callBack:^(BaseBean * _Nonnull cData) {
+        [Loading dismiss];
+        if(!cData.errCode){
+            APPDELEGATE.configBean = [ConfigBean yy_modelWithDictionary:cData.data];
+            if(APPDELEGATE.configBean && ![APPDELEGATE.configBean.appMainTip isEmpty]){
+                [UIViewHelper showAlert:APPDELEGATE.configBean.appMainTip target:self];
             }
-            break;
         }
-    }
+    }];
 }
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -164,9 +123,25 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
--(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.hostReachability stopNotifier];
+//网络不可用
+-(void)netNotReachable{
+    for(UIViewController *vc in APPDELEGATE.rootNavC.viewControllers){
+        if([NSStringFromClass(vc.class) containsString:@"AddDeviceViewController"]){
+            return;
+        }
+    }
+    [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:self callBack:^{
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+    } negative:YES];
+}
+
+//网络可用
+-(void)netReachable{
+    if(APPDELEGATE.curDevice){
+        [APPDELEGATE subscribeDeviceStatus];
+        [APPDELEGATE subscribeMediaStatus];
+    }
 }
 
 /*

@@ -12,7 +12,7 @@
 #import "NSObject+YYModel.h"
 #import <Masonry.h>
 #import "PageLineLayout.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImage.h>
 #import "JXCategoryView.h"
 #import "IFLYOSUIColor+IFLYOSColorUtil.h"
 #import "HWHeadRefresh.h"
@@ -21,7 +21,6 @@
 #import "ItemViewController.h"
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
-#import "AppDelegate+Global.h"
 #import "Loading.h"
 #import "ItemBean.h"
 #import "UIViewHelper.h"
@@ -355,9 +354,15 @@ static NSString *const ID = @"CellIdentifier";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     NSInteger index = indexPath.row;
     UIImageView *imageView = [cell.subviews objectAtIndex:0];
+    static UIImage *placeholderImage = nil;
+    if (!placeholderImage) {
+        placeholderImage = [UIImage imageNamed:@"placeholder"];
+    }
+    imageView.sd_imageTransition = SDWebImageTransition.fadeTransition;
+    imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayIndicator;
 //    UIImage *image = [UIImage imageNamed:_findBean.banners[index].image];
 //    imageView.image = image;
-   [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image]];
+   [imageView sd_setImageWithURL:[NSURL URLWithString:_findBean.banners[index].image] placeholderImage:placeholderImage];
     return cell;
 }
 

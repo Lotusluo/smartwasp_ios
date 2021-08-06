@@ -8,15 +8,11 @@
 #import "CommonTabController.h"
 #import "Toolbar.h"
 #import <iflyosSDKForiOS/IFLYOSUIColor+IFLYOSColorUtil.h>
-
 #import <WebKit/WebKit.h>
 #import <Masonry.h>
 #import "WebPageViewController.h"
 #import "Loading.h"
-
 #import "AppDelegate.h"
-#import "AppDelegate+Global.h"
-
 #import "UIViewHelper.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)

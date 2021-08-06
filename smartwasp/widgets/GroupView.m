@@ -6,7 +6,7 @@
 //
 
 #import "GroupView.h"
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/SDWebImage.h>
 #import <Masonry.h>
 
 #define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -100,6 +100,10 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static UIImage *placeholderImage = nil;
+    if (!placeholderImage) {
+        placeholderImage = [UIImage imageNamed:@"placeholder"];
+    }
     UICollectionViewCell *cell = [self. groupView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     if(self.canLoad){
         NSInteger idx = indexPath.section * GROUP_COL + indexPath.row;
@@ -112,7 +116,9 @@ static NSString *const ID = @"CellIdentifier";
         [imageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(itemWidth);
         }];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:bean.image]];
+        imageView.sd_imageTransition = SDWebImageTransition.fadeTransition;
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.grayIndicator;
+        [imageView sd_setImageWithURL:[NSURL URLWithString:bean.image] placeholderImage:placeholderImage];
         UILabel *label = cell.subviews[1];
         label.text = bean.name;
     }

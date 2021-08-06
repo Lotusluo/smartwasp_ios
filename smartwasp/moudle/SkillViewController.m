@@ -21,7 +21,6 @@
 #import "ItemViewController.h"
 #import "MusicPlayViewController.h"
 #import "AppDelegate.h"
-#import "AppDelegate+Global.h"
 #import "Loading.h"
 #import "ItemBean.h"
 #import "UIViewHelper.h"

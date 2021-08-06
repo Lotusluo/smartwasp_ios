@@ -108,7 +108,6 @@
 		043AD2CB26A7D36000CCB406 /* ItemMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043AD2C926A7D36000CCB406 /* ItemMoreViewController.xib */; };
 		043AD2CF26A7F55600CCB406 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AD2CD26A7F55600CCB406 /* ListViewController.m */; };
 		043AD2D526A7FC8200CCB406 /* ABUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043AD2D326A7FC8200CCB406 /* ABUITableViewCell.m */; };
-		043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DC2A62630426400A7F680 /* AppDelegate+Global.m */; };
 		043DE80726469630000A66A1 /* smartwasp_app_agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */; };
 		043DE80826469630000A66A1 /* smartwasp_app_privacypolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */; };
 		043F8BCB268D975100703FBE /* ic_sound_min_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043F8BC5268D975000703FBE /* ic_sound_min_black@2x.png */; };
@@ -162,6 +161,8 @@
 		0476D4852660877300F8DE42 /* DeviceChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D4832660877300F8DE42 /* DeviceChooseCell.xib */; };
 		0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476D487266087CE00F8DE42 /* DeviceAddCell.xib */; };
 		04783315262D1F3600684E9C /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04783313262D1F3500684E9C /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0482D29926BD41340084320D /* ConfigBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0482D29826BD41340084320D /* ConfigBean.m */; };
+		0482D29E26BD44140084320D /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0482D29D26BD44140084320D /* NSString+Extension.m */; };
 		0485839626BA8D0300E75281 /* SkillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485839526BA8D0300E75281 /* SkillViewController.xib */; };
 		0485840C26BAA19400E75281 /* SkillerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485840A26BAA19400E75281 /* SkillerHeaderCell.xib */; };
 		0485840D26BAA19400E75281 /* SkillBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0485840B26BAA19400E75281 /* SkillBannerCell.xib */; };
@@ -423,8 +424,6 @@
 		043AD2CE26A7F55600CCB406 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		043AD2D226A7FC8200CCB406 /* ABUITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABUITableViewCell.h; sourceTree = "<group>"; };
 		043AD2D326A7FC8200CCB406 /* ABUITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABUITableViewCell.m; sourceTree = "<group>"; };
-		043DC2A52630423900A7F680 /* AppDelegate+Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Global.h"; sourceTree = "<group>"; };
-		043DC2A62630426400A7F680 /* AppDelegate+Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Global.m"; sourceTree = "<group>"; };
 		043DE8052646962F000A66A1 /* smartwasp_app_agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_agreement.html; sourceTree = "<group>"; };
 		043DE80626469630000A66A1 /* smartwasp_app_privacypolicy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = smartwasp_app_privacypolicy.html; sourceTree = "<group>"; };
 		043F8BC5268D975000703FBE /* ic_sound_min_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_sound_min_black@2x.png"; sourceTree = "<group>"; };
@@ -504,6 +503,10 @@
 		0476D487266087CE00F8DE42 /* DeviceAddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceAddCell.xib; sourceTree = "<group>"; };
 		04783313262D1F3500684E9C /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		04783314262D1F3600684E9C /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		0482D29726BD41340084320D /* ConfigBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigBean.h; sourceTree = "<group>"; };
+		0482D29826BD41340084320D /* ConfigBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigBean.m; sourceTree = "<group>"; };
+		0482D29C26BD44140084320D /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		0482D29D26BD44140084320D /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		0485839526BA8D0300E75281 /* SkillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillViewController.xib; sourceTree = "<group>"; };
 		0485840A26BAA19400E75281 /* SkillerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillerHeaderCell.xib; sourceTree = "<group>"; };
 		0485840B26BAA19400E75281 /* SkillBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SkillBannerCell.xib; sourceTree = "<group>"; };
@@ -1012,8 +1015,8 @@
 				040ED77E26550B13001A2755 /* UIView+Extension.m */,
 				045E5D782658D4E100672251 /* UILabel+Extension.h */,
 				045E5D792658D51700672251 /* UILabel+Extension.m */,
-				043DC2A52630423900A7F680 /* AppDelegate+Global.h */,
-				043DC2A62630426400A7F680 /* AppDelegate+Global.m */,
+				0482D29C26BD44140084320D /* NSString+Extension.h */,
+				0482D29D26BD44140084320D /* NSString+Extension.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1123,6 +1126,8 @@
 				04DA6D55268FF6B80082869B /* IFlyOSBean.m */,
 				0442A4B326B0FA460040340F /* ApClientBean.h */,
 				0442A4B426B0FA460040340F /* ApClientBean.m */,
+				0482D29726BD41340084320D /* ConfigBean.h */,
+				0482D29826BD41340084320D /* ConfigBean.m */,
 			);
 			path = bean;
 			sourceTree = "<group>";
@@ -1529,6 +1534,7 @@
 				040B950B2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */,
 				04CE3403267DD155001C4216 /* GSMonitorKeyboard.m in Sources */,
 				040B952C2666464800B306D2 /* JXCategoryIndicatorParamsModel.m in Sources */,
+				0482D29E26BD44140084320D /* NSString+Extension.m in Sources */,
 				043AD2CA26A7D36000CCB406 /* ItemMoreViewController.m in Sources */,
 				040B95262666464800B306D2 /* JXCategoryNumberView.m in Sources */,
 				040B95302666464800B306D2 /* JXCategoryBaseView.m in Sources */,
@@ -1539,6 +1545,7 @@
 				042A95522685A1D200C017FD /* WifiInfoViewController.m in Sources */,
 				04115E542682D760003B192F /* IFLYQRCodeUtils.m in Sources */,
 				047267072684800900446189 /* PrevBindViewController.m in Sources */,
+				0482D29926BD41340084320D /* ConfigBean.m in Sources */,
 				04E6F26C269E8B84001AE968 /* WebViewJavascriptBridge_JS.m in Sources */,
 				043AD2CF26A7F55600CCB406 /* ListViewController.m in Sources */,
 				045E5D872658E1F200672251 /* UIImage+Extension.m in Sources */,
@@ -1570,7 +1577,6 @@
 				04B5D1CF2680959700323E3C /* SongBean.m in Sources */,
 				040B95192666464800B306D2 /* JXCategoryIndicatorView.m in Sources */,
 				040B95242666464800B306D2 /* JXCategoryImageCell.m in Sources */,
-				043DC2A72630426400A7F680 /* AppDelegate+Global.m in Sources */,
 				040B95402666464C00B306D2 /* HWFooterRefresh.m in Sources */,
 				0472671626848C2D00446189 /* ZFCheckbox.m in Sources */,
 				044D723726396C8E0075994F /* WebPageViewController.m in Sources */,

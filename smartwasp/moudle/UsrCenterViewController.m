@@ -7,7 +7,6 @@
 
 #import "UsrCenterViewController.h"
 #import "AppDelegate.h"
-#import "AppDelegate+Global.h"
 #import "UIViewHelper.h"
 #import "ConfigDAO.h"
 #import "iToast.h"

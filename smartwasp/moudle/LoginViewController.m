@@ -18,9 +18,7 @@
 #import "iToast.h"
 #import "WebPageViewController.h"
 #import "NetDAO.h"
-#import "AppDelegate+Global.h"
 #import "AppDelegate.h"
-#import "AFNetworkReachabilityManager.h"
 #import "UIViewHelper.h"
 #import <CoreTelephony/CTCellularData.h>
 
@@ -34,6 +32,7 @@
 
 @interface LoginViewController ()
 @property(strong,nonatomic) WKWebView *webView;
+@property(strong,nonatomic) UIAlertController* noNetTip;
 @end
 
 @implementation LoginViewController
@@ -51,33 +50,27 @@
             self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
     }
-    [self observeNetWork];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-// 使用AF监听网络状态
-- (void)observeNetWork {
-    static UIAlertController* alert;
-    __weak typeof(self) SELF = self;
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) {
-            if(alert){
-                [alert dismissViewControllerAnimated:YES completion:nil];
-                alert = nil;
-            }
-            alert = [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:SELF callBack:^{
-                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-            } negative:YES];
-        } else {
-            if(alert){
-                [alert dismissViewControllerAnimated:YES completion:nil];
-                alert = nil;
-            }
-            [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
-        }
-    }];
+//网络不可用
+-(void)netNotReachable{
+    if(self.noNetTip){
+        [self.noNetTip dismissViewControllerAnimated:YES completion:nil];
+        self.noNetTip = nil;
+    }
+    self.noNetTip = [UIViewHelper showAlert:NSLocalizedString(@"no_internet", nil) target:self callBack:^{
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+    } negative:YES];
+}
+
+//网络可用
+-(void)netReachable{
+    if(self.noNetTip){
+        [self.noNetTip dismissViewControllerAnimated:YES completion:nil];
+        self.noNetTip = nil;
+    }
+    [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -197,11 +190,6 @@
  */
 -(void)updateTitle:(NSString *) title{
     
-}
-
--(void)dealloc{
-    NSLog(@"LOGIN离开");
-    [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
 }
 
 

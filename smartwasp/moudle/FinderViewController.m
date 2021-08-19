@@ -26,6 +26,8 @@
 #import "UIViewHelper.h"
 #import "iToast.h"
 #import "ItemMoreViewController.h"
+#import "NSString+Extension.h"
+#import "JCGCDTimer.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -129,24 +131,31 @@ static NSString *const ID = @"CellIdentifier";
     if (!self.isViewLoaded || !self.view.window){
         return;
     }
+    if(!self.NEED_REFRESH_UI)
+        return;
     __weak typeof(self) SELF = self;
     UIView *emptyView = [self.view viewWithTag:1001];
+    emptyView.hidden = device != nil;
     self.toolbar.device = device;
     if(device){
-        emptyView.hidden = YES;
         //获取发现页面数据
-        [Loading show:nil];
+        BOOL flag = self.findBean == nil;
+        if(flag){
+            [Loading show:nil];
+        }
         [[IFLYOSSDK shareInstance] getMusicGroups:device.device_id statusCode:^(NSInteger statusCode) {
-            [Loading dismiss];
             SELF.NEED_REFRESH_UI = NO;
+            [SELF.headerView hw_endRefreshState];
+            if(flag){
+                [Loading dismiss];
+            }
             if(statusCode != 200){
                 [SELF loadDataEccur];
-                SELF.NEED_REFRESH_UI = YES;
                 [UIViewHelper showAlert:NSLocalizedString(@"load_data_err", nil) target:SELF callBack:^{
                     [SELF reloadData:APPDELEGATE.curDevice];
                 } positiveTxt:NSLocalizedString(@"retry_btn", nil) negativeTxt:NSLocalizedString(@"cancel_btn", nil)];
             }
-            [SELF.headerView hw_endRefreshState];
+        
         } requestSuccess:^(id _Nonnull data) {
             FindBean *findBean = [FindBean yy_modelWithJSON:data];
             if(findBean){
@@ -187,12 +196,12 @@ static NSString *const ID = @"CellIdentifier";
 //        }
 //    }
     //去除关于健康的内容，可能包含mg内容
-    NSArray *filterArray = @[@"新闻时讯",@"热门节目"];
-    if(self.findBean.groups.count > 0){
-        [self.findBean.groups filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(GroupBean*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-            return ![filterArray containsObject:evaluatedObject.name];
-        }]];
-    }
+//    NSArray *filterArray = @[@"新闻时讯",@"热门节目"];
+//    if(self.findBean.groups.count > 0){
+//        [self.findBean.groups filterUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(GroupBean*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+//            return ![filterArray containsObject:evaluatedObject.name];
+//        }]];
+//    }
     //刷新Banner数据
     [self.collectionView reloadData];
     [self.scrollView addSubview:self.collectionView];
@@ -254,7 +263,7 @@ static NSString *const ID = @"CellIdentifier";
 
     //设置垂直布局约束
     [self.verticalLayout mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.collectionView.mas_bottom).offset(40 + 10);
+        make.top.equalTo(self.collectionView.mas_bottom).offset(40 + 10 - (offsetY > 0 ? PAYVIEW_HEIGHT : 0));
         make.height.mas_equalTo(height);
     }];
 
@@ -276,6 +285,10 @@ static NSString *const ID = @"CellIdentifier";
 }
 
 -(void)onPayClick{
+    if(![APPDELEGATE.configBean.appNoPayTip isEmpty]){
+        [UIViewHelper showAlert:APPDELEGATE.configBean.appNoPayTip target:self];
+        return;
+    }
     [UIViewHelper showAlert:NSLocalizedString(@"no_pay_err", nil) target:self];
 //    WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:APPDELEGATE.curDevice.music.redirect_url];
 //    [self.navigationController pushViewController:nvc animated:YES];
@@ -489,8 +502,12 @@ static NSString *const ID = @"CellIdentifier";
 -(HWHeadRefresh*) headerView{
     if(!_headerView){
         _headerView = HWHeadRefresh.new;
+        __weak typeof(self) SELF = self;
         [_headerView hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
-            [self reloadData:APPDELEGATE.curDevice];
+            [JCGCDTimer timerTask:^{
+                SELF.NEED_REFRESH_UI = YES;
+                [SELF reloadData:APPDELEGATE.curDevice];
+            } start:1 interval:0 repeats:NO async:NO];
         }];
     }
     return _headerView;

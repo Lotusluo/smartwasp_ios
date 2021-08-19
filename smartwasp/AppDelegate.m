@@ -19,10 +19,15 @@
 #import "IFlyOSBean.h"
 #import "UIViewHelper.h"
 #import "Reachability.h"
+// 引入 JPush 功能所需头文件
+#import "JPUSHService.h"
+#import <UserNotifications/UserNotifications.h>
 
 
 //定义小黄蜂appid
 #define APPID @"28e49106-5d37-45fd-8ac8-c8d1f21356f5"
+//定义极光推送appid
+#define JPUSHAPPID @"6366073f8c4e4637325810f3"
 //bugly appid
 #define BUGDLY_APPID @"ebfbb9b728"
 
@@ -30,7 +35,7 @@
 BOOL NEED_MAIN_REFRESH_DEVICES = YES;
 BOOL NEED_TIP = YES;
 
-@interface AppDelegate ()<IFLYOSPushServiceProtocol,UIGestureRecognizerDelegate>{
+@interface AppDelegate ()<IFLYOSPushServiceProtocol,UIGestureRecognizerDelegate,JPUSHRegisterDelegate>{
     NSInteger mediaErrTimez;
     NSInteger deviceErrTimez;
     NSString *mediaErrNamez;
@@ -46,13 +51,32 @@ BOOL NEED_TIP = YES;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"屏幕大小:%@",NSStringFromCGRect([UIScreen mainScreen].bounds));
-    [self doWords];
+    [NSThread sleepForTimeInterval:3];
+    [self doWork];
     [self toApp];
+    [self jpush:launchOptions];
     return YES;
 }
 
+//设置极光推送
+-(void)jpush:(NSDictionary *)launchOptions{
+    //【注册通知】通知回调代理（可选）
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    if (@available(iOS 12.0, *)) {
+        entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound|JPAuthorizationOptionProvidesAppNotificationSettings;
+    } else {
+        // Fallback on earlier versions
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    //【初始化sdk】
+    [JPUSHService setupWithOption:launchOptions appKey:JPUSHAPPID
+                          channel:@"smartwasp"
+                 apsForProduction:YES
+            advertisingIdentifier:nil];
+}
+
 //在子线程处理耗时动作
--(void)doWords{
+-(void)doWork{
     [Bugly startWithAppId:BUGDLY_APPID];
     [[IFLYOSSDK shareInstance] initAppId:APPID schema:@"smartwasp" loginType:DEFAULT];
 //    [[IFLYOSSDK shareInstance] setDebugModel:NO];
@@ -69,15 +93,13 @@ BOOL NEED_TIP = YES;
 //进入APP界面
 -(void)toApp{
     self.window =[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UINavigationController *navigator = [[UINavigationController alloc] init];
-    self.window.rootViewController = navigator;
-    [self.window makeKeyAndVisible];
     if(self.user){
         [self toMain];
     }else{
         [self toLogin];
     }
     [self netObserver];
+    [self.window makeKeyAndVisible];
 }
 
 //网络观察器
@@ -86,6 +108,12 @@ BOOL NEED_TIP = YES;
     self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
     [self.hostReachability startNotifier];
     [self updateInterfaceWithReachability:self.hostReachability];
+}
+
+//注册推送的token
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    //sdk注册DeviceToken
+     [JPUSHService registerDeviceToken:deviceToken];
 }
 
 /*!
@@ -417,20 +445,23 @@ BOOL NEED_TIP = YES;
     self.user = nil;
     NEED_MAIN_REFRESH_DEVICES = YES;
     LoginViewController *loginVc = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    UINavigationController *navigator = self.rootNavC;
+    UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:loginVc];
+//    UINavigationController *navigator = self.rootNavC;
     [navigator setViewControllers:@[loginVc] animated:NO];
     navigator.navigationBar.topItem.title = @"";
+    self.window.rootViewController = navigator;
 }
 
 //设置主界面
 -(void)toMain{
     MainViewController *tabVc =[[MainViewController alloc] init];
-    UINavigationController *navigator = self.rootNavC;
-    [navigator setViewControllers:@[tabVc] animated:NO];
-    navigator.interactivePopGestureRecognizer.delegate = self;
+    UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:tabVc];
+//    [navigator setViewControllers:@[tabVc] animated:NO];
     [navigator.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
     //去除横线
     [navigator.navigationBar setShadowImage:[[UIImage alloc]init]];
+    navigator.interactivePopGestureRecognizer.delegate = self;
+    self.window.rootViewController = navigator;
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
@@ -446,11 +477,13 @@ BOOL NEED_TIP = YES;
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [application setApplicationIconBadgeNumber:0];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [application setApplicationIconBadgeNumber:0];
 }
 
 
@@ -461,6 +494,46 @@ BOOL NEED_TIP = YES;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma mark- JPUSHRegisterDelegate
+//设置消息送达代理
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler {
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
+    //内部到达
+}
+
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler();  // 系统要求执行这个方法
+   //外部到达
+}
+
+- (void)jpushNotificationAuthorization:(JPAuthorizationStatus)status withInfo:(NSDictionary *)info {
+}
+
+#ifdef __IPHONE_12_0
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification {
+    NSString *title = nil;
+    if (notification) {
+        title = @"从通知界面直接进入应用";
+    }else{
+        title = @"从系统设置界面进入应用";
+    }
+}
+#endif
+
+//【iOS7以上系统，收到通知以及静默推送】
+- (void)application:(UIApplication *)application
+    didReceiveRemoteNotification:(NSDictionary *)userInfo
+          fetchCompletionHandler:
+              (void (^)(UIBackgroundFetchResult))completionHandler {
+  [JPUSHService handleRemoteNotification:userInfo];
+  completionHandler(UIBackgroundFetchResultNewData);
 }
 
 

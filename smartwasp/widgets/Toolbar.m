@@ -55,7 +55,12 @@
     _devStatusIcon.image = _statusImage;
     _devNameTxt.numberOfLines = 0;
     _devNameTxt.preferredMaxLayoutWidth = SCREEN_WIDTH  / 2.5;
+    [self tempDo];
     [UIViewHelper attachClick:self.jump target:self action:@selector(doTapMethod)];
+}
+
+-(void)tempDo{
+    _jump.hidden = APPDELEGATE.configBean.appValue == 0;
 }
 
 -(void) onClick:(NSInteger)tag{
@@ -142,6 +147,8 @@
 //音乐开始跳动
 - (void)startJump{
     if(!self.jump)
+        return;
+    if(self.jump.isHidden)
         return;
     [self.jump startAnimation];
 }

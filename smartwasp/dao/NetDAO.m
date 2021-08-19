@@ -38,7 +38,7 @@ static NSString* access_token = @"smartwasp-eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIxMTQ
     if(!_afManager){
         _afManager = [AFHTTPSessionManager manager];
         [_afManager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-        _afManager.requestSerializer.timeoutInterval = 15;
+        _afManager.requestSerializer.timeoutInterval = 10;
         [_afManager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
         [_afManager.requestSerializer setValue:access_token forHTTPHeaderField:@"access_token"];
         [_afManager.requestSerializer setValue:@"no-cache, max-age=0" forHTTPHeaderField:@"Cache-Control"];

@@ -128,6 +128,8 @@ static NSString *const ID2 = @"SkillBannerCell";
     if (!self.isViewLoaded || !self.view.window){
         return;
     }
+    if(!self.NEED_REFRESH_UI)
+        return;
     __weak typeof(self) SELF = self;
     //设置是否空设备状态
     UIView *emptyView = [self.view viewWithTag:1001];
@@ -477,7 +479,6 @@ static NSString *const ID2 = @"SkillBannerCell";
         _headerView = HWHeadRefresh.new;
         __weak typeof(self) SELF = self;
         [_headerView hw_addFooterRefreshWithView:_scrollView hw_footerRefreshBlock:^{
-            NSLog(@"refresh");
             [JCGCDTimer timerTask:^{
                 SELF.NEED_REFRESH_UI = YES;
                 [SELF reloadData:APPDELEGATE.curDevice];

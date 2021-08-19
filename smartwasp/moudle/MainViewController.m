@@ -20,34 +20,34 @@
 #import "Loading.h"
 #import "ConfigBean.h"
 #import "NSString+Extension.h"
+#import "JPUSHService.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 
 
 @interface MainViewController ()<UIGestureRecognizerDelegate>
+@property(assign,nonatomic)BOOL isShown;
 
 @end
 
 @implementation MainViewController
-- (instancetype)init{
+
+-(instancetype)init{
     self = [super init];
     if(self){
         //tabbar标题
         NSArray *titleSources = @[NSLocalizedString(@"tab_dialog",nil),
-                                  NSLocalizedString(@"tab_find",nil),
                                   NSLocalizedString(@"tab_skill",nil),
                                   NSLocalizedString(@"tab_home",nil),
                                   NSLocalizedString(@"tab_usr",nil)];
         
         NSArray *iconSources = @[@"icon_tab_dialog",
-                                 @"icon_tab_find",
                                  @"icon_tab_skill",
                                  @"icon_tab_smart",
                                  @"icon_tab_mine"];
         
         NSArray *iconSelctedSources = @[@"icon_tab_dialog_selected",
-                                        @"icon_tab_find_selected",
                                         @"icon_tab_skill_selected",
                                         @"icon_tab_smart_selected",
                                         @"icon_tab_mine_selected"];
@@ -58,9 +58,6 @@
         dialogVc.vcType = TALK;
         dialogVc.tag = @"TALK";
         [self addChildViewController:dialogVc];
-        //发现页
-        FinderViewController *finderVc = [[FinderViewController alloc] init];
-        [self addChildViewController:finderVc];
         //技能页
         SkillViewController *skillVc = [[SkillViewController alloc] init];
         [self addChildViewController:skillVc];
@@ -89,11 +86,11 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self gotConfig];
-    // Do any additional setup after loading the view.
-//    [JCGCDTimer timerTask:^{
-//
-//    } start:1 interval:0 repeats:NO async:NO];
-    
+    NSCharacterSet *filterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]{}（#%-*+=_）\\|~(＜＞$%^&*)_+b/<>"];
+    NSString *alias = [[APPDELEGATE.user.user_id componentsSeparatedByCharactersInSet: filterSet] componentsJoinedByString: @""];
+    [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        NSLog(@"设置别名回调:%@,状态码:%ld",iAlias,(long)iResCode);
+    } seq:10086];
 }
 
 //获取配置文件
@@ -107,10 +104,30 @@
         if(!cData.errCode){
             APPDELEGATE.configBean = [ConfigBean yy_modelWithDictionary:cData.data];
             if(APPDELEGATE.configBean && ![APPDELEGATE.configBean.appMainTip isEmpty]){
-                [UIViewHelper showAlert:APPDELEGATE.configBean.appMainTip target:self];
+                [UIViewHelper showAlert:APPDELEGATE.configBean.appMainTip target:SELF];
+            }
+            if([APPDELEGATE.user.user_id isEqualToString:@"7c97c06e-f4c1-44ce-b087-ecf2ac2f7b49"]){
+                APPDELEGATE.configBean.appValue = 0;
+            }
+            if(APPDELEGATE.configBean.appValue == 1){
+                [self addATab];
+                CommonTabController *dialogVc = self.viewControllers[0];
+                [dialogVc tempDo];
             }
         }
     }];
+}
+
+
+//添加一个发现页
+-(void)addATab{
+    FinderViewController *finderVc = [[FinderViewController alloc] init];
+    finderVc.tabBarItem.title = NSLocalizedString(@"tab_find",nil);
+    finderVc.tabBarItem.selectedImage = [UIImage imageNamed:@"icon_tab_find_selected"];
+    finderVc.tabBarItem.image = [UIImage imageNamed:@"icon_tab_find"];
+    NSMutableArray<UIViewController*>* vcs = [[NSMutableArray alloc] initWithArray:self.viewControllers];
+    [vcs insertObject:finderVc atIndex:1];
+    self.viewControllers = vcs;
 }
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -121,10 +138,18 @@
     [super viewDidAppear:animated];
     [APPDELEGATE requestBindDevices];
     self.navigationController.navigationBar.hidden = YES;
+    if(self.isShown){
+        [self netNotReachable];
+    }
 }
 
 //网络不可用
 -(void)netNotReachable{
+    self.isShown = YES;
+    if (!self.isViewLoaded || !self.view.window){
+        return;
+    }
+    self.isShown = NO;
     for(UIViewController *vc in APPDELEGATE.rootNavC.viewControllers){
         if([NSStringFromClass(vc.class) containsString:@"AddDeviceViewController"]){
             return;
@@ -138,6 +163,7 @@
 
 //网络可用
 -(void)netReachable{
+    self.isShown = NO;
     if(APPDELEGATE.curDevice){
         [APPDELEGATE subscribeDeviceStatus];
         [APPDELEGATE subscribeMediaStatus];

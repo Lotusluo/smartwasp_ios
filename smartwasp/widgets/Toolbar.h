@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)startJump;
 //音乐停止跳动
 - (void)stopJump;
+-(void)tempDo;
 
 @end
 

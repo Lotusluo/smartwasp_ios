@@ -33,6 +33,7 @@
 @interface LoginViewController ()
 @property(strong,nonatomic) WKWebView *webView;
 @property(strong,nonatomic) UIAlertController* noNetTip;
+@property(assign,nonatomic)BOOL isShown;
 @end
 
 @implementation LoginViewController
@@ -52,8 +53,20 @@
     }
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(self.isShown){
+        [self netNotReachable];
+    }
+}
+
 //网络不可用
 -(void)netNotReachable{
+    self.isShown = YES;
+    if (!self.isViewLoaded || !self.view.window){
+        return;
+    }
+    self.isShown = NO;
     if(self.noNetTip){
         [self.noNetTip dismissViewControllerAnimated:YES completion:nil];
         self.noNetTip = nil;
@@ -66,6 +79,7 @@
 
 //网络可用
 -(void)netReachable{
+    self.isShown = NO;
     if(self.noNetTip){
         [self.noNetTip dismissViewControllerAnimated:YES completion:nil];
         self.noNetTip = nil;
@@ -77,6 +91,7 @@
     [super viewWillAppear:animated];
     [[IFLYOSSDK shareInstance] registerWebView:self.webView handler:self tag:LOGIN_PAGE];
     [[IFLYOSSDK shareInstance] setWebViewDelegate:self tag:LOGIN_PAGE];
+    [[IFLYOSSDK shareInstance] openLogin:LOGIN_PAGE];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 

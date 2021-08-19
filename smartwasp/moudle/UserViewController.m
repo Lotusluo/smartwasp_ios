@@ -71,6 +71,7 @@ static NSString *const ID = @"CellIdentifier";
     [self initGallery];
     [self initpageCtr];
     [self initMenuList];
+    _musicView.hidden = APPDELEGATE.configBean.appValue == 0;
     self.toolBarHeight.constant = STATUS_HEIGHT;
     //对选择的设备进行监听
     [[NSNotificationCenter defaultCenter] addObserver:self

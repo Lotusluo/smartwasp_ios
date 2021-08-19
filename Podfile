@@ -14,5 +14,6 @@ target 'smartwasp' do
   pod 'Masonry'
   pod 'SDWebImage'
   pod 'SDWebImageWebPCoder', :git => 'https://github.com/SDWebImage/SDWebImageWebPCoder.git', :branch => 'master'
-
+  pod 'JCore'
+  pod 'JPush' 
 end

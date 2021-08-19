@@ -16,27 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_smartwasp_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="8No-Yw-6pi" userLabel="icon">
-                                <rect key="frame" x="83" y="371.5" width="248" height="113"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8No-Yw-6pi" secondAttribute="height" multiplier="2.2:1" id="5tV-ys-geL"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©2021 小黄蜂人工智能(深圳)有限公司版权所有" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dA-ut-q2r">
                                 <rect key="frame" x="67" y="836" width="280" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qyy-Rl-f5o">
+                                <rect key="frame" x="83" y="381.5" width="248" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Qyy-Rl-f5o" secondAttribute="height" multiplier="2.2:1" id="A3U-YK-Sst"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.99583822489999996" green="0.89276701209999998" blue="0.00032815244049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6dA-ut-q2r" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DU9-6W-pZs"/>
-                            <constraint firstItem="8No-Yw-6pi" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="XJp-rJ-qb2"/>
-                            <constraint firstItem="8No-Yw-6pi" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="cdv-N2-mAx"/>
-                            <constraint firstItem="8No-Yw-6pi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lw0-Sh-Rin"/>
+                            <constraint firstItem="Qyy-Rl-f5o" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LX1-ZR-YB8"/>
+                            <constraint firstItem="Qyy-Rl-f5o" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-10" id="Va8-kq-7sT"/>
                             <constraint firstItem="6dA-ut-q2r" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-10" id="qsg-Hf-fca"/>
+                            <constraint firstItem="Qyy-Rl-f5o" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="zkm-Xu-bjE"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_smartwasp_launch.png" width="315.3599853515625" height="141.1199951171875"/>
+        <image name="ic_ splash.png" width="315.3599853515625" height="141.1199951171875"/>
     </resources>
 </document>

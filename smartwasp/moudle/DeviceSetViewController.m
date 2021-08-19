@@ -23,7 +23,7 @@
 #import "WebPageViewController.h"
 #import "UIViewHelper.h"
 #import "NetDAO.h"
-
+#import "NSString+Extension.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
 #define MaxLength 15
@@ -233,12 +233,18 @@
         return;
 
     if(!self.deviceBean.music.enable){
-        [UIViewHelper showAlert:NSLocalizedString(@"no_pay_err", nil) target:self];
+        if(![APPDELEGATE.configBean.appNoPayTip isEmpty]){
+            [UIViewHelper showAlert:APPDELEGATE.configBean.appNoPayTip target:self];
+        }else{
+            [UIViewHelper showAlert:NSLocalizedString(@"no_pay_err", nil) target:self];
+        }
         return;
     }
-    self.NEED_REFRESH_DETAIL = YES;
-    WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
-    [self.navigationController pushViewController:nvc animated:YES];
+    if(APPDELEGATE.configBean.appValue){
+        self.NEED_REFRESH_DETAIL = YES;
+        WebPageViewController *nvc = [WebPageViewController createNewPageWithUrl:self.deviceBean.music.redirect_url];
+        [self.navigationController pushViewController:nvc animated:YES];
+    }
 }
 
 -(BOOL)canClick{

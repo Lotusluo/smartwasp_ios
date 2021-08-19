@@ -128,6 +128,11 @@
 }
 
 -(void)dealloc{
+    NSLog(@"CommonTabController dealloc");
+}
+
+-(void)tempDo{
+    [self.toolbar tempDo];
 }
 
 //打开一个新页面

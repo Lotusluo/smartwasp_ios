@@ -22,7 +22,6 @@
 #import "GSMonitorKeyboard.h"
 #import "WebPageViewController.h"
 #import "UIViewHelper.h"
-#import "NetDAO.h"
 #import "NSString+Extension.h"
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -106,7 +105,7 @@
         device.device_id = SELF.deviceBean.device_id;
         SELF.deviceBean = device;
         [SELF attachUI];
-//        [SELF innerRefresh:0];
+        [SELF innerRefresh:0];
     } requestFail:^(id _Nonnull data) {
         [Loading dismiss];
         NSLog(@"加载失败");
@@ -115,53 +114,57 @@
 
 //刷新私有数据
 -(void)innerRefresh:(NSInteger) bindCount{
-//    if(bindCount == 0){
-//        [Loading show:nil];
-//    }
-//    __weak typeof(self) SELF = self;
-//    NSString *deviceID = self.deviceBean.device_id;
-//    deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
-//    //先请求私有技能
-//    [[NetDAO sharedInstance]
-//     post:@{@"uid":APPDELEGATE.user.user_id,
-//            @"clientId":self.deviceBean.client_id,
-//            @"deviceId":deviceID
-//     }
-//     path:@"api/getSkillList"
-//     callBack:^(BaseBean* _Nonnull cData) {
-//        if(cData.errCode == 0){
-//            [Loading dismiss];
-//            [SELF.skillContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//            SELF.skillArray = [NSArray yy_modelArrayWithClass:SkillBean.class json:cData.data];
-//            SELF.skillContainerHeight.constant = 50 * SELF.skillArray.count;
-//            NSInteger index = 0;
-//            for(SkillBean* skill in SELF.skillArray){
-//                UIView *skillView = [UIViewHelper loadNibByName:@"SkillView"];
-//                skillView.tag = index++;
-//                [UIViewHelper attachText:skill.shopName widget:skillView.subviews[0]];
-//                [UIViewHelper attachClick:skillView target:SELF action:@selector(doTapMethod:)];
-//                skillView.height = 50;
-//                [SELF.skillContainer addArrangedSubview:skillView];
-//            }
-//        }else if(cData.errCode == 408){
-//            //重新绑定再获取技能
-//            [Loading dismiss];
-//            if(bindCount <= 1){
-//                NSString *deviceID = SELF.deviceBean.device_id;
-//                deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
-//                [[NetDAO sharedInstance] post:@{@"clientIds":self.deviceBean.client_id,
-//                                                @"deviceIds":deviceID,
-//                                                @"uid":APPDELEGATE.user.user_id}
-//                                         path:@"api/bind"  callBack:^(BaseBean * _Nonnull cData) {
-//                    if(!cData.errCode ){
-//                        [SELF innerRefresh:bindCount + 1];
-//                    }
-//                }];
-//            }
-//        }else{
-//            [Loading dismiss];
-//        }
-//    }];
+    if(bindCount == 0){
+        [Loading show:nil];
+    }
+    __weak typeof(self) SELF = self;
+    NSString *deviceID = self.deviceBean.device_id;
+    deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
+    //先请求私有技能
+    [[NetDAO sharedInstance]
+     post:@{@"uid":APPDELEGATE.user.user_id,
+            @"clientId":self.deviceBean.client_id,
+            @"deviceId":deviceID
+     }
+     path:@"api/getSkillList"
+     callBack:^(BaseBean* _Nonnull cData) {
+        if(cData.errCode == 0){
+            [Loading dismiss];
+            [SELF.skillContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            SELF.skillArray = [NSArray yy_modelArrayWithClass:SkillBean.class json:cData.data];
+            NSInteger index = 0;
+            for(SkillBean* skill in SELF.skillArray){
+                //if([skill.skillName containsString:@"音乐"]){
+                    UIView *skillView = [UIViewHelper loadNibByName:@"SkillView"];
+                    skillView.tag = index++;
+                    [UIViewHelper attachText:skill.skillName widget:skillView.subviews[0]];
+                    [UIViewHelper attachClick:skillView target:SELF action:@selector(doTapMethod:)];
+                    [SELF.skillContainer addArrangedSubview:skillView];
+                    [skillView mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.height.mas_equalTo(50);
+                    }];
+                    SELF.skillContainerHeight.constant += 50;
+               // }
+            }
+        }else if(cData.errCode == 408){
+            //重新绑定再获取技能
+            [Loading dismiss];
+            if(bindCount <= 1){
+                NSString *deviceID = SELF.deviceBean.device_id;
+                deviceID = [deviceID substringFromIndex:[deviceID rangeOfString:@"."].location + 1];
+                [[NetDAO sharedInstance] post:@{@"clientIds":self.deviceBean.client_id,
+                                                @"deviceIds":deviceID,
+                                                @"uid":APPDELEGATE.user.user_id}
+                                         path:@"api/bind"  callBack:^(BaseBean * _Nonnull cData) {
+                    if(!cData.errCode ){
+                        [SELF innerRefresh:bindCount + 1];
+                    }
+                }];
+            }
+        }else{
+            [Loading dismiss];
+        }
+    }];
 }
 
 -(void)doTapMethod:(UITapGestureRecognizer*)sender{
@@ -170,6 +173,7 @@
     NSInteger index = sender.view.tag;
     if(self.skillArray){
         SkillBean *skillBean = self.skillArray[index];
+        NSLog(@"skillBean:%lu",(unsigned long)skillBean.hitTextS.count);
         SkillDetailViewController *svc = [SkillDetailViewController createNewPage:skillBean];
         [self.navigationController pushViewController:svc animated:YES];
     }

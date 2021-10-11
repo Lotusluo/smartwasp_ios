@@ -16,7 +16,8 @@
 
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{
-        @"_id" : @[@"id"]};
+        @"_id" : @[@"id"]
+    };
 }
 
 + (NSArray *)modelPropertyBlacklist {

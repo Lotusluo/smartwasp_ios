@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04063FEC264BB1AE003AD68D /* BaseBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 04063FEB264BB1AE003AD68D /* BaseBean.m */; };
+		0408C26326F597FA00413853 /* ic_ splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0408C26226F597FA00413853 /* ic_ splash.png */; };
 		040B948E26661F7100B306D2 /* ItemBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B948D26661F7100B306D2 /* ItemBean.m */; };
 		040B94932666228F00B306D2 /* GroupBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94922666228F00B306D2 /* GroupBean.m */; };
 		040B950B2666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 040B94B12666464800B306D2 /* JXCategoryTitleVerticalZoomCellModel.m */; };
@@ -143,7 +144,6 @@
 		04630C5D26AABE5600F2DD91 /* ABUITableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04630C5C26AABE5600F2DD91 /* ABUITableViewCell.xib */; };
 		046EEFAC26298475001213DB /* CodingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFAB26298475001213DB /* CodingUtil.m */; };
 		046EEFB726298954001213DB /* ConfigDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 046EEFB626298954001213DB /* ConfigDAO.m */; };
-		046EF6C926CE334B00894C54 /* ic_ splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046EF6C826CE334B00894C54 /* ic_ splash@2x.png */; };
 		04725167265E30F8003C4625 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04725164265E30F7003C4625 /* Toolbar.m */; };
 		04725168265E30F8003C4625 /* Toolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04725165265E30F7003C4625 /* Toolbar.xib */; };
 		04725178265E32C4003C4625 /* DeviceDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 04725175265E32C4003C4625 /* DeviceDialog.m */; };
@@ -239,6 +239,7 @@
 /* Begin PBXFileReference section */
 		04063FEA264BB1AE003AD68D /* BaseBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseBean.h; sourceTree = "<group>"; };
 		04063FEB264BB1AE003AD68D /* BaseBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseBean.m; sourceTree = "<group>"; };
+		0408C26226F597FA00413853 /* ic_ splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ splash.png"; sourceTree = "<group>"; };
 		040B948D26661F7100B306D2 /* ItemBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemBean.m; sourceTree = "<group>"; };
 		040B949026661FA900B306D2 /* ItemBean.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemBean.h; sourceTree = "<group>"; };
 		040B94922666228F00B306D2 /* GroupBean.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupBean.m; sourceTree = "<group>"; };
@@ -474,7 +475,6 @@
 		046EEFAB26298475001213DB /* CodingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingUtil.m; sourceTree = "<group>"; };
 		046EEFB526298954001213DB /* ConfigDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigDAO.h; sourceTree = "<group>"; };
 		046EEFB626298954001213DB /* ConfigDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigDAO.m; sourceTree = "<group>"; };
-		046EF6C826CE334B00894C54 /* ic_ splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_ splash@2x.png"; sourceTree = "<group>"; };
 		04725164265E30F7003C4625 /* Toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 		04725165265E30F7003C4625 /* Toolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Toolbar.xib; sourceTree = "<group>"; };
 		04725166265E30F8003C4625 /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
@@ -934,10 +934,10 @@
 		04261A11261F164F000D95D6 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				0408C26226F597FA00413853 /* ic_ splash.png */,
 				0473B8A0268F125400471A6A /* ic_launcher@2x.png */,
 				043F8BDD268DB6F800703FBE /* icon_empty@2x.png */,
 				043F8BC8268D975000703FBE /* ic_pause_black@2x.png */,
-				046EF6C826CE334B00894C54 /* ic_ splash@2x.png */,
 				043F8BC7268D975000703FBE /* ic_play_arrow_black@2x.png */,
 				043F8BC6268D975000703FBE /* ic_skip_next_blac@2x.png */,
 				043F8BC9268D975000703FBE /* ic_skip_previous_black@2x.png */,
@@ -1424,6 +1424,7 @@
 				043F8BCF268D975100703FBE /* ic_skip_previous_black@2x.png in Resources */,
 				0476D488266087CE00F8DE42 /* DeviceAddCell.xib in Resources */,
 				04261A4C261F1D36000D95D6 /* icon_tab_mine@2x.png in Resources */,
+				0408C26326F597FA00413853 /* ic_ splash.png in Resources */,
 				04261A1D261F167C000D95D6 /* icon_tab_dialog_selected@2x.png in Resources */,
 				042A95532685A1D200C017FD /* WifiInfoViewController.xib in Resources */,
 				04261A1B261F167C000D95D6 /* icon_tab_dialog@2x.png in Resources */,
@@ -1432,7 +1433,6 @@
 				04DE8A382683184F002AAA7D /* AddDeviceViewController.xib in Resources */,
 				04261A4F261F1D36000D95D6 /* icon_tab_find@2x.png in Resources */,
 				041AFEDB269848AE004D7289 /* LaunchScreen.storyboard in Resources */,
-				046EF6C926CE334B00894C54 /* ic_ splash@2x.png in Resources */,
 				045276472671DD6D000ECA78 /* NormalToolbar.xib in Resources */,
 				04E00B2526214AD100080581 /* quiet-profiles.json in Resources */,
 				041AFED8269848AB004D7289 /* Main.storyboard in Resources */,
@@ -1778,7 +1778,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = smartwasp/smartwaspDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 79X5S2QGW5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1799,7 +1799,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
-				MARKETING_VERSION = 1.0.28;
+				MARKETING_VERSION = 1.0.29;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",
@@ -1836,7 +1836,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = smartwasp/smartwaspRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 79X5S2QGW5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1857,7 +1857,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/smartwasp/lib",
 				);
-				MARKETING_VERSION = 1.0.28;
+				MARKETING_VERSION = 1.0.29;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-fobjc-arc",

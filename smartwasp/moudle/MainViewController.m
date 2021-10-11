@@ -21,6 +21,8 @@
 #import "ConfigBean.h"
 #import "NSString+Extension.h"
 #import "JPUSHService.h"
+#import "NetDAO.h"
+#import "BaseBean.h"
 
 
 #define APPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
@@ -86,12 +88,13 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self gotConfig];
-    NSCharacterSet *filterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]{}（#%-*+=_）\\|~(＜＞$%^&*)_+b/<>"];
-    NSString *alias = [[APPDELEGATE.user.user_id componentsSeparatedByCharactersInSet: filterSet] componentsJoinedByString: @""];
-    [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-        NSLog(@"设置别名回调:%@,状态码:%ld",iAlias,(long)iResCode);
-    } seq:10086];
+    [self getRegistrationID];
+    //设置别名
+//    [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+//        NSLog(@"设置别名回调:%@,状态码:%ld",iAlias,(long)iResCode);
+//    } seq:10086];
 }
+
 
 //获取配置文件
 -(void)gotConfig{
@@ -114,6 +117,25 @@
                 CommonTabController *dialogVc = self.viewControllers[0];
                 [dialogVc tempDo];
             }
+        }
+    }];
+}
+
+//向服务器绑定uid与registrationID的绑定关系
+-(void)getRegistrationID{
+    //设置registrationID
+    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        if(!resCode){
+//            NSCharacterSet *filterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]{}（#%-*+=_）\\|~(＜＞$%^&*)_+b/<>"];
+//            NSString *alias = [[APPDELEGATE.user.user_id componentsSeparatedByCharactersInSet: filterSet] componentsJoinedByString: @""];
+            //向服务器提交uid与registrationID绑定关系
+            [[NetDAO sharedInstance]
+             post:@{@"uid":APPDELEGATE.user.user_id,
+                    @"registrationId":registrationID}
+             path:@"api/setRegistrationId"
+             callBack:^(BaseBean* _Nonnull cData) {
+                NSLog(@"registrationId:%ld,%@",(long)cData.errCode,registrationID);
+            }];
         }
     }];
 }
